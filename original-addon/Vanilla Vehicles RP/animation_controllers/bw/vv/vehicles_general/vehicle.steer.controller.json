@@ -1,0 +1,151 @@
+{
+	"format_version": "1.21.100",
+	"animation_controllers":{
+	   "controller.animation.bw_vv.vehicle.steer.tilt":{
+		"initial_state": "neutral",
+		  "states":{
+			 "neutral":{
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left' && q.all_animations_finished"
+				   },
+				   {
+					  "right":"v.steer_direction == 'right' && q.all_animations_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "neutral_from_left":{
+				"animations":[
+				   "tilt_neutral_from_left"
+				],
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left'"
+				   },
+				   {
+					  "right":"v.steer_direction == 'right'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "neutral_from_right":{
+				"animations":[
+				   "tilt_neutral_from_right"
+				],
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left'"
+				   },
+				   {
+					  "right":"v.steer_direction == 'right'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "left":{
+				"animations":[
+				   "tilt_left"
+				],
+				"transitions":[
+				   {
+					  "right":"v.steer_direction == 'right' && q.all_animations_finished"
+				   },
+				   {
+					  "neutral_from_left":"v.steer_direction == 'neutral'  && q.all_animations_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "right":{
+				"animations":[
+				   "tilt_right"
+				],
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left' && q.all_animations_finished"
+				   },
+				   {
+					"neutral_from_right":"v.steer_direction == 'neutral' && q.all_animations_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 }
+		  }
+	   },
+	   	"controller.animation.bw_vv.steamboat.steer.tilt":{
+		"initial_state": "neutral",
+		  "states":{
+			 "neutral":{
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left' && q.all_animations_finished"
+				   },
+				   {
+					  "right":"v.steer_direction == 'right' && q.all_animations_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "neutral_from_left":{
+				"animations":[
+				   "tilt_neutral_from_left",
+				   "tilt_timer"
+				],
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left' && q.any_animation_finished"
+				   },
+				   {
+					  "right":"v.steer_direction == 'right' && q.any_animation_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "neutral_from_right":{
+				"animations":[
+				   "tilt_neutral_from_right",
+				   "tilt_timer"
+				],
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left'&& q.any_animation_finished"
+				   },
+				   {
+					  "right":"v.steer_direction == 'right'&& q.any_animation_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "left":{
+				"animations":[
+				   "tilt_left"
+				],
+				"transitions":[
+				   {
+					  "right":"v.steer_direction == 'right' && q.all_animations_finished"
+				   },
+				   {
+					  "neutral_from_left":"v.steer_direction == 'neutral'  && q.all_animations_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "right":{
+				"animations":[
+				   "tilt_right"
+				],
+				"transitions":[
+				   {
+					  "left":"v.steer_direction == 'left' && q.all_animations_finished"
+				   },
+				   {
+					"neutral_from_right":"v.steer_direction == 'neutral' && q.all_animations_finished"
+				   }
+				],
+				"blend_transition":0.1
+			 }
+		  }
+	   }
+	}
+ }

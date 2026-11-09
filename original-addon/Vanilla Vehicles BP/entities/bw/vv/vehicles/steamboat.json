@@ -1,0 +1,2063 @@
+{
+	"format_version": "1.21.132",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "bw_vv:steamboat",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false,
+      "animations": {
+		//FUEL
+		"fuel_controller": "controller.animation.bw_vv.generic_vehicle_fuel",//activates the "fuel_decreaser" animation based on the movement speed of the vehicle.
+		"fuel_activator_controller": "controller.animation.bw_vv.generic_vehicle_fuel_activator",//runs "event:fuel" or "event:unfuel" if the fuel_progress property is 0 or higher than 0.
+		"fuel_decreaser": "animation.bw_vv.generic_vehicle_fuel_decreaser",
+		//HIT
+		"hit_controller": "controller.animation.bw_vv.generic_hit_timer",
+		"hit_timer": "animation.bw_vv.generic_hit_timer",//how quickly the hit state resets (hitting the vehicle 4 times takes only one more hit for it to break, waiting a certain time, stated in this animation, will reset the damaged state of the vehicle to 0)
+		//VARIABLES
+		"variables": "animation.bw_vv.steamboat_variables",
+		//ENGINE SOUND
+		"engine_controller": "controller.animation.bw_vv.generic_vehicle_engine",
+		"engine_standby": "animation.bw_vv.sound_steamboat_engine_standby",//standby engine sound
+		"engine": "animation.bw_vv.sound_steamboat_engine"//running engine sound
+      },
+      "scripts": {
+        "animate": [
+			"variables",
+			"engine_controller",
+			 "fuel_controller",
+			  "fuel_activator_controller",
+			  "hit_controller"
+		 ]
+       },
+	   "properties": {
+			//SMOKE BOMB
+				"bw_vv:smoke_color": {
+					"type": "enum",
+					"values": [
+						"white",
+						"orange",
+						"magenta",
+						"light_blue",
+						"yellow",
+						"lime",
+						"pink",
+						"gray",
+						"light_gray",
+						"cyan",
+						"purple",
+						"blue",
+						"brown",
+						"green",
+						"red",
+						"black"
+					],
+					"default": "green",
+					"client_sync": true
+				},
+				"bw_vv:smoke_bomb_cooldown":{
+				"type": "bool", 
+				"default": false,
+				"client_sync": true 
+			},
+		"bw_vv:bell_attached":{
+			"type": "bool",
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:chested": { 
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:player_anim_blend_time":{
+				"type": "float",
+				"range": [
+					0.0,
+					10.0
+				],
+				"default": 0.1,
+				"client_sync": true
+		},
+		"bw_vv:fuel_progress": { 
+		  "type": "float", 
+		  "range": [0.0, 10.0], 
+		  "default": 0.0,
+		  "client_sync": true 
+		},		
+		"bw_vv:hit_timer": { 
+		  "type": "int", 
+		  "range": [0, 5], 
+		  "default": 0,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_sound": { 
+			"type": "enum", 
+			"values": ["normal", "final"], 
+			"default": "normal", 
+			"client_sync": true 
+		},
+		"bw_vv:hit_resistance": { 
+		  "type": "int", 
+		  "range": [0, 100], 
+		  "default": 70,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_resistance_tools": { 
+		  "type": "int", 
+		  "range": [0, 20], 
+		  "default": 10,
+		  "client_sync": true 
+		},
+		"bw_vv:damage_progress": { 
+		  "type": "int", 
+		  "range": [0, 100], 
+		  "default": 0,
+		  "client_sync": true 
+		},
+		"bw_vv:damage_weak": { //whether the player is hitting the vehicle with their bare hand.
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:damage_anim": {  //L/R vehicle bobbing, for RP animations.
+			"type": "enum", 
+			"values": ["L", "R"], 
+			"default": "R", 
+			"client_sync": true 
+		},
+		"bw_vv:lights": { //whether the lights function is active or not, based on the "dynamic lights" setting.
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:removed":{
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:wasd": { //what direction the vehicle is moving in. w = forward, s = backward, d = right & a = left.
+			"type": "enum", 
+			"values": ["w", "a", "s", "d"], 
+			"default": "w", 
+			"client_sync": true 
+		},
+		"bw_vv:player_anim": { //what animation will be sent to the RP and to the main.js script.
+			"type": "enum", 
+			"values": ["steamboat_captain", "more_players"], 
+			"default": "steamboat_captain", 
+			"client_sync": true 
+		},
+		"bw_vv:climb_animation": { // the inclination of the vehicle, used by the RP.
+			"type": "float", 
+			"range": [0.0, 50.0], 
+			"default": 45.0,
+			"client_sync": true 
+		},
+		"bw_vv:vertical_velocity": { // smoothed vertical velocity set by the main.js
+			"type": "float", 
+			"range": [-50.0, 50.0], 
+			"default": 0.0,
+			"client_sync": true 
+		},
+		"bw_vv:smoke_effect_size": { 
+		  "type": "float", 
+		  "range": [-10.0, 10.0], 
+          "default": 1.3,
+		  "client_sync": true 
+		},
+		//VEHICLE SPECIFIC PROPERTIES
+		"bw_vv:steamboat_state": { 
+			"type": "enum", 
+			"values": ["moving", "stationary"], 
+			"default": "stationary",
+			"client_sync": true 
+		},
+		"bw_vv:level": { 
+			"type": "int", 
+			"range": [1, 3], 
+			"default": 1,
+			"client_sync": true 
+		  },
+			"bw_vv:fuel_item": { // the amount of fuel increase based on the wood-based item used by the player to fuel the vehicle (only valid for coal-based vehicles)
+			"type": "enum",
+			"values": [
+				"coal",
+				"block_of_coal",
+				"blaze_rod",
+				"dried_kelp_block",
+				"wood_stuff1",
+				"wood_stuff2",
+				"wood_stuff3",
+				"wood_stuff4",
+				"misc_fuel"
+			],
+			"default": "coal",
+			"client_sync": true
+		},
+		"bw_vv:fuel_warning":{ // only valid for coal-based vehicles. whether or not the actionbar warning is displayed.
+			"type": "bool", 
+			"default": false,
+			"client_sync": false 
+		}
+	  }
+	},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 2.5,
+				"height": 0.9
+			},
+			"minecraft:color": {
+				"value": 0
+			},
+			"minecraft:custom_hit_test": {
+				"hitboxes": [
+					{
+						"width": 3,
+						"height": 2.1,
+						"pivot": [
+							0,
+							1,
+							0
+						]
+					}
+				]
+			},
+			"minecraft:physics": {
+				"has_gravity": true
+			},
+			"minecraft:knockback_resistance": {
+				"value": 1
+			},
+			"minecraft:rideable": {
+				"seat_count": 3,
+				"family_types": [
+					"player",
+					"villager",
+					"mechanic"
+				],
+				"crouching_skip_interact": true,
+		        "pull_in_entities": true,
+				"rider_can_interact": true,
+				"dismount_mode": "on_top_center",
+				"interact_text": "bw_vv.action.interact.generic.vehicle.enter",
+				"controlling_seat": 0,
+				"seats": [
+				{
+					"position": [
+						0.23,
+						1,
+						-1.2
+					],
+					
+					"lock_rider_rotation": 90,
+					"third_person_camera_radius": 6
+				},
+				{
+					"position": [
+						0.49,
+						0.8,
+						1.5
+					],
+					"lock_rider_rotation": 90,
+					"third_person_camera_radius": 6
+				},
+				{
+					"position": [
+						-0.7,
+						0.8,
+						1.5
+					],
+					"lock_rider_rotation": 90,
+					"third_person_camera_radius": 6
+				}
+				]
+			},
+			"minecraft:is_collidable": {},
+			"minecraft:damage_sensor": {
+				"triggers": [
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "bool_property", "subject": "self", "domain": "bw_vv:bell_attached", "operator": "==", "value": false },
+								{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true }
+								]
+							}
+						},
+						"deals_damage": "no"
+				},
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "bool_property", "subject": "self", "domain": "bw_vv:bell_attached", "operator": "==", "value": true },
+								{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true }
+								]
+							},
+						"event": "event:bell_hit",
+						"target": "self"
+						},
+						"deals_damage": "no"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "copper_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_axe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "copper_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_axe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" }
+							  ],
+						  "any_of": [
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_axe" }
+						  ]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" }
+							  ],
+								"any_of": [
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_axe" }
+								]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "==", "value": "instabuild" }
+						  ]
+						},
+						"event": "event:remove_creative"
+					},
+					"deals_damage": "no",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						
+							{}
+						
+					},
+					"deals_damage": "no_but_side_effects_apply"
+				}
+			]
+			},
+			"minecraft:interact": {
+				"interactions":	[
+					// CHESTABLE INTERACTIONS
+					{
+						"on_interact": {
+							"filters": {
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bundle"},
+								{ "test": "bool_property", "subject": "self", "domain": "bw_vv:chested", "value": false }
+							]
+						},
+						"event": "event:add_chest",
+						"target": "self"
+					},
+					"swing": true,
+					"use_item": true,
+					"play_sounds": "armor.equip_generic",
+					"interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+						},
+						{
+						"on_interact": {
+							"filters": {
+							"all_of":[
+								{ "test": "bool_property", "subject": "self", "domain": "bw_vv:chested", "value": false },
+								{
+									"any_of": [
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:black_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:blue_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:brown_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cyan_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:gray_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:green_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:light_blue_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:light_gray_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:lime_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:magenta_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:orange_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pink_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:purple_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:red_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:white_bundle"},
+										{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:yellow_bundle"}
+									]
+								}
+							]
+						},
+						"event": "event:bundle_warning",
+						"target": "self"
+					},
+					"swing": true,
+					"use_item": false,
+					"interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+				},
+			// SMOKE BOMB
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.white" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.white",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.white"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.orange" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.orange",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.orange"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.magenta" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.magenta",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.magenta"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_blue" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.light_blue",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.light_blue"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.yellow" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.yellow",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.yellow"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.lime" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.lime",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.lime"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.pink" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.pink",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.pink"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.gray" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.gray",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.gray"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_gray" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.light_gray",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.light_gray"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.cyan" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.cyan",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.cyan"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.purple" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.purple",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.purple"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.blue" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.blue",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.blue"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.brown" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.brown",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.brown"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.green" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.green",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.green"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.red" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.red",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.red"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.black" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.black",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.black"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+			{
+			"any_of": [
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.white" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.orange" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.magenta" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_blue" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.yellow" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.lime" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.pink" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.gray" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_gray" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.cyan" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.purple" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.blue" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.brown" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.green" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.red" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.black" }
+			]
+			},
+
+
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": true }
+				]
+				},
+				"event": "event:smoke_bomb.warning",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": false,
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.in_use"
+			},
+					//FUEL INTERACTIONS
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											// PLANKS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_planks" },
+											// LOGS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_stem" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_stem" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_block" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo" },
+											// STAIRS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_stairs" },
+											
+											// TRAPDOORS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_trapdoor" },
+
+											// DOORS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_door" },
+
+											// PRESSURE PLATES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_pressure_plate" },//oak pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_pressure_plate" },//birch pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_pressure_plate" },//spruce pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_pressure_plate" },//jungle pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_pressure_plate" },//acacia pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_pressure_plate" },//dark oak pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_pressure_plate" },//crimson pressure
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_pressure_plate" },//pale oak pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_pressure_plate" },//warped pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_pressure_plate" },//cherry pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_pressure_plate" },//mangrove pressure plate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_pressure_plate" },//bamboo pressure plate
+
+											// BUTTONS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_button" },//crimson button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_button" },//warped button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_button" },//oak button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_button" },//acacia button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_button" },//birch button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_button" },//spruce button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_button" },//jungle button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_button" },//bamboo button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_button" },//dark oak button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_button" },//pale oak button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_button" },//mangrove button
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_button" },//cherry button
+
+											// FENCE GATES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_fence_gate" },//oak fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_fence_gate" },//crimson fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_fence_gate" },//birch fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_fence_gate" },//spruce fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_fence_gate" },//jungle fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_fence_gate" },//acacia fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_fence_gate" },//dark oak fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_fence_gate" },//dark oak fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_fence_gate" },//cherry fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_fence_gate" },//warped fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_fence_gate" },//mangrove fence gate
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_fence_gate" },//bamboo fence gate
+
+											// SAPLINGS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_sapling" },//oak sapling
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_sapling" },//birch
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_sapling" },//spruce sapling
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_sapling" },//jungle sapling
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_sapling" },//acacia sapling
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_sapling" },//cherry sapling
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_sapling" },//dark oak sapling
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_sapling" },//pale oak sapling
+
+											// FENCES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_fence" },//oak fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_fence" },//oak fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_fence" },//birch fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_fence" },//spruce fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_fence" },//jungle fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_fence" },//acacia fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_fence" },//dark oak fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_fence" },//crimson fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_fence" },//warped fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_fence" },//mangrove fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_fence" },//cherry fence
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_fence" },//bamboo fence
+
+											// SLABS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_slab" },//oak slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_slab" },//birch slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_slab" },//spruce slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_slab" },//jungle slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_slab" },//acacia slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_slab" },//dark oak slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_slab" },//pale oak slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_slab" },//crimson slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_slab" },//cherry slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_slab" },//warped slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_slab" },//mangrove slab
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_slab" },//bamboo slab
+
+											// TOOLS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_pickaxe" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_shovel" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_spear" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_hoe" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_axe" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_sword" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bow" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crossbow" },
+
+											// BOATS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_boat"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_chest_boat"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_boat"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_chest_boat"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_boat"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_chest_boat"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_chest_raft"},
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_raft"},
+
+											// SIGNS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_sign" },
+
+											// HANGING SIGNS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_hanging_sign" },
+
+											// SHELVES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_shelf" },
+
+											// OTHER ITEMS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crafting_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cartography_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:fletching_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:smithing_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:loom" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:lectern" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:composter" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bookshelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:chiseled_bookshelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:chest" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:trapped_chest" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:barrel" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:daylight_detector" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jukebox" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:note_block" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:paper" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:book" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:ladder" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bowl" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:blaze_rod" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dried_kelp_block" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:stick" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:logcar" }
+										]
+									},
+									{ "test": "float_property", "subject": "self", "domain": "bw_vv:fuel_progress", "operator": "<", "value": 10.0 },
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": false
+									}
+								]
+							},
+							"event": "event:fuel_warning",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": false,
+						"play_sounds": "block.note_block.hat",
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{
+												"test": "has_equipment",
+												"subject": "other",
+												"domain": "hand",
+												"value": "minecraft:coal"
+											},
+											{
+												"test": "has_equipment",
+												"subject": "other",
+												"domain": "hand",
+												"value": "minecraft:charcoal"
+											}
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									}
+								]
+							},
+							"event": "event:fuel_coal",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{
+												"test": "has_equipment",
+												"subject": "other",
+												"domain": "hand",
+												"value": "minecraft:block_of_coal"
+											}
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									}
+								]
+							},
+							"event": "event:fuel_block_of_coal",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{
+												"test": "has_equipment",
+												"subject": "other",
+												"domain": "hand",
+												"value": "minecraft:blaze_rod"
+											},
+											{
+												"test": "has_equipment",
+												"subject": "other",
+												"domain": "hand",
+												"value": "bw_vv:logcar"
+											}
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_blaze_rod",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{
+												"test": "has_equipment",
+												"subject": "other",
+												"domain": "hand",
+												"value": "minecraft:dried_kelp_block"
+											}
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_dried_kelp_block",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											// LOGS (incl. stems + bamboo)
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_log" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_stem" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_stem" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_block" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo" },
+
+											// PLANKS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_planks" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_planks" },
+
+											// FENCE GATES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_fence_gate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_fence_gate" },
+
+											// FENCES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_fence" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_fence" },
+
+											// PRESSURE PLATES
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_pressure_plate" }, // oak
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_pressure_plate" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_pressure_plate" },
+
+											// STAIRS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_stairs" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_stairs" },
+											// SLABS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_slab" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_slab" }
+
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_wood_stuff1",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											// TRAPDOORS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_trapdoor" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_trapdoor" },
+
+											// BUTTONS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_button" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_button" },
+
+											// SIGNS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_sign" },
+
+											// HANGING SIGNS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_hanging_sign" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_hanging_sign" },
+
+											// SHELVES (custom / addon blocks assumed)
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_shelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_shelf" },
+
+											// OTHER ITEMS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crafting_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cartography_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:fletching_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:smithing_table" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:loom" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:lectern" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:composter" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bookshelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:chiseled_bookshelf" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:chest" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:trapped_chest" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:barrel" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:daylight_detector" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jukebox" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:note_block" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:ladder" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bowl" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:blaze_rod" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dried_kelp_block" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:stick" }
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_wood_stuff2",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											// DOORS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crimson_door" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:warped_door" },
+
+											// TOOLS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_pickaxe" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_shovel" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_axe" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_hoe" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:wooden_sword" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bow" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:crossbow" }
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_wood_stuff3",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:paper" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:book" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:scaffolding" }
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_wood_stuff4",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+					{
+						"on_interact": {
+							"filters": {
+								"all_of": [
+									{
+										"any_of": [
+											{ "test": "has_equipment","subject": "other","domain": "hand","value": "minecraft:scaffolding" },
+											// BOATS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:mangrove_chest_boat" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_raft" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bamboo_chest_raft" },
+
+											// SAPLINGS
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:oak_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:pale_oak_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:birch_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:spruce_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:jungle_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:acacia_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:dark_oak_sapling" },
+											{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:cherry_sapling" }
+										]
+									},
+									{
+										"test": "float_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_progress",
+										"operator": "<",
+										"value": 10.0
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:fuel_warning",
+										"operator": "equals",
+										"value": true
+									}
+								]
+							},
+							"event": "event:fuel_misc_fuel",
+							"target": "self"
+						},
+						"swing": true,
+						"use_item": true,
+						
+						"interact_text": "bw_vv.action.interact.generic.fuel.add"
+					},
+				//BELL INTERACTION
+				{		
+				"on_interact": {
+						"filters": {
+						"all_of": [
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:bell"},
+							{ "test": "bool_property", "subject": "self", "domain": "bw_vv:bell_attached", "operator": "==", "value": false }
+						]
+					},
+					"event": "event:attach_bell",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"interact_text": "bw_vv.action.interact.steamboat.bell"
+				}
+			]
+			},
+			"minecraft:health": {
+				"value": 0.6
+			},
+
+			"minecraft:scale": {
+				"value": 1.0
+			},
+			"minecraft:buoyant": {
+				"base_buoyancy": 0.4,
+				"apply_gravity": true,
+				"big_wave_probability": 0.0,
+				"big_wave_speed": 10,
+				"drag_down_on_buoyancy_removed": 0.3,
+				"liquid_blocks": [ "water"],
+				"simulate_waves": false
+			},
+			"minecraft:behavior.rise_to_liquid_level": {
+				"liquid_y_offset": 0.4,
+				"rise_delta": 0.1,
+				"sink_delta": 0.1
+			},
+			"minecraft:jump.static": {
+			},
+			"minecraft:is_dyeable": {
+				"interact_text": "bw_vv.action.interact.generic.spray"
+			},
+			"minecraft:type_family": {
+				"family": [
+					"steamboat",
+					"vehicle",
+					"wooden",
+					"coal_based",
+					"bw_vanilla_vehicles"
+				]
+			}
+		},
+		"component_groups": {
+			"component_group:chested": {
+				"minecraft:inventory": {
+					"additional_slots_per_strength": 0,
+					"can_be_siphoned_from": false,
+					"container_type": "hopper",
+					"inventory_size": 4,
+					"private": false,
+					"restrict_to_owner": false
+				}
+			},
+			// SM0KE BOMB
+			"component_group:smoke_bomb_cooldown":{
+				"minecraft:timer": {
+					"time": 10,
+					"looping": false,
+					"time_down_event": {
+						"event": "event:smoke_bomb_cooldown.end",
+						"target": "self"
+					}
+				}
+			},
+			//STICKER COMPONENT_GROUPS
+			"component_group:bell":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/bell.json"
+				}
+			},
+			"component_group:removed": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.1,
+					"drop_equipment": true,
+					"drop_inventory": true
+				}
+			},
+			"component_group:removed_creative": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.1,
+					"drop_equipment": false,
+					"drop_inventory": true
+				}
+			},
+			"component_group:fueled": {
+					"minecraft:variable_max_auto_step":{
+						"base_value": 1.0625,
+						"controlled_value": 1.0625,
+						"jump_prevented_value": 0.5625
+				}
+			},
+			"component_group:movement":{
+				"minecraft:movement": {
+					"value": 0.181
+				}
+			},
+			"component_group:no_movement":{
+				"minecraft:movement": {
+					"value": 0.01
+				}
+			}
+		},
+		"events": {
+			//EVENTS START
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			"event:attach_bell": {
+				"set_property": {
+					"bw_vv:bell_attached": true
+				},
+				"add": {
+					"component_groups": [
+						"component_group:bell"
+					]
+				},
+				"queue_command": {
+					"command": [ "playsound bw_vv.vehicle.steamboat.bell @p", "playanimation @s animation.bw_vv.steamboat_bell_hit" ]
+				}
+			},
+			"event:bell_hit": {
+				"queue_command": {
+					"command": [ "playsound bw_vv.vehicle.steamboat.bell @p", "playanimation @s animation.bw_vv.steamboat_bell_hit" ]
+				}
+			},
+			"event:add_chest": {
+				"set_property": {
+					"bw_vv:chested": true
+				},
+				"add": {
+                    "component_groups": ["component_group:chested"]
+                }
+			},
+			"event:bundle_warning": {
+				"queue_command":{"command":"execute as @p at @s run scriptevent bw_vv:bundle_warning"}
+			},
+			"event:increment_fuel": {
+				"set_property": {
+					"bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') + v.fuel_increaser"
+				},
+				"queue_command": {
+					"command": ["scriptevent bw_vv:fuel_up_vehicle","scoreboard players set @s fuel_warn_t 2"]
+				}
+			},
+			"event:decrement_fuel": {
+				"set_property": {
+					"bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') - v.fuel_efficiency"
+				}
+			},
+			"event:fuel": {
+				"add": {
+					"component_groups": [
+						"component_group:fueled"
+					]
+				}
+			},
+			"event:unfuel": {
+				"remove": {
+					"component_groups": [
+						"component_group:fueled"
+					]
+				},
+				"queue_command": {
+					"command": "playsound vehicle.fuel_discharge.redstone @p"
+				}
+			},
+			"event:fuel_coal": {
+				"set_property": {
+					"bw_vv:fuel_item": "coal"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_block_of_coal": {
+				"set_property": {
+					"bw_vv:fuel_item": "block_of_coal"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_blaze_rod": {
+				"set_property": {
+					"bw_vv:fuel_item": "blaze_rod"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_dried_kelp_block": {
+				"set_property": {
+					"bw_vv:fuel_item": "dried_kelp_block"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_wood_stuff1": {
+				"set_property": {
+					"bw_vv:fuel_item": "wood_stuff1"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_wood_stuff2": {
+				"set_property": {
+					"bw_vv:fuel_item": "wood_stuff2"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_wood_stuff3": {
+				"set_property": {
+					"bw_vv:fuel_item": "wood_stuff3"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_wood_stuff4": {
+				"set_property": {
+					"bw_vv:fuel_item": "wood_stuff4"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			"event:fuel_misc_fuel": {
+				"set_property": {
+					"bw_vv:fuel_item": "misc_fuel"
+				},
+				"trigger": "event:increment_fuel"
+			},
+			//HIT EVENTS
+			"event:damager":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "q.property('bw_vv:damage_weak') == true ? 1 : query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": false
+				}
+			},
+			"event:damager_weak":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": true
+				}
+			},
+			"event:hit_timer_countdown":{
+				"set_property": {
+					"bw_vv:hit_timer": "math.clamp(query.property('bw_vv:hit_timer') - 1, 0, 10)"
+				}
+			},
+			"event:remove": {
+				"sequence": [
+					{
+						"filters": { "test": "bool_property", "subject": "self", "domain": "bw_vv:chested", "value": true },
+						"queue_command": { 
+							"command": "loot spawn ~ ~ ~ loot \"bw/vv/bundle\""
+						}
+					},
+					{				
+						"add": {
+							"component_groups": [
+								"component_group:removed"
+							]
+						},
+						"queue_command": {
+							"command": ["loot spawn ~ ~ ~ loot \"bw/vv/vehicles/steamboat\"","scriptevent bw_vv:spawn_dye"]
+					},
+						"set_property": {
+							"bw_vv:removed": true
+						}
+					}
+				]
+			},
+			"event:remove_creative": {
+				"add": {
+					"component_groups": [
+						"component_group:removed_creative"
+					]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_drop_items":{
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"queue_command":{
+					"command":"loot spawn ~ ~ ~ loot \"bw/vv/vehicles/steamboat_items\""
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_hits": {
+				"set_property": {
+					"bw_vv:damage_progress": 0,
+					"bw_vv:damage_anim": "R",
+					"bw_vv:damage_weak": false
+				}
+			},
+						// SMOKE BOMB EVENTS
+			"event:smoke_bomb_cooldown.start":{
+				"set_property": {
+					"bw_vv:smoke_bomb_cooldown": true
+				},
+				"add": {
+					"component_groups": [
+						"component_group:smoke_bomb_cooldown"
+					]
+				}
+			},
+			"event:smoke_bomb_cooldown.end":{
+				"set_property": {
+					"bw_vv:smoke_bomb_cooldown": false
+				}
+			},
+			// SMOKE BOMB COLORS
+			"event:smoke_bomb.warning": {
+				"queue_command":{"command":"execute as @p at @s run scriptevent bw_vv:smoke_bomb_warning"}
+			},
+			"event:smoke_bomb.white": {
+			"set_property": {
+				"bw_vv:smoke_color": "white"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.orange": {
+			"set_property": {
+				"bw_vv:smoke_color": "orange"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.magenta": {
+			"set_property": {
+				"bw_vv:smoke_color": "magenta"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.light_blue": {
+			"set_property": {
+				"bw_vv:smoke_color": "light_blue"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.yellow": {
+			"set_property": {
+				"bw_vv:smoke_color": "yellow"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.lime": {
+			"set_property": {
+				"bw_vv:smoke_color": "lime"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.pink": {
+			"set_property": {
+				"bw_vv:smoke_color": "pink"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.gray": {
+			"set_property": {
+				"bw_vv:smoke_color": "gray"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.light_gray": {
+			"set_property": {
+				"bw_vv:smoke_color": "light_gray"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.cyan": {
+			"set_property": {
+				"bw_vv:smoke_color": "cyan"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.purple": {
+			"set_property": {
+				"bw_vv:smoke_color": "purple"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.blue": {
+			"set_property": {
+				"bw_vv:smoke_color": "blue"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.brown": {
+			"set_property": {
+				"bw_vv:smoke_color": "brown"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.green": {
+			"set_property": {
+				"bw_vv:smoke_color": "green"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.red": {
+			"set_property": {
+				"bw_vv:smoke_color": "red"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.black": {
+			"set_property": {
+				"bw_vv:smoke_color": "black"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			}
+		}
+	}
+}
+
+
+
+
+

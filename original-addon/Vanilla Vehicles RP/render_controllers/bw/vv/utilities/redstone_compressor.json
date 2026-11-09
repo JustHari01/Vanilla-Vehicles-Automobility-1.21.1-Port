@@ -1,0 +1,37 @@
+{
+	"format_version":"1.10.0",
+	"render_controllers": {
+		"controller.render.bw_vv_redstone_compressor": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.default",
+					"glowing": "Material.glow"
+				}
+			],
+			"arrays":{  "textures": {
+				"Array.base": [  "Texture.base1", "Texture.base2", "Texture.base3" ]
+			  }
+		  },
+		  "textures": [
+			"Array.base[query.life_time*4]"
+			]
+		},
+		"controller.render.bw_vv_redstone_compressor_level": {
+			"geometry": "Geometry.default",
+			"materials": [
+				{
+					"*": "Material.masked"
+				}
+			],
+			"arrays":{  "textures": {
+				"Array.level": [  "Texture.v0", "Texture.v1", "Texture.v2", "Texture.v3", "Texture.v4", "Texture.v5", "Texture.v6", "Texture.v7", "Texture.v8" ]
+			  }
+		  },
+		  "textures": [
+			"Texture.default",
+			"Array.level[query.variant]"
+			]
+		}
+	}
+}

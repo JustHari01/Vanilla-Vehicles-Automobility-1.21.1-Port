@@ -1,0 +1,1018 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "vehicle.idle": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {}
+    },
+    "animation.bw_vv.hot_air_balloon_deflated": {
+      "loop": true,
+      "bones": {
+        "balloon1": {
+          "rotation": [
+            0,
+            0,
+            7.5
+          ],
+          "position": [
+            7,
+            0,
+            0
+          ],
+          "scale": [
+            0.8,
+            0.35,
+            0.7
+          ]
+        },
+        "balloon2": {
+          "rotation": [
+            0,
+            0,
+            51
+          ],
+          "position": [
+            0,
+            -23,
+            0
+          ],
+          "scale": [
+            1,
+            0.9,
+            1
+          ]
+        },
+        "rope": {
+          "rotation": [
+            0,
+            -15,
+            0
+          ],
+          "scale": [
+            1,
+            0.1,
+            1
+          ]
+        },
+        "rope2": {
+          "rotation": [
+            0,
+            20,
+            17.5
+          ],
+          "scale": [
+            1,
+            0.2,
+            1
+          ]
+        },
+        "rope3": {
+          "rotation": [
+            0,
+            10,
+            2.5
+          ],
+          "scale": [
+            1.3,
+            0,
+            1
+          ]
+        },
+        "rope4": {
+          "rotation": [
+            0,
+            -10,
+            2.5
+          ],
+          "scale": [
+            1.2,
+            0,
+            1
+          ]
+        },
+        "fire_pit": {
+          "rotation": [
+            0,
+            0,
+            5
+          ],
+          "position": [
+            -3,
+            -20,
+            0
+          ]
+        },
+        "rope13": {
+          "rotation": [
+            0,
+            0,
+            -50
+          ]
+        },
+        "rope6": {
+          "rotation": [
+            7.5,
+            -17.5,
+            35
+          ],
+          "scale": [
+            1,
+            1.4,
+            1
+          ]
+        },
+        "rope7": {
+          "rotation": [
+            2.5,
+            12.5,
+            32.5
+          ],
+          "scale": [
+            1,
+            1.3,
+            1
+          ]
+        },
+        "rope10": {
+          "rotation": [
+            0,
+            0,
+            25
+          ],
+          "scale": [
+            1,
+            1.4,
+            1
+          ]
+        },
+        "rope5": {
+          "scale": [
+            1.9,
+            0.6,
+            1
+          ]
+        },
+        "rope8": {
+          "scale": [
+            1,
+            0.5,
+            1
+          ]
+        },
+        "rope12": {
+          "scale": [
+            1,
+            0.6,
+            1.7
+          ]
+        }
+      }
+    },
+    "animation.bw_vv.hot_air_balloon_idle": {
+      "loop": true,
+      "bones": {
+        "envelope_smaller": {
+          "rotation": [
+            "math.sin(q.anim_time*200)*1+math.sin(q.anim_time*120)*0.7",
+            0,
+            "math.sin(q.anim_time*210+26)*1+math.sin(q.anim_time*92)*0.4"
+          ],
+          "position": [
+            0,
+            0,
+            0
+          ]
+        },
+        "aller": {
+          "rotation": [
+            "0.12*(math.sin(q.anim_time*200+50)*1+math.sin(q.anim_time*120+50)*0.7)",
+            0,
+            "0.12*(math.sin(q.anim_time*210+26+50)*1+math.sin(q.anim_time*92+50)*0.4)"
+          ],
+          "position": [
+            0,
+            "math.sin(q.anim_time*700+24)*0.03-math.sin(q.anim_time*300+24)*0.03",
+            0
+          ]
+        },
+        "literally_the_pit": {
+          "rotation": [
+            "-(math.sin(q.anim_time*200)*1+math.sin(q.anim_time*120)*0.7)",
+            0,
+            "-(math.sin(q.anim_time*210+26)*1+math.sin(q.anim_time*92)*0.4)"
+          ]
+        }
+      }
+    },
+    "animation.bw_vv.mech_walk_forward": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "upperer_part": {
+          "rotation": [
+            " Math.sin(query.anim_time* 360* 2 -110) * 3",
+            0,
+            " Math.sin(query.anim_time* 360 +16) * 1"
+          ],
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              0,
+              -1.6,
+              0
+            ],
+            "0.32": [
+              0,
+              0,
+              1
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "0.64": [
+              0,
+              -1.6,
+              0
+            ],
+            "0.84": [
+              0,
+              0,
+              1
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "foot_R": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * 6,0, 60)",
+            0
+          ]
+        },
+        "foot_L": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * -6,0, 60)",
+            0
+          ]
+        },
+        "foot_R_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              11
+            ],
+            "0.52": [
+              0,
+              0,
+              -12
+            ],
+            "1.0": [
+              0,
+              0,
+              11
+            ]
+          }
+        },
+        "foot_L_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              -12
+            ],
+            "0.52": [
+              0,
+              0,
+              11
+            ],
+            "1.0": [
+              0,
+              0,
+              -12
+            ]
+          }
+        },
+        "arm_L_all": {
+          "rotation": [
+            "Math.cos(query.anim_time*  360) * 13 + Math.cos(92+ query.anim_time* 360) *  6",
+            0,
+            0
+          ]
+        },
+        "arm_R_all": {
+          "rotation": [
+            "Math.cos(query.anim_time*  360) * - 13 +Math.cos(92+ query.anim_time* 360) * - 6",
+            0,
+            0
+          ]
+        },
+        "upper_part": {
+          "position": {
+            "0.0": [
+              0,
+              0.6,
+              0
+            ],
+            "0.12": [
+              0,
+              -1,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0.6,
+              0
+            ],
+            "0.6": [
+              0,
+              -1,
+              0
+            ],
+            "0.72": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0.6,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.bw_vv.mech_walk_left": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "upperer_part": {
+          "rotation": [
+            " Math.sin(query.anim_time* 360* 2 -110) * 3",
+            0,
+            " 1+Math.sin(query.anim_time* 720 -16) * 1"
+          ],
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              0,
+              -1.6,
+              -1.1
+            ],
+            "0.32": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "0.64": [
+              0,
+              -1.6,
+              -1.1
+            ],
+            "0.84": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "foot_R": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * 6,0, 60)",
+            0
+          ]
+        },
+        "foot_L": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * -6,0, 60)",
+            0
+          ]
+        },
+        "foot_R_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "foot_L_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "arm_L_all": {
+          "rotation": [
+            "Math.cos(query.anim_time*  360) * 13 + Math.cos(92+ query.anim_time* 360) *  3",
+            0,
+            0
+          ]
+        },
+        "arm_R_all": {
+          "rotation": [
+            "Math.cos(query.anim_time*  360) * - 13 +Math.cos(92+ query.anim_time* 360) * - 3",
+            0,
+            0
+          ]
+        },
+        "upper_part": {
+          "position": {
+            "0.0": [
+              0,
+              0.6,
+              0
+            ],
+            "0.12": [
+              0,
+              -1,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0.6,
+              0
+            ],
+            "0.6": [
+              0,
+              -1,
+              0
+            ],
+            "0.72": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0.6,
+              0
+            ]
+          }
+        },
+        "metalpartR": {
+          "position": {
+            "0.0": [
+              6,
+              0,
+              0
+            ],
+            "0.52": [
+              -7,
+              0,
+              0
+            ],
+            "1.0": [
+              6,
+              0,
+              0
+            ]
+          }
+        },
+        "metalpartL": {
+          "position": {
+            "0.0": [
+              -6,
+              0,
+              0
+            ],
+            "0.52": [
+              7,
+              0,
+              0
+            ],
+            "1.0": [
+              -6,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.bw_vv.mech_walk_right": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "upperer_part": {
+          "rotation": [
+            " Math.sin(query.anim_time* 360* 2 -110) * 3",
+            0,
+            "-(1+Math.sin(query.anim_time* 720 -16) * 1)"
+          ],
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              0,
+              -1.6,
+              -1.1
+            ],
+            "0.32": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "0.64": [
+              0,
+              -1.6,
+              -1.1
+            ],
+            "0.84": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "foot_R": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * 6,0, 60)",
+            0
+          ]
+        },
+        "foot_L": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * -6,0, 60)",
+            0
+          ]
+        },
+        "foot_R_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "foot_L_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "arm_L_all": {
+          "rotation": [
+            "Math.cos(query.anim_time*  360) * 13 + Math.cos(92+ query.anim_time* 360) *  3",
+            0,
+            0
+          ]
+        },
+        "arm_R_all": {
+          "rotation": [
+            "Math.cos(query.anim_time*  360) * - 13 +Math.cos(92+ query.anim_time* 360) * - 3",
+            0,
+            0
+          ]
+        },
+        "upper_part": {
+          "position": {
+            "0.0": [
+              0,
+              0.6,
+              0
+            ],
+            "0.12": [
+              0,
+              -1,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0.6,
+              0
+            ],
+            "0.6": [
+              0,
+              -1,
+              0
+            ],
+            "0.72": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0.6,
+              0
+            ]
+          }
+        },
+        "metalpartR": {
+          "position": {
+            "0.0": [
+              -7,
+              0,
+              0
+            ],
+            "0.52": [
+              6,
+              0,
+              0
+            ],
+            "1.0": [
+              -7,
+              0,
+              0
+            ]
+          }
+        },
+        "metalpartL": {
+          "position": {
+            "0.0": [
+              7,
+              0,
+              0
+            ],
+            "0.52": [
+              -6,
+              0,
+              0
+            ],
+            "1.0": [
+              7,
+              0,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.bw_vv.mech_walk_backward": {
+      "loop": true,
+      "animation_length": 1,
+      "bones": {
+        "upperer_part": {
+          "rotation": [
+            " Math.sin(query.anim_time* 360* 2 -110) * 3",
+            0,
+            " Math.sin(query.anim_time* 360 +16) * 1"
+          ],
+          "position": {
+            "0.0": [
+              0,
+              0,
+              0
+            ],
+            "0.12": [
+              0,
+              -1.6,
+              -1.1
+            ],
+            "0.32": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0,
+              0
+            ],
+            "0.64": [
+              0,
+              -1.6,
+              -1.1
+            ],
+            "0.84": [
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "foot_R": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * 6,0, 60)",
+            0
+          ]
+        },
+        "foot_L": {
+          "position": [
+            0,
+            "math.clamp(Math.cos(query.anim_time* 360-360/4) * -6,0, 60)",
+            0
+          ]
+        },
+        "foot_R_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              -5
+            ],
+            "0.52": [
+              0,
+              0,
+              7
+            ],
+            "1.0": [
+              0,
+              0,
+              -5
+            ]
+          }
+        },
+        "foot_L_piston": {
+          "position": {
+            "0.0": [
+              0,
+              0,
+              7
+            ],
+            "0.52": [
+              0,
+              0,
+              -5
+            ],
+            "1.0": [
+              0,
+              0,
+              7
+            ]
+          }
+        },
+        "arm_L_all": {
+          "rotation": [
+            "-Math.cos(query.anim_time*  360) * 13 + Math.cos(92+ query.anim_time* 360) *  3",
+            0,
+            0
+          ]
+        },
+        "arm_R_all": {
+          "rotation": [
+            "-Math.cos(query.anim_time*  360) * - 13 +Math.cos(92+ query.anim_time* 360) * - 3",
+            0,
+            0
+          ]
+        },
+        "upper_part": {
+          "position": {
+            "0.0": [
+              0,
+              0.6,
+              0
+            ],
+            "0.12": [
+              0,
+              -1,
+              0
+            ],
+            "0.2": [
+              0,
+              0,
+              0
+            ],
+            "0.52": [
+              0,
+              0.6,
+              0
+            ],
+            "0.6": [
+              0,
+              -1,
+              0
+            ],
+            "0.72": [
+              0,
+              0,
+              0
+            ],
+            "1.0": [
+              0,
+              0.6,
+              0
+            ]
+          }
+        }
+      }
+    },
+    "animation.bw_vv.prismer_swimming": {
+      "loop": true,
+      "bones": {
+        "wing": {
+          "rotation": [
+            "math.cos(query.anim_time*390+250)*6",
+            0,
+            "math.cos(query.anim_time*390+250-90)*6"
+          ]
+        },
+        "wing2": {
+          "rotation": [
+            "math.sin(query.anim_time*390+250+90)*6",
+            0,
+            "math.sin(query.anim_time*390+250-90-90)*6"
+          ]
+        },
+        "steeringwheel_inverse": {
+          "rotation": [
+            0,
+            "math.sin(q.anim_time*370)*8",
+            0
+          ]
+        },
+        "body": {
+          "rotation": [
+            "math.sin(query.anim_time*360*0.5)*1",
+            "math.sin(query.anim_time*360*0.2)*2",
+            "math.sin(query.anim_time*360*0.3)*1"
+          ],
+          "position": [
+            0,
+            "math.sin(query.anim_time*360*0.7-122)*0.2",
+            0
+          ]
+        },
+        "steeringwheel_inverse2": {
+          "rotation": [
+            0,
+            "math.sin(q.anim_time*370-40)*9",
+            0
+          ]
+        }
+      }
+    },
+    "animation.bw_vv.prismer_standby": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            -1.5,
+            0,
+            0
+          ],
+          "position": [
+            0,
+            2.8,
+            0
+          ]
+        },
+        "mouth": {
+          "rotation": [
+            5,
+            0,
+            2.5
+          ]
+        },
+        "wing": {
+          "rotation": [
+            1.49962,
+            0.04362,
+            9.00095
+          ]
+        },
+        "wing2": {
+          "rotation": [
+            2,
+            0,
+            -9
+          ]
+        }
+      }
+    },
+    "animation.bw_vv.steamboat_idle": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": [
+            "Math.sin(query.anim_time* 363 ) * 0.3",
+            "Math.sin(query.anim_time* 213) * 0.2",
+            "Math.sin(query.anim_time* 134) * 0.7"
+          ],
+          "position": [
+            0,
+            "Math.sin(query.anim_time* 280) * 0.2",
+            0
+          ]
+        },
+        "lantern": {
+          "rotation": [
+            "Math.sin(query.anim_time* 363 + 100) * 2",
+            "Math.sin(query.anim_time* 213 + 100) * 2",
+            "Math.sin(query.anim_time* 134 + 100) * 2"
+          ]
+        },
+        "rope6": {
+          "rotation": [
+            "Math.sin(query.anim_time* 213 + 100) * 0.6 ",
+            0,
+            0
+          ]
+        },
+        "rope5": {
+          "rotation": [
+            "Math.sin(query.anim_time* 213 + 100) * -0.7",
+            0,
+            0
+          ]
+        },
+        "rope4": {
+          "rotation": [
+            "Math.sin(query.anim_time* 213 + 100) * -0.5",
+            0,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

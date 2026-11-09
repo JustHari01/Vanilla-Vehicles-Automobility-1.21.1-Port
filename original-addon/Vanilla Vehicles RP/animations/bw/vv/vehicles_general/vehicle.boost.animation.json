@@ -1,0 +1,15 @@
+
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.vehicle_general_boost": {
+			"loop": false,
+			"animation_length": 5,
+			"bones": {
+				"body": {
+					"rotation": [0, 0, 0]
+				}
+			}
+		}
+    }
+}

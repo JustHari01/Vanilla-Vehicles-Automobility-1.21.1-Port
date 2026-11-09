@@ -1,0 +1,72 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.steamboat_idle": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": ["Math.sin(query.anim_time* 363 ) * 0.3", "Math.sin(query.anim_time* 213) * 0.2", "Math.sin(query.anim_time* 134) * 0.7"],
+					"position": [0, "Math.sin(query.anim_time* 280) * 0.2", 0]
+				},
+				"lantern": {
+					"rotation": ["Math.sin(query.anim_time* 363 + 100) * 2", "Math.sin(query.anim_time* 213 + 100) * 2", "Math.sin(query.anim_time* 134 + 100) * 2"]
+				},
+				"rope6": {
+					"rotation": ["Math.sin(query.anim_time* 213 + 100) * 0.6 ", 0, 0]
+				},
+				"rope5": {
+					"rotation": ["Math.sin(query.anim_time* 213 + 100) * -0.7", 0, 0]
+				},
+				"rope4": {
+					"rotation": ["Math.sin(query.anim_time* 213 + 100) * -0.5", 0, 0]
+				}
+			}
+		},
+		"animation.bw_vv.steamboat_smoke": {
+			"loop": true,
+			"animation_length": 0.9,
+			"anim_time_update": "query.anim_time + query.delta_time * (0.9+query.modified_move_speed*2.7)",
+			"sound_effects": {
+				"0.0": {
+					"effect": "steamboat_smoke"
+				}
+			},
+			"particle_effects": {
+				"0.0": {
+					"effect": "trail_effect",
+					"locator": "smoke_pipe"
+				}
+			}
+		},
+		"animation.bw_vv.steamboat_paddle_wheel": {
+			"loop": true,
+			"bones": {
+				"paddle_wheel": {
+					"rotation": ["v.wheel_rot_speed", 0, 0]
+				}
+			}
+		},
+		"animation.bw_vv.steamboat_steer_forward": {
+			"loop": true,
+			"bones": {
+				"drivingwheel": {
+					"rotation": [0, 0, "v.steeringwheel_steer"]
+				},
+				"steer_paddle": {
+					"rotation": [0, "v.steer_paddle_rot", 0]
+				}
+			}
+		},
+		"animation.bw_vv.steamboat_bell_hit": {
+			"animation_length": 0.7917,
+			"bones": {
+				"bell": {
+					"rotation": {
+						"0.0": [0, 0, "-math.cos(q.anim_time*1400)*30"],
+						"0.7917": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

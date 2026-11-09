@@ -1,0 +1,106 @@
+{
+  "materials": {
+    "version": "1.0.0",
+
+
+		"particles_blend_normal:particles_blend": {
+			"blendSrc": "SourceAlpha",
+			"blendDst": "OneMinusSrcAlpha"
+		},
+
+
+
+    "alpha_vanillavehicles:entity_alphatest": {},
+    "changecolor_vanillavehicles:entity_alphatest_change_color": {},
+    "glow_vanillavehicles:entity_emissive_alpha": {},
+    "glow_vanillavehicles_masked:entity_emissive_alpha": {
+  "depthFunc": "LessEqual"
+},
+    "glow_vanillavehicles_masked_animated:entity_emissive_alpha": {
+  "depthFunc": "LessEqual",
+  "+defines": [
+    "USE_UV_ANIM"
+]
+},
+    "alpha_vanillavehicles_animated:entity_alphatest": {
+  "+defines": [
+    "USE_UV_ANIM"
+]
+},
+
+    "outline_vanillavehicles_mechanic:villager_v2": {
+      "+states": [ "EnableStencilTest", "StencilWrite" ],
+      "frontFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "backFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "stencilRef": 2
+    },
+
+    "outline_vanillavehicles_mechanic_masked:villager_v2": {
+      "+states": [ "EnableStencilTest", "StencilWrite" ],
+      "frontFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "backFace": {
+        "stencilFunc": "Always",
+        "stencilFailOp": "Replace",
+        "stencilDepthFailOp": "Replace",
+        "stencilPassOp": "Replace"
+      },
+      "stencilRef": 2
+    },
+
+    "outline_vanillavehicles:entity_static": {
+      "+states": [ "InvertCulling", "EnableStencilTest", "DisableDepthWrite", "Blending" ],
+      "+defines": [ "USE_OVERLAY" ],
+      "-defines": [ "FANCY" ],
+      "depthFunc": "Always",
+
+      "frontFace": {
+        "stencilFunc": "NotEqual"
+      },
+      "backFace": {
+        "stencilFunc": "Equal"
+      },
+      "stencilRef": 2,
+      "stencilReadMark": 2
+    },
+
+  "changecolor_vanillavehicles_animated:entity_alphatest_change_color": {
+  "+defines": [
+    "USE_UV_ANIM"
+]
+  },
+    "beam_vanillavehicles_masked_animated:entity_alphablend": {
+  "defines": [
+    "USE_UV_ANIM",
+    "USE_EMISSIVE",
+    "USE_ONLY_EMISSIVE",
+    "ENABLE_LIGHT"
+],
+        "+states": [
+            "Blending",
+            "DisableCulling",
+            "DisableDepthWrite",
+            "DisableAlphaWrite"
+        ]
+},
+    "alpha_transparency_vanillavehicles:entity_alphatest": {
+      "+states": [ "Blending" , "DisableCulling" ]
+    }
+
+    
+  }
+}

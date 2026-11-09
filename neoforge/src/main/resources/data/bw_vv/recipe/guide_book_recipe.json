@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:guide_book",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "bw_vv:compressed_redstone"
+    }
+  ]
+}

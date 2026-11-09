@@ -1,0 +1,66 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:mobtruck_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "F#G",
+            "MMT",
+            "iji"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:fence"
+            },
+            "G": {
+                "item": "minecraft:glass_pane"
+            },
+            "F": {
+                "item": "minecraft:fence_gate"
+            },
+            "M": {
+                "item": "minecraft:minecart"
+            },
+            "T": {
+                "item": "minecraft:torch"
+            },
+            "i": {
+                "item": "minecraft:iron_ingot"
+            },
+            "j": {
+                "item": "bw_vv:redstone_pulser"
+            }
+        },        
+        "unlock": [
+            {
+              "item": "minecraft:fence"
+            },
+            {
+                "item": "minecraft:glass_pane"
+            },
+            {
+                "item": "minecraft:minecart"
+            },
+            {
+                "item": "minecraft:fence_gate"
+            },
+            {
+                "item": "minecraft:torch"
+            },
+            {
+                "item": "bw_vv:redstone_pulser"
+            },
+            {
+                "item": "minecraft:iron_ingot"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:mobtruck",
+            "count": 1
+        }
+    }
+}

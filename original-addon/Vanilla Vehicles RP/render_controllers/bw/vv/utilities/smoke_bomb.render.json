@@ -1,0 +1,23 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_smoke_bomb": {
+      "geometry": "Geometry.default",
+      "materials": [
+           { "*": "Material.default" }
+                   ],
+      "textures": [ "Texture.default" ]
+    },
+    "controller.render.bw_vv_smoke_bomb_blink": {
+      "geometry": "Geometry.default",
+      "materials": [
+           { "spring": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.blink" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 7), 2) / 2"],
+          "scale": [1, "1 / 2"]
+      }
+    }
+  }
+}

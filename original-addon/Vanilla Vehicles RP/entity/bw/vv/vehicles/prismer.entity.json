@@ -1,0 +1,94 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "bw_vv:prismer",
+      "animations": {
+        //ANIMATIONS
+        "move": "animation.bw_vv.prismer_move",
+        "default_pose": "animation.bw_vv.prismer_default_pose",
+        "swimming": "animation.bw_vv.prismer_swimming",
+        "water_falling": "animation.bw_vv.prismer_water_falling",
+        "standby": "animation.bw_vv.prismer_standby",
+        "aura": "animation.bw_vv.prismer_aura_rotate",
+        //CONTROLLERS
+        "water_controller": "controller.animation.bw_vv.prismer_water",
+        "ground_controller": "controller.animation.bw_vv.prismer_ground",
+        "move_controller": "controller.animation.bw_vv.prismer_active",
+        //HIT
+        "hit_L": "animation.bw_vv.vehicle.hit.L",
+        "hit_R": "animation.bw_vv.vehicle.hit.R",
+        "hit_weak_L": "animation.bw_vv.vehicle.hit.weak.L",
+        "hit_weak_R": "animation.bw_vv.vehicle.hit.weak.R",
+        "hit_final": "animation.bw_vv.vehicle.hit.final",
+        "hit_controller": "controller.animation.bw_vv.vehicle.hit",
+        //STEER
+        "steer_swimming": "animation.bw_vv.plane_steer"
+      },
+      "scripts": {
+        "scale": "q.property('bw_vv:removed') ? 0 : 1",
+        "animate": [
+          "default_pose",
+          "hit_controller",
+          "move_controller",
+          "water_controller",
+          "ground_controller",
+          "aura"
+        ],
+        "initialize": [
+          "v.is_active=q.property('bw_vv:conduit_active') ? true : false;",
+          "v.hit_intensity = 1;",
+          "v.hit_ratio_weak = 0;",
+          "v.hit_ratio_tools = 0;"
+        ],
+        "pre_animation": [
+          "variable.pre_body_rot = query.has_player_rider ? ( query.rider_body_y_rotation(0) - query.body_y_rotation ) : 0;", //difference between player rotation and vehicle rotation
+          "variable.body_rot = math.mod(variable.pre_body_rot,360);",
+          "(variable.body_rot > 180) ? (variable.body_rot = variable.body_rot - 360);",
+          "(variable.body_rot < -180) ? (variable.body_rot = variable.body_rot + 360);",
+
+          "v.horizontal_steer = -math.clamp(v.body_rot*query.has_player_rider,-60,60)*0.6;", //how much the body of the vehicle tilts in the other side while steering.
+          "v.vertical_steer = 0;",
+
+          "v.hit_intensity = 0.1+1/(query.property('bw_vv:damage_weak') ? v.hit_ratio_weak*2 : v.hit_ratio_tools*2);",
+          "v.hit_ratio_weak = (query.property('bw_vv:hit_resistance'))/query.property('bw_vv:damage_progress');",
+          "v.hit_ratio_tools = (query.property('bw_vv:hit_resistance_tools')-2)/query.property('bw_vv:damage_progress');",
+
+          "v.fuel =10-query.property('bw_vv:fuel_progress');",
+          "v.is_active=q.property('bw_vv:conduit_active') ? true : false;",
+          "v.aura_scale=1.4;"
+        ]
+      },
+      "materials": {
+        "alpha": "alpha_vanillavehicles",
+        "glow": "glow_vanillavehicles",
+        "masked": "villager_v2",
+        "translucent_animated": "beam_vanillavehicles_masked_animated",
+        "alpha_animated": "alpha_vanillavehicles_animated",
+        "alpha_transparent": "alpha_transparency_vanillavehicles"
+      },
+      "render_controllers": [
+        "controller.render.bw_vv_prismer_active",
+        {
+          "controller.render.bw_vv_prismer_aura": "v.is_active"
+        },
+        "controller.render.bw_vv_prismer_tentacles_animated",
+        "controller.render.bw_vv_prismer_inactive"
+      ],
+      "textures": {
+        "active": "textures/bw/vv/vehicles/prismer/active",
+        "aura_animated": "textures/bw/vv/vehicles/prismer/aura_animated",
+        "tentacles_animated": "textures/bw/vv/vehicles/prismer/tentacles_animated",
+        "inactive": "textures/bw/vv/vehicles/prismer/inactive"
+      },
+      "geometry": {
+        "default": "geometry.bw_vv.prismer",
+        "aura": "geometry.bw_vv.prismer_aura"
+      },
+      "spawn_egg": {
+        "texture": "bw_vv:vehicle_spawn",
+        "texture_index": 4
+      }
+    }
+  }
+}

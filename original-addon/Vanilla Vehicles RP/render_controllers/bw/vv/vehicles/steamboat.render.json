@@ -1,0 +1,31 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_steamboat": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ { "bell*": "query.property('bw_vv:bell_attached') == true" },
+      { "bundles1*": "q.property('bw_vv:chested')" },
+      { "bundles2*": "q.property('bw_vv:chested')" },
+    { "bell_support*": "query.property('bw_vv:bell_attached') == true" } ],
+      "materials": [
+           { "*": "Material.default" },
+					 { "lights": "Material.glow" },
+           { "wool_cover": "Material.color" },
+           { "lantern": "Material.glow" }
+                   ],
+      "textures": [ "Texture.default" ]
+    },
+    "controller.render.bw_vv_steamboat_fueled": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ { "furnace*": "v.is_fueled" } ],
+      "materials": [
+           { "furnace": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.fueled" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 8), 5) / 5"],
+          "scale": [1, "1 / 5"]
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:hot_air_balloon_envelope.striped.recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "LM"
+        ],
+        "key": {
+            "L": {
+                "item": "bw_vv:hot_air_balloon.envelope.blank"
+            },
+            "M": {
+                "item": "bw_vv:sticker.stripes"
+            }
+        },
+        "unlock": [
+            {
+                "item": "bw_vv:hot_air_balloon.envelope.blank"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:hot_air_balloon.envelope.striped",
+            "count": 1
+        }
+    }
+}

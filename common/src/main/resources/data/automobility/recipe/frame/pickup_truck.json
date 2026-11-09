@@ -1,0 +1,7 @@
+{
+  "type": "automobility:auto_mechanic_table",
+  "category": "automobility:frames",
+  "sortnum": 601,
+  "ingredients": [{"item":"minecraft:spruce_planks"},{"item":"minecraft:green_dye"},{"item":"minecraft:iron_block"},{"item":"minecraft:leather"},{"item":"minecraft:bucket"}],
+  "result": {"item":"automobility:automobile_frame","component":"automobility:pickup_truck"}
+}

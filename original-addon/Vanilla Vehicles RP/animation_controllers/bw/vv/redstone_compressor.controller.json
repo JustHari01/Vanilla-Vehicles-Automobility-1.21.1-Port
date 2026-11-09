@@ -1,0 +1,132 @@
+{
+  "format_version": "1.21.100",
+  "animation_controllers": {
+    "controller.animation.bw_vv.redstone_compressor_working": {
+      "states": {
+        "default": {
+          "blend_transition": 0.05,
+          "transitions": [
+            {
+              "animation": "query.is_sheared"
+            }
+          ]
+        },
+        "animation": {
+          "blend_transition": 0.1,
+          "transitions": [
+            {
+              "default": "!query.is_sheared"
+            }
+          ],
+          "animations":[
+            "working"
+          ]
+        }
+  }
+  },
+    "controller.animation.bw_vv.redstone_compressor.hit": {
+      "states": {
+        "default": {
+          "blend_transition": 0.03,
+          "transitions": [
+            {
+              "hit_L": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'L' && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_L": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'L' && query.property('bw_vv:damage_weak') == true"
+            },
+            {
+              "hit_R": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'R' && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_R": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'R' && query.property('bw_vv:damage_weak') == true"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:removed') == true && query.property('bw_vv:damage_weak') == false"
+            }
+          ]
+        },
+        "hit_weak_L": {
+          "blend_transition": 0.03,
+          "transitions": [
+            {
+              "hit_R": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'R' && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_R": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'R' && query.property('bw_vv:damage_weak') == true"
+            },
+            {
+              "default": "query.property('bw_vv:damage_progress') == 0"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:removed') == true"
+            }
+          ]
+        },
+        "hit_weak_R": {
+          "blend_transition": 0.03,
+          "transitions": [
+            {
+              "hit_L": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'L' && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_L": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'L' && query.property('bw_vv:damage_weak') == true"
+            },
+            {
+              "default": "query.property('bw_vv:damage_progress') == 0"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:removed') == true"
+            }
+          ]
+        },
+        "hit_R": {
+          "blend_transition": 0.03,
+          "transitions": [
+            {
+              "hit_L": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'L' && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_L": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'L' && query.property('bw_vv:damage_weak') == true"
+            },
+            {
+              "default": "query.property('bw_vv:damage_progress') == 0"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:removed') == true"
+            }
+          ]
+        },
+        "hit_L": {
+          "blend_transition": 0.03,
+          "transitions": [
+            {
+              "hit_R": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'R' && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_R": "query.property('bw_vv:damage_progress') >= 1 && query.property('bw_vv:damage_anim') == 'R' && query.property('bw_vv:damage_weak') == true"
+            },
+            {
+              "default": "query.property('bw_vv:damage_progress') == 0"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:removed') == true"
+            }
+          ]
+        },
+        "hit_remove": {
+          "blend_transition": 0.03,
+          "particle_effects": [
+            {     
+              "effect": "landed_effect",
+              "pre_effect_script": "variable.mob_size = query.property('bw_vv:smoke_effect_size');"
+            },
+            {     
+              "effect": "destroy_effect"
+            }
+          ]
+        }
+    }
+  }
+}
+}

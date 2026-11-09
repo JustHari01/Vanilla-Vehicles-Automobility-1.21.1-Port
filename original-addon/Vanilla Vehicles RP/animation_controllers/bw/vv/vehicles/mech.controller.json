@@ -1,0 +1,270 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.mech_walk": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"walk": "query.ground_speed > 0.2 && query.is_on_ground  && q.has_player_rider"
+						},
+						{
+							"jump": "!query.is_on_ground && (query.vertical_speed > 0.1) && q.has_player_rider" // Detect jump if mech has vertical movement higher than 1.0
+						}
+					],
+					"animations": [
+						"walk_anim_timer"
+					],
+					"blend_transition": 0.3
+				},
+				"walk": {
+					"animations": [
+						"wasd_detector_controller",
+						"walk_anim_timer"
+					],
+					"transitions": [
+						{
+							"default": "query.ground_speed < 0.2 && query.any_animation_finished || query.any_animation_finished && !q.has_player_rider"
+						},
+						{
+							"jump": "!query.is_on_ground && (query.vertical_speed > 0.1) && q.has_player_rider"
+						}
+					],
+					"blend_transition": 0.3
+				},
+				"jump": {
+					"transitions": [
+						{
+							"default": "query.ground_speed < 0.2 && query.is_on_ground && query.vertical_speed > -2"
+						},
+						{
+							"walk": "query.ground_speed > 0.2 && query.is_on_ground && query.vertical_speed > -2"
+						}
+					],
+					"blend_transition": 0.3
+				}
+			}
+		},
+		"controller.animation.bw_vv.mech_walk_wasd": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"backward": "v.wasd == 's' && query.any_animation_finished"
+						},
+						{
+							"forward": "v.wasd == 'w' && query.any_animation_finished"
+						},
+						{
+							"left": "v.wasd == 'd' && query.any_animation_finished"
+						},
+						{
+							"right": "v.wasd == 'a' && query.any_animation_finished"
+						}
+					],
+					"animations": [
+						"walk_anim_timer"
+					],
+					"blend_transition": 0.4
+				},
+				"forward": {
+					"animations": [
+						"walk.forward",
+						"walk_anim_timer"
+					],
+					"transitions": [
+						{
+							"backward": "v.wasd == 's'&& query.any_animation_finished"
+						},
+						{
+							"left": "v.wasd == 'd'&& query.any_animation_finished"
+						},
+						{
+							"right": "v.wasd == 'a'&& query.any_animation_finished"
+						}
+					],
+					"blend_transition": 0.2
+				},
+				"backward": {
+					"animations": [
+						"walk.backward",
+						"walk_anim_timer"
+					],
+					"transitions": [
+						{
+							"forward": "v.wasd == 'w'&& query.any_animation_finished"
+						},
+						{
+							"left": "v.wasd == 'd'&& query.any_animation_finished"
+						},
+						{
+							"right": "v.wasd == 'a'&& query.any_animation_finished"
+						}
+					],
+					"blend_transition": 0.2
+				},
+				"left": {
+					"transitions": [
+						{
+							"backward": "v.wasd == 's'&& query.any_animation_finished"
+						},
+						{
+							"forward": "v.wasd == 'w'&& query.any_animation_finished"
+						},
+						{
+							"right": "v.wasd == 'a'&& query.any_animation_finished"
+						}
+					],
+					"animations": [
+						"walk.left",
+						"walk_anim_timer"
+					],
+					"blend_transition": 0.2
+				},
+				"right": {
+					"animations": [
+						"walk.right",
+						"walk_anim_timer"
+					],
+					"transitions": [
+						{
+							"backward": "v.wasd == 's' && query.any_animation_finished"
+						},
+						{
+							"forward": "v.wasd == 'w' && query.any_animation_finished"
+						},
+						{
+							"left": "v.wasd == 'd' && query.any_animation_finished"
+						}
+					],
+					"blend_transition": 0.2
+				}
+			}
+		},
+		"controller.animation.bw_vv.mech_jump": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"jump": "!query.is_on_ground && (query.vertical_speed > 0.1)"
+						}
+					],
+					"blend_transition": 0.05
+				},
+				"jump": {
+					"animations": [
+						"jump","walk_anim_timer"
+					],
+					"transitions": [
+						{
+							"land": "q.any_animation_finished&&query.is_on_ground"
+						},
+						{
+							"boost": "query.property('bw_vv:boost') == 'active'"
+						}
+					],
+					"blend_transition": 0.1
+				},
+				"land": {
+					"animations": [
+						"land"
+					],
+					"sound_effects": [
+						{ "effect": "land" }
+					],
+					"particle_effects": [
+						{ "effect": "landed_effect" }
+					],
+					"transitions": [
+						{
+							"default": "query.all_animations_finished"
+						}
+					],
+					"blend_transition": 0.2
+				},
+				"boost": {
+					"animations": [
+						"boost"
+					],
+					"particle_effects": [
+						{
+							"effect": "blast_effect",
+							"locator": "arm_right"
+						},
+						{
+							"effect": "blast_effect",
+							"locator": "arm_left"
+						},
+						{
+							"effect": "redstone_electricity_explosion",
+							"locator": "arm_left"
+						},
+						{
+							"effect": "redstone_electricity_explosion",
+							"locator": "arm_right"
+						},
+						{
+							"effect": "blast_effect2",
+							"locator": "foot_leeeft"
+						},
+						{
+							"effect": "blast_effect2",
+							"locator": "foot_riiight"
+						}
+					],
+					"transitions": [
+						{
+							"land": "query.is_on_ground"
+						}
+					],
+					"blend_transition": 0.2
+				}
+			}
+		},
+		"controller.animation.bw_vv.mech_weapons": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"shoot": "v.weapons == 'active'"
+						}
+					],
+					"blend_transition": 0.1
+				},
+				"shoot": {
+					"animations": [
+						"weaponL",
+						"aimL"
+					],
+					"sound_effects": [
+						{ 
+							"effect" : "weapon" 
+						}
+					],
+					"transitions": [
+						{
+							"default": "( v.weapons == 'cooldown' || v.weapons == 'ready' ) && q.any_animation_finished"
+						}
+					],
+					"blend_transition": 0.2
+				}
+			}
+		},
+		"controller.animation.bw_vv.mech_spawn": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"spawn": "!query.property('bw_vv:spawned')"
+						}
+					]
+				},
+				"spawn": {
+					"animations": [
+						"spawn"
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,61 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.redstone_compressor_working": {
+			"loop": true,
+			"animation_length": 2.36,
+			"bones": {
+				"bone4": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.08": [0, -1, 0],
+						"1.2": [0, -1, 0],
+						"2.08": [0, 0, 0]
+					}
+				},
+				"bone2": {
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.08": [0, -3, 0],
+						"1.2": [0, -3, 0],
+						"2.08": [0, 0, 0]
+					}
+				}
+			},
+			"particle_effects": {
+				"0.08": {
+					"effect": "particle",
+					"locator": "particle"
+				}
+			},
+			"sound_effects": {
+				"0.0": {
+					"effect": "compress"
+				}
+			}
+		},
+		"animation.bw_vv.redstone_compressor_lid_open": {
+			"animation_length": 0.88,
+			"bones": {
+				"lid": {
+					"rotation": {
+						"0.0": [0, 0, "-math.sin(q.anim_time*340)*120"],
+						"0.28": [0, 0, -120]
+					}
+				}
+			}
+		},
+		"animation.bw_vv.redstone_compressor_lid_close": {
+			"animation_length": 3.52,
+			"bones": {
+				"lid": {
+					"rotation": {
+						"0.0": [0, 0, "-math.cos(q.anim_time*335)*120"],
+						"0.24": [0, 0, "-math.cos(q.anim_time*335)*120"],
+						"0.28": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

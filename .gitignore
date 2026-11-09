@@ -1,0 +1,68 @@
+# gradle
+
+.gradle/
+common/.gradle/
+fabric/.gradle/
+forge/.gradle/
+
+build/
+common/build/
+fabric/build/
+forge/build/
+
+out/
+classes/
+
+# eclipse
+
+*.launch
+
+# idea
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# vscode
+
+.settings/
+.vscode/
+bin/
+.classpath
+.project
+
+# macos
+
+*.DS_Store
+
+run/
+common/run/
+fabric/run/
+forge/run/
+run-*/
+neoforge/run-*/
+
+# Local build and test output
+dist/
+libs/*.jar
+*.log
+docs/*.log
+docs-inventory.log
+docs/qa-server-shutdown-threads.txt
+docs/server-thread-diagnostic.txt
+
+# Local development dependencies
+neoforge/mods/*.jar
+
+# Build, runtime, cache, and local analysis output
+**/.gradle/
+**/build/
+**/run/
+**/run-*/
+**/dist/
+**/logs/
+**/__pycache__/
+*.py[cod]
+*.class
+*.log

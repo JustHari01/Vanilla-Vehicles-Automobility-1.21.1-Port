@@ -1,0 +1,45 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "bw_vv:mechanical_heart_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:blaze_powder"
+      },
+      {
+        "item": "minecraft:netherite_ingot",
+        "count": 2
+      },
+      {
+        "item": "bw_vv:redstone_pulser"
+      },
+      {
+        "item": "bw_vv:blueprints"
+      }
+    ],
+    "unlock":[
+      {
+        "item": "minecraft:blaze_powder"
+      },
+      {
+        "item": "minecraft:netherite_ingot",
+        "count": 2
+      },
+      {
+        "item": "bw_vv:redstone_pulser"
+      },
+      {
+        "item": "bw_vv:blueprints"
+      }
+    ],
+    "result": {
+      "item": "bw_vv:mechanical_heart",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "format_version":"1.21.120",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "bw_vv:break"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.bw_vv.bw_general_wasd_detection": {
+			"initial_state": "default",
+			"states": {
+        "empty":{},
+				"default": {
+					"animations": [
+						"reset_rot",
+						{
+							"leftward": "v.rot >= 23 && v.rot <= 157 && q.property('bw_vv:fuel_progress')>0"
+						},
+						{
+							"backward": "v.rot >= 112 && v.rot <= 248 && q.property('bw_vv:fuel_progress')>0"
+						},
+						{
+							"rightward": "v.rot >= 203 && v.rot <= 337 && q.property('bw_vv:fuel_progress')>0"
+						},
+						{
+							"forward": "(v.rot >= 293 && v.rot <= 360) || (v.rot >= 0 && v.rot <= 67)"
+						}
+					],
+					"transitions": [
+						{
+							"empty": "v.rot = math.mod(360 + math.mod(math.atan2(q.movement_direction(0), q.movement_direction(2)) + q.head_y_rotation(0), 360), 360); return 0;"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.bw_vv.generic_vehicle_wasd_rp_updater": {
+			"states": {
+			  "default": {
+				"transitions": [
+				  {"w": "query.scoreboard('.w') == 1" },
+				  {"a": "query.scoreboard('.a') == 1" },
+				  {"s": "query.scoreboard('.s') == 1" },
+				  {"d": "query.scoreboard('.d') == 1" }
+				]
+			},
+			  "w": {
+				"on_entry":[
+				  "@s .w"
+				],
+				"transitions": [
+					{"a": "query.scoreboard('.a') == 1" },
+					{"s": "query.scoreboard('.s') == 1" },
+					{"d": "query.scoreboard('.d') == 1" }
+				]
+			},
+			"a": {
+				"on_entry":[
+				  "@s .a"
+				],
+				"transitions": [
+					{"w": "query.scoreboard('.w') == 1" },
+					{"s": "query.scoreboard('.s') == 1" },
+					{"d": "query.scoreboard('.d') == 1" }
+				]
+			},
+			"s": {
+				"on_entry":[
+				  "@s .s"
+				],
+				"transitions": [
+					{"a": "query.scoreboard('.a') == 1" },
+					{"w": "query.scoreboard('.w') == 1" },
+					{"d": "query.scoreboard('.d') == 1" }
+				]
+			},
+			"d": {
+				"on_entry":[
+				  "@s .d"
+				],
+				"transitions": [
+					{"a": "query.scoreboard('.a') == 1" },
+					{"s": "query.scoreboard('.s') == 1" },
+					{"w": "query.scoreboard('.w') == 1" }
+				]
+			}
+			}
+		  },
+    "controller.animation.bw_vv.generic_vehicle_forward_limiter": {
+      "states": {
+        "default": {
+          "on_entry":[
+            "@s event:go"
+          ],
+          "on_exit":[
+            "@s event:stop"
+          ],
+          "transitions": [
+            {"stop": "query.property('bw_vv:wasd') == 'a' || query.property('bw_vv:wasd') == 'd'" }
+          ]
+      },
+        "stop": {
+          "transitions": [
+            {"default": "query.property('bw_vv:wasd') == 'w' || query.property('bw_vv:wasd') == 's'"}
+          ]
+      }
+      }
+    }
+}
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:hot_air_balloon.basket",
+    "count": 1
+  },
+  "pattern": [
+    "F#F",
+    "L L",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "item": "minecraft:bamboo"
+    },
+    "#": {
+      "item": "minecraft:iron_ingot"
+    },
+    "F": {
+      "item": "minecraft:lead"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_plane": {
+      "geometry": "Geometry.default",
+	  "part_visibility": [ { "flag*": 0 }],
+      "materials": [
+          { "*": "Material.alpha_vanillavehiclesaddon" },
+			    { "chair": "Material.default" },
+          { "flag_dyeable": "Material.default" },
+          { "fuel_glow": "Material.glow" }
+            ],
+            "textures": [ 
+            "Texture.oak"
+            ]
+    },
+      "controller.render.bw_vv_plane_wings_animated": {
+      "geometry": "Geometry.default",
+      "materials": [
+      { "wingRdyeable": "Material.default_animated" },
+			{ "wingLdyeable": "Material.default_animated" }
+                   ],
+      "textures": [ "Texture.wings_animated" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.modified_distance_moved * 0.9), 7) / 7"],
+          "scale": [1, "1 / 7"]
+      }
+    },
+      "controller.render.bw_vv_plane_fueled_animated": {
+      "geometry": "Geometry.default",
+      	  "part_visibility": [ { "body*": "v.is_fueled" }],
+      "materials": [
+      { "body": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.fueled_animated" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 10), 4) / 4"],
+          "scale": [1, "1 / 4"]
+      }
+    }
+  }
+}

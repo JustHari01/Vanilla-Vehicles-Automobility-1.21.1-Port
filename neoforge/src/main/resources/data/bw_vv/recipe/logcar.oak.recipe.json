@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:logcar.oak",
+    "count": 1
+  },
+  "pattern": [
+    "F z",
+    "Mii",
+    "G G"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:furnace"
+    },
+    "F": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "tag": "minecraft:planks"
+    },
+    "i": {
+      "tag": "minecraft:logs"
+    },
+    "z": {
+      "item": "minecraft:torch"
+    }
+  }
+}

@@ -1,0 +1,1451 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:entity": {
+	"description": {
+		"identifier": "bw_vv:plane",
+		"is_spawnable": false,
+		"is_summonable": true,
+		"is_experimental": false,
+		"animations": {
+			//VEHICLE SPAWN (prevents spawn animation from repeating when world reloads or entity becomes invisible)
+			"spawn_controller": "controller.animation.bw_vv.generic_vehicle_spawn",
+			"spawn_timer": "animation.bw_vv.generic_vehicle_spawn_timer",
+			//BOOST
+			"boost_controller": "controller.animation.bw_vv.generic_vehicle_boost",
+			"boost_timer":"animation.bw_vv.generic_vehicle_boost_timer",
+			"boost_cooldown_timer":"animation.bw_vv.generic_vehicle_boost_cooldown_timer",
+			"boost_sound": "animation.bw_vv.sound_boost",//running engine sound
+			//ENGINE SOUND
+			"engine_controller": "controller.animation.bw_vv.generic_vehicle_engine",
+			"engine_standby": "animation.bw_vv.sound_engine_standby_minecar",
+			"engine": "animation.bw_vv.sound_engine2",
+			//FUEL
+			"fuel_controller": "controller.animation.bw_vv.generic_vehicle_fuel",//activates the "fuel_decreaser" animation based on the movement speed of the vehicle.
+			"fuel_activator_controller": "controller.animation.bw_vv.generic_vehicle_fuel_activator",//runs "event:fuel" or "event:unfuel" if the fuel_progress property is 0 or higher than 0.
+			"fuel_decreaser": "animation.bw_vv.generic_vehicle_fuel_decreaser",//animation that slowly decreases the fuel over time based on a variable defined in the "variables" animation.bw_vv. This animation activates when the vehicle is fueled an moving.
+			//CLIMB + PLAYER ANINMATION
+			"climb_controller": "controller.animation.bw_vv.plane_climb",//controls the animations for when the vevhicle is moving up or down slopes, controls RP animations as well, used by the main.js script to send custom animations to the player riding the vehicle, so that the 2 entites are perfectly in sync.
+			"climb_timer": "animation.bw_vv.generic_vehicle_climb_timer",//how much to wait before the animation can change
+			//HIT
+			"hit_controller": "controller.animation.bw_vv.generic_hit_timer",//a system controlling how much the player has to hit the vehicle in order for it to break (sensitive to specialized tools, in this case, picakaxes)
+			"hit_timer": "animation.bw_vv.generic_hit_timer",//how quickly the hit state resets (hitting the vehicle 4 times takes only one more hit for it to break, waiting a certain time, stated in this animation, will reset the damaged state of the vehicle to 0)
+			//VARIABLES
+			"variables": "animation.bw_vv.plane_variables",//a list of vehicle variables, like resistance to hitting without the specialised tool, fuel efficiency & more
+			//PLANE SPECIFIC ANIMATION CONTROLLERS
+			"states_controller": "controller.animation.bw_vv.plane_states"
+		  },
+		  "scripts": {
+			"animate": [
+			  "variables",
+			  "climb_controller", 
+			  "boost_controller",
+			  "engine_controller",
+			  "fuel_controller",
+			  "fuel_activator_controller",
+			  "hit_controller",
+			  "states_controller"
+			 ]
+		   },
+		   "properties": {
+			"bw_vv:spawned": { 
+				"type": "bool", 
+				"default": false,
+				"client_sync": true 
+			},
+			"bw_vv:smoke_effect_size":{
+			  "type": "float", 
+			  "range": [0.0, 10.0], 
+			  "default": 2.0,
+			  "client_sync": true 
+			},
+			"bw_vv:player_anim_blend_time":{
+				"type": "float",
+				"range": [
+					0.0,
+					10.0
+				],
+				"default": 0.7,
+				"client_sync": true
+			},
+			"bw_vv:fuel_progress": { 
+			  "type": "float", 
+			  "range": [0.0, 10.0], 
+			  "default": 0.0,
+			  "client_sync": true 
+			},
+			"bw_vv:hit_timer": { 
+				"type": "int", 
+				"range": [0, 5], 
+				"default": 0,
+				"client_sync": true 
+			},
+			"bw_vv:hit_sound": { 
+				"type": "enum", 
+				"values": ["normal", "final"], 
+				"default": "normal", 
+				"client_sync": true 
+			},
+			"bw_vv:hit_resistance": { 
+				"type": "int", 
+				"range": [0, 100], 
+				"default": 40,
+				"client_sync": true 
+			},
+			"bw_vv:hit_resistance_tools": { 
+				"type": "int", 
+				"range": [0, 20], 
+				"default": 6,
+				"client_sync": true 
+			},
+			"bw_vv:damage_progress": { 
+			  "type": "int", 
+			  "range": [0, 100], 
+			  "default": 0,
+			  "client_sync": true 
+			},
+			"bw_vv:damage_weak": { //whether the player is hitting the vehicle with their bare hand.
+				"type": "bool", 
+				"default": false,
+				"client_sync": true 
+			},
+			"bw_vv:damage_anim": {  //L/R vehicle bobbing, for RP animations.
+				"type": "enum", 
+				"values": ["L", "R"], 
+				"default": "R", 
+				"client_sync": true 
+			},
+			"bw_vv:boost": { //whether the vehicle is boosted or not.
+				"type": "enum", 
+				"values": ["ready", "active", "cooldown"], 
+				"default": "ready",
+				"client_sync": true 
+			},
+			"bw_vv:boost_cooldown":{
+				"type": "float", 
+				"range": [0.0, 10.0], 
+				"default": 0.0,
+				"client_sync": true 
+			},
+			"bw_vv:lights": { //whether the lights function is active or not, based on the "dynamic lights" setting.
+				"type": "bool", 
+				"default": false,
+				"client_sync": true 
+			},
+			"bw_vv:removed":{
+				"type": "bool", 
+				"default": false,
+				"client_sync": true 
+			},
+			"bw_vv:wasd": { //what direction the vehicle is moving in. w = forward, s = backward, d = right & a = left.
+				"type": "enum", 
+				"values": ["w", "a", "s", "d"], 
+				"default": "w", 
+				"client_sync": true 
+			},
+			"bw_vv:player_anim": { //what animation will be sent to the RP and to the main.js script.
+				"type": "enum", 
+				"values": ["plane_flying", "climb_neutral", "plane_crashing"], 
+				"default": "climb_neutral", 
+				"client_sync": true 
+			},
+			"bw_vv:climb_animation": { // the inclination of the vehicle, used by the RP.
+				"type": "float", 
+				"range": [0.0, 50.0], 
+				"default": 20.0,
+				"client_sync": true 
+			},
+			"bw_vv:vertical_velocity": { // smoothed vertical velocity set by the main.js
+				"type": "float", 
+				"range": [-50.0, 50.0], 
+				"default": 0.0,
+				"client_sync": true 
+			},
+			//VEHICLE SPECIFIC PROPERTIES
+			"bw_vv:plane_state": { //whether the vehicle is boosted or not.
+				"type": "enum", 
+				"values": ["takeoff", "flying", "stationary","crashing"], 
+				"default": "stationary",
+				"client_sync": true 
+			},
+			"bw_vv:level": { 
+				"type": "int", 
+				"range": [1, 3], 
+				"default": 1,
+				"client_sync": true 
+			  },
+			"bw_vv:plane_angle": { 
+				"type": "float", 
+				"range": [-90.00000, 90.00000], 
+				"default": 0.00000,
+				"client_sync": true 
+			},
+			//SMOKE BOMB
+				"bw_vv:smoke_color": {
+					"type": "enum",
+					"values": [
+						"white",
+						"orange",
+						"magenta",
+						"light_blue",
+						"yellow",
+						"lime",
+						"pink",
+						"gray",
+						"light_gray",
+						"cyan",
+						"purple",
+						"blue",
+						"brown",
+						"green",
+						"red",
+						"black"
+					],
+					"default": "green",
+					"client_sync": true
+				},
+				"bw_vv:smoke_bomb_cooldown":{
+				"type": "bool", 
+				"default": false,
+				"client_sync": true 
+			},
+			//PLANE SPECIFIC PROPERTIES
+				"bw_vv:trick": { // What wood variant this logcar is. Also dictates which logcar will drop when destroyed in survival.
+					"type": "enum",
+					"values": [
+						"ready",
+						"active",
+						"cooldown"
+					],
+					"default": "ready",
+					"client_sync": true
+				},
+				"bw_vv:wood_type": { // What wood variant this plane is. (future update)
+					"type": "enum",
+					"values": [
+						"oak",
+						"spruce",
+						"birch",
+						"jungle",
+						"acacia",
+						"dark_oak",
+						"mangrove",
+						"cherry",
+						"bamboo",
+						"crimson",
+						"warped",
+						"pale_oak"
+					],
+					"default": "oak",
+					"client_sync": true
+				}
+		  }
+		},
+		"components": {
+				"minecraft:pushable": { //Used to set that the vehicle is unpushable by other mobs.
+					"is_pushable": true
+				},
+							"minecraft:color": {
+				"value": 0
+			},
+				"minecraft:push_through": { //Also used to set that the vehicle is unpushable by other mobs.
+					"value": 0.9
+				},
+			"minecraft:horse.jump_strength":{
+				"value":0.0
+			},
+			"minecraft:can_power_jump":{
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+									{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+									{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true },
+									{ "test": "enum_property", "subject": "self", "domain": "bw_vv:trick", "operator": "==", "value": "ready" },
+									{ "test": "enum_property", "subject": "self", "domain": "bw_vv:plane_state", "operator": "==", "value": "flying" }
+								]
+							},
+						"event": "event:trigger_trick",
+						"target": "self"
+						},
+						"deals_damage": "no"
+				},
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+									{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+									{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true },
+									{ "test": "enum_property", "subject": "self", "domain": "bw_vv:trick", "operator": "!=", "value": "ready" },
+									{ "test": "enum_property", "subject": "self", "domain": "bw_vv:plane_state", "operator": "==", "value": "flying" }
+								]
+							}
+						},
+						"deals_damage": "no"
+				},
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+									{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+									{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true },
+									{ "test": "enum_property", "subject": "self", "domain": "bw_vv:trick", "operator": "==", "value": "ready" },
+									{ "test": "enum_property", "subject": "self", "domain": "bw_vv:plane_state", "operator": "!=", "value": "flying" }
+								]
+							}
+						},
+						"deals_damage": "no"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "copper_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_axe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "copper_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_axe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" }
+							  ],
+						  "any_of": [
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_axe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_axe" }
+						  ]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" }
+							  ],
+								"any_of": [
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_axe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_axe" }
+								]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "==", "value": "instabuild" }
+						  ]
+						},
+						"event": "event:remove_creative"
+					},
+					"deals_damage": "no",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						
+							{}
+						
+					},
+					"deals_damage": "no_but_side_effects_apply"
+				}
+			]
+			},
+			"minecraft:interact": {
+				"interactions":	[
+					// FUEL
+					{
+						
+					"on_interact": {
+						"filters": {
+							"all_of": [
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:compressed_redstone"},
+								{ "test": "float_property", "subject": "self", "domain": "bw_vv:fuel_progress", "operator": "<", "value": 10.0}
+							]
+						},
+						
+					"event": "event:increment_fuel",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"interact_text": "bw_vv.action.interact.generic.fuel.add"
+				},
+			// SMOKE BOMB
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.white" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.white",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.white"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.orange" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.orange",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.orange"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.magenta" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.magenta",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.magenta"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_blue" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.light_blue",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.light_blue"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.yellow" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.yellow",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.yellow"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.lime" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.lime",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.lime"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.pink" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.pink",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.pink"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.gray" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.gray",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.gray"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_gray" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.light_gray",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.light_gray"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.cyan" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.cyan",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.cyan"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.purple" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.purple",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.purple"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.blue" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.blue",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.blue"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.brown" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.brown",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.brown"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.green" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.green",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.green"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.red" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.red",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.red"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.black" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.black",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.black"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+			{
+			"any_of": [
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.white" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.orange" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.magenta" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_blue" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.yellow" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.lime" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.pink" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.gray" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_gray" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.cyan" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.purple" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.blue" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.brown" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.green" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.red" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.black" }
+			]
+			},
+
+
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": true }
+				]
+				},
+				"event": "event:smoke_bomb.warning",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": false,
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.in_use"
+			}
+
+			]
+			},
+			"minecraft:collision_box": {
+				"width": 3,
+				"height": 1
+			},
+			"minecraft:custom_hit_test": {
+				"hitboxes": [
+					{
+						"width": 2,
+						"height": 3,
+						"pivot": [
+							0,
+							1,
+							0
+						]
+					}
+				]
+			},
+			"minecraft:is_collidable": {},
+			"minecraft:health": {
+				"value": 0.5
+			},
+			"minecraft:scale": {
+				"value": 1.0
+			},
+			"minecraft:rideable": {
+				"seat_count": 1,
+				"family_types": [
+					"player"
+				],
+				"crouching_skip_interact": true,
+		        "pull_in_entities": true,
+				"interact_text": "bw_vv.action.interact.generic.vehicle.enter",
+				"rider_can_interact": true,
+				"controlling_seat": 0,
+				"seats": [
+				{
+					"position": [
+						0,
+						0.56,
+						-0.20
+					],
+					"third_person_camera_radius": 7,
+					"camera_relax_distance_smoothing": 1
+				  }
+			   ]
+			},
+			"minecraft:buoyant": {
+				"base_buoyancy": 0.4,
+				"apply_gravity": false,
+				"big_wave_probability": 0.2,
+				"big_wave_speed": 10,
+				"drag_down_on_buoyancy_removed": 0,
+				"liquid_blocks": [ "water"],
+				"simulate_waves": true
+			},
+			"minecraft:behavior.rise_to_liquid_level": {
+				"liquid_y_offset": 0.4,
+				"rise_delta": 0.2,
+				"sink_delta": 0.2
+			},
+			"minecraft:jump.static": {
+			},
+			"minecraft:is_dyeable": {
+				"interact_text": "bw_vv.action.interact.generic.spray"
+			},
+			"minecraft:physics": {
+                    "has_gravity": true
+                },
+			"minecraft:type_family": {
+				"family": [
+					"plane",
+					"vehicle",
+					"wooden",
+					"redstone_based",
+					"bw_vanilla_vehicles"
+				]
+			},
+			"minecraft:nameable": {}
+		},
+		"component_groups": {
+			// SM0KE BOMB
+			"component_group:smoke_bomb_cooldown":{
+				"minecraft:timer": {
+					"time": 10,
+					"looping": false,
+					"time_down_event": {
+						"event": "event:smoke_bomb_cooldown.end",
+						"target": "self"
+					}
+				}
+			},
+			// PLANE SPECIFIC COMPONENT_GROUPS
+            "component_group:flight_mode": {
+                "minecraft:physics": {
+                    "has_gravity": false
+                }
+            },
+            "component_group:ground_mode": {
+                "minecraft:physics": {
+                    "has_gravity": true
+                }
+            },
+			//STICKER COMPONENT_GROUPS
+			"component_group:sticker.creeper":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/creeper.json"
+				}
+			},
+			"component_group:sticker.castle":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/castle.json"
+				}
+			},
+			"component_group:sticker.diamonds":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/diamonds.json"
+				}
+			},
+			"component_group:sticker.stripes":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/stripes.json"
+				}
+			},
+			"component_group:sticker.enderman":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/enderman.json"
+				}
+			},
+			"component_group:sticker.skeleton":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/skeleton.json"
+				}
+			},
+			"component_group:sticker.hearts":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/hearts.json"
+				}
+			},
+			"component_group:sticker.soulful":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/soulful.json"
+				}
+			},
+			"component_group:sticker.bloom":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/bloom.json"
+				}
+			},
+			"component_group:sticker.icy":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/icy.json"
+				}
+			},
+			"component_group:sticker.burning":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/burning.json"
+				}
+			},
+			"component_group:sticker.rainbow":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/rainbow.json"
+				}
+			},
+			"component_group:removed": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.1,
+					"drop_equipment": true,
+					"drop_inventory": true
+				}
+			},
+			"component_group:removed_creative": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.1,
+					"drop_equipment": false,
+					"drop_inventory": true
+				}
+			},
+			"component_group:fueled": {
+					"minecraft:variable_max_auto_step":{
+						"base_value": 1.0625,
+						"controlled_value": 1.0625,
+						"jump_prevented_value": 0.5625
+				}
+			},
+			"component_group:movement":{
+				"minecraft:movement": {
+					"value": 0.181
+				}
+			},
+			"component_group:no_movement":{
+				"minecraft:movement": {
+					"value": 0.01
+				}
+			}
+		},
+		"events": {
+			// --EVENTS START--
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"component_group:no_movement",
+						"component_group:ground_mode"
+					]
+				}
+			},
+			"event:spawn": {
+				"set_property": {
+				    "bw_vv:spawned" : true
+				}
+			},
+			// FUEL EVENTS
+			"event:increment_fuel": {
+				"set_property": {
+					"bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') + v.fuel_increaser"
+				},
+				"queue_command": {
+					"command": ["scriptevent bw_vv:fuel_up_vehicle", "particle bw_vv:redstone_fuel ~ ~ ~"] //sound for fueling up
+				}
+			},
+			"event:decrement_fuel": {
+				"set_property": {
+					"bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') - v.fuel_efficiency"
+				}
+			},
+			"event:fuel": {
+				"add": {
+					"component_groups": [
+						"component_group:fueled"
+					]
+				}
+			},
+			"event:unfuel": {
+				"remove": {
+					"component_groups": [
+						"component_group:fueled"
+					]
+				},
+				"queue_command": {
+					"command": "playsound vehicle.fuel_discharge.redstone @p"
+				}
+			},
+
+			// STICKER EVENTS
+			"event:add_sticker.creeper":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.creeper"
+					]
+				}
+			},
+			"event:add_sticker.castle":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.castle"
+					]
+				}
+			},
+			"event:add_sticker.diamonds":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.diamonds"
+					]
+				}
+			},
+			"event:add_sticker.stripes":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.stripes"
+					]
+				}
+			},
+			"event:add_sticker.hearts":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.hearts"
+					]
+				}
+			},
+			"event:add_sticker.enderman":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.enderman"
+					]
+				}
+			},
+			"event:add_sticker.skeleton":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.skeleton"
+					]
+				}
+			},
+			"event:add_sticker.bloom":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.bloom"
+					]
+				}
+			},
+			"event:add_sticker.icy":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.icy"
+					]
+				}
+			},
+			"event:add_sticker.burning":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.burning"
+					]
+				}
+			},
+			"event:add_sticker.soulful":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.soulful"
+					]
+				}
+			},
+			"event:add_sticker.rainbow":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.rainbow"
+					]
+				}
+			},
+			// MOVEMENT EVENTS
+			"event:go":{
+				"add": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			"event:stop":{
+				"remove": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			// HIT EVENTS
+			"event:damager":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "q.property('bw_vv:damage_weak') == true ? 1 : query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": false
+				}
+			},
+			"event:damager_weak":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": true
+				}
+			},
+			"event:hit_timer_countdown":{
+				"set_property": {
+					"bw_vv:hit_timer": "math.clamp(query.property('bw_vv:hit_timer') - 1, 0, 10)"
+				}
+			},
+			"event:remove": {
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"queue_command":{
+					"command":["loot spawn ~ ~ ~ loot \"bw/vv/vehicles/plane/oak\"","scriptevent bw_vv:spawn_dye"]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_creative": {
+				"add": {
+					"component_groups": [
+						"component_group:removed_creative"
+					]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_drop_items":{
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"queue_command":{
+					"command":"loot spawn ~ ~ ~ loot \"bw/vv/vehicles/plane_items\""
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_hits": {
+				"set_property": {
+					"bw_vv:damage_progress": 0,
+					"bw_vv:damage_anim": "R",
+					"bw_vv:damage_weak": false
+				}
+			},
+			//BOOST EVENTS
+			"event:boost_cooldown_counter":{
+				"set_property": {
+					"bw_vv:boost_cooldown": "q.property('bw_vv:boost_cooldown')-1"
+				},
+				"queue_command": {
+					"command": "playsound note.hat @p ~ ~ ~ 0.1 1.2"
+				}
+			},
+			"event:boost_active": {
+				"queue_command": {
+					"command": "playsound bw_vv.vehicle.boost_start @a[r=20] ~ ~ ~ 0.9 1"
+				}
+			},
+			"event:boost_cooldown": {
+				"set_property": {
+					"bw_vv:boost": "cooldown",
+					"bw_vv:boost_cooldown": "v.boost_cooldown"
+				}
+			},
+			"event:boost_ready": {
+				"set_property": {
+					"bw_vv:boost": "ready"
+				},
+				"queue_command": {
+					"command": "playsound note.harp @p ~ ~ ~ 0.2 1.3"
+				}
+			},
+			// PLAYER ANIMATION EVENTS
+			"event:player_anim_climb_neutral": {
+				"set_property": {
+					"bw_vv:player_anim": "climb_neutral"
+				}
+			},
+			"event:player_anim_climb_flying": {
+				"set_property": {
+					"bw_vv:player_anim": "plane_flying"
+				}
+			},
+			"event:player_anim_climb_crashing": {
+				"set_property": {
+					"bw_vv:player_anim": "plane_crashing"
+				}
+			},
+			// WASD EVENTS
+			".w": {
+				"set_property": {
+					"bw_vv:wasd": "w"
+				}
+			},
+			".a": {
+				"set_property": {
+					"bw_vv:wasd": "a"
+				}
+			},
+			".s": {
+				"set_property": {
+					"bw_vv:wasd": "s"
+				}
+			},
+			".d": {
+				"set_property": {
+					"bw_vv:wasd": "d"
+				}
+			},
+			// SMOKE BOMB EVENTS
+			"event:smoke_bomb_cooldown.start":{
+				"set_property": {
+					"bw_vv:smoke_bomb_cooldown": true
+				},
+				"add": {
+					"component_groups": [
+						"component_group:smoke_bomb_cooldown"
+					]
+				}
+			},
+			"event:smoke_bomb_cooldown.end":{
+				"set_property": {
+					"bw_vv:smoke_bomb_cooldown": false
+				}
+			},
+			// SMOKE BOMB COLORS
+			"event:smoke_bomb.warning": {
+				"queue_command":{"command":"execute as @p at @s run scriptevent bw_vv:smoke_bomb_warning"}
+			},
+			"event:smoke_bomb.white": {
+			"set_property": {
+				"bw_vv:smoke_color": "white"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.orange": {
+			"set_property": {
+				"bw_vv:smoke_color": "orange"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.magenta": {
+			"set_property": {
+				"bw_vv:smoke_color": "magenta"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.light_blue": {
+			"set_property": {
+				"bw_vv:smoke_color": "light_blue"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.yellow": {
+			"set_property": {
+				"bw_vv:smoke_color": "yellow"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.lime": {
+			"set_property": {
+				"bw_vv:smoke_color": "lime"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.pink": {
+			"set_property": {
+				"bw_vv:smoke_color": "pink"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.gray": {
+			"set_property": {
+				"bw_vv:smoke_color": "gray"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.light_gray": {
+			"set_property": {
+				"bw_vv:smoke_color": "light_gray"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.cyan": {
+			"set_property": {
+				"bw_vv:smoke_color": "cyan"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.purple": {
+			"set_property": {
+				"bw_vv:smoke_color": "purple"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.blue": {
+			"set_property": {
+				"bw_vv:smoke_color": "blue"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.brown": {
+			"set_property": {
+				"bw_vv:smoke_color": "brown"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.green": {
+			"set_property": {
+				"bw_vv:smoke_color": "green"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.red": {
+			"set_property": {
+				"bw_vv:smoke_color": "red"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.black": {
+			"set_property": {
+				"bw_vv:smoke_color": "black"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+
+			// VARIANT EVENTS
+			"variant:oak": {
+				"set_property": {
+					"bw_vv:wood_type": "oak"
+				}
+			},
+			"variant:spruce": {
+				"set_property": {
+					"bw_vv:wood_type": "spruce"
+				}
+			},
+			"variant:birch": {
+				"set_property": {
+					"bw_vv:wood_type": "birch"
+				}
+			},
+			"variant:jungle": {
+				"set_property": {
+					"bw_vv:wood_type": "jungle"
+				}
+			},
+			"variant:acacia": {
+				"set_property": {
+					"bw_vv:wood_type": "acacia"
+				}
+			},
+			"variant:dark_oak": {
+				"set_property": {
+					"bw_vv:wood_type": "dark_oak"
+				}
+			},
+			"variant:mangrove": {
+				"set_property": {
+					"bw_vv:wood_type": "mangrove"
+				}
+			},
+			"variant:cherry": {
+				"set_property": {
+					"bw_vv:wood_type": "cherry"
+				}
+			},
+			"variant:bamboo": {
+				"set_property": {
+					"bw_vv:wood_type": "bamboo"
+				}
+			},
+			"variant:crimson": {
+				"set_property": {
+					"bw_vv:wood_type": "crimson"
+				}
+			},
+			"variant:warped": {
+				"set_property": {
+					"bw_vv:wood_type": "warped"
+				}
+			},
+			"variant:pale_oak": {
+				"set_property": {
+					"bw_vv:wood_type": "pale_oak"
+				}
+			},
+
+			// PLANE SPECIFIC EVENTS
+            "event:enter_flight_mode": {
+                "add": {
+                    "component_groups": ["component_group:flight_mode"]
+                },
+				"remove": {
+                    "component_groups": ["component_group:ground_mode"]
+                }
+            },
+			"event:trigger_trick": {
+				"set_property": {
+					"bw_vv:trick": "active"
+				}
+            },
+            "event:enter_ground_mode": {
+                "add": {
+                    "component_groups": ["component_group:ground_mode"]
+                },
+				"remove": {
+                    "component_groups": ["component_group:flight_mode"]
+                }
+            }
+		}
+	}
+}

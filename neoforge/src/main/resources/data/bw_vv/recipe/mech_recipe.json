@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:mech",
+    "count": 1
+  },
+  "pattern": [
+    "jfj",
+    "T#T",
+    "GmG"
+  ],
+  "key": {
+    "#": {
+      "item": "bw_vv:mechanical_heart"
+    },
+    "G": {
+      "item": "minecraft:piston"
+    },
+    "f": {
+      "item": "minecraft:chest"
+    },
+    "T": {
+      "tag": "minecraft:logs"
+    },
+    "m": {
+      "item": "minecraft:iron_block"
+    },
+    "j": {
+      "tag": "minecraft:planks"
+    }
+  }
+}

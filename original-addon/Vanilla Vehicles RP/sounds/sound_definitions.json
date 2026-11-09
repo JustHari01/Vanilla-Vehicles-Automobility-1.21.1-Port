@@ -1,0 +1,1081 @@
+{
+  "format_version": "1.21.120",
+  "sound_definitions": {
+     "bw_vv.ui.modal_hide": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/modal_hide",
+          "stream": false,
+          "volume": 0.8,
+        "is3D": false
+        }
+      ]
+    },
+      "bw_vv.ui.player_join": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/player_join",
+          "stream": false,
+          "volume": 1.0,
+          "is3D": false
+        }
+      ]
+    },
+    "bw_vv.ui.warning": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/short_warning",
+          "stream": false,
+          "volume": 0.7,
+          "is3D": false
+        }
+      ]
+    },
+      "bw_vv.ui.guide_book.open": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/guide_book_open",
+          "stream": false,
+          "volume": 0.4,
+          "is3D": false
+        }
+      ]
+    },
+      "bw_vv.ui.guide_book.close": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/guide_book_close",
+          "stream": false,
+          "volume": 0.34,
+          "is3D": false
+        }
+      ]
+    },
+          "bw_vv.ui.guide_book.button_back": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/guide_book_button_back3",
+          "stream": false,
+          "volume": 0.67,
+          "is3D": false,
+          "interruptible": false
+        }
+      ]
+    },
+          "bw_vv.ui.guide_book.button": {
+      "min_distance": 12.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/ui/guide_book_button",
+          "stream": false,
+          "volume": 0.4,
+          "is3D": false
+        }
+      ]
+    },
+    "bw_vv.vehicle.fuel.redstone.pitch": {
+    "category": "neutral",
+    "min_distance": 2.0,
+    "sounds": [
+      {
+          "name": "sounds/bw/vv/fuel/redstone/pitch",
+          "stream": false,
+          "volume": 1
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.redstone.no_pitch": {
+    "category": "neutral",
+    "min_distance": 2.0,
+    "sounds": [
+      {
+          "name": "sounds/bw/vv/fuel/redstone/no_pitch1",
+          "stream": false,
+          "volume": 1.1
+      },
+      {
+          "name": "sounds/bw/vv/fuel/redstone/no_pitch2",
+          "stream": false,
+          "volume": 1.1
+      },
+      {
+          "name": "sounds/bw/vv/fuel/redstone/no_pitch3",
+          "stream": false,
+          "volume": 1.1
+      }
+    ]
+  },
+      "bw_vv.vehicle.fuel.coal.pitch": {
+    "category": "neutral",
+    "min_distance": 2.0,
+    "sounds": [
+      {
+          "name": "sounds/bw/vv/fuel/coal/pitch",
+          "stream": false,
+          "volume": 1
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.coal.no_pitch": {
+    "category": "neutral",
+    "min_distance": 2.0,
+    "sounds": [
+      {
+          "name": "sounds/bw/vv/fuel/coal/no_pitch1",
+          "stream": false,
+          "volume": 0.8
+      },
+      {
+          "name": "sounds/bw/vv/fuel/coal/no_pitch2",
+          "stream": false,
+          "volume": 0.8
+      },
+      {
+          "name": "sounds/bw/vv/fuel/coal/no_pitch3",
+          "stream": false,
+          "volume": 0.8
+      },
+      {
+          "name": "sounds/bw/vv/fuel/coal/no_pitch4",
+          "stream": false,
+          "volume": 0.8
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.redstone.full": {
+    "category": "neutral",
+    "min_distance": 2.0,
+    "sounds": [
+      {
+          "name": "sounds/bw/vv/fuel/redstone/full",
+          "stream": false,
+          "volume": 1
+      }
+    ]
+  },
+  "bw_vv.vehicle.boost": {
+    "category": "neutral",
+    "min_distance": 12.0,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/boost/boost1",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost2",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost3",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost4",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost5",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost6",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost7",
+        "stream": false,
+        "volume": 1
+    },
+    {
+        "name": "sounds/bw/vv/boost/boost8",
+        "stream": false,
+        "volume": 1
+    } 
+    ]
+  },
+  "bw_vv.vehicle.boost_start": {
+    "category": "neutral",
+    "min_distance": 12.0,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/boost/start2",
+        "stream": false,
+        "volume": 1
+    }
+    ]
+  },
+  "bw_vv.vehicle.minecar.engine": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/minecar/engine1",
+        "stream": false,
+        "volume": 0.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine2",
+        "stream": false,
+        "volume": 0.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine3",
+        "stream": false,
+        "volume": 0.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine4",
+        "stream": false,
+        "volume": 0.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine5",
+        "stream": false,
+        "volume": 0.4,
+        "is3D": true
+      }
+    ]
+  },
+  "bw_vv.vehicle.minecar.engine.close": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/minecar/engine1",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine2",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine3",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine4",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine5",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.minecar.engine.standby": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "ambient",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/minecar/engine1",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine2",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine3",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine4",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/minecar/engine5",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.8
+      }
+    ]
+  },
+    "bw_vv.vehicle.mobtruck.engine": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine1",
+        "stream": false,
+        "volume": 0.5,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine2",
+        "stream": false,
+        "volume": 0.5,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine3",
+        "stream": false,
+        "volume": 0.5,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine4",
+        "stream": false,
+        "volume": 0.5,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine5",
+        "stream": false,
+        "volume": 0.5,
+        "is3D": true
+      }
+    ]
+  },
+    "bw_vv.vehicle.mobtruck.engine.close": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine1",
+        "stream": false,
+        "volume": 0.32,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine2",
+        "stream": false,
+        "volume": 0.32,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine3",
+        "stream": false,
+        "volume": 0.32,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine4",
+        "stream": false,
+        "volume": 0.32,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine5",
+        "stream": false,
+        "volume": 0.32,
+        "is3D": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mobtruck.engine.standby": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "ambient",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine1",
+        "stream": false,
+        "volume": 0.25,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine2",
+        "stream": false,
+        "volume": 0.25,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine3",
+        "stream": false,
+        "volume": 0.25,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine4",
+        "stream": false,
+        "volume": 0.25,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/mobtruck/engine5",
+        "stream": false,
+        "volume": 0.25,
+        "pitch": 0.7
+      }
+    ]
+  },
+  "bw_vv.vehicle.logcar.engine.standby": {
+    "min_distance": 2.0,
+    "max_distance": 10.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/logcar/engine1",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+    },
+	  {
+        "name": "sounds/bw/vv/logcar/engine2",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine3",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine4",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine5",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine6",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine7",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine8",
+        "stream": false,
+        "volume": 0.1,
+        "pitch": 0.8
+      }
+    ]
+  },
+  "bw_vv.vehicle.logcar.engine": {
+    "min_distance": 15.0,
+    "max_distance": 25.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/logcar/engine1",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine2",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine3",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine4",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine5",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine6",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine7",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine8",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": true
+      }
+    ]
+  },
+  "bw_vv.vehicle.logcar.engine.close": {
+    "min_distance": 15.0,
+    "max_distance": 25.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/logcar/engine1",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine2",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine3",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine4",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine5",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine6",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine7",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/logcar/engine8",
+        "stream": false,
+        "volume": 0.33,
+        "pitch": 1.4,
+        "is3D": false
+      }
+    ]
+  },
+    "bw_vv.vehicle.plane.engine": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/plane/engine1",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine2",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine3",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine4",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine5",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": true
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine6",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": true
+      }
+    ]
+  },
+    "bw_vv.vehicle.plane.engine.close": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/plane/engine1",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine2",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine3",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine4",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine5",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine6",
+        "stream": false,
+        "volume": 0.3,
+        "is3D": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.plane.engine.standby": {
+    "min_distance": 1.0,
+    "max_distance": 5.0,
+    "category": "ambient",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/plane/engine1",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine2",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine3",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine4",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine5",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.7
+      },
+	  {
+        "name": "sounds/bw/vv/plane/engine6",
+        "stream": false,
+        "volume": 0.2,
+        "pitch": 0.7
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/metal/hit1",
+        "stream": false,
+        "volume": 0.37
+      },
+      {
+        "name": "sounds/bw/vv/impacts/metal/hit2",
+        "stream": false,
+        "volume": 0.37
+      },
+      {
+        "name": "sounds/bw/vv/impacts/metal/hit3",
+        "stream": false,
+        "volume": 0.37
+      }
+    ]
+  },
+  "bw_vv.hit.electrical": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/electrical/hit1",
+        "stream": false,
+        "volume": 1.3
+      },
+      {
+        "name": "sounds/bw/vv/impacts/electrical/hit2",
+        "stream": false,
+        "volume": 1.3
+      },
+      {
+        "name": "sounds/bw/vv/impacts/electrical/hit3",
+        "stream": false,
+        "volume": 1.3
+      },
+      {
+        "name": "sounds/bw/vv/impacts/electrical/hit4",
+        "stream": false,
+        "volume": 1.3
+      }
+    ]
+  },
+  "bw_vv.hit.electrical.final": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/electrical/final",
+        "stream": false,
+        "volume": 1.3
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal_small": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/metal_small/hit1",
+        "stream": false,
+        "volume": 0.56
+      },
+      {
+        "name": "sounds/bw/vv/impacts/metal_small/hit2",
+        "stream": false,
+        "volume": 0.56
+      },
+      {
+        "name": "sounds/bw/vv/impacts/metal_small/hit3",
+        "stream": false,
+        "volume": 0.56
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.wood": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/wood/hit1",
+        "stream": false,
+        "volume": 0.54
+      },
+      {
+        "name": "sounds/bw/vv/impacts/wood/hit2",
+        "stream": false,
+        "volume": 0.54
+      },
+      {
+        "name": "sounds/bw/vv/impacts/wood/hit3",
+        "stream": false,
+        "volume": 0.54
+      },
+      {
+        "name": "sounds/bw/vv/impacts/wood/hit4",
+        "stream": false,
+        "volume": 0.54
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal.final": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/metal/final",
+        "stream": false,
+        "volume": 0.55
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal_small.final": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/metal_small/final",
+        "stream": false,
+        "volume": 0.72
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.wood.final": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/impacts/wood/final",
+        "stream": false,
+        "volume": 1.0
+      }
+    ]
+  },
+  "bw_vv.vehicle.steamboat.steam": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/steamboat/steam1",
+        "stream": false,
+        "volume": 0.3
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/steam2",
+        "stream": false,
+        "volume": 0.3
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/steam3",
+        "stream": false,
+        "volume": 0.3
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/steam4",
+        "stream": false,
+        "volume": 0.3
+      }
+    ]
+  },
+  "bw_vv.vehicle.mech.spawn": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mech/spawn",
+        "stream": false,
+        "volume": 1.05
+      }
+    ]
+  },
+  "bw_vv.vehicle.mech.step": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mech/step1",
+        "stream": false,
+        "volume": 0.45
+      },
+	  {
+        "name": "sounds/bw/vv/mech/step2",
+        "stream": false,
+        "volume": 0.45
+      },
+	  {
+        "name": "sounds/bw/vv/mech/step3",
+        "stream": false,
+        "volume": 0.45
+      }
+    ]
+  },
+    "bw_vv.vehicle.mech.weapon": {
+    "category": "neutral",
+    "min_distance": 7,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mech/weapon",
+        "stream": false,
+        "volume": 0.6
+      }
+    ]
+  },
+    "bw_vv.vehicle.mech.land": {
+    "category": "neutral",
+    "min_distance": 5,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/mech/landed",
+        "stream": false,
+        "volume": 0.7
+      }
+    ]
+  },
+  "bw_vv.vehicle.steamboat.engine": {
+    "category": "neutral",
+    "min_distance": 7,
+    "max_distance": 20,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/steamboat/engine1",
+        "stream": false,
+        "volume": 0.6
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/engine2",
+        "stream": false,
+        "volume": 0.6
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/engine3",
+        "stream": false,
+        "volume": 0.6
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/engine4",
+        "stream": false,
+        "volume": 0.6
+      }
+    ]
+  },
+  "bw_vv.vehicle.steamboat.bell": {
+    "category": "neutral",
+    "min_distance": 6,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/steamboat/bell1",
+        "stream": false,
+        "volume": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/bell2",
+        "stream": false,
+        "volume": 0.8
+      },
+	  {
+        "name": "sounds/bw/vv/steamboat/bell3",
+        "stream": false,
+        "volume": 0.8
+      }
+    ]
+  },
+
+  "bw_vv.smoke_bomb.deploy": {
+    "category": "neutral",
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/smoke_bomb/deploy",
+        "stream": false,
+        "volume": 0.7
+      }
+    ]
+  },
+  "bw_vv.smoke_bomb.spray": {
+    "category": "neutral",
+    "min_distance": 4,
+    "sounds": [
+	  {
+        "name": "sounds/bw/vv/smoke_bomb/spray1",
+        "stream": false,
+        "volume": 0.16
+      },
+      	  {
+        "name": "sounds/bw/vv/smoke_bomb/spray2",
+        "stream": false,
+        "volume": 0.16
+      },
+            	  {
+        "name": "sounds/bw/vv/smoke_bomb/spray3",
+        "stream": false,
+        "volume": 0.16
+      },
+                  	  {
+        "name": "sounds/bw/vv/smoke_bomb/spray4",
+        "stream": false,
+        "volume": 0.16
+      },
+                  	  {
+        "name": "sounds/bw/vv/smoke_bomb/spray5",
+        "stream": false,
+        "volume": 0.16
+      }
+    ]
+  },
+    "bw_vv.ui.ambient.wind": {
+      "min_distance": 12.0,
+      "max_distance": 25.0,
+      "category": "neutral",
+      "sounds": [
+        {
+          "name": "sounds/bw/vv/wind/wind1",
+          "stream": false,
+          "volume": 0.6,
+          "is3D": false
+        },
+        {
+          "name": "sounds/bw/vv/wind/wind2",
+          "stream": false,
+          "volume": 0.6,
+          "is3D": false
+        },
+        {
+          "name": "sounds/bw/vv/wind/wind3",
+          "stream": false,
+          "volume": 0.6,
+          "is3D": false
+        }
+      ]
+    }
+  }
+}

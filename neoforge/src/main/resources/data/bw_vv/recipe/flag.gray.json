@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:flag.gray",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "bw_vv:flag.pole"
+    },
+    {
+      "item": "minecraft:gray_dye"
+    }
+  ]
+}

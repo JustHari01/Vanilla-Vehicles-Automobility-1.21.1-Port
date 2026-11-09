@@ -1,0 +1,22 @@
+{
+    "format_version": "1.21.100",
+    "animation_controllers": {
+        "controller.animation.bw_vv.vehicle_spawn": {
+            "initial_state": "no_anim",
+            "states": {
+                "no_anim": {
+                    "transitions": [
+                        {
+                            "anim": "q.vertical_speed == 0 && q.is_on_ground && !q.property('bw_vv:spawned')"
+                        }
+                    ]
+                },
+                "anim": {
+                    "animations": [
+                       {"spawn": "q.is_on_ground"}
+                    ]
+                }
+            }
+        }
+    }
+}

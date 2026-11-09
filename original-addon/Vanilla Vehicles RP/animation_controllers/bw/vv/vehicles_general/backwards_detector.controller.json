@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.bw_vv.generic.backwards_detector": {
+      "states": {
+        "default": {
+          "animations": [
+          "steer_forward"
+        ],
+          "transitions": [
+            {"backward": "v.wasd == 's'" }
+          ],
+          "blend_transition":0.2
+      },
+        "backward": {
+          "animations": [
+            "steer_backward"
+          ],
+          "transitions": [
+            {"default": "v.wasd == 'w'"}
+          ],
+          "blend_transition":0.2
+      }
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:steamboat",
+    "count": 1
+  },
+  "pattern": [
+    " #G",
+    "iiM",
+    "iii"
+  ],
+  "key": {
+    "M": {
+      "item": "minecraft:furnace"
+    },
+    "G": {
+      "item": "minecraft:iron_block"
+    },
+    "i": {
+      "tag": "minecraft:planks"
+    },
+    "#": {
+      "tag": "minecraft:wool"
+    }
+  }
+}

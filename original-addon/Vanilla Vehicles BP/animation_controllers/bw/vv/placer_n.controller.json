@@ -1,0 +1,28 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers":
+    {
+        "controller.animation.bw_vv.general_placer_n":
+        {
+            "states":
+            {
+                "default":
+                {
+                    "transitions":
+                    [
+                        {
+                            "n": "1"
+                        }
+                    ]
+                },
+                "n":
+                {
+                    "on_entry":
+                    [
+                        "/tp @s ~ ~ ~ 180 0"
+                    ]
+                }
+            }
+        }
+    }
+}

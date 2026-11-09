@@ -1,0 +1,26 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:item": {
+		"description": {
+			"identifier": "bw_vv:minecar",
+			"menu_category": {
+        		"category": "items"
+      		}		
+		},
+		"components": {
+			"minecraft:max_stack_size": 
+			{
+				"value": 1
+			},
+			"minecraft:icon": {
+				"textures": {"default":"bw_vv:minecar"}
+			  },
+			  "minecraft:liquid_clipped": {
+				"value": true
+			},
+			"minecraft:entity_placer":{
+				"entity":"bw_vv:minecar"
+			}
+		}
+	}
+}

@@ -1,0 +1,632 @@
+{
+	"format_version": "1.21.100",
+	"animations": {
+		"animation.bw_vv.player_vehicle_null": {
+			"loop": false,
+			"animation_length": 0.5,
+			"bones": {
+				"root": {
+					"rotation": [0, 0, 0]
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_neutral": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 10,
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["v.head_factor*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [0, "(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0", 0]
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_up45": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? math.sin(q.anim_time*425.9-421.2/2.34)*29",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["v.head_factor_45*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_down45": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? -math.sin(q.anim_time*425.9-421.2/2.34)*29",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["-v.head_factor_45*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_neutral_from_down45": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": ["!v.is_first_person ? -this+3", "!v.is_first_person ? -this", "!v.is_first_person ? -this"],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? 29+math.sin(q.anim_time*425.9-421.2/2.34)*29",
+						"!v.is_first_person ? -this-variable.player_rotation_custom",
+						"!v.is_first_person ?-this"
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["v.head_factor_45*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_neutral_from_up45": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? -29-math.sin(q.anim_time*425.9-421.2/2.34)*29",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["-v.head_factor_45*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_up20": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? math.sin(q.anim_time*425.9-421.2/2.34)*14",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["v.head_factor*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_down20": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? -math.sin(q.anim_time*425.9-421.2/2.34)*14",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["-v.head_factor*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_neutral_from_down20": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? 14+math.sin(q.anim_time*425.9-421.2/2.34)*14",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["v.head_factor*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_vehicle_neutral_from_up20": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 0.2083,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [
+						"!v.is_first_person ? -14-math.sin(q.anim_time*425.9-421.2/2.34)*14",
+						"(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0",
+						0
+					]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["-v.head_factor*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_plane": {
+		"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, -1]
+				},
+				"root": {
+					"rotation": ["query.ride_head_x_rotation*0.8", "!v.is_first_person ? -this-variable.player_rotation_custom/2", "!v.is_first_person ? math.clamp(-v.body_rot*0.7,-50,50)"],
+					"position": ["!v.is_first_person ? math.clamp(v.body_rot,-80,80)*0.2", "(query.ride_head_x_rotation>1) ? query.ride_head_x_rotation*0.2 : -query.ride_head_x_rotation*0.2", "(query.ride_head_x_rotation>1) ? query.ride_head_x_rotation*0.3 : query.ride_head_x_rotation*0.26"]
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_plane_roll_right": {
+		"animation_length": 0.5,
+			"anim_time_update": "query.anim_time + query.delta_time *0.5",
+			"loop":"hold_on_last_frame",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, -1]
+				},
+				"root": {
+					"rotation": ["query.head_x_rotation(0)*0.5", "!v.is_first_person ? -this-variable.player_rotation_custom", "!v.is_first_person ? math.clamp(-v.body_rot*0.6,-38,38)+math.cos(q.anim_time*360)*180+180"],
+					"position": [
+						"!v.is_first_person ? v.body_rot*0.2-math.cos(q.anim_time*360*3)*6+math.cos(q.anim_time*360)*6",
+						"-math.cos(q.anim_time*360*2)*8+8-query.ride_head_x_rotation*0.1",
+						"query.head_x_rotation(0)*0.2"
+					]
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_plane_roll_left": {
+		"animation_length": 0.5,
+			"anim_time_update": "query.anim_time + query.delta_time *0.5",
+			"loop":"hold_on_last_frame",
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, -1]
+				},
+				"root": {
+					"rotation": ["query.head_x_rotation(0)*0.5", "!v.is_first_person ? -this-variable.player_rotation_custom", "!v.is_first_person ? math.clamp(-v.body_rot*0.6,-38,38)-math.cos(q.anim_time*360)*180+180"],
+					"position": [
+						"!v.is_first_person ? v.body_rot*0.2+math.cos(q.anim_time*360*3)*6-math.cos(q.anim_time*360)*6",
+						"-math.cos(q.anim_time*360*2)*8+8-query.ride_head_x_rotation*0.1",
+						"query.head_x_rotation(0)*0.2"
+					]
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_prismer": {
+		"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, -1]
+				},
+				"root": {
+					"rotation": [0, "!v.is_first_person ? -this-variable.player_rotation_custom", "!v.is_first_person ? math.clamp(-v.body_rot*0.33,-20,20)"],
+					"position": ["!v.is_first_person ? -math.clamp(-v.body_rot*0.1,-9,9)", 0, 0]
+				}
+			}
+		},
+	"animation.bw_vv.player_crash_plane": {
+		"loop": true,
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": [-15.5, 10, 0]
+				},
+				"rightLeg": {
+					"rotation": [-15.5, -10, 0]
+				},
+				"body": {
+					"rotation": [5, 0, 0],
+					"position": [0, 0, -1]
+				},
+				"root": {
+					"rotation": [89, "!v.is_first_person ? -this-variable.player_rotation_custom", 0],
+					"position": [0, "-math.clamp(math.pow(q.target_x_rotation*0.02, 2),0,8)", "q.target_x_rotation*0.1"]
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_steamboat": {
+		"loop": "hold_on_last_frame",
+			"animation_length": 10,
+			"bones": {
+				"leftArm": {
+					"rotation": ["!v.is_first_person ? v.leftArm_x", "!v.is_first_person ? v.leftArm_y", "!v.is_first_person ? v.leftArm_z"],
+					"position": [0, 0, -1]
+				},
+				"rightArm": {
+					"rotation": ["!v.is_first_person?v.rightArm_x", "!v.is_first_person?v.rightArm_y", "!v.is_first_person ? (-this-20-30*math.cos(-v.body_rot+70)+10) : 0"],
+					"position": [0, 0, "!v.is_first_person ? -1 : 0"]
+				},
+				"leftLeg": {
+					"rotation": ["-this", "-this", 0]
+				},
+				"head": {
+					"rotation": {
+						"0.0": [0, "-v.body_rot/2", 0],
+						"0.0833": ["v.head_factor*0.9", "-v.body_rot/2", 0],
+						"0.2083": [0, "-v.body_rot/2", 0]
+					}
+				},
+				"rightLeg": {
+					"rotation": ["-this", "-this", 0]
+				},
+				"body": {
+					"rotation": [3, 0, 0],
+					"position": [0, 0, -0.6]
+				},
+				"root": {
+					"rotation": [0, "(!v.is_first_person && !query.is_in_ui) ? -variable.player_rotation_custom : 0", 0]
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_mech_forward": {
+		"loop": true,
+			"animation_length": 1,
+			"anim_time_update": "query.anim_time + query.delta_time *1.2",
+			"bones": {
+				"head": {
+					"rotation": [" Math.sin(query.anim_time* 360* 2 -50) * 4", 0, " Math.cos(query.anim_time* 360-90) * -2.2"]
+				},
+				"root": {
+					"rotation": [0, 0, " Math.cos(query.anim_time* 403.2-20) * -1.2"],
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.0909": [0, -1, 0],
+						"0.2273": [0, 1, 0],
+						"0.5": [0, 0, 0],
+						"0.5909": [0, -1, 0],
+						"0.7273": [0, 1, 0],
+						"1.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_mech_backward": {
+		"loop": true,
+			"animation_length": 1,
+			"anim_time_update": "query.anim_time + query.delta_time *0.8",
+			"bones": {
+				"head": {
+					"rotation": [" Math.sin(query.anim_time* 360* 2 -50) * 4", 0, " Math.cos(query.anim_time* 360-90) * -2.2"]
+				},
+				"root": {
+					"rotation": [0, 0, " Math.cos(query.anim_time* 403.2-20) * -1.2"],
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.0909": [0, -1, 0],
+						"0.2273": [0, 1, 0],
+						"0.5": [0, 0, 0],
+						"0.5909": [0, -1, 0],
+						"0.7273": [0, 1, 0],
+						"1.0": [0, 0, 0]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_mech_jump": {
+		"loop": false,
+			"animation_length": 1.875,
+			"bones": {
+				"body": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.0417": [2.5, 0, 0],
+						"0.1667": [-20, 0, 0],
+						"0.5": [-20, 0, 0],
+						"1.75": [0, 0, 0]
+					},
+					"position": {
+						"0.0": [0, 0, 0],
+						"0.0417": [0, 0, -0.5],
+						"0.1667": [0, -0.75, 4],
+						"0.5": [0, -0.75, 4],
+						"1.75": [0, 0, 0]
+					}
+				},
+				"leftArm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.0417": [-150, 0, 14]
+					}
+				},
+				"rightArm": {
+					"rotation": {
+						"0.0": [0, 0, 0],
+						"0.0417": [-150, 0, -14]
+					}
+				}
+			}
+		},
+	"animation.bw_vv.player_drive_mech_neutral": {
+		"loop": true,
+			"animation_length": 0.88,
+			"bones": {
+				"head": {
+					"rotation": [0, 0, 0]
+				},
+				"root": {
+					"rotation": [0, 0, 0],
+					"position": [0, 0, 0]
+				}
+			}
+		}
+	}
+}

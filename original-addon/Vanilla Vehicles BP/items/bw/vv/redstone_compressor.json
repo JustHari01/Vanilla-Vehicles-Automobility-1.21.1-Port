@@ -1,0 +1,19 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:item": {
+		"description": {
+			"identifier": "bw_vv:redstone_compressor",
+			"menu_category": {
+        		"category": "items"
+      		}		
+		},
+		"components": {
+            "minecraft:icon": {
+                "textures": {"default":  "bw_vv:redstone_compressor"}
+            },
+			"minecraft:entity_placer":{
+				"entity":"bw_vv:redstone_compressor"
+			}
+		}
+	}
+}

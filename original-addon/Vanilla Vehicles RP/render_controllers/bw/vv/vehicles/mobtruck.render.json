@@ -1,0 +1,57 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_mobtruck": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ 
+        { "backdoor_open*": "query.property('bw_vv:backdoor') == 'open'" },
+        { "backdoor_closed*": "query.property('bw_vv:backdoor') == 'closed'" } ],
+        "arrays":{
+          "textures": {
+            "Array.stickers": [ "Texture.overlay", "Texture.overlay_creeper", "Texture.overlay_castle", "Texture.overlay_stripes", "Texture.overlay", "Texture.overlay_skeleton", "Texture.overlay", "Texture.overlay_diamonds","Texture.overlay","Texture.overlay","Texture.overlay","Texture.overlay","Texture.overlay"]
+        }
+    },
+      "materials": [
+           { "*": "Material.default" },
+					 { "lights": "Material.glow" },
+					 { "lights2": "Material.glow" },
+           { "fuel_glow": "Material.glow" }
+                   ],
+      "textures": [ 
+        "Texture.default",
+        "Texture.default",
+        "Array.stickers[q.property('bw_vv:sticker') ? v.sticker : 0]" ]
+    },
+    "controller.render.bw_vv_mobtruck_colorless_stickers": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ 
+        { "backdoor_open*": "query.property('bw_vv:backdoor') == 'open'" },
+        { "backdoor_closed*": "query.property('bw_vv:backdoor') == 'closed'" } ],
+        "arrays":{
+          "textures": {
+            "Array.stickers": [ "Texture.empty", "Texture.empty", "Texture.empty", "Texture.empty", "Texture.overlay_enderman", "Texture.empty", "Texture.overlay_hearts", "Texture.empty","Texture.overlay_bloom","Texture.overlay_icy","Texture.overlay_soulful","Texture.overlay_burning","Texture.overlay_rainbow"]
+        }
+    },
+      "materials": [
+           { "*": "Material.masked" },
+					 { "lights": "Material.glow_masked" },
+					 { "lights2": "Material.glow_masked" },
+           { "fuel_glow": "Material.glow" }
+                   ],
+      "textures": [
+        "Array.stickers[q.property('bw_vv:sticker') ? v.sticker : 0]" ]
+    },
+          "controller.render.bw_vv_mobtruck_fueled_animated": {
+      "geometry": "Geometry.default",
+      	  "part_visibility": [ { "body*": "v.is_fueled" }],
+      "materials": [
+      { "body": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.fueled_animated" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 10), 4) / 4"],
+          "scale": [1, "1 / 4"]
+      }
+    }
+  }
+}

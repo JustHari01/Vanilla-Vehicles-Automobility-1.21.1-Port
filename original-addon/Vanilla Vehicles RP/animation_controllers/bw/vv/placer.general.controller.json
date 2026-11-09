@@ -1,0 +1,38 @@
+
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+      "controller.animation.bw_vv.general_placer": {
+        "states": {
+            "default": {
+              "transitions": [
+                {"n": "query.cardinal_facing_2d == 2" },
+                {"s": "query.cardinal_facing_2d == 3" },
+                {"w": "query.cardinal_facing_2d == 4" },
+                {"e": "query.cardinal_facing_2d == 5" }
+              ]
+          },
+          "n": {
+            "animations":[
+              "n"
+            ]
+        },
+        "s": {
+          "animations":[
+            "s"
+          ]
+      },
+      "w": {
+        "animations":[
+          "w"
+        ]
+    },
+      "e": {
+        "animations":[
+          "e"
+        ]
+  }
+    }
+    }
+    }
+}

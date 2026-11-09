@@ -1,0 +1,331 @@
+{
+	"texture_data": {
+		"bw_vv:smoke_bomb": {
+			"textures": "textures/bw/vv/items/smoke_bombs/empty.png"
+		},
+		"bw_vv:smoke_bomb.blue": {
+			"textures": "textures/bw/vv/items/smoke_bombs/blue.png"
+		},
+		"bw_vv:smoke_bomb.red": {
+			"textures": "textures/bw/vv/items/smoke_bombs/red.png"
+		},
+		"bw_vv:smoke_bomb.lime": {
+			"textures": "textures/bw/vv/items/smoke_bombs/lime.png"
+		},
+		"bw_vv:smoke_bomb.magenta": {
+			"textures": "textures/bw/vv/items/smoke_bombs/magenta.png"
+		},
+		"bw_vv:smoke_bomb.yellow": {
+			"textures": "textures/bw/vv/items/smoke_bombs/yellow.png"
+		},
+		"bw_vv:smoke_bomb.light_blue": {
+			"textures": "textures/bw/vv/items/smoke_bombs/light_blue.png"
+		},
+		"bw_vv:smoke_bomb.brown": {
+			"textures": "textures/bw/vv/items/smoke_bombs/brown.png"
+		},
+		"bw_vv:smoke_bomb.black": {
+			"textures": "textures/bw/vv/items/smoke_bombs/black.png"
+		},
+		"bw_vv:smoke_bomb.cyan": {
+			"textures": "textures/bw/vv/items/smoke_bombs/cyan.png"
+		},
+		"bw_vv:smoke_bomb.pink": {
+			"textures": "textures/bw/vv/items/smoke_bombs/pink.png"
+		},
+		"bw_vv:smoke_bomb.orange": {
+			"textures": "textures/bw/vv/items/smoke_bombs/orange.png"
+		},
+		"bw_vv:smoke_bomb.green": {
+			"textures": "textures/bw/vv/items/smoke_bombs/green.png"
+		},
+		"bw_vv:smoke_bomb.white": {
+			"textures": "textures/bw/vv/items/smoke_bombs/white.png"
+		},
+		"bw_vv:smoke_bomb.gray": {
+			"textures": "textures/bw/vv/items/smoke_bombs/gray.png"
+		},
+		"bw_vv:smoke_bomb.light_gray": {
+			"textures": "textures/bw/vv/items/smoke_bombs/light_gray.png"
+		},
+		"bw_vv:smoke_bomb.purple": {
+			"textures": "textures/bw/vv/items/smoke_bombs/purple.png"
+		},
+		"bw_vv:vehicle_spawn": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/minecar",
+				"textures/bw/vv/items/vehicle_spawns/plane/oak",
+				"textures/bw/vv/items/vehicle_spawns/mobtruck",
+				"textures/bw/vv/items/vehicle_spawns/steamboat",
+				"textures/bw/vv/items/vehicle_spawns/prismer"
+			]
+		},
+		"bw_vv:wind_vane": {
+			"textures": [
+				"textures/bw/vv/items/wind_vane"
+			]
+		},
+		"bw_vv:mechanic": {
+			"textures": [
+				"textures/bw/vv/items/mob_spawns/mechanic"
+			]
+		},
+		"bw_vv:minecar": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/minecar"
+			]
+		},
+		"bw_vv:plane": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/plane/oak"
+			]
+		},
+		"bw_vv:mobtruck": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/mobtruck"
+			]
+		},
+		"bw_vv:steamboat": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/steamboat"
+			]
+		},
+		"bw_vv:logcar.oak": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/logcar/oak"
+			]
+		},
+		"bw_vv:plane.oak": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/plane/oak"
+			]
+		},
+		"bw_vv:prismer": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/prismer"
+			]
+		},
+		"bw_vv:hot_air_balloon.basket": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/hot_air_balloon"
+			]
+		},
+		"bw_vv:flag.pole": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flag.pole"
+			]
+		},
+		"bw_vv:flag.white": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/white"
+			]
+		},
+		"bw_vv:flag.orange": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/orange"
+			]
+		},
+		"bw_vv:flag.magenta": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/magenta"
+			]
+		},
+		"bw_vv:flag.light_blue": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/light_blue"
+			]
+		},
+		"bw_vv:flag.yellow": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/yellow"
+			]
+		},
+		"bw_vv:flag.lime": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/lime"
+			]
+		},
+		"bw_vv:flag.pink": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/pink"
+			]
+		},
+		"bw_vv:flag.gray": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/gray"
+			]
+		},
+		"bw_vv:flag.light_gray": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/light_gray"
+			]
+		},
+		"bw_vv:flag.cyan": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/cyan"
+			]
+		},
+		"bw_vv:flag.purple": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/purple"
+			]
+		},
+		"bw_vv:flag.blue": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/blue"
+			]
+		},
+		"bw_vv:flag.brown": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/brown"
+			]
+		},
+		"bw_vv:flag.black": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/black"
+			]
+		},
+		"bw_vv:flag.green": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/green"
+			]
+		},
+		"bw_vv:flag.red": {
+			"textures": [
+				"textures/bw/vv/items/prop_spawns/flags/red"
+			]
+		},
+		"bw_vv:tesla_helmet": {
+			"textures": [
+				"textures/bw/vv/items/tesla_helmet"
+			]
+		},
+		"bw_vv:compressed_redstone": {
+			"textures": [
+				"textures/bw/vv/items/compressed_redstone"
+			]
+		},
+		"bw_vv:guide_book": {
+			"textures": [
+				"textures/bw/vv/items/guide_book"
+			]
+		},
+		"bw_vv:hot_air_balloon.envelope.blank": {
+			"textures": [
+				"textures/bw/vv/items/balloon_envelope/blank"
+			]
+		},
+		"bw_vv:hot_air_balloon.envelope.striped": {
+			"textures": [
+				"textures/bw/vv/items/balloon_envelope/striped"
+			]
+		},
+		"bw_vv:hot_air_balloon.envelope.creeper": {
+			"textures": [
+				"textures/bw/vv/items/balloon_envelope/creeper"
+			]
+		},
+		"bw_vv:mech": {
+			"textures": [
+				"textures/bw/vv/items/vehicle_spawns/mech"
+			]
+		},
+		"bw_vv:sticker.castle": {
+			"textures": [
+				"textures/bw/vv/items/stickers/castle"
+			]
+		},
+		"bw_vv:sticker.diamonds": {
+			"textures": [
+				"textures/bw/vv/items/stickers/diamonds"
+			]
+		},
+		"bw_vv:sticker.creeper": {
+			"textures": [
+				"textures/bw/vv/items/stickers/creeper"
+			]
+		},
+		"bw_vv:sticker.stripes": {
+			"textures": [
+				"textures/bw/vv/items/stickers/stripes"
+			]
+		},
+		"bw_vv:sticker.skeleton": {
+			"textures": [
+				"textures/bw/vv/items/stickers/skeleton"
+			]
+		},
+		"bw_vv:sticker.enderman": {
+			"textures": [
+				"textures/bw/vv/items/stickers/enderman"
+			]
+		},
+		"bw_vv:sticker.hearts": {
+			"textures": [
+				"textures/bw/vv/items/stickers/hearts"
+			]
+		},
+		"bw_vv:sticker.bloom": {
+			"textures": [
+				"textures/bw/vv/items/stickers/bloom"
+			]
+		},
+		"bw_vv:sticker.icy": {
+			"textures": [
+				"textures/bw/vv/items/stickers/icy"
+			]
+		},
+		"bw_vv:sticker.burning": {
+			"textures": [
+				"textures/bw/vv/items/stickers/burning"
+			]
+		},
+		"bw_vv:sticker.soulful": {
+			"textures": [
+				"textures/bw/vv/items/stickers/soulful"
+			]
+		},
+		"bw_vv:sticker.rainbow": {
+			"textures": [
+				"textures/bw/vv/items/stickers/rainbow"
+			]
+		},
+		"bw_vv:redstone_helmet": {
+			"textures": [
+				"textures/bw/vv/items/stickers/creeper"
+			]
+		},
+		"bw_vv:redstone_compressor": {
+			"textures": [
+				"textures/bw/vv/items/redstone_compressor"
+			]
+		},
+		"bw_vv:redstone_pulser": {
+			"textures": [
+				"textures/bw/vv/items/redstone_pulser"
+			]
+		},
+		"bw_vv:blueprints": {
+			"textures": [
+				"textures/bw/vv/items/blueprints"
+			]
+		},
+		"bw_vv:propeller": {
+			"textures": [
+				"textures/bw/vv/items/propeller"
+			]
+		},
+		"bw_vv:mechanical_heart": {
+			"textures": [
+				"textures/bw/vv/items/mechanical_heart"
+			]
+		},
+		"bw_vv:tesla_helmet_upgrade_smithing_template":{
+			"textures": [
+				"textures/bw/vv/items/tesla_helmet_upgrade"
+			]
+		}
+	},
+	"resource_pack_name": "Vanilla Vehicles Lite",
+	"texture_name": "atlas.items"
+}

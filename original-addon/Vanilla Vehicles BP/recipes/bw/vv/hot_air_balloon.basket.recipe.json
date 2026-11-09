@@ -1,0 +1,42 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:hot_air_balloon_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "F#F",
+            "L L",
+            "LLL"
+        ],
+        "key": {
+            "L": {
+                "item": "minecraft:bamboo"
+            },
+            "#": {
+                "item": "minecraft:iron_ingot"
+            },
+            "F": {
+                "item": "minecraft:lead"
+            }
+        },
+        "unlock": [
+            {
+              "item": "minecraft:iron_ingot"
+            },
+            {
+                "item": "minecraft:bamboo"
+            },
+            {
+                "item": "minecraft:lead"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:hot_air_balloon.basket",
+            "count": 1
+        }
+    }
+}

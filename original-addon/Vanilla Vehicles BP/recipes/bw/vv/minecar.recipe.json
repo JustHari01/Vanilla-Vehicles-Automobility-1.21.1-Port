@@ -1,0 +1,60 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:minecar_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "# G",
+            "FMT",
+            "i i"
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:planks"
+            },
+            "G": {
+                "item": "minecraft:glass_pane"
+            },
+            "F": {
+                "item": "minecraft:furnace"
+            },
+            "M": {
+                "item": "minecraft:minecart"
+            },
+            "T": {
+                "item": "minecraft:torch"
+            },
+            "i": {
+                "item": "minecraft:iron_ingot"
+            }
+        },
+        "unlock": [
+            {
+              "item": "minecraft:planks"
+            },
+            {
+                "item": "minecraft:glass_pane"
+            },
+            {
+                "item": "minecraft:furnace"
+            },
+            {
+                "item": "minecraft:minecart"
+            },
+            {
+                "item": "minecraft:torch"
+            },
+            {
+                "item": "minecraft:iron_ingot"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:minecar",
+            "count": 1
+        }
+    }
+}

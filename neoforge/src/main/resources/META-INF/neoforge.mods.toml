@@ -1,0 +1,61 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT for Automobility; Blockworks assets by permission, see ASSET-RIGHTS.md"
+
+[[mods]]
+modId="automobility"
+version="${version}"
+displayName="Automobility"
+logoFile="automobility.png"
+authors="FoundationGames" #optional
+description='''
+Vehicles and whatnot
+'''
+
+[[mods]]
+modId="vanilla_vehicles"
+version="0.1.0-localtest"
+displayName="Vanilla Vehicles for Automobility - Local Test"
+authors="Blockworks (original addon), JustHari01 (Java port, AI assisted)"
+description='''
+Local development port of the user-provided Vanilla Vehicles addon.
+Eight vehicle types with distinct controls. This build is still under testing.
+Original addon assets remain owned by Blockworks; they are not relicensed under MIT.
+'''
+
+[[dependencies.vanilla_vehicles]]
+modId="automobility"
+type="required"
+versionRange="[0.5,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.vanilla_vehicles]]
+modId="geckolib"
+type="required"
+versionRange="[4.9.3,5)"
+ordering="AFTER"
+side="BOTH"
+
+[[mixins]]
+config = "automobility.mixins.json"
+
+[[mixins]]
+config = "automobility_neoforge.mixins.json"
+
+[[accessTransformers]]
+file="META-INF/accesstransformer.cfg"
+
+[[dependencies.automobility]]
+modId="neoforge"
+type="required"
+versionRange="[21,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.automobility]]
+modId="minecraft"
+type="required"
+versionRange="[1.21,1.21.1]"
+ordering="NONE"
+side="BOTH"

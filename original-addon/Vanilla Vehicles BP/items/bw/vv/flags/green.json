@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:item": {
+		"description": {
+			"identifier": "bw_vv:flag.green",
+			"menu_category": {
+        		"category": "items"
+      		}		
+		},
+		"components": {
+            "minecraft:icon": {
+                "textures": {"default":  "bw_vv:flag.green"}
+            },
+			"minecraft:block_placer": {
+				"block": "bw_vv:flag.green",
+				"replace_block_item": true
+			}
+		}
+	}
+}

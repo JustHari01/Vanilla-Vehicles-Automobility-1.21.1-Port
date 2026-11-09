@@ -1,0 +1,17 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+"animation.bw_vv.redstone_projectile_trail": {
+			"loop": false,
+			"animation_length": 10,
+			"particle_effects": {
+				"0.0":
+				[
+					{
+						"effect": "trail_effect"
+					}
+				]
+			}
+		}
+    }
+}

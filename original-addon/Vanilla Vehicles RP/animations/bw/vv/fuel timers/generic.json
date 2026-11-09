@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.bw_vv.generic_fuel_timer": {
+			"loop": false,
+			"animation_length": 10
+	},
+	"animation.bw_vv.minecar_fuel_timer": {
+		"loop": false,
+		"animation_length": 11
+	},
+	"animation.bw_vv.logcar_fuel_timer": {
+		"loop": false,
+		"animation_length": 10
+	},
+	"animation.bw_vv.plane_fuel_timer": {
+		"loop": false,
+		"animation_length": 16
+	},
+	"animation.bw_vv.mobtruck_fuel_timer": {
+		"loop": false,
+		"animation_length": 8.5
+	},
+	"animation.bw_vv.generic_fuel_timer2": {
+		"loop": false,
+		"animation_length": 0.12
+	},
+	"animation.bw_vv.hot_air_balloon_inflate_timer":{
+		"loop": false,
+		"animation_length": 10
+	}
+  }
+}

@@ -1,0 +1,198 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.mech_weapons": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"shoot": "query.property('bw_vv:weapons') == 'active' && q.has_player_rider"
+						}
+					],
+					"on_entry": [
+						"@s event:untrigger_weapon"
+					]
+				},
+				"untrigger": {
+					"transitions": [
+						{
+							"shoot": "query.property('bw_vv:weapons') == 'active'"
+						}
+					],
+					"on_entry": [
+						"@s event:untrigger_weapon"
+					]
+				},
+				"shoot": {
+					"animations": [
+						"weapons_timer"
+					],
+					"transitions": [
+						{
+							"cooldown": "q.all_animations_finished"
+						}
+					],
+					"on_entry": [
+						"@s event:weapons_cooldown"
+					]
+				},
+				"cooldown": {
+					"animations": [
+						"weapons_cooldown_timer"
+					],
+					"transitions": [
+						{
+							"untrigger": "q.property('bw_vv:weapons_cooldown') == 0"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.bw_vv.mech_player_anim": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"walk": "query.ground_speed > 0.2 && query.is_on_ground"
+						},
+						{
+							"jump": "!query.is_on_ground && (query.vertical_speed > 0.1 || query.vertical_speed < -6)"
+						}
+					],
+					"on_entry": [
+						"@s event:player_anim_neutral"
+					]
+				},
+				"walk": {
+					"animations": [
+						"player_anim_timer",
+						"player_anim_wasd_updater"
+					],
+					"transitions": [
+						{
+							"default": "query.ground_speed < 0.2 && query.any_animation_finished"
+						},
+						{
+							"jump": "!query.is_on_ground && (query.vertical_speed > 0.1 || query.vertical_speed < -6)"
+						}
+					],
+					"on_entry": [
+						"@s event:player_anim_forward"
+					]
+				},
+				"jump": {
+					"transitions": [
+						{
+							"default": "query.ground_speed < 0.3 && query.is_on_ground"
+						},
+						{
+							"walk": "query.ground_speed > 0.3 && query.is_on_ground"
+						}
+					],
+					"on_entry": [
+						"@s event:player_anim_jump"
+					]
+				}
+			}
+		},
+		"controller.animation.bw_vv.mech_player_anim_wasd": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"backward": "query.property('bw_vv:wasd') == 's'"
+						},
+						{
+							"forward": "query.property('bw_vv:wasd') == 'w'"
+						},
+						{
+							"left": "query.property('bw_vv:wasd') == 'd'"
+						},
+						{
+							"right": "query.property('bw_vv:wasd') == 'a'"
+						}
+					],
+					"animations": [
+						"player_anim_timer"
+					]
+				},
+				"forward": {
+					"animations": [
+						"player_anim_timer"
+					],
+					"transitions": [
+						{
+							"backward": "query.property('bw_vv:wasd') == 's'&& query.any_animation_finished"
+						},
+						{
+							"left": "query.property('bw_vv:wasd') == 'd'&& query.any_animation_finished"
+						},
+						{
+							"right": "query.property('bw_vv:wasd') == 'a' && query.any_animation_finished"
+						}
+					],
+					"on_entry": [
+						"@s event:player_anim_forward"
+					]
+				},
+				"backward": {
+					"animations": [
+						"player_anim_timer"
+					],
+					"transitions": [
+						{
+							"forward": "query.property('bw_vv:wasd') == 'w'&& query.any_animation_finished"
+						},
+						{
+							"left": "query.property('bw_vv:wasd') == 'd'&& query.any_animation_finished"
+						},
+						{
+							"right": "query.property('bw_vv:wasd') == 'a'&& query.any_animation_finished"
+						}
+					],
+					"on_entry": [
+						"@s event:player_anim_backward"
+					]
+				},
+				"left": {
+					"transitions": [
+						{
+							"backward": "query.property('bw_vv:wasd') == 's'&& query.any_animation_finished"
+						},
+						{
+							"forward": "query.property('bw_vv:wasd') == 'w'&& query.any_animation_finished"
+						},
+						{
+							"right": "query.property('bw_vv:wasd') == 'a'&& query.any_animation_finished"
+						}
+					],
+					"animations": [
+						"player_anim_timer"
+					],
+					"on_entry": [
+						"@s event:player_anim_left"
+					]
+				},
+				"right": {
+					"animations": [
+						"player_anim_timer"
+					],
+					"transitions": [
+						{
+							"backward": "query.property('bw_vv:wasd') == 's' && query.any_animation_finished"
+						},
+						{
+							"forward": "query.property('bw_vv:wasd') == 'w' && query.any_animation_finished"
+						},
+						{
+							"left": "query.property('bw_vv:wasd') == 'd' && query.any_animation_finished"
+						}
+					],
+					"on_entry": [
+						"@s event:player_anim_right"
+					]
+				}
+			}
+		}
+	}
+}

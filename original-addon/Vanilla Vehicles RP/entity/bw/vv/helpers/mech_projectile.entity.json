@@ -1,0 +1,33 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "bw_vv:mech_projectile",
+			"materials": {
+				"default": "entity_beam_additive"
+			},
+			"textures": {
+				"default": "textures/bw/vv/helpers/mech_projectile"
+			},
+			"animations": {
+				"basic": "animation.bw_vv.redstone_projectile_trail"
+			},
+			"scripts": {
+				"animate": [
+					"basic"
+				]
+			},
+			"geometry": {
+				"default": "geometry.bw_vv.mech_projectile"
+			},
+			"particle_effects": {
+				"trail_effect":"bw_vv:redstone_trail_2.mech"
+			},
+			"render_controllers": ["controller.render.bw_vv_props"],
+			"spawn_egg": {
+				"base_color": "#7d4423",
+				"overlay_color": "#2916a6"
+			}
+		}
+	}
+}

@@ -1,0 +1,48 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.general.fuel_indicator.horizontal": {
+			"loop": true,
+			"bones": {
+				"fuel_indicator": {
+					"scale": [
+						"v.fuel/10",
+						1,
+						1
+					]
+				}
+			}
+		},
+	"animation.bw_vv.mech_boost_indicator": {
+		"loop": true,
+			"bones": {
+				"boost_indicator": {
+					"scale": [
+						"1-v.boost_cooldown_current/v.boost_cooldown",
+						1,
+						1
+					]
+				},
+				"charge_indicator": {
+					"scale": [
+						1,
+						"1 - v.charge_cooldown_current/v.charge_cooldown",
+						1
+					]
+				}
+			}
+		},
+		"animation.bw_vv.general.fuel_indicator.vertical": {
+			"loop": true,
+			"bones": {
+				"fuel_indicator": {
+					"scale": [
+						1,
+						"v.fuel/10",
+						1
+					]
+				}
+			}
+		}
+	}
+}

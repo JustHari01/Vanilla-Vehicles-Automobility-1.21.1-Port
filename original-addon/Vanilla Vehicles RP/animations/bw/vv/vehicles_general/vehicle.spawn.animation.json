@@ -1,0 +1,18 @@
+{
+	"format_version": "1.21.120",
+	"animations": {
+		"animation.bw_vv.vehicle_spawn": {
+			"animation_length": 0.6,
+			"loop": false,
+			"bones": {
+				"body": {
+					"position": {
+						"0.0": [0, "-math.sin(q.anim_time*1700+200)*4", 0],
+						"0.2": [0, "-math.sin(q.anim_time*1300+200)*0.3", 0],
+						"0.6": [0, 0, 0]
+					}
+				}
+			}
+		}
+	}
+}

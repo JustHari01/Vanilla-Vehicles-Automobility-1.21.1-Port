@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "tesla_helmet",
+		"metalness_emissive_roughness": "tesla_helmet_mer"
+	}
+}

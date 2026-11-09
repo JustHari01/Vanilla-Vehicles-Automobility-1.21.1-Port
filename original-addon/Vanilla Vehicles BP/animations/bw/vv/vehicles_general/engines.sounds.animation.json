@@ -1,0 +1,98 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.bw_vv.sound_engine_standby_minecar": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.minecar.engine_standby @a ~ ~ ~ 0.4 0.7",
+        "1.0": "/playsound bw_vv.vehicle.minecar.engine_standby @a ~ ~ ~ 0.4 0.7"
+      },
+      "animation_length": 2.0,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine_run_minecar": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.minecar.engine @a ~ ~ ~ 0.4 0.8",
+        "0.37": "/playsound bw_vv.vehicle.minecar.engine @a ~ ~ ~ 0.4 0.8"
+      },
+      "animation_length": 0.74,
+			"loop": true
+    },
+    "animation.bw_vv.sound_steamboat_engine_standby": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.steamboat.engine @a ~ ~ ~ 0.8 0.7"
+      },
+      "animation_length": 1.2,
+			"loop": true
+    },
+    "animation.bw_vv.sound_steamboat_engine": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.steamboat.engine @a ~ ~ ~ 1.4 1.0"
+      },
+      "animation_length": 0.94,
+			"loop": true
+    },
+    "animation.bw_vv.engine.logcar": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.logcar.engine @a ~ ~ ~ 1 1.4"
+      },
+      "animation_length": 0.26,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine2": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine2 @a ~ ~ ~ 0.7 0.8"
+      },
+      "animation_length": 0.2,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine3": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine3 @a ~ ~ ~ 0.7 0.8"
+      },
+      "animation_length": 0.2,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine4": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine4 @a ~ ~ ~ 0.9 0.8"
+      },
+      "animation_length": 0.4,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine5": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine5 @a ~ ~ ~ 0.9 0.8"
+      },
+      "animation_length": 0.2,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine6": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine6 @a ~ ~ ~ 0.9 0.8"
+      },
+      "animation_length": 0.1,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine7": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine7 @a ~ ~ ~ 0.9 0.8"
+      },
+      "animation_length": 0.1,
+			"loop": true
+    },
+    "animation.bw_vv.sound_engine8": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.engine8 @a ~ ~ ~ 0.9 1.1"
+      },
+      "animation_length": 0.1,
+			"loop": true
+    },
+    "animation.bw_vv.sound_boost": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.boost @a ~ ~ ~ 0.6 1.1"
+      },
+      "animation_length": 0.12,
+			"loop": true
+    }
+  }
+}

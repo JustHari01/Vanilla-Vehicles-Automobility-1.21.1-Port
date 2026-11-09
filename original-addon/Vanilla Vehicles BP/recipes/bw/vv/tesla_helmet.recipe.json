@@ -1,0 +1,18 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_smithing_transform": {
+        "description": {
+            "identifier": "bw_bp:tesla_helmet_upgrade"
+        },
+     "tags": ["smithing_table"],
+     "template": "bw_vv:tesla_helmet_upgrade_smithing_template",
+     "unlock":[
+        {
+            "item": "minecraft:netherite_helmet"
+        }
+     ],
+     "base": "minecraft:netherite_helmet",
+        "addition": "minecraft:netherite_ingot",
+        "result": "bw_vv:tesla_helmet"
+    }
+}

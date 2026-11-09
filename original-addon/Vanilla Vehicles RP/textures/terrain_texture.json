@@ -1,0 +1,59 @@
+{
+	"resource_pack_name": "bw_vv",
+	"texture_data": {
+		"bw_vv:wind_vane": {
+			"textures": "textures/bw/vv/blocks/wind_vane.png"
+		},
+		"bw_vv:flag_white": {
+			"textures": "textures/bw/vv/blocks/flags/white.png"
+		},
+		"bw_vv:flag.pole": {
+			"textures": "textures/bw/vv/blocks/flag.pole.png"
+		},
+		"bw_vv:flag_orange": {
+			"textures": "textures/bw/vv/blocks/flags/orange.png"
+		},
+		"bw_vv:flag_magenta": {
+			"textures": "textures/bw/vv/blocks/flags/magenta.png"
+		},
+		"bw_vv:flag_light_blue": {
+			"textures": "textures/bw/vv/blocks/flags/light_blue.png"
+		},
+		"bw_vv:flag_yellow": {
+			"textures": "textures/bw/vv/blocks/flags/yellow.png"
+		},
+		"bw_vv:flag_lime": {
+			"textures": "textures/bw/vv/blocks/flags/lime.png"
+		},
+		"bw_vv:flag_pink": {
+			"textures": "textures/bw/vv/blocks/flags/pink.png"
+		},
+		"bw_vv:flag_gray": {
+			"textures": "textures/bw/vv/blocks/flags/gray.png"
+		},
+		"bw_vv:flag_light_gray": {
+			"textures": "textures/bw/vv/blocks/flags/light_gray.png"
+		},
+		"bw_vv:flag_cyan": {
+			"textures": "textures/bw/vv/blocks/flags/cyan.png"
+		},
+		"bw_vv:flag_purple": {
+			"textures": "textures/bw/vv/blocks/flags/purple.png"
+		},
+		"bw_vv:flag_blue": {
+			"textures": "textures/bw/vv/blocks/flags/blue.png"
+		},
+		"bw_vv:flag_brown": {
+			"textures": "textures/bw/vv/blocks/flags/brown.png"
+		},
+		"bw_vv:flag_green": {
+			"textures": "textures/bw/vv/blocks/flags/green.png"
+		},
+		"bw_vv:flag_red": {
+			"textures": "textures/bw/vv/blocks/flags/red.png"
+		},
+		"bw_vv:flag_black": {
+			"textures": "textures/bw/vv/blocks/flags/black.png"
+		}
+	}
+}

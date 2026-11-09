@@ -1,0 +1,513 @@
+﻿pack.name=Vanilla Vehicles Add-On
+pack.description=Adds 8 unique vehicles to your Minecraft world! Explore the ground, sea & skies from new heights! Keeps the original style of the game, perfect for survival.
+
+##WELCOME MESSAGE
+bw_vv.welcom_screen.text1=Hi,
+bw_vv.welcom_screen.text2=§aVanilla Vehicles§r Add-On is installed!
+bw_vv.welcom_screen.text3=by @Blockworks
+bw_vv.welcom_screen.text4=Open the §oGuide Book§r to read about the new vehicles you can craft, customise and drive!
+bw_vv.welcom_screen.text5=This Add-On is survival friendly, feel free to explore your world in fun new ways!
+
+##ITEM GROUPS IN CREATIVE INVENTORY
+bw_vv:vehicles_group=Vehicles
+bw_vv:stickers_group=Stickers
+bw_vv:spikers_group=Spikers
+bw_vv:smoke_bombs_group=Smoke Bombs
+bw_vv:envelopes_group=Hot Air Balloon Envelopes
+bw_vv:flags_group=Decorative Flags
+##
+##SPAWN EGGS
+##
+item.spawn_egg.entity.bw_vv:minecar=Minecar
+item.spawn_egg.entity.bw_vv:mechanic.name=Mechanic Spawn Egg
+item.spawn_egg.entity.bw_vv:mobtruck=Mobtruck
+item.spawn_egg.entity.bw_vv:mech=Mech
+item.spawn_egg.entity.bw_vv:plane=Plane
+item.spawn_egg.entity.bw_vv:prismer=Prismer
+item.spawn_egg.entity.bw_vv:logcar=Oak Logcar
+item.spawn_egg.entity.bw_vv:smoke_bomb=Spawn Smoke Bomb
+##
+item.spawn_egg.entity.bw_vv::hot_air_balloon=Hot Air Balloon Basket
+bw_vv_vehicle_fuel_redstone=
+bw_vv_vehicle_fuel_coal=
+bw_vv_mech_projectile_cooldown=Projectile:
+bw_vv_vehicle_boost_cooldown=Boost:
+##
+##
+item.spawn_egg.entity.bw_vv:windmill=Windmill
+item.spawn_egg.entity.bw_vv:spiker=Spiker (Structure)
+item.spawn_egg.entity.helpers:spiker=Spiker
+item.spawn_egg.entity.utilities:moxel=Moxel
+##
+##
+item.bw_vv:compressed_redstone=Compressed Redstone
+item.bw_vv:redstone_compressor=Redstone Compressor
+item.bw_vv:blueprints=Blueprints
+item.bw_vv:tesla_helmet=Tesla Helmet
+item.bw_vv:propeller=Propeller
+##
+item.bw_vv:sticker.creeper=Creeper Sticker
+item.bw_vv:sticker.castle=Castle Sticker
+item.bw_vv:sticker.skeleton=Skeleton Sticker
+item.bw_vv:sticker.hearts=Hearts Sticker
+item.bw_vv:sticker.stripes=Stripes Sticker
+item.bw_vv:sticker.enderman=Ender Sticker
+item.bw_vv:sticker.diamonds=Diamonds Sticker
+item.bw_vv:sticker.icy=Icy Sticker
+item.bw_vv:sticker.rainbow=Rainbow Sticker
+item.bw_vv:sticker.bloom=Bloom Sticker
+
+##
+item.bw_vv:wind_vane=Wind Vane
+item.bw_vv:mech=Mech
+item.bw_vv:tesla_helmet_upgrade_smithing_template=§eTesla Helmet Upgrade
+item.bw_vv:mechanical_heart=§eMechanical Heart
+
+
+##HOT AIR BALLOON ENVELOPES
+item.bw_vv:hot_air_balloon.envelope.blank=Blank Hot Air Balloon Envelope
+item.bw_vv:hot_air_balloon.envelope.striped=Striped Hot Air Balloon Envelope
+item.bw_vv:hot_air_balloon.envelope.creeper=Creeper Hot Air Balloon Envelope
+item.bw_vv:plane=Plane
+item.bw_vv:plane.oak=Oak Plane
+item.bw_vv:plane.spruce=Spruce Plane
+item.bw_vv:plane.birch=Birch Plane
+item.bw_vv:plane.jungle=Jungle Plane
+item.bw_vv:plane.acacia=Acacia Plane
+item.bw_vv:plane.dark_oak=Dark Oak Plane
+item.bw_vv:plane.mangrove=Mangrove Plane
+item.bw_vv:plane.cherry=Cherry Plane
+item.bw_vv:plane.bamboo=Bamboo Plane
+item.bw_vv:plane.crimson=Crimson Plane
+item.bw_vv:plane.warped=Warped Plane
+item.bw_vv:plane.pale_oak=Pale Oak Plane
+item.bw_vv:minecar=Minecar
+item.bw_vv:mobtruck=Mobtruck
+item.bw_vv:logcar=Logcar
+item.bw_vv:logcar.oak=Oak Logcar
+item.bw_vv:logcar.spruce=Spruce Logcar
+item.bw_vv:logcar.birch=Birch Logcar
+item.bw_vv:logcar.jungle=Jungle Logcar
+item.bw_vv:logcar.acacia=Acacia Logcar
+item.bw_vv:logcar.dark_oak=Dark Oak Logcar
+item.bw_vv:logcar.mangrove=Mangrove Logcar
+item.bw_vv:logcar.cherry=Cherry Logcar
+item.bw_vv:logcar.bamboo=Bamboo Logcar
+item.bw_vv:logcar.crimson=Crimson Logcar
+item.bw_vv:logcar.warped=Warped Logcar
+item.bw_vv:logcar.pale_oak=Pale Oak Logcar
+item.bw_vv:redstone_pulser=Redstone Pulser
+item.bw_vv:guide_book=Vanilla Vehicles Guide Book
+
+item.bw_vv:steamboat=Steamboat
+item.bw_vv:prismer=Prismer
+item.bw_vv:hot_air_balloon.basket=Hot Air Balloon Basket
+
+item.bw_vv:flag.pole=Flag Pole
+item.bw_vv:flag.white=White Flag
+item.bw_vv:flag.red=Red Flag
+item.bw_vv:flag.blue=Blue Flag
+item.bw_vv:flag.green=Green Flag
+item.bw_vv:flag.yellow=Yellow Flag
+item.bw_vv:flag.purple=Purple Flag
+item.bw_vv:flag.orange=Orange Flag
+item.bw_vv:flag.black=Black Flag
+item.bw_vv:flag.light_blue=Light Blue Flag
+item.bw_vv:flag.light_gray=Light Gray Flag
+item.bw_vv:flag.gray=Gray Flag
+item.bw_vv:flag.magenta=Magenta Flag
+item.bw_vv:flag.lime=Lime Flag
+item.bw_vv:flag.pink=Pink Flag
+item.bw_vv:flag.brown=Brown Flag
+item.bw_vv:flag.cyan=Cyan Flag
+##
+##
+item.bw_vv:chain_pile_big=Big Chain Pile
+item.bw_vv:heart_of_steel=Heart of Steel
+
+##EXIT HINTS
+action.hint.exit.bw_vv:steamboat=Sneak or jump to exit the Steamboat.
+action.hint.exit.bw_vv:minecar=Sneak or jump to exit the Minecar.
+action.hint.exit.bw_vv:mobtruck=Sneak to exit the Mobtruck.
+action.hint.exit.bw_vv:plane=Sneak to exit the Plane.
+action.hint.exit.bw_vv:logcar=Sneak or jump to exit the Logcar.
+action.hint.exit.bw_vv:mech=Sneak to exit the Mech.
+action.hint.exit.bw_vv:prismer=Sneak or jump to exit the Prismer.
+action.hint.exit.bw_vv:hot_air_balloon=Sneak exit the Hot Air Balloon.
+
+##INTERACT TEXTS
+## generic
+bw_vv.action.interact.generic.lights.off=Turn off Lights
+bw_vv.action.interact.generic.lights.on=Turn on Lights
+bw_vv.action.interact.generic.fuel.add=Add Fuel
+bw_vv.action.interact.generic.vehicle.enter=Enter
+bw_vv.action.interact.generic.spray=Dye
+bw_vv.action.interact.vehicle.add_chest=Attach Chest
+bw_vv.action.interact.vehicle.add_bundle=Attach Bundle
+bw_vv.action.interact.vehicle.remove_sticker=Remove Sticker
+
+## smoke bombs
+bw_vv.action.interact.generic.smoke_bomb.in_use=Launching...
+bw_vv.action.interact.generic.smoke_bomb.black=Launch Black Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.white=Launch White Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.red=Launch Red Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.green=Launch Green Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.blue=Launch Blue Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.yellow=Launch Yellow Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.purple=Launch Purple Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.cyan=Launch Cyan Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.orange=Launch Orange Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.pink=Launch Pink Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.lime=Launch Lime Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.gray=Launch Gray Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.light_gray=Launch Light Gray Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.magenta=Launch Magenta Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.brown=Launch Brown Smoke Bomb
+bw_vv.action.interact.generic.smoke_bomb.light_blue=Launch Light Blue Smoke Bomb
+
+## stickers
+bw_vv.action.interact.generic.sticker.creeper=Apply Creeper Sticker
+bw_vv.action.interact.generic.sticker.castle=Apply Castle Sticker
+bw_vv.action.interact.generic.sticker.skeleton=Apply Skeleton Sticker
+bw_vv.action.interact.generic.sticker.hearts=Apply Hearts Sticker
+bw_vv.action.interact.generic.sticker.stripes=Apply Stripes Sticker
+bw_vv.action.interact.generic.sticker.enderman=Apply Ender
+bw_vv.action.interact.generic.sticker.diamonds=Apply Diamonds Sticker
+bw_vv.action.interact.generic.sticker.icy=Apply Icy Sticker
+bw_vv.action.interact.generic.sticker.rainbow=Apply Rainbow Sticker
+bw_vv.action.interact.generic.sticker.bloom=Apply Bloom Sticker
+bw_vv.action.interact.generic.sticker=Apply Sticker
+
+## Warnings
+bw_vv.smoke_bomb.warning=Smoke Bomb is in use!
+bw_vv.fuel_interact.warning=Interact again to add fuel.
+bw_vv.bundle.warning=Use a non-dyed Bundle.
+bw_vv.sticker.warning=Use Shears to remove previous Sticker before applying another.
+
+##Mobtruck specific
+bw_vv.action.interact.mobtruck.trunk.close=Close Trunk
+bw_vv.action.interact.mobtruck.trunk.release=Release Mob
+bw_vv.action.interact.mobtruck.trunk.open=Open Trunk
+
+## specific
+bw_vv.action.interact.steamboat.bell=Attach Bell
+bw_vv.action.interact.hot_air_balloon.remove_envelope=Remove Envelope
+bw_vv.action.interact.hot_air_balloon.add_envelope=Add Envelope
+bw_vv.action.interact.hot_air_balloon.ignite=Ignite
+bw_vv.action.interact.hot_air_balloon.fly=Fly
+
+##GUIDE BOOK
+bw_vv.guide_book.main_page.title=Vanilla Vehicles - Guide Book
+bw_vv.guide_book.main_page.body=Welcome to §lVanilla Vehicles§f§r Add-On!
+bw_vv.guide_book.main_page.label=Adds 8 vehicle types to your world, each with unique functions.
+bw_vv.guide_book.main_page.label2=Detailed models, textures & animations make driving fun and immersive!
+bw_vv.guide_book.main_page.label3=You can always craft another Guide Book using a §eBook§f and 1x§eCompressed Redstone§f.
+bw_vv.guide_book.main_page.about=Add-On Version
+bw_vv.guide_book.button.settings=Settings
+bw_vv.guide_book.button.support=Support
+bw_vv.guide_book.button.vehicles=Vehicles
+bw_vv.guide_book.button.utilities=Utilities
+bw_vv.guide_book.button.systems=Systems
+bw_vv.guide_book.button.items=Other Items
+bw_vv.guide_book.button.mobs=Mobs
+
+bw_vv.guide_book.button.back=Back
+
+bw_vv.guide_book.vehicle_page.features=§lFEATURES:
+bw_vv.guide_book.vehicle_page.crafting=§lCRAFTING:
+bw_vv.guide_book.vehicle_page.fuel=§lFUEL:
+
+bw_vv.guide_book.vehicle_page.fuel.coal_based=This vehicle is §eCoal§f-based. Interact with the vehicle while holding any item that you can use as fuel in a §eFurnace §f(including §eCharcoal, Planks§f, etc.) to add fuel.
+bw_vv.guide_book.vehicle_page.fuel.redstone_based=This vehicle is §eRedstone§f-based. Interact with the vehicle while holding §eCompressed Redstone§f.
+bw_vv.guide_book.vehicle_page.fuel.flint_and_steel=After adding a §eHot Air Balloon Envelope, §finteract with the vehicle while holding §eFlint and Steel§f to be able to fly.
+bw_vv.guide_book.vehicle_page.fuel.conduit=Interact with a §eConduit§f to wake up the dormant §ePrismer§f.
+bw_vv.guide_book.vehicle_page.fuel.no_fuel=Vehicle does not require any fuel.
+
+bw_vv.guide_book.vehicle_page.customisable.feature=Add §eStickers§f and use §eDyes§f to customize your vehicle!
+bw_vv.guide_book.vehicle_page.customisable_dyes.feature=Use §eDyes§f to change the color of your vehicle!
+bw_vv.guide_book.vehicle_page.smoke_bomb.feature=Use §eSmoke Bombs§f while riding to create colorful smoke effects!
+bw_vv.guide_book.vehicle_page.boost.feature=Press §e:_input_key.jump:§f while riding to temporarily boost your speed! You need to be wearing a §eTesla Helmet§f to use this feature.
+bw_vv.guide_book.vehicle_page.flags.feature=Use §eDecorative Flags§f to show off your style while riding! Attach them by interacting with the vehicle while holding a flag.
+bw_vv.guide_book.vehicle_page.silent.feature=§eSilent Mode§f decreases the volume of the engine running sound, and removes the idle sound completely! Activate by interacting with the vehicle while holding any §eWool Block§f.
+bw_vv.guide_book.vehicle_page.chestable.feature=Interact with the vehicle while holding a §eChest§f to attach it.
+bw_vv.guide_book.vehicle_page.bundleable.feature=Interact with the vehicle while holding a §eBundle§f to attach it.
+
+bw_vv.guide_book.vehicle_page.break.pickaxe=In survival, it can be broken using any §ePickaxe§f.
+bw_vv.guide_book.vehicle_page.break.axe=In survival, it can be broken using any §eAxe§f.
+
+##Vehicles Page
+bw_vv.guide_book.vehicles_page.title=Vehicles
+bw_vv.guide_book.vehicles_page.description=For land, sky & sea, each vehicle has unique behaviors for different needs!
+bw_vv.guide_book.button.minecar=Minecar
+bw_vv.guide_book.button.mobtruck=Mobtruck
+bw_vv.guide_book.button.logcar=Logcar
+bw_vv.guide_book.button.plane=Plane
+bw_vv.guide_book.button.hot_air_balloon=Hot Air Balloon
+bw_vv.guide_book.button.steamboat=Steamboat
+bw_vv.guide_book.button.prismer=Prismer
+bw_vv.guide_book.button.mech=Mech
+
+bw_vv.guide_book.button.boosting=Vehicle Boosting
+bw_vv.guide_book.button.customisation=Vehicle Customisation
+bw_vv.guide_book.button.wind=Wind System
+
+##Minecar Page
+bw_vv.guide_book.vehicle_page.minecar.title=Vehicles - Minecar
+bw_vv.guide_book.vehicle_page.minecar.description=The Minecar is the simplest and cutest vehicle of all! It has no special abilities, yet you can customise it with lots of stickers!
+bw_vv.guide_book.vehicle_page.minecar.crafting=Open a §eCrafting Table§f and combine §e1xMinecart§f, §e2xIron Ingots§f, §e1xFurnace§f, §e1xTorch§f, §e1xGlass Pane§f, and any §e1xPlanks§f block.
+
+##Mobtruck Page
+bw_vv.guide_book.vehicle_page.mobtruck.title=Vehicles - Mobtruck
+bw_vv.guide_book.vehicle_page.mobtruck.description=The Mobtruck is any farmer's dream! With a rustic-mechanical design, this vehicle can carry mobs around in its trunk!
+bw_vv.guide_book.vehicle_page.mobtruck.features=Interact with the §eTrunk §fat the back of the Mobtruck to open it. Nearby mobs will automatically join in! Interact with it §eagain§f to §eclose§f.
+bw_vv.guide_book.vehicle_page.mobtruck.crafting=Open a §eCrafting Table§f and combine §e1xFence Gate§f, §e1xFence§f, §e1xGlass Pane§f, §e2xMinecarts§f, §e1xTorch§f, §e1xRedstone Pulser§f, and §e2xIron Ingots§f.
+
+##Logcar Page
+bw_vv.guide_book.vehicle_page.logcar.title=Vehicles - Logcar
+bw_vv.guide_book.vehicle_page.logcar.description=The Logcar came from deep within the forest, and is here to help you carry your friends' backs! (literally).
+bw_vv.guide_book.vehicle_page.logcar.features=The Logcar can carry §e2 players§f at the same time!
+bw_vv.guide_book.vehicle_page.logcar.crafting=Open a §eCrafting Table§f and combine §e1xFurnace§f, §e1xTorch§f, §e2xIron Ingots§f, and §e3xPlanks§f.
+
+##Plane Page
+bw_vv.guide_book.vehicle_page.plane.title=Vehicles - Plane
+bw_vv.guide_book.vehicle_page.plane.description=The Plane is the cheapest alternative to the Elytra! Perfect for exploring large biomes and traveling long distances.
+bw_vv.guide_book.vehicle_page.plane.features=You can fly in any direction you look! Drive the Plane on a flat surface & §elook up§f to take off! To land, simply §elook down§f, and try to stick the landing.
+bw_vv.guide_book.vehicle_page.plane.features2=Careful! Crashing into blocks at high speeds will make the Plane §eexplode§f!.
+bw_vv.guide_book.vehicle_page.plane.features3=Perform a §eroll§f in the direction you are steering! (§eLeft/Right§f). While riding, hit the Plane.
+bw_vv.guide_book.vehicle_page.plane.crafting=Open a §eCrafting Table§f and combine §e2xWool§f, §e2xLogs§f, §e1xPropeller§f, and §e1xRedstone Pulser§f.
+
+##Hot Air Balloon Page
+bw_vv.guide_book.vehicle_page.hot_air_balloon.title=Vehicles - Hot Air Balloon
+bw_vv.guide_book.vehicle_page.hot_air_balloon.description=The Hot Air Balloon is the most relaxing way to explore your world from above!
+bw_vv.guide_book.vehicle_page.hot_air_balloon.features=Interact with the §eHot Air Balloon Basket§f with a §eHot Air Balloon Envelope§f. Then, interact again with §eFlint and Steel§f to ignite and take off!
+bw_vv.guide_book.vehicle_page.hot_air_balloon.features2=Press §e:_input_key.jump:§f to rise higher, release to descend.
+bw_vv.guide_book.vehicle_page.hot_air_balloon.features3=Use §eShears§f to remove the §eHot Air Balloon Envelope§f.
+bw_vv.guide_book.vehicle_page.hot_air_balloon.crafting=Open a §eCrafting Table§f and combine §e2xLeads§f, §e2xIron Ingots§f, and §e5xBamboo§f.
+
+##Steamboat Page
+bw_vv.guide_book.vehicle_page.steamboat.title=Vehicles - Steamboat
+bw_vv.guide_book.vehicle_page.steamboat.description=The Steamboat is perfect for a relaxing cruise along the river!
+bw_vv.guide_book.vehicle_page.steamboat.features=Drive the Steamboat like a regular boat!
+bw_vv.guide_book.vehicle_page.steamboat.features2=The Steamboat can carry §e3 players§f at the same time!
+bw_vv.guide_book.vehicle_page.steamboat.features3=Interact with the Steamboat while holding a §eBell§f to attach it. Then, hit the Bell to ring it!
+bw_vv.guide_book.vehicle_page.steamboat.crafting=Open a §eCrafting Table§f and combine §e1xFurnace§f, §e1xIron Block§f, §e1xWool§f, and §e4xPlanks§f.
+
+##Prismer Page
+bw_vv.guide_book.vehicle_page.prismer.title=Vehicles - Prismer
+bw_vv.guide_book.vehicle_page.prismer.description=The Prismer is a mysterious vehicle that was found deep underwater, near Temples.
+bw_vv.guide_book.vehicle_page.prismer.features=This hybrid between creature and machine will give you the ability to mine more quickly, see better & breathe underwater while riding it!
+bw_vv.guide_book.vehicle_page.prismer.crafting=It's the only vehicle in the Add-On that §ecan't§f be crafted! You can only find spawning naturally in oceans.
+
+##Mech Page
+bw_vv.guide_book.vehicle_page.mech.title=Vehicles - Mech
+bw_vv.guide_book.vehicle_page.mech.description=The Mech is a powerful, end-game machine that can destroy everything in its path!
+bw_vv.guide_book.vehicle_page.mech.features=You can §ePower Jump§f, similar to a §eHorse§f.
+bw_vv.guide_book.vehicle_page.mech.features2=While riding, hit to fire a §eRedstone Projectile§f that can destroy blocks and damage mobs! Has a §e3 second cooldown§f.
+bw_vv.guide_book.vehicle_page.mech.features3=Boost while §emid-air§f by pressing §e:_input_key.jump:§f(and wearing a §eTesla Helmet§f) to glide forward!
+
+bw_vv.guide_book.vehicle_page.mech.crafting=Open a §eCrafting Table§f and combine §e1xMechanical Heart§f, §e2xPistons§f, §e1xChest§f, §e2xLogs§f, §e1xIron Block§f, and §e3xPlanks§f.
+
+##Utilities Page
+bw_vv.guide_book.utilities_page.title=Utilities
+bw_vv.guide_book.utilities_page.description=These utilities will help you navigate more advanced systems and vehicle functions.
+bw_vv.guide_book.button.redstone_compressor=Redstone Compressor
+bw_vv.guide_book.button.wind_vane=Wind Vane
+bw_vv.guide_book.button.smoke_bombs=Smoke Bombs
+bw_vv.guide_book.button.tesla_helmet=Tesla Helmet
+
+##Support Page
+bw_vv.guide_book.support_page.title=Vanilla Vehicles - Support
+bw_vv.guide_book.support_page.description=Want to report a bug? Do you have feedback to improve our Add-On? Tell us directly!
+bw_vv.guide_book.support_page.email.title=§eEmail
+bw_vv.guide_book.support_page.email=§fsupport@vanillavehicles.com
+bw_vv.guide_book.support_page.discord.title=§eDiscord Community
+bw_vv.guide_book.support_page.discord=§fblockworks.uk/discord
+
+bw_vv.guide_book.support_page.instagram.title=§eStay Tuned!
+bw_vv.guide_book.support_page.instagram=§finstagram.com/vanillavehicles
+bw_vv.guide_book.support_page.x.title=§eFollow!
+bw_vv.guide_book.support_page.x=§fx.com/vanillavehicles
+bw_vv.guide_book.support_page.youtube.title=§eSubscribe!
+bw_vv.guide_book.support_page.youtube=§fyoutube.com/vanillavehicles
+
+##Redstone Compressor Page
+bw_vv.guide_book.utility_page.redstone_compressor.title=Utilities - Redstone Compressor
+bw_vv.guide_book.utility_page.redstone_compressor.description=The Redstone Compressor is the newest adition to your redstone repertoire!
+bw_vv.guide_book.utility_page.redstone_compressor.crafting=Open a §eCrafting Table§f and combine §e1xPiston§f & §e1xComparator§f.
+bw_vv.guide_book.utility_page.redstone_compressor.features=Interact with the Compressor while holding §eRedstone Dust§f, and it will be transformed into §eCompressed Redstone§f 50%% of the time (Each Redstone item produces betwen 0 and 1xCompressed Redstone). You can also §edrop Redstone Dust§f next to it, and they will automatically be picked up.
+
+##Wind Vane Page
+bw_vv.guide_book.utility_page.wind_vane.title=Utilities - Wind Vane
+bw_vv.guide_book.utility_page.wind_vane.description=The Wind Vane is a simple block that shows you the current wind direction!
+bw_vv.guide_book.utility_page.wind_vane.features=Place the Wind Vane down, and it will rotate to point in the direction of the wind, which affects the flight of the §eHot Air Balloon§f.
+bw_vv.guide_book.utility_page.wind_vane.features2=A §eRedstone Signal§f is emitted based on the wind direction.
+bw_vv.guide_book.utility_page.wind_vane.crafting=Open a §eCrafting Table§f and combine §e3xIron Ingots§f, §e1xFence§f, §e1xRedstone Torch§f & §e3xIron Nugget§f.
+
+##Smoke Bombs Page
+bw_vv.guide_book.utility_page.smoke_bombs.title=Utilities - Smoke Bombs
+bw_vv.guide_book.utility_page.smoke_bombs.description=Smoke Bombs are fun items that create colorful smoke effects when used!
+bw_vv.guide_book.utility_page.smoke_bombs.features=You can §eplace down§f a Smoke Bomb and it will create colorful smoke effects for §e8 seconds§f.
+bw_vv.guide_book.utility_page.smoke_bombs.features2=§eInteract§f with compatible §evehicles§f while holding a Smoke Bomb to leave a colorful smoke trail behind!
+bw_vv.guide_book.utility_page.smoke_bombs.crafting=Open a §eCrafting Table§f or §eInventory Crafting§f and combine §e1xPiston§f & §e1xRedstone Pulser§f.
+
+##Tesla Helmet Page
+bw_vv.guide_book.utility_page.tesla_helmet.title=Utilities - Tesla Helmet
+bw_vv.guide_book.utility_page.tesla_helmet.description=The Tesla Helmet is a high-tech piece of equipment that enhances your vehicle experience! Might have Mr. Tesla himself had something to do with it...?
+bw_vv.guide_book.utility_page.tesla_helmet.features=Wear the Tesla Helmet to enable §eVehicle Boosting§f! While riding a compatible vehicle, press §e:_input_key.jump:§f to temporarily boost your speed.
+bw_vv.guide_book.utility_page.tesla_helmet.crafting=Open a §eSmithing Table§f and use a §eTesla Helmet Upgrade§f item, with a §eNetherite Helmet§f, and a §eNetherite Ingot§f.
+
+##Systems Page
+
+bw_vv.guide_book.systems_page.title=Systems
+bw_vv.guide_book.systems_page.description=These systems will help you advance your vehicles further.
+
+##Vehicle Boosting Page
+bw_vv.guide_book.system_page.boosting.title=Systems - Vehicle Boosting
+bw_vv.guide_book.system_page.boosting.description=To use §eVehicle Boosting§f, you need to be wearing a §eTesla Helmet§f. While riding a compatible vehicle, press §e:_input_key.jump:§f to boost your speed for 5 seconds.
+bw_vv.guide_book.system_page.boosting.features=Be careful not to overuse it, as it consumes fuel §efaster§f!
+bw_vv.guide_book.system_page.boosting.features2=Wait a §ecooldown period§f of 7 seconds before boosting again.
+##Vehicle Customisation Page
+bw_vv.guide_book.system_page.customisation.title=Systems - Vehicle Customisation
+bw_vv.guide_book.system_page.customisation.description=You can customise some vehicles with §eStickers§f and §eDyes§f!
+bw_vv.guide_book.system_page.customisation.features.1=Apply §eStickers§f by interacting with your vehicle. Breaking the vehicle will also drop the sticker. You remove an applied Sticker using §eShears§f.
+bw_vv.guide_book.system_page.customisation.features.2=Some vehicles also support using §eDyes§f to change their color partially or completely! When broken in surivival mode, dyed vehicles will drop back the used dye.
+bw_vv.guide_book.system_page.customisation.features.3=Add a §eChest§f or a §eBundle§f to your vehicle by interacting while holding the item. This will allow you to carry extra items! Only undyed bundles can be used.
+bw_vv.guide_book.system_page.customisation.features.4=Interact with the vehicle while holding a §eSmoke Bomb§f to leave a colorful smoke trail behind as you ride!
+##Wind System Page
+bw_vv.guide_book.system_page.wind.title=Systems - Wind System
+bw_vv.guide_book.system_page.wind.description=You world now has §ewind§f! The direction changes every §e3 in-game days§f to one of the 4 cardinal directions, §eN§f, §eS§f, §eW§f & §eE§f.
+bw_vv.guide_book.system_page.wind.features=Use a §eWind Vane§f to check the current wind direction. It will point in the direction of the wind.
+bw_vv.guide_book.system_page.wind.features2=The §eHot Air Balloon§f is affected by the wind, so plan your routes accordingly!
+
+
+##Other Items Page
+bw_vv.guide_book.other_items_page.title=Other Items
+bw_vv.guide_book.other_items_page.description=These items will help you with crafting some vehicles. Learn how to obtain them here:
+
+bw_vv.guide_book.item_page.propeller.title=Propeller
+bw_vv.guide_book.item_page.propeller.description=A lightweight metal component used to craft various vehicles.
+
+bw_vv.guide_book.item_page.redstone_pulser.title=Redstone Pulser
+bw_vv.guide_book.item_page.redstone_pulser.description=A compact redstone device that sends a steady pulse, used in advanced machinery.
+
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.title=Blank Balloon Envelope
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.description=A simple balloon envelope made of stitched leather, used as a base for custom designs.
+
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.title=Creeper Balloon Envelope
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.description=A Creeper-patterned balloon envelope crafted from a Blank Envelope and a Creeper Sticker.
+
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.title=Striped Balloon Envelope
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.description=A striped balloon envelope crafted from a Blank Envelope and a Stripes Sticker.
+
+bw_vv.guide_book.item_page.mechanical_heart.title=Mechanical Heart
+bw_vv.guide_book.item_page.mechanical_heart.description=A powerful mechanical core used to animate and power advanced vehicles.
+
+bw_vv.guide_book.item_page.blueprints.title=Blueprints
+bw_vv.guide_book.item_page.blueprints.description=Essential schematics needed to craft high-tech items and vehicle components.
+
+bw_vv.guide_book.item_page.smoke_bomb.title=Smoke Bombs
+bw_vv.guide_book.item_page.smoke_bomb.description=Smoke Bombs create colorful smoke effects when used, perfect for signaling or creating visual effects.
+
+bw_vv.guide_book.item_page.stickers.title=Stickers
+bw_vv.guide_book.item_page.stickers.description=Decorative stickers that can be applied to vehicles for customization. Available in various designs!
+
+bw_vv.guide_book.item_page.flags.title=Decorative Flags
+bw_vv.guide_book.item_page.flags.description=Can be placed on the ground, rotates in the direction of the wind! Available in all 16 colors.
+bw_vv.guide_book.item_page.flags.crafting=To craft a §eFlag Pole§f, open a §eCrafting Table§f and combine §e3xSticks§f in a vertical line. Then, Craft any flag using a §eFlag Pole§f and §e1xWool Block§f, of any color.
+bw_vv.guide_book.button.flags=Decorative Flags
+
+bw_vv.guide_book.item_page.compressed_redstone.title=Compressed Redstone
+bw_vv.guide_book.item_page.compressed_redstone.description=Compressed Redstone is a crystal form of §eRedstone Dust§f, used as fuel for certain vehicles. More concentration, more power!
+
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.title=Hot Air Balloon Envelope
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.description=Different designs of balloon envelopes for your §eHot Air Balloon§f. Customize it to your liking!
+
+bw_vv.guide_book.item_page.tesla_helmet_upgrade.title=Tesla Helmet Upgrade
+bw_vv.guide_book.item_page.tesla_helmet_upgrade.description=A special upgrade item used to enhance a §eNetherite Helmet§f into a §eTesla Helmet§f, enabling vehicle boosting capabilities.
+bw_vv.guide_book.item_page.tesla_helmet_upgrade.crafting=Can only be obtained from the §eMechanic. §fOpen a §eSmithing Table§f and use a §eTesla Helmet Upgrade§f item, with a §eNetherite Helmet§f, and a §eNetherite Ingot§f to obtain the §eTesla Helmet§f.
+
+##Mobs page
+bw_vv.guide_book.mobs_page.title=Mobs
+bw_vv.guide_book.mobs_page.description=New mobs added by the Add-On!
+bw_vv.guide_book.button.mechanic=Mechanic Villager
+
+bw_vv.guide_book.mob_page.mechanic.title=Mobs - Mechanic Villager
+bw_vv.guide_book.mob_page.mechanic.description=The Mechanic is a friendly villager that specializes in vehicle-related trades. Don't underestimate their knowledge!
+bw_vv.guide_book.mob_page.mechanic.trading=You can trade with the Mechanic to obtain §eBlueprints§f, §eStickers§f, §eSmoke Bombs§f, and other items, and most importantly the §eTesla Helmet Upgrade§f item.
+
+
+bw_vv.guide_book.item_page.propeller.crafting=Open a §eCrafting Table§f and combine §e2xIron Ingots§f and §e1xIron Nugget§f.
+bw_vv.guide_book.item_page.redstone_pulser.crafting=Open a §eCrafting Table§f and combine §e1xCompressed Redstone§f and §e1xComparator§f.
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.crafting=§lBlank Envelope§r: Open a §eCrafting Table§f and combine §e9xLeather§f.
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.crafting=§lCreeper Envelope§r: Open a §eCrafting Table§f and combine §e1xBlank Envelope§f and §e1xCreeper Sticker§f.
+bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.crafting=§lStriped Envelope§r: Open a §eCrafting Table§f and combine §e1xBlank Envelope§f and §e1xStripes Sticker§f.
+bw_vv.guide_book.item_page.mechanical_heart.crafting=Open a §eCrafting Table§f and combine §e1xBlaze Powder§f, §e2xNetherite Ingot§f, §e1xBlueprints§f & §e1xRedstone Pulser§f.
+bw_vv.guide_book.item_page.smoke_bomb.crafting=To create an §eEmpty Smoke Bomb§f, open a §eCrafting Table§f and combine §e1xPiston§f and §e1xRedstone Pulser§f.
+bw_vv.guide_book.item_page.smoke_bomb.crafting2=To dye, combine §e1xEmpty Smoke Bomb§f and §e1xDye§f. After use, you recieve your Empty Smoke Bomb back.
+bw_vv.guide_book.item_page.blueprints.crafting=Can only be obtained from a §eMechanic§f villager.
+bw_vv.guide_book.item_page.stickers.crafting=Can only be obtained from a §eMechanic§f villager.
+bw_vv.guide_book.item_page.stickers.crafting2=Stickers you can get: §eBloom§f, §eCastle§f, §eCreeper§f, §eDiamonds§f, §eEnder§f, §eHearts§f, §eIcy§f, §eRainbow§f, §eSkeleton§f, §eStripes§f.
+bw_vv.guide_book.item_page.compressed_redstone.crafting=Obtained by using a §eRedstone Compressor§f to compress §eRedstone Dust§f. §eCompressed Redstone§f has a 50%% chance to drop. Interact while holding Redstone, and open the Compressor's inventory to get the result.
+
+bw_vv.guide_book.button.blueprints=Blueprints
+bw_vv.guide_book.button.mechanical_heart=Mechanical Heart
+bw_vv.guide_book.button.hot_air_balloon_envelope=Hot Air Balloon Envelopes
+bw_vv.guide_book.button.stickers=Stickers
+bw_vv.guide_book.button.smoke_bomb=Smoke Bombs
+bw_vv.guide_book.button.propeller=Propeller
+bw_vv.guide_book.button.redstone_pulser=Redstone Pulser
+bw_vv.guide_book.button.compressed_redstone=Compressed Redstone
+bw_vv.guide_book.button.tesla_helmet_upgrade=Tesla Helmet Upgrade
+
+##Settings Page
+
+bw_vv.guide_book.settings.title=Vanilla Vehicles - Settings
+bw_vv.guide_book.settings.description=You can always access this page with the command §e/vehiclesettings§f.
+bw_vv.guide_book.settings.general=General Settings
+bw_vv.guide_book.settings.vehicles=§lVEHICLE TWEAKS:
+bw_vv.guide_book.settings.fuel_actionbar=Fuel Indicator HUD
+bw_vv.guide_book.settings.fuel_actionbar.tooltip=Toggles the actionbar text display of the fuel percentage % that appears while riding some vehicles.
+bw_vv.guide_book.settings.wind_particles=Wind Particles
+bw_vv.guide_book.settings.wind_sound=Wind Sound
+
+##SMOKE BOMBS
+entity.unknown.name=Container
+entity.bw_vv:smoke_bomb.name=Empty Smoke Bomb
+item.bw_vv:smoke_bomb=Empty Smoke Bomb
+item.bw_vv:smoke_bomb.white=White Smoke Bomb
+item.bw_vv:smoke_bomb.orange=Orange Smoke Bomb
+item.bw_vv:smoke_bomb.magenta=Magenta Smoke Bomb
+item.bw_vv:smoke_bomb.light_blue=Light Blue Smoke Bomb
+item.bw_vv:smoke_bomb.yellow=Yellow Smoke Bomb
+item.bw_vv:smoke_bomb.lime=Lime Smoke Bomb
+item.bw_vv:smoke_bomb.pink=Pink Smoke Bomb
+item.bw_vv:smoke_bomb.gray=Gray Smoke Bomb
+item.bw_vv:smoke_bomb.light_gray=Light Gray Smoke Bomb
+item.bw_vv:smoke_bomb.cyan=Cyan Smoke Bomb
+item.bw_vv:smoke_bomb.purple=Purple Smoke Bomb
+item.bw_vv:smoke_bomb.blue=Blue Smoke Bomb
+item.bw_vv:smoke_bomb.brown=Brown Smoke Bomb
+item.bw_vv:smoke_bomb.green=Green Smoke Bomb
+item.bw_vv:smoke_bomb.red=Red Smoke Bomb
+item.bw_vv:smoke_bomb.black=Black Smoke Bomb
+
+## WAARNINGS
+bw_vv.boost.no_fuel=Cannot boost while out of fuel.
+bw_vv.boost.no_tesla_helmet=You need to wear a Tesla Helmet to boost.
+bw_vv.boost.cooldown=Booster is on cooldown.
+bw_vv.wind_change.1=The wind has changed to %1!
+bw_vv.wind_change.2=Wind shift detected - now blowing %1!
+bw_vv.wind_change.3=The air turns %1...
+bw_vv.wind_change.4=A breeze now sweeps the overworld from the %1...
+bw_vv.wind_change.5=The %1 wind rises...
+bw_vv.wind_change.6=The air changes its course, leaning to the %1.
+bw_vv.wind_change.7=A gust of wind now blows from the %1...
+bw_vv.wind_change.8=You feel a change in the wind - it's now coming from the %1.
+bw_vv.wind_change.9=The wind shifts quietly, but the %1 brings change...
+bw_vv.wind_change.10=The wind no longer holds its course, turning to the %1...
+bw_vv.wind_change.11=A sudden change in the air - now from the %1...
+bw_vv.wind_change.12=The wind grows restless as it turns to the %1...
+bw_vv.cardinal_direction.north=North
+bw_vv.cardinal_direction.south=South
+bw_vv.cardinal_direction.east=East
+bw_vv.cardinal_direction.west=West

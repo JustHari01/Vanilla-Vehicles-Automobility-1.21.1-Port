@@ -1,0 +1,489 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "bw_vv:mobtruck_backseat",
+			"is_spawnable": false,
+			"is_summonable": false,
+			"is_experimental": false
+		},
+		"components": {
+			"minecraft:scale": {
+				"value": 1.00
+			},
+			"minecraft:rideable": {
+				"seat_count": 1,
+				"family_types": [
+					"chicken",
+					"sheep",
+					"cow",
+					"horse",
+					"pig",
+					"villager",
+					"piglin",
+					"goat",
+					"zombie",
+					"turtle",
+					"skeleton",
+					"mob"
+				],
+				"crouching_skip_interact": true,
+		        "pull_in_entities": true,
+				"interact_text": "bw_vv.action.interact.generic.vehicle.enter",
+				"controlling_seat": 0,
+				"seats": [
+				{
+					"position": [
+						0,
+						1.1,
+						0.0
+					],
+            "min_rider_count": 1,
+            "max_rider_count": 1
+				}
+				]
+			},
+			"minecraft:type_family": {
+				"family": [
+					"backdoor"
+				]
+			},
+			"minecraft:physics": {
+				"has_gravity":true
+			},
+			"minecraft:collision_box": {
+				"width": 1.7,
+				"height": 1.0
+			},
+			"minecraft:health": {
+				"value": {
+					"range_min": 0.6,
+					"range_max": 0.6
+				}
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": true }
+								]
+							}
+						},
+						"deals_damage": "no"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_pickaxe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false }
+							  ],
+						  "any_of": [
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_pickaxe" }
+						  ]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "==", "value": "instabuild" }
+						  ]
+						},
+						"event": "event:remove_creative"
+					},
+					"deals_damage": "no",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						
+							{}
+						
+					},
+					"deals_damage": "no_but_side_effects_apply"
+				}
+			]
+			}
+		},
+		"component_groups": {
+			"hurt":{
+				"minecraft:timer": {
+					"time": 0.5,
+					"looping":true,
+					"time_down_event": {
+						"event": "unhurt",
+						"target": "self"
+					}
+				}
+			},
+			"open":{
+				"minecraft:environment_sensor": {
+					"triggers": [
+					{
+						"filters": {
+						  "all_of": [
+							  { "test": "rider_count", "subject": "self", "operator": "==", "value": 1 }
+						  ]
+						},
+						"event": "event:close_animal_in"
+					}
+				]
+			  },
+			  "minecraft:timer": {
+				"time": 0.2,
+				"looping":true,
+				"time_down_event": {
+					"event": "add_rider",
+					"target": "self"
+				}
+			},
+				  "minecraft:interact": {
+					"interactions":[
+						{
+					"on_interact": {
+						"filters": {
+							"all_of":[
+								{ "test": "is_family", "subject": "other", "value": "player" }
+							]
+						},
+						"event": "event:close",
+						"target": "self"
+					},
+					"hurt_item": 0,
+					"swing": true,
+					"use_item": false,
+					"interact_text": "bw_vv.action.interact.mobtruck.trunk.close"
+				}
+				]
+				}
+			},
+			"closed_animal_in":{
+				"minecraft:environment_sensor": {
+					"triggers": [
+					{
+						"filters": {
+						  "all_of": [
+							  { "test": "rider_count", "subject": "self", "operator": "==", "value": 0 }
+						  ]
+						},
+						"event": "event:open_animal_in"
+					}
+				]
+			  },
+				"minecraft:interact": {
+					"interactions":[
+						{
+					"on_interact": {
+						"filters": {
+							"all_of":[
+								{ "test": "is_family", "subject": "other", "value": "player" }
+							]
+						},
+						"event": "event:open_animal_in",
+						"target": "self"
+					},
+					"hurt_item": 0,
+					"swing": true,
+					"use_item": false,
+					"interact_text": "bw_vv.action.interact.mobtruck.trunk.release"
+				}
+				]
+			}
+			},
+			"open_animal_in":{ //Active when you open the backdoor with an animal inside, automatically reverts to closed stage.
+				"minecraft:timer": {
+					"time": 0.31,
+					"looping":false,
+					"time_down_event": {
+						"event": "event:close",
+						"target": "self"
+					}
+				}
+			},
+			"closed":{
+				"minecraft:interact": {
+					"interactions":[
+						{
+					"on_interact": {
+						"filters": {
+							"all_of":[
+								{ "test": "is_family", "subject": "other", "value": "player" }
+							]
+						},
+						"event": "event:open",
+						"target": "self"
+					},
+					"hurt_item": 0,
+					"swing": true,
+					"use_item": false,
+					"interact_text": "bw_vv.action.interact.mobtruck.trunk.open"
+				}
+				]
+				}
+			},
+			"component_group:removed":{
+                "minecraft:explode": {
+                    "breaks_blocks": true,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": false,
+                    "fire_affected_by_griefing": false,
+                    "fuse_lit": true,
+                    "max_resistance": 0,
+                    "power": 0,
+                    "fuse_length": 0
+                }
+			}
+			},
+		"events": {
+			"event:damager": {
+				"queue_command":{"command":"event entity @e[type=bw_vv:mobtruck,r=2,c=1] damager"}
+			},
+			"event:damager_weak": {
+				"queue_command":{"command":"event entity @e[type=bw_vv:mobtruck,r=2,c=1] damager_weak"}
+			},
+			"event:remove_creative": {
+				"queue_command":{"command":"event entity @e[type=bw_vv:mobtruck,r=2,c=1] remove_creative"}
+			},
+			"minecraft:entity_spawned":{
+				"add": {
+					"component_groups": [
+						"closed"
+					]
+				}
+			},
+			"event:remove": {
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				}
+			},
+			"event:open":{
+				"add": {
+					"component_groups": [
+						"open"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"closed"
+					]
+				},
+				"queue_command":{
+					"command":"playsound random.door_open @a[r=6] ~ ~ ~"
+				}
+			},
+			"event:close":{
+				"add": {
+					"component_groups": [
+						"closed"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"open",
+						"open_animal_in"
+					]
+				},
+				"queue_command":{
+					"command":"playsound random.door_close @a[r=6] ~ ~ ~"
+				}
+			},
+"event:open_animal_in":{
+    "add": {
+        "component_groups": [
+            "open_animal_in"
+        ]
+    },
+    "remove": {
+        "component_groups": [
+            "close_animal_in",
+            "open"
+        ]
+    },
+    "queue_command":{
+        "command":[
+            // Passive/Neutral Overworld Animals
+            "ride @e[type=cow,r=2] stop_riding",
+            "ride @e[type=horse,r=2] stop_riding",
+            "ride @e[type=donkey,r=2] stop_riding",
+            "ride @e[type=mule,r=2] stop_riding",
+            "ride @e[type=llama,r=2] stop_riding",
+            "ride @e[type=pig,r=2] stop_riding",
+            "ride @e[type=sheep,r=2] stop_riding",
+            "ride @e[type=chicken,r=2] stop_riding",
+            "ride @e[type=rabbit,r=2] stop_riding",
+            "ride @e[type=fox,r=2] stop_riding",
+            "ride @e[type=wolf,r=2] stop_riding",
+            "ride @e[type=cat,r=2] stop_riding",
+            "ride @e[type=ocelot,r=2] stop_riding",
+            "ride @e[type=panda,r=2] stop_riding",
+            "ride @e[type=polar_bear,r=2] stop_riding",
+            "ride @e[type=goat,r=2] stop_riding",
+            "ride @e[type=turtle,r=2] stop_riding",
+            "ride @e[type=mooshroom,r=2] stop_riding",
+            "ride @e[type=camel,r=2] stop_riding",
+            // Villagers & Illagers
+            "ride @e[type=villager,r=2] stop_riding",
+            "ride @e[type=wandering_trader,r=2] stop_riding",
+            "ride @e[type=iron_golem,r=2] stop_riding",
+            "ride @e[type=snow_golem,r=2] stop_riding",
+            "ride @e[type=vindicator,r=2] stop_riding",
+            "ride @e[type=pillager,r=2] stop_riding",
+            "ride @e[type=evocation_illager,r=2] stop_riding",
+            "ride @e[type=ravager,r=2] stop_riding",
+            // Overworld Monsters (small/medium)
+            "ride @e[type=zombie,r=2] stop_riding",
+            "ride @e[type=zombie_villager,r=2] stop_riding",
+            "ride @e[type=husk,r=2] stop_riding",
+            "ride @e[type=drowned,r=2] stop_riding",
+            "ride @e[type=skeleton,r=2] stop_riding",
+            "ride @e[type=stray,r=2] stop_riding",
+            "ride @e[type=bogged,r=2] stop_riding",
+            "ride @e[type=creeper,r=2] stop_riding",
+            "ride @e[type=spider,r=2] stop_riding",
+            "ride @e[type=cave_spider,r=2] stop_riding",
+            "ride @e[type=enderman,r=2] stop_riding",
+            "ride @e[type=witch,r=2] stop_riding",
+            "ride @e[type=silverfish,r=2] stop_riding",
+            "ride @e[type=slime,r=2] stop_riding",
+            "ride @e[type=phantom,r=2] stop_riding",
+            // Nether Mobs
+            "ride @e[type=zombie_pigman,r=2] stop_riding",
+            "ride @e[type=piglin,r=2] stop_riding",
+            "ride @e[type=piglin_brute,r=2] stop_riding",
+            "ride @e[type=hoglin,r=2] stop_riding",
+            "ride @e[type=zoglin,r=2] stop_riding",
+            "ride @e[type=blaze,r=2] stop_riding",
+            "ride @e[type=wither_skeleton,r=2] stop_riding",
+            "ride @e[type=magma_cube,r=2] stop_riding",
+            "ride @e[type=strider,r=2] stop_riding",
+            // Custom
+            "ride @e[type=bw_vv:mechanic,r=2] stop_riding",
+            "playsound random.door_open @a[r=6] ~ ~ ~"
+        ]
+    }
+},
+"add_rider":{
+    "queue_command":{
+        "command":[
+            // Passive/Neutral Overworld Animals
+            "ride @e[type=cow,r=2] start_riding @s teleport_rider",
+            "ride @e[type=horse,r=2] start_riding @s teleport_rider",
+            "ride @e[type=donkey,r=2] start_riding @s teleport_rider",
+            "ride @e[type=mule,r=2] start_riding @s teleport_rider",
+            "ride @e[type=llama,r=2] start_riding @s teleport_rider",
+            "ride @e[type=pig,r=2] start_riding @s teleport_rider",
+            "ride @e[type=sheep,r=2] start_riding @s teleport_rider",
+            "ride @e[type=chicken,r=2] start_riding @s teleport_rider",
+            "ride @e[type=rabbit,r=2] start_riding @s teleport_rider",
+            "ride @e[type=fox,r=2] start_riding @s teleport_rider",
+            "ride @e[type=wolf,r=2] start_riding @s teleport_rider",
+            "ride @e[type=cat,r=2] start_riding @s teleport_rider",
+            "ride @e[type=ocelot,r=2] start_riding @s teleport_rider",
+            "ride @e[type=panda,r=2] start_riding @s teleport_rider",
+            "ride @e[type=polar_bear,r=2] start_riding @s teleport_rider",
+            "ride @e[type=goat,r=2] start_riding @s teleport_rider",
+            "ride @e[type=turtle,r=2] start_riding @s teleport_rider",
+            "ride @e[type=mooshroom,r=2] start_riding @s teleport_rider",
+            "ride @e[type=camel,r=2] start_riding @s teleport_rider",
+            // Villagers & Illagers
+            "ride @e[type=villager,r=2] start_riding @s teleport_rider",
+            "ride @e[type=wandering_trader,r=2] start_riding @s teleport_rider",
+            "ride @e[type=iron_golem,r=2] start_riding @s teleport_rider",
+            "ride @e[type=snow_golem,r=2] start_riding @s teleport_rider",
+            "ride @e[type=vindicator,r=2] start_riding @s teleport_rider",
+            "ride @e[type=pillager,r=2] start_riding @s teleport_rider",
+            "ride @e[type=evocation_illager,r=2] start_riding @s teleport_rider",
+            "ride @e[type=ravager,r=2] start_riding @s teleport_rider",
+            // Overworld Monsters (small/medium)
+            "ride @e[type=zombie,r=2] start_riding @s teleport_rider",
+            "ride @e[type=zombie_villager,r=2] start_riding @s teleport_rider",
+            "ride @e[type=husk,r=2] start_riding @s teleport_rider",
+            "ride @e[type=drowned,r=2] start_riding @s teleport_rider",
+            "ride @e[type=skeleton,r=2] start_riding @s teleport_rider",
+            "ride @e[type=stray,r=2] start_riding @s teleport_rider",
+            "ride @e[type=bogged,r=2] start_riding @s teleport_rider",
+            "ride @e[type=creeper,r=2] start_riding @s teleport_rider",
+            "ride @e[type=spider,r=2] start_riding @s teleport_rider",
+            "ride @e[type=cave_spider,r=2] start_riding @s teleport_rider",
+            "ride @e[type=enderman,r=2] start_riding @s teleport_rider",
+            "ride @e[type=witch,r=2] start_riding @s teleport_rider",
+            "ride @e[type=silverfish,r=2] start_riding @s teleport_rider",
+            "ride @e[type=slime,r=2] start_riding @s teleport_rider",
+            "ride @e[type=phantom,r=2] start_riding @s teleport_rider",
+            // Nether Mobs
+            "ride @e[type=zombie_pigman,r=2] start_riding @s teleport_rider",
+            "ride @e[type=piglin,r=2] start_riding @s teleport_rider",
+            "ride @e[type=piglin_brute,r=2] start_riding @s teleport_rider",
+            "ride @e[type=hoglin,r=2] start_riding @s teleport_rider",
+            "ride @e[type=zoglin,r=2] start_riding @s teleport_rider",
+            "ride @e[type=blaze,r=2] start_riding @s teleport_rider",
+            "ride @e[type=wither_skeleton,r=2] start_riding @s teleport_rider",
+            "ride @e[type=magma_cube,r=2] start_riding @s teleport_rider",
+            "ride @e[type=strider,r=2] start_riding @s teleport_rider",
+            // Custom
+            "ride @e[type=bw_vv:mechanic,r=2] start_riding @s teleport_rider"
+        ]
+    }
+},
+			"event:close_animal_in":{
+				"add": {
+					"component_groups": [
+						"closed_animal_in"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"open"
+					]
+				},
+				"queue_command":{
+					"command":"playsound random.door_close @a[r=6] ~ ~ ~"
+				}
+			}
+		}
+	}
+}

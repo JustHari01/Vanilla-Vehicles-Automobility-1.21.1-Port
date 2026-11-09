@@ -1,0 +1,271 @@
+{
+  "tiers": [
+    {
+      "total_exp_required": 0,
+      "groups": [
+        {
+          "num_to_select": 1,
+          "trades": [
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb", "quantity": 1}],
+              "max_uses": 16,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.white", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.light_gray", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.gray", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.black", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.red", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.orange", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.yellow", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.lime", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.green", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.cyan", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.light_blue", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.blue", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.purple", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.magenta", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.pink", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:smoke_bomb.brown", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            }
+          ]
+        },
+        { 
+          "num_to_select": 1,
+          "trades": [
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.bloom", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.hearts", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.stripes", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.castle", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.diamonds", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.rainbow", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 2
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.creeper", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 5
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.enderman", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 5
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.skeleton", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 5
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:sticker.icy", "quantity": 1}],
+              "max_uses": 12,
+              "trader_exp": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "total_exp_required": 10,
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+              {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 2, "max": 4}}],
+              "gives": [{"item": "bw_vv:wind_vane", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:propeller", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:propeller", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 3, "max": 4}}],
+              "gives": [{"item": "bw_vv:hot_air_balloon.envelope.striped", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "total_exp_required": 30,
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 3, "max": 4}}],
+              "gives": [{"item": "bw_vv:hot_air_balloon.envelope.blank", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 3, "max": 4}}],
+              "gives": [{"item": "bw_vv:hot_air_balloon.envelope.creeper", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 1, "max": 2}}],
+              "gives": [{"item": "bw_vv:compressed_redstone", "quantity": 16}],
+              "max_uses": 8,
+              "trader_exp": 10
+            },
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 5, "max": 7}}],
+              "gives": [{"item": "bw_vv:redstone_pulser", "quantity": 1}],
+              "max_uses": 8,
+              "trader_exp": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "total_exp_required": 60,
+      "groups": [
+        {
+          "num_to_select": 2,
+          "trades": [
+            {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 20, "max": 30}}],
+              "gives": [{"item": "bw_vv:blueprints", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            },
+                        {
+              "wants": [{"item": "minecraft:emerald", "quantity": {"min": 35, "max": 59}}],
+              "gives": [{"item": "bw_vv:tesla_helmet_upgrade_smithing_template", "quantity": 1}],
+              "max_uses": 6,
+              "trader_exp": 15
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

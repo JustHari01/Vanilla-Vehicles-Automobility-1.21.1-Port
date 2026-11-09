@@ -1,0 +1,54 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_minecar": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ { "chest*": "query.is_chested" } ],
+                   "arrays":{
+                    "textures": {
+                      "Array.stickers": [ "Texture.overlay", "Texture.overlay_creeper", "Texture.overlay_castle", "Texture.overlay_stripes", "Texture.overlay", "Texture.overlay_skeleton", "Texture.overlay", "Texture.overlay_diamonds","Texture.overlay","Texture.overlay","Texture.overlay","Texture.overlay","Texture.overlay"]
+                  }
+              },
+              "materials": [
+                { "*": "Material.default" },
+                { "lights": "Material.glow" },
+                { "lights2": "Material.glow" }
+                        ],
+      "textures": [
+        "Texture.default",
+        "Texture.default",
+        "Array.stickers[q.property('bw_vv:sticker') ? v.sticker : 0]"
+      ]
+    },
+    "controller.render.bw_vv_minecar_colorless_stickers": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ { "chest*": "query.is_chested" } ],
+                   "arrays":{
+                    "textures": {
+                      "Array.stickers": [ "Texture.empty", "Texture.empty", "Texture.empty", "Texture.empty", "Texture.overlay_enderman", "Texture.empty", "Texture.overlay_hearts", "Texture.empty","Texture.overlay_bloom","Texture.overlay_icy","Texture.overlay_soulful","Texture.overlay_burning","Texture.overlay_rainbow"]
+                  }
+              },
+              "materials": [
+                { "*": "Material.masked" },
+                { "lights": "Material.glow_masked" },
+                { "lights2": "Material.glow_masked" }
+                           ],
+      "textures": [
+        "Array.stickers[q.property('bw_vv:sticker') ? v.sticker : 0]"
+      ]
+    },
+    "controller.render.bw_vv_minecar_fueled_animated": {
+      "geometry": "Geometry.default",
+      	  "part_visibility": [ { "furnace*": "v.is_fueled" }, { "fuel_glow*": "v.is_fueled" }],
+      "materials": [
+      { "furnace": "Material.glow_masked_animated" },
+      { "fuel_glow": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.fueled_animated" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 10), 5) / 5"],
+          "scale": [1, "1 / 5"]
+      }
+    }
+  }
+}

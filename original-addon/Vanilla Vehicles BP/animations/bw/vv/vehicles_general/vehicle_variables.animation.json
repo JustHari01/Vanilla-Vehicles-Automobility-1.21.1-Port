@@ -1,0 +1,117 @@
+{
+	//resistance_tools = how many hits with the specified tool it takes to destroy the vehicle (without using a pickaxe or axe).
+	//resistance = how many hits with the bare hand it takes to destroy the vehicle (without using a pickaxe or axe).
+	//fuel_efficiency = the higher the number, the faster the fuel will drop while driving.
+	//fuel_increaser = how fast the fuel increases when the player interacts with the vehicle while holding the corresponding fuel item.
+	//v.rot = initialises wasd detection
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.mobtruck_variables": {
+			"loop": false,
+			"animation_length": 1.0,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');", 
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');", 
+					"v.fuel_efficiency = 0.007;",
+					"v.fuel_increaser = 1;",
+					"v.boost_cooldown = 7;",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.plane_variables": {
+			"loop": false,
+			"animation_length": 1.0,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');",
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');",
+					"v.fuel_efficiency = 0.006;",
+					"v.fuel_increaser = 1;",
+					"v.boost_cooldown = 7;",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.steamboat_variables": {
+			"loop": false,
+			"animation_length": 1.0,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');",
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');",
+					"v.fuel_efficiency = 0.005;",
+					"v.fuel_increaser = (q.property('bw_vv:fuel_item') == 'coal' ? 1 : (q.property('bw_vv:fuel_item') == 'block_of_coal' ? 10 : (q.property('bw_vv:fuel_item') == 'blaze_rod' ? 1.5 : (q.property('bw_vv:fuel_item') == 'dried_kelp_block' ? 2.5 : (q.property('bw_vv:fuel_item') == 'wood_stuff1' ? 0.125 : (q.property('bw_vv:fuel_item') == 'wood_stuff2' ? 0.1875 : (q.property('bw_vv:fuel_item') == 'wood_stuff3' ? 0.0625 : (q.property('bw_vv:fuel_item') == 'wood_stuff4' ? 0.041875 : (q.property('bw_vv:fuel_item') == 'misc_fuel' ? 0.03125 : 0)))))))));",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.prismer_variables": {
+			"loop": false,
+			"animation_length": 1.0,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');",
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');",
+					"v.fuel_increaser = 9;",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.minecar_variables": {
+			"loop": true,
+			"animation_length": 0.1,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');",
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');",
+					"v.fuel_efficiency = 0.009;",
+					"v.fuel_increaser = (q.property('bw_vv:fuel_item') == 'coal' ? 1 : (q.property('bw_vv:fuel_item') == 'block_of_coal' ? 10 : (q.property('bw_vv:fuel_item') == 'blaze_rod' ? 1.5 : (q.property('bw_vv:fuel_item') == 'dried_kelp_block' ? 2.5 : (q.property('bw_vv:fuel_item') == 'wood_stuff1' ? 0.125 : (q.property('bw_vv:fuel_item') == 'wood_stuff2' ? 0.1875 : (q.property('bw_vv:fuel_item') == 'wood_stuff3' ? 0.0625 : (q.property('bw_vv:fuel_item') == 'wood_stuff4' ? 0.041875 : (q.property('bw_vv:fuel_item') == 'misc_fuel' ? 0.03125 : 0)))))))));",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.logcar_variables": {
+			"loop": true,
+			"animation_length": 0.1,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');",
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');",
+					"v.fuel_efficiency = 0.008;",
+					"v.fuel_increaser = (q.property('bw_vv:fuel_item') == 'coal' ? 1 : (q.property('bw_vv:fuel_item') == 'block_of_coal' ? 10 : (q.property('bw_vv:fuel_item') == 'blaze_rod' ? 1.5 : (q.property('bw_vv:fuel_item') == 'dried_kelp_block' ? 2.5 : (q.property('bw_vv:fuel_item') == 'wood_stuff1' ? 0.125 : (q.property('bw_vv:fuel_item') == 'wood_stuff2' ? 0.1875 : (q.property('bw_vv:fuel_item') == 'wood_stuff3' ? 0.0625 : (q.property('bw_vv:fuel_item') == 'wood_stuff4' ? 0.041875 : (q.property('bw_vv:fuel_item') == 'misc_fuel' ? 0.03125 : 0)))))))));",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.hot_air_balloon_variables": {
+			"loop": false,
+			"animation_length": 1.0,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');",
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');",
+					"v.fuel_efficiency = 0.04;",
+					"v.fuel_increaser = 10;",
+					"v.rot = 0;"
+				]
+			}
+		},
+		"animation.bw_vv.mech_variables": {
+			"loop": true,
+			"animation_length": 1.0,
+			"timeline": {
+				"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');", 
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');", 
+					"v.fuel_efficiency = 0;",
+					"v.fuel_increaser = 1;",
+					"v.boost_cooldown = 7;",
+					"v.weapons_cooldown = 3;",
+					"v.rot = 0;"
+				]
+			}
+		}
+	}
+}

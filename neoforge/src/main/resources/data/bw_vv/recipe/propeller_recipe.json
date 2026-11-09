@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:propeller",
+    "count": 1
+  },
+  "pattern": [
+    "iFi"
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:iron_nugget"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

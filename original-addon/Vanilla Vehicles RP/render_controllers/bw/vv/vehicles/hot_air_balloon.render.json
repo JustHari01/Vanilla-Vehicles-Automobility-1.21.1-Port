@@ -1,0 +1,32 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_hot_air_balloon": {
+      "part_visibility": [ 
+        { "bundle1*": "q.property('bw_vv:chested')" },
+        { "bundle2*": "q.property('bw_vv:chested')" },
+        { "bundle3*": "q.property('bw_vv:chested')" },
+        { "bundle4*": "q.property('bw_vv:chested')" },
+        { "bundle5*": "q.property('bw_vv:chested')" },
+        { "bundle6*": "q.property('bw_vv:chested')" },
+        { "bundle7*": "q.property('bw_vv:chested')" },
+        { "bundle8*": "q.property('bw_vv:chested')" }
+      ],
+      "geometry": "Geometry.default",
+      "materials": [
+           { "*": "Material.default" },
+           { "balloon1": "Material.changecolor" },
+		   { "balloon2": "Material.changecolor" }
+                   ],
+                                      "arrays":{  
+                    "textures": {
+                    "Array.envelope_type": ["Texture.empty","Texture.envelope.blank", "Texture.envelope.striped", "Texture.envelope.creeper"]
+
+                  }
+              },
+      "textures": [ 
+                    "Array.envelope_type [v.envelope_type]"
+                   ]
+    }
+  }
+}

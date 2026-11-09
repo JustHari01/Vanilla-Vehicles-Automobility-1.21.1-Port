@@ -1,0 +1,33 @@
+{
+//tools_resistance = how many hits with the specified tool it takes to destroy the vehicle (without using a pickaxe or axe).
+//resistance = how many hits with the bare hand it takes to destroy the vehicle (without using a pickaxe or axe).
+//fuel_efficiency = the higher the number, the faster the fuel will drop while driving.
+//fuel_increaser = how fast the fuel increases when the player interacts with the vehicle while holding the corresponding fuel item.
+//v.rot = initialises wasd detection
+  "format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.steam_bomb_variables": {
+				"loop": false,
+				"animation_length": 1.0,
+				"timeline": {
+					"0.0": [
+						"v.resistance = 1;", 
+						"v.tools_resistance = 1;", 
+						"v.fuel_efficiency = 0.02;",
+						"v.fuel_increaser = 1;",
+						"v.rot = 0;"
+					]
+				}
+		},
+		"animation.bw_vv.redstone_compressor_variables": {
+				"loop": false,
+				"animation_length": 1.0,
+				"timeline": {
+					"0.0": [
+					"v.resistance = query.property('bw_vv:hit_resistance');", 
+					"v.resistance_tools = query.property('bw_vv:hit_resistance_tools');"
+					]
+				}
+		}
+	}
+}

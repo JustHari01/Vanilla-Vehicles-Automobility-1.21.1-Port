@@ -1,0 +1,93 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+	"controller.animation.bw_vv.plane_states":{
+	 "initial_state": "stationary",
+	  "states":{
+	   "stationary":{
+		"transitions":[
+		   {
+			"takeoff":"q.property('bw_vv:plane_state') == 'takeoff'"
+		   },
+		   {
+			"flying":"q.property('bw_vv:plane_state') == 'flying'"
+		   }
+		]
+	  },
+	   "takeoff":{
+		"animations":[
+		   "climb_controller"
+		],
+		"transitions":[
+		   {
+			"flying":"q.property('bw_vv:plane_state') == 'flying'"
+		   },
+		   {
+			"stationary":"q.property('bw_vv:plane_state') == 'stationary'"
+		   }
+		]
+	   },
+	   "flying":{
+		"transitions":[
+		   {
+			"takeoff":"q.property('bw_vv:plane_state') == 'takeoff'"
+		   },
+		   {
+			"stationary":"q.property('bw_vv:plane_state') == 'stationary'"
+		   }
+		]  
+	   }
+	 }
+	 },
+	"controller.animation.bw_vv.plane_climb":{
+	  "states":{
+	   "default":{
+		"on_entry":[
+		  "@s event:player_anim_climb_neutral"
+		],
+		"animations":[
+		  "climb_timer"
+	   ],
+		"transitions":[
+		   {
+			"flying":"q.has_player_rider&&q.property('bw_vv:plane_state')== 'flying' && q.all_animations_finished"
+		   }
+		]     
+	  },
+	  "flying":{
+		"on_entry":[
+		  "@s event:player_anim_climb_flying"
+		],
+		"animations":[
+		  "climb_timer"
+	   ],
+		"transitions":[
+		   {
+			"crashing":"q.has_player_rider&&q.property('bw_vv:plane_state')== 'crashing' && q.all_animations_finished"
+		   },
+		   {
+			"default":"(q.has_player_rider&&q.property('bw_vv:plane_state')== 'takeoff' || q.has_player_rider&&q.property('bw_vv:plane_state')== 'stationary') && q.all_animations_finished"
+		   }
+		]     
+	  },
+	  "crashing":{
+		"on_entry":[
+		  "@s event:player_anim_climb_crashing"
+		],
+		"animations":[
+		  "climb_timer"
+	   ],
+		"transitions":[
+		   {
+			"flying":"q.has_player_rider&&q.property('bw_vv:plane_state')== 'flying' && q.all_animations_finished"
+		   },
+		   {
+			"default":"(q.has_player_rider&&q.property('bw_vv:plane_state')== 'takeoff' || q.has_player_rider&&q.property('bw_vv:plane_state')== 'stationary') && q.all_animations_finished"
+		   }
+		]     
+	   }
+	  }
+	 }
+   }
+}
+  

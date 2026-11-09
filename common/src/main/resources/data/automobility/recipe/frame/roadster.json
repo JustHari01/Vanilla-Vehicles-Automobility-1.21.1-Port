@@ -1,0 +1,7 @@
+{
+  "type": "automobility:auto_mechanic_table",
+  "category": "automobility:frames",
+  "sortnum": 602,
+  "ingredients": [{"item":"minecraft:lapis_lazuli"},{"item":"minecraft:blue_dye"},{"item":"minecraft:glass"},{"item":"minecraft:gold_nugget"},{"item":"minecraft:bucket"}],
+  "result": {"item":"automobility:automobile_frame","component":"automobility:roadster"}
+}

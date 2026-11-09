@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "bw_vv:flag.blue"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "bw_vv:flag.pole"
+      },
+      {
+        "item": "minecraft:blue_dye"
+      }
+    ],
+    "result": {
+      "item": "bw_vv:flag.blue",
+      "count": 1
+    },
+    "unlock": [
+      {
+        "item": "bw_vv:flag.pole"
+      },
+      {
+        "item": "minecraft:blue_dye"
+      }
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "bw_vv:mechanic",
+      "materials": {
+        "default": "outline_vanillavehicles_mechanic",
+        "masked": "outline_vanillavehicles_mechanic_masked",
+        "outline": "outline_vanillavehicles"
+      },
+      "textures": {
+        // Base Textures - Vanilla Minecraft only has one such texture, rename these for resource packs desiring variety
+        "base": "textures/entity/villager2/villager",
+        "base2": "textures/entity/villager2/villager",
+        "base3": "textures/entity/villager2/villager",
+        // Biome Layer
+        "desert": "textures/entity/mechanic2/biome_desert",
+        "jungle": "textures/entity/villager2/biomes/biome_jungle",
+        "plains": "textures/entity/villager2/biomes/biome_plains",
+        "savanna": "textures/entity/villager2/biomes/biome_savanna",
+        "snow": "textures/entity/villager2/biomes/biome_snow",
+        "swamp": "textures/entity/villager2/biomes/biome_swamp",
+        "taiga": "textures/entity/villager2/biomes/biome_taiga",
+        // Mechanic textures
+        "mechanic": "textures/bw/vv/entity/mechanic2/mechanic",
+        "outline": "textures/bw/vv/ui/outline",
+        // Levels Layer
+        "level_stone": "textures/entity/villager2/levels/level_stone",
+        "level_iron": "textures/entity/villager2/levels/level_iron",
+        "level_gold": "textures/entity/villager2/levels/level_gold",
+        "level_emerald": "textures/entity/villager2/levels/level_emerald",
+        "level_diamond": "textures/entity/villager2/levels/level_diamond"
+      },
+      "geometry": {
+        "default": "geometry.bw_vv.mechanic",
+        "outline": "geometry.bw_vv.mechanic_outline"
+      },
+      "scripts": {
+        "scale": "0.9375",
+        "pre_animation": [
+          "variable.num_professions = 15;",
+          "variable.num_tiers = 3;",
+          "variable.profession_index = (query.variant < variable.num_professions ? query.variant : 0);",
+          "variable.level_index = query.trade_tier;",
+
+          // Outline System
+          "v.raise_arms = 0;",
+          "v.look_at_entity_selector_distance_from_camera = 6;",
+          "v.look_at_entity_selector_vertical_range = 70;",
+          "v.look_at_entity_selector_horizontal_range = 30;",
+          "v.rotation_to_camera_0 = -Math.atan2(-q.distance_from_camera * Math.sin(q.rotation_to_camera(0)) - 1, q.distance_from_camera * Math.cos(q.rotation_to_camera(0)));"
+        ],
+        "animate": [
+          "general_controller",
+          "move_controller",
+          "raise_arms_controller",
+          "baby_controller",
+          "outline"
+        ]
+      },
+      "animations": {
+        "general": "animation.villager.general",
+        "outline": "animation.bw_vv.mechanic_outline_size",
+        "look_at_target": "animation.common.look_at_target",
+        "move": "animation.villager.move",
+        "raise_arms": "animation.villager.raise_arms",
+        "baby_transform": "animation.villager.baby_transform",
+        "get_in_bed": "animation.villager.get_in_bed",
+        "general_controller": "controller.animation.villager_v2.general",
+        "move_controller": "controller.animation.villager_v2.move",
+        "raise_arms_controller": "controller.animation.villager_v2.raise_arms",
+        "baby_controller": "controller.animation.villager_v2.baby"
+      },
+      "render_controllers": [
+        "controller.render.bw_vv_mechanic_base",
+        "controller.render.bw_vv_mechanic_masked",
+        "controller.render.bw_vv_mechanic_texture",
+        "controller.render.bw_vv_mechanic_level"
+      ],
+      "spawn_egg": {
+        "texture": "bw_vv:mechanic"
+      }
+    }
+  }
+}

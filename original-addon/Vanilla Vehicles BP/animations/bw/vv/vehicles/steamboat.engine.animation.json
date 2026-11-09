@@ -1,0 +1,19 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.bw_vv.steamboat_engine_standby": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.steamboat.engine @a ~ ~ ~ 0.8 0.7"
+      },
+      "animation_length": 1.2,
+			"loop": true
+    },
+    "animation.bw_vv.steamboat_engine": {
+      "timeline": {
+        "0.0": "/playsound bw_vv.vehicle.steamboat.engine @a ~ ~ ~ 1.4 1.0"
+      },
+      "animation_length": 0.94,
+			"loop": true
+    }
+  }
+}

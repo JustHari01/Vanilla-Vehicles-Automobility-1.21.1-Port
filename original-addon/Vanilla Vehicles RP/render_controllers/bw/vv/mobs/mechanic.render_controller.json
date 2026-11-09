@@ -1,0 +1,78 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_mechanic_base": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.base",
+            "Texture.base2",
+            "Texture.base3"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.skins[query.skin_id]"
+      ]
+    },
+    "controller.render.bw_vv_mechanic_masked": {
+      "arrays": {
+        "textures": {
+          "Array.biomes": [ 
+            "Texture.plains",
+            "Texture.desert",
+            "Texture.jungle",
+            "Texture.savanna",
+            "Texture.snow",
+            "Texture.swamp",
+            "Texture.taiga"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.biomes[query.mark_variant]"
+      ]
+    },
+    "controller.render.bw_vv_mechanic_texture": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ { "*": "!query.is_baby" } ],
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Texture.mechanic"
+      ]
+    },
+    "controller.render.bw_vv_mechanic_level": {
+      "arrays": {
+        "textures": {
+          "Array.levels": [
+            "Texture.level_stone",
+            "Texture.level_iron",
+            "Texture.level_gold",
+            "Texture.level_emerald",
+            "Texture.level_diamond"
+          ]
+        }
+      },
+      "rebuild_animation_matrices": true,
+      "geometry": "Geometry.default",
+      // If we are not babies, unskilled, or nitwits we can have a job level
+      "part_visibility": [ { "*": "!query.is_baby" } ],
+      "materials": [
+        { "*": "Material.default" }
+      ],
+      "textures": [
+        "Array.levels[variable.level_index]"
+      ]
+    }
+  }
+}

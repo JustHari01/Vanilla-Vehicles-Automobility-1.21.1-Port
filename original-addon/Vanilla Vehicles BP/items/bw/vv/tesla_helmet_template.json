@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:item": {
+		"description": {
+			"identifier": "bw_vv:tesla_helmet_upgrade_smithing_template",
+			"menu_category": {
+        		"category": "items"
+      		}		
+		},
+		"components": {
+			  "minecraft:icon": {
+				"textures": {"default":  "bw_vv:tesla_helmet_upgrade_smithing_template"}
+			},
+			"minecraft:tags": {
+                "tags": ["minecraft:transform_templates"]
+            }
+			
+		}
+	}
+}

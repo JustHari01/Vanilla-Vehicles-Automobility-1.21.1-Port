@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "minecar",
+		"metalness_emissive_roughness": "minecar_mer"
+	}
+}

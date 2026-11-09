@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "bw_vv:smoke_bomb.white.recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "bw_vv:smoke_bomb"
+      },
+      {
+        "item": "minecraft:white_dye"
+      }
+    ],
+    "unlock": [
+      {
+        "item": "bw_vv:smoke_bomb"
+      },
+      {
+        "item": "minecraft:white_dye"
+      }
+    ],
+    "result": {
+      "item": "bw_vv:smoke_bomb.white",
+      "count": 1
+    }
+  }
+}

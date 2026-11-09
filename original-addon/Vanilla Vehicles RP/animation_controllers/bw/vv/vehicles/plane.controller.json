@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.bw_vv.plane_steer": {
+      "states": {
+        "default": {
+          "transitions":[
+            {"vertical_rotation":"query.property('bw_vv:plane_state') == 'flying'"}
+          ],
+          "animations": [
+            "backwards_detector"
+          ],
+          "blend_transition": 0.2
+      },
+        "vertical_rotation":{
+          "animations": [
+            "steer_flying"
+          ],
+          "transitions":[
+            {"default":"query.property('bw_vv:plane_state') == 'stationary'"},
+            {"crashing": "query.property('bw_vv:plane_state') == 'crashing'"}
+          ],
+          "blend_transition": 1
+      },
+        "crashing":{
+          "animations": [
+            "crashing"
+          ],
+          "transitions":[
+            {"default":"query.property('bw_vv:plane_state') == 'stationary'"},
+            {"vertical_rotation":"query.property('bw_vv:plane_state') == 'flying'"}
+          ],
+          "blend_transition": 1
+      }
+    }
+  }
+  }
+}

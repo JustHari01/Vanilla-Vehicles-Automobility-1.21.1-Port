@@ -1,0 +1,55 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+      "controller.animation.bw_vv.mech_boost": {
+        "states": {
+          "default": {
+            "transitions": [
+              {
+                "active": "query.property('bw_vv:boost') == 'active' && q.has_player_rider"
+              },
+              {
+                "ready": "query.property('bw_vv:boost') == 'ready' && q.has_player_rider"
+              }
+            ]
+          },
+          "active": {
+            "transitions": [
+              {
+                "cooldown": "q.is_on_ground"
+              }
+            ],
+            "animations": [
+              "boost_sound"
+            ],
+            "on_entry": [
+              "@s event:boost_active"
+            ]
+          },
+          "ready": {
+            "transitions": [
+              {
+                "active": "query.property('bw_vv:boost') == 'active'"
+              }
+            ],
+            "on_entry": [
+              "@s event:boost_ready"
+            ]
+          },
+          "cooldown": {
+            "animations":[
+              "boost_cooldown_timer"
+            ],
+            "transitions": [
+              {
+                "ready": "q.property('bw_vv:boost_cooldown') == 0"
+              }
+            ],
+            "on_entry": [
+              "@s event:boost_cooldown"
+            ]
+          }
+        }
+      }
+    }
+  }

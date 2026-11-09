@@ -1,0 +1,89 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.smoke_bomb_deploy": {
+			"animation_length": 3.375,
+			"bones": {
+				"spring": {
+					"rotation": {
+						"0.0": [
+							0,
+							"math.pow(q.anim_time*2,5)",
+							0
+						],
+						"2.74": [
+							0,
+							"math.pow(q.anim_time*2,5)",
+							0
+						],
+						"2.75": [
+							0,
+							0,
+							0
+						]
+					},
+					"position": {
+						"0.0": [
+							0,
+							"-math.cos(q.anim_time*100)*3+3",
+							0
+						],
+						"1.75": [
+							0,
+							"-math.cos(q.anim_time*100)*3+3",
+							0
+						],
+						"1.9167": [
+							0,
+							6,
+							0
+						],
+						"2.625": [
+							0,
+							6,
+							0
+						],
+						"2.7083": [
+							0,
+							0,
+							0
+						]
+					}
+				}
+			},
+			"sound_effects": {
+				"0": {
+					"effect": "deploy"
+				}
+			},
+			"particle_effects": {
+				"0.0": {
+					"effect": "smoke_bomb_deploy",
+					"locator": "locator"
+				},
+				"2.7": {
+					"effect": "smoke_bomb_smoke",
+					"locator": "locator",
+					 "pre_effect_script": "variable.particle_color_r = query.property('bw_vv:smoke_color') == 'white' ? 0.976 : (query.property('bw_vv:smoke_color') == 'light_gray' ? 0.616 : (query.property('bw_vv:smoke_color') == 'gray' ? 0.278 : (query.property('bw_vv:smoke_color') == 'black' ? 0.114 : (query.property('bw_vv:smoke_color') == 'brown' ? 0.514 : (query.property('bw_vv:smoke_color') == 'red' ? 0.690 : (query.property('bw_vv:smoke_color') == 'orange' ? 0.976 : (query.property('bw_vv:smoke_color') == 'yellow' ? 0.996 : (query.property('bw_vv:smoke_color') == 'lime' ? 0.502 : (query.property('bw_vv:smoke_color') == 'green' ? 0.369 : (query.property('bw_vv:smoke_color') == 'cyan' ? 0.086 : (query.property('bw_vv:smoke_color') == 'light_blue' ? 0.227 : (query.property('bw_vv:smoke_color') == 'blue' ? 0.235 : (query.property('bw_vv:smoke_color') == 'purple' ? 0.537 : (query.property('bw_vv:smoke_color') == 'magenta' ? 0.780 : (query.property('bw_vv:smoke_color') == 'pink' ? 0.953 : 0.0))))))))))))))); variable.particle_color_g = query.property('bw_vv:smoke_color') == 'white' ? 1.000 : (query.property('bw_vv:smoke_color') == 'light_gray' ? 0.616 : (query.property('bw_vv:smoke_color') == 'gray' ? 0.310 : (query.property('bw_vv:smoke_color') == 'black' ? 0.114 : (query.property('bw_vv:smoke_color') == 'brown' ? 0.329 : (query.property('bw_vv:smoke_color') == 'red' ? 0.180 : (query.property('bw_vv:smoke_color') == 'orange' ? 0.502 : (query.property('bw_vv:smoke_color') == 'yellow' ? 0.847 : (query.property('bw_vv:smoke_color') == 'lime' ? 0.780 : (query.property('bw_vv:smoke_color') == 'green' ? 0.486 : (query.property('bw_vv:smoke_color') == 'cyan' ? 0.612 : (query.property('bw_vv:smoke_color') == 'light_blue' ? 0.702 : (query.property('bw_vv:smoke_color') == 'blue' ? 0.267 : (query.property('bw_vv:smoke_color') == 'purple' ? 0.196 : (query.property('bw_vv:smoke_color') == 'magenta' ? 0.306 : (query.property('bw_vv:smoke_color') == 'pink' ? 0.545 : 0.0))))))))))))))); variable.particle_color_b = query.property('bw_vv:smoke_color') == 'white' ? 0.996 : (query.property('bw_vv:smoke_color') == 'light_gray' ? 0.592 : (query.property('bw_vv:smoke_color') == 'gray' ? 0.322 : (query.property('bw_vv:smoke_color') == 'black' ? 0.129 : (query.property('bw_vv:smoke_color') == 'brown' ? 0.196 : (query.property('bw_vv:smoke_color') == 'red' ? 0.149 : (query.property('bw_vv:smoke_color') == 'orange' ? 0.114 : (query.property('bw_vv:smoke_color') == 'yellow' ? 0.239 : (query.property('bw_vv:smoke_color') == 'lime' ? 0.122 : (query.property('bw_vv:smoke_color') == 'green' ? 0.086 : (query.property('bw_vv:smoke_color') == 'cyan' ? 0.612 : (query.property('bw_vv:smoke_color') == 'light_blue' ? 0.855 : (query.property('bw_vv:smoke_color') == 'blue' ? 0.667 : (query.property('bw_vv:smoke_color') == 'purple' ? 0.722 : (query.property('bw_vv:smoke_color') == 'magenta' ? 0.741 : (query.property('bw_vv:smoke_color') == 'pink' ? 0.667 : 0.0)))))))))))))));"
+				}
+			}
+		},
+		"animation.bw_vv.smoke_bomb_spray": {
+			"animation_length": 0.15,
+			"loop":true,
+			"sound_effects": {
+				"0.0": {
+					"effect": "spray"
+				}
+			}
+		},
+		"animation.bw_vv.smoke_bomb_spray_sound_timer": {
+			"animation_length": 2.5,
+			"loop": false
+		},
+		"animation.bw_vv.smoke_bomb_spray_sound_finish_timer": {
+			"animation_length": 8.0,
+			"loop": false
+		}
+	}
+}

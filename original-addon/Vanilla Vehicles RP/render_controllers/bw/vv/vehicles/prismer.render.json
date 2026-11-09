@@ -1,0 +1,54 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_prismer_active": {
+      "geometry": "Geometry.default",
+      "materials": [
+           { "*": "Material.alpha" },
+           { "lights": "Material.glow" }
+                   ],
+      "textures": [ 
+        "Texture.active"
+                  ]
+    },
+    "controller.render.bw_vv_prismer_aura": {
+      "geometry": "Geometry.aura",
+      "ignore_lighting": true,
+      "part_visibility": [{"*":"q.camera_distance_range_lerp(0,2)==1"}],
+      "materials": [
+           { "*": "Material.translucent_animated" }
+                   ],
+      "textures": [ 
+        "Texture.aura_animated"
+                  ],
+                  "uv_anim": {
+                    "offset": [0, "math.mod(math.floor(q.anim_time * 16), 18) / 18"],
+                    "scale": [1, "1 / 18"]
+                }
+    },
+    "controller.render.bw_vv_prismer_tentacles_animated": {
+      "geometry": "Geometry.default",
+      "part_visibility": [{"*":"v.is_active"}],
+      "materials": [
+           { "*": "Material.alpha_animated" }
+                   ],
+      "textures": [ 
+        "Texture.tentacles_animated"
+                  ],
+                  "uv_anim": {
+                    "offset": [0, "math.mod(math.floor(q.life_time*6+q.modified_distance_moved*0.9), 8) / 8"],
+                    "scale": [1, "1 / 8"]
+                }
+    },
+    "controller.render.bw_vv_prismer_inactive": {
+      "geometry": "Geometry.default",
+      "part_visibility": [{"*":"!v.is_active"}],
+      "materials": [
+           { "*": "Material.masked" }
+                   ],
+      "textures": [ 
+        "Texture.inactive"
+                  ]
+    }
+  }
+}

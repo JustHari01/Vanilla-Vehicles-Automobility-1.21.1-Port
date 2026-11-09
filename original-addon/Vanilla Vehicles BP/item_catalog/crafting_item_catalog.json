@@ -1,0 +1,124 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:crafting_items_catalog": {
+    "categories": [
+      {
+        "category_name": "equipment",
+        "groups": [
+          {
+            "items": ["bw_vv:tesla_helmet"]
+          }
+        ]
+      },
+      {
+        "category_name": "items",
+        "groups": [
+          {
+            "items": [
+              "bw_vv:guide_book",
+              "bw_vv:propeller",
+              "bw_vv:compressed_redstone",
+              "bw_vv:redstone_compressor",
+              "bw_vv:wind_vane"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "bw_vv:minecar",
+              "name": "bw_vv:vehicles_group"
+            },
+            "items": [
+              "bw_vv:minecar",
+              "bw_vv:mobtruck",
+              "bw_vv:mech",
+              "bw_vv:logcar.oak",
+              "bw_vv:plane.oak",
+              "bw_vv:hot_air_balloon.basket",
+              "bw_vv:steamboat",
+              "bw_vv:prismer"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "bw_vv:hot_air_balloon.envelope.blank",
+              "name": "bw_vv:envelopes_group"
+            },
+            "items": [
+              "bw_vv:hot_air_balloon.envelope.blank",
+              "bw_vv:hot_air_balloon.envelope.striped",
+              "bw_vv:hot_air_balloon.envelope.creeper"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "bw_vv:sticker.bloom",
+              "name": "bw_vv:stickers_group"
+            },
+            "items": [
+              "bw_vv:sticker.bloom",
+              "bw_vv:sticker.castle",
+              "bw_vv:sticker.creeper",
+              "bw_vv:sticker.diamonds",
+              "bw_vv:sticker.enderman",
+              "bw_vv:sticker.hearts",
+              "bw_vv:sticker.icy",
+              "bw_vv:sticker.rainbow",
+              "bw_vv:sticker.skeleton",
+              "bw_vv:sticker.stripes"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "bw_vv:flag.white",
+              "name": "bw_vv:flags_group"
+            },
+            "items": [
+              "bw_vv:flag.pole",
+              "bw_vv:flag.white",
+              "bw_vv:flag.red",
+              "bw_vv:flag.blue",
+              "bw_vv:flag.green",
+              "bw_vv:flag.yellow",
+              "bw_vv:flag.purple",
+              "bw_vv:flag.orange",
+              "bw_vv:flag.black",
+              "bw_vv:flag.light_blue",
+              "bw_vv:flag.light_gray",
+              "bw_vv:flag.gray",
+              "bw_vv:flag.magenta",
+              "bw_vv:flag.lime",
+              "bw_vv:flag.pink",
+              "bw_vv:flag.brown",
+              "bw_vv:flag.cyan"
+            ]
+          },
+          {
+            "group_identifier": {
+              "icon": "bw_vv:smoke_bomb",
+              "name": "bw_vv:smoke_bombs_group"
+            },
+            "items": [
+              "bw_vv:smoke_bomb",
+              "bw_vv:smoke_bomb.white",
+              "bw_vv:smoke_bomb.light_gray",
+              "bw_vv:smoke_bomb.gray",
+              "bw_vv:smoke_bomb.black",
+              "bw_vv:smoke_bomb.brown",
+              "bw_vv:smoke_bomb.red",
+              "bw_vv:smoke_bomb.orange",
+              "bw_vv:smoke_bomb.yellow",
+              "bw_vv:smoke_bomb.lime",
+              "bw_vv:smoke_bomb.green",
+              "bw_vv:smoke_bomb.cyan",
+              "bw_vv:smoke_bomb.light_blue",
+              "bw_vv:smoke_bomb.blue",
+              "bw_vv:smoke_bomb.purple",
+              "bw_vv:smoke_bomb.magenta",
+              "bw_vv:smoke_bomb.pink"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

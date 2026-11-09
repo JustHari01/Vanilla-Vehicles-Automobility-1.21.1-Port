@@ -1,0 +1,35 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:redstone_compressor_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "i",
+            "F"
+        ],
+        "key": {
+            "i": {
+                "item": "minecraft:comparator"
+            },
+            "F": {
+                "item": "minecraft:piston"
+            }
+        },
+        "unlock": [
+            {
+              "item": "minecraft:comparator"
+            },
+            {
+                "item": "minecraft:piston"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:redstone_compressor",
+            "count": 1
+        }
+    }
+}

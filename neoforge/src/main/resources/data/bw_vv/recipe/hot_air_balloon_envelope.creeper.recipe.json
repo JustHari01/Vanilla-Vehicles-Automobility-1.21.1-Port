@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:hot_air_balloon.envelope.creeper",
+    "count": 1
+  },
+  "pattern": [
+    "LM"
+  ],
+  "key": {
+    "L": {
+      "item": "bw_vv:hot_air_balloon.envelope.blank"
+    },
+    "M": {
+      "item": "bw_vv:sticker.creeper"
+    }
+  }
+}

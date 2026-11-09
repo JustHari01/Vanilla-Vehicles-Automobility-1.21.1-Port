@@ -1,0 +1,95 @@
+// BP/blocks/bw_wind_vane.json
+{
+  "format_version": "1.21.120",
+  "minecraft:block": {
+    "description": {
+      "identifier": "bw_vv:wind_vane",
+      "states": {
+                "bw_vv:wind_dir": ["N", "E", "S", "W"]
+      }
+    },
+    
+    "components": {
+       "minecraft:destructible_by_mining":{
+        "seconds_to_destroy": 0.8
+       },
+       "tag:minecraft:is_pickaxe_item_destructible": {},
+       "minecraft:redstone_conductivity": {
+    "allows_wire_to_step_down": false,
+    "redstone_conductor": true
+},
+      "minecraft:map_color": "#C8C8C8",
+
+      // Geometry & texture
+      "minecraft:geometry": "geometry.bw_vv.wind_vane",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "bw_vv:wind_vane",
+          "render_method": "alpha_test"
+        }
+      },
+
+      "minecraft:collision_box": { "origin": [-8, 0, -8], "size": [16, 2, 16] },
+      "minecraft:selection_box": { "origin": [-8, 0, -8], "size": [16, 16, 16] }
+    },
+
+    "permutations": [
+      {
+        "condition": "q.block_state('bw_vv:wind_dir') == 'N'",
+        "components": {
+          "minecraft:transformation": { "rotation": [0, 180, 0] },
+          "minecraft:redstone_producer": {
+            "power": 15,
+            "connected_faces": [
+                "west"
+            ],
+            "strongly_powered_face": "west",
+            "transform_relative":true
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('bw_vv:wind_dir') == 'E'",
+        "components": {
+          "minecraft:transformation": { "rotation": [0, 270, 0] },
+          "minecraft:redstone_producer": {
+            "power": 15,
+            "connected_faces": [
+                "west"
+            ],
+            "strongly_powered_face": "west",
+            "transform_relative":true
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('bw_vv:wind_dir') == 'S'",
+        "components": {
+          "minecraft:transformation": { "rotation": [0, 0, 0] },
+          "minecraft:redstone_producer": {
+            "power": 15,
+            "connected_faces": [
+                "west"
+            ],
+            "strongly_powered_face": "west",
+            "transform_relative":true
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('bw_vv:wind_dir') == 'W'",
+        "components": {
+          "minecraft:transformation": { "rotation": [0, 90, 0] },
+          "minecraft:redstone_producer": {
+            "power": 15,
+            "connected_faces": [
+                "west"
+            ],
+            "strongly_powered_face": "west",
+            "transform_relative":true
+          }
+        }
+      }
+    ]
+  }
+}

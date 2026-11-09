@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:recipe_shapeless": {
+    "description": {
+      "identifier": "bw_vv:guide_book_recipe"
+    },
+    "tags": [
+      "crafting_table"
+    ],
+    "ingredients": [
+      {
+        "item": "minecraft:book"
+      },
+      {
+        "item": "bw_vv:compressed_redstone"
+      }
+    ],
+    "unlock":[
+      {
+        "item": "minecraft:book"
+      },
+      {
+        "item": "bw_vv:compressed_redstone"
+      }
+    ],
+    "result": {
+      "item": "bw_vv:guide_book",
+      "count": 1
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "bw_vv:sticker.creeper",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

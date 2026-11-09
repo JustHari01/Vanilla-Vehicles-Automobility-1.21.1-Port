@@ -1,0 +1,48 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:wind_vane_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "nnn",
+            " Fg",
+            "iii"
+        ],
+        "key": {
+            "n": {
+                "item": "minecraft:iron_nugget"
+            },
+            "F": {
+                "item": "minecraft:fence"
+            },
+            "i": {
+                "item": "minecraft:iron_ingot"
+            },
+            "g": {
+                "item": "minecraft:redstone_torch"
+            }
+        },
+        "unlock": [
+            {
+                "item": "minecraft:iron_nugget"
+            },
+            {
+                "item": "minecraft:fence"
+            },
+            {
+                "item": "minecraft:iron_ingot"
+            },
+            {
+                "item": "minecraft:redstone_torch"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:wind_vane",
+            "count": 1
+        }
+    }
+}

@@ -1,0 +1,2020 @@
+{
+  "source_sha256": "638c5c40fd3391aa513f75efd5455765d0c9cb884b4048a90357a211cee1bff9",
+  "textures": [
+    {
+      "file": "textures/bw/vv/attachable/tesla_helmet.png",
+      "sha256": "c75bec438323cf0f7f8499e1c912ac56be8ff229e400aba8f5285ea2b0c2553f",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/attachable/tesla_helmet_mer.png",
+      "sha256": "84a4bc61be0f4dad402cc37b943d162882eec62d5725f9b875582350e6e5b1bc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flag.pole.png",
+      "sha256": "51850472ffacd470acae315562b07ec0206c097713198f7e2d72213cc63bf551",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/black.png",
+      "sha256": "adf031baf81bd5ca7597ece071d5e346ebac229c884c540f37ed7a5173a9eb4d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/blue.png",
+      "sha256": "36e5d6c33baa8d618c52452cda4de904b8319eb39ef256d7a5c238b83de9cef5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/brown.png",
+      "sha256": "e791fe2df1c3d7e548a6d71e464d46e075957c460b67519e95551223ae181464",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/cyan.png",
+      "sha256": "d0b715b5eaa9088c13851a4b96fd0615cb4aec3c5d0486dd6f0b1d6767f43798",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/gray.png",
+      "sha256": "aab1a54a492f521db0954f7c96c71ade5cb3a600444bcad6ed9d43228d2a8873",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/green.png",
+      "sha256": "4f6d1f04e2ab2535138d85fb5445ca2fa27965c9280d0a9efeb69fe0df2f4afa",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/light_blue.png",
+      "sha256": "23d1ee18b2505ec33ef52fcc2874d09a5f37fb524a872105068b951178cc94f4",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/light_gray.png",
+      "sha256": "eca4d623662ff2d99bcff4ad45334370ec1fff54e7691261c58c6a51287399b0",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/lime.png",
+      "sha256": "1a9f7562a2f8b79d28b58b087fce834978469df71ea7fbc630655b0311713715",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/magenta.png",
+      "sha256": "63cc9756e246b92def675ae0bc603a74b8105745d9710bc8ca9011729111a93a",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/orange.png",
+      "sha256": "9430079baebce22b3e01192b22245f7dc41d05e52b834a3283d57736a45542aa",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/pink.png",
+      "sha256": "b2b8d133705fce68d50d90c0207991b425bbad31e972f91edd3b37ef60b0d507",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/purple.png",
+      "sha256": "c2d567646177f7fcc67dcf629667520e9a36f18e69700d787d589658865ea4d2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/red.png",
+      "sha256": "fa7fe5571d81ea8ee2b5f10e7f94c9c9ce856d9c11d8a31febe0c43a00d99c7c",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/white.png",
+      "sha256": "d998a20c8005f46927778f27e751a3182d4b4f21160ff2c59dfdfbbea573d992",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/flags/yellow.png",
+      "sha256": "80764623879f99f3ede364457e23524fba3f8c4b038ddb5e2505d2a2fa70292b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/blocks/wind_vane.png",
+      "sha256": "8172e2e06b792e5669c80063bee27e0b9851bb3af4f23fc58d1ccb265443c6e2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/empty.png",
+      "sha256": "eef2035935472458c3b423d810cdd965d0b20b5ad4ce67c2600982df50ef4f9b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/entity/mechanic2/mechanic.png",
+      "sha256": "fd16ed72c3a7bf5ede3bf56f7dfde51ac9dfc857ae0443f5a5a00b1e76b5751b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/entity/mechanic2/mechanic_mer.png",
+      "sha256": "91c4c043c277e7954f32aeeef3876fe7910e17505ee5cfbfa4f967194c0fd72d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/helpers/mech_projectile.png",
+      "sha256": "0c2b9f0c2e2eefd4c6f42a9e014c284f7d39f661e4ff4f8ad888c6f498d957d6",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/helpers/mech_projectile_mer.png",
+      "sha256": "fd927d573203cd41a7b99f3646ca5731f84b29bde6535a01369e4999625fd6d5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/balloon_envelope/blank.png",
+      "sha256": "82a046dd3a1e02e173dfecbcedf302a7d6a659c0e7f1523dff4561ad25c84542",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/balloon_envelope/creeper.png",
+      "sha256": "bf0758d5229af06da6c19ca5e8f7b09b6edd233aafc1d35422454f2e0b9021dc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/balloon_envelope/striped.png",
+      "sha256": "5265508907c55a9838a44eed3d593ce61759db0f3e42c382dc3681673ce068d7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/blueprints.png",
+      "sha256": "c11eeea25ff7e91e1b55ae926ce5abe26fba087d85dc2215edc72f8dcd218be5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/compressed_redstone.png",
+      "sha256": "51fa5c7d9541f486dd7b5c9829e0d747a0524b60e52698254141faf2975e2632",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/guide_book.png",
+      "sha256": "881d69af7bb11f22dc802c688944cb50ee340cb3baeb991bb1bc85205c80edbb",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/mechanical_heart.png",
+      "sha256": "aee43dd4532ca01034cd7cc5a3bc48a1b1a016b570d2b846e97c7469555f5054",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/mob_spawns/mechanic.png",
+      "sha256": "ca0cd17f219eceed989fdf5e64912efef208f2be206eba0dc11669cecea145dc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/propeller.png",
+      "sha256": "57898fa8970ccf894e26fb8c5e1168039bb18c73b771e54e93c441a742c88c23",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flag.pole.png",
+      "sha256": "d7697112722d8dd1b0e826b3566acd79488dd94186867e46f45a422c31616ac7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/black.png",
+      "sha256": "26405fc537d92b7513d8ff4a25da3e570fd8d2e5373aaf6d625410aad763b1ef",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/blue.png",
+      "sha256": "9d0591f64c417824bf1b1a86801c3e6264ac49db331573cc689b6db79b0d99e3",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/brown.png",
+      "sha256": "55937c8fed463149182f73562a5f3bac14d2c140ed52132b1fbefa2542c824eb",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/cyan.png",
+      "sha256": "8fbb12929cd47874a89e6c16d0f7d3281a3d0f0fba3653816d43e96d901f6cd8",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/gray.png",
+      "sha256": "4722b5d841a63bcdbb7eff0eeb6a018923c77e73f7d097b8ce95241be04e2bec",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/green.png",
+      "sha256": "8c4ea5e5b6d4745fcb67b69fbbd25302a1f27f2e23e0377fb80041f700f54a86",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/light_blue.png",
+      "sha256": "0849ec3f1ed4db5edc019fce7dab229453f848fe6d7a8742e64fbbb86998a1ba",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/light_gray.png",
+      "sha256": "f47f76ebc7c776c4454961722b268327c39940ce9e837e15dc70907e495ed4f1",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/lime.png",
+      "sha256": "78b22f2f5ff3702fc704d0592ffaedb008693890ea5dd1bf5fae5762605c59c0",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/magenta.png",
+      "sha256": "593cf35b7a2e085865ffbd2dc99bda33092ccf4be7c46d0affb2ee176dec4e6a",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/orange.png",
+      "sha256": "f81c48c2ca6c00ead52e1e73739e3cdebc5a0d79d92bb34215510008f78b8e97",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/pink.png",
+      "sha256": "23953e5630c50db96a71c124d36cd78b455ffae9ef705c5cdb584d78c6eec631",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/purple.png",
+      "sha256": "ef7cdfeaeb6dd56165bf7607d50a346209529ffbd6479680b3c214108ace37e9",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/red.png",
+      "sha256": "332ee456726d6250e1f85932f5a973ec084c6ccfc47149f8af79be295d29c12e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/white.png",
+      "sha256": "d865b25eb0ec3b2bf72f5a0d571ff82b7e790cacb5095c8b7da8f6328ab50296",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/prop_spawns/flags/yellow.png",
+      "sha256": "c7f4a07f09fc1f4e2bc61359f93696dd374b0f1c19e888e4030da6d31837ca17",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/redstone_compressor.png",
+      "sha256": "002db52680038738cb014b5617a99dcc9fee37fca0914ddb22e93cf2d8a3e46b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/redstone_pulser.png",
+      "sha256": "c8290f5172cb3defb185a6b568212b47c00a9b30c0903990d930488a89e950a6",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/saddle.png",
+      "sha256": "48740011d439f7a52f8658d2c8fd926a7960b34c2440cdcf089c43c5d1144703",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/black.png",
+      "sha256": "fa333cbd022a54938390e4f6bc793ee31060dc539660ebd0eb43dbc95797a1d7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/blue.png",
+      "sha256": "36023b46f4e9efa51dc3a2ecc84ddbf53025e623e224aa949afd8e0ef5a77f25",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/brown.png",
+      "sha256": "2494b27b4873da8ed0f3150245332162d24042104932e57c2b245e6bd09aa5bd",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/cyan.png",
+      "sha256": "b61360978008fcef856e4fe351afc49f10d690040cbb20a0125529e07123eff0",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/empty.png",
+      "sha256": "74367f86790770ace4b2b5c6a9cf885c84f62de9afb4a11dbcdd44a97563b1a4",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/gray.png",
+      "sha256": "ae6b52c47630077481c85e5ad683b973b1176c764af00bf3819e06fda425d568",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/green.png",
+      "sha256": "ff3d3cb706cc49753bf7cb49c9956a27f87415a0833348f23775f049be57e77f",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/light_blue.png",
+      "sha256": "1e6be3f0e5cecc7403b901c745bbfd667049a45b820bbd3e89fcd8b8dab0bf0c",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/light_gray.png",
+      "sha256": "41e611c16f0c2ed5631f3047ecc05cd3e929d8895ad5974345d5c8f433e501e5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/lime.png",
+      "sha256": "bbe22b5c87cc66c8825dd8d90d4f3d4f49386779b3bbb09c38ea8b867c9e9be5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/magenta.png",
+      "sha256": "72b3c7b61f745951ab77d0749aceea1ea431cb85194e2b225684b14acb75bba6",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/orange.png",
+      "sha256": "43cfb5881c92e573c7dda8cec8693e7be9510eb2fe23d50ac1bd847e0a309848",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/pink.png",
+      "sha256": "8c027888ff2df63350d3c3a0792f4d2b558640f6c89e0058861443c29958ff2b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/purple.png",
+      "sha256": "b33848cc3f1bdf9620acbc7cd79a8aa537f49631c6e5dda73f555db7292b5d60",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/red.png",
+      "sha256": "eddc432bdb33b1cd12cbf64694ffcd72a74523e2a46ff2f32cc86ac85cf282db",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/white.png",
+      "sha256": "2448b79824653ea71d5796bab85d6273aa5b9241e8944f9de4a870bb8b4fefdf",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/smoke_bombs/yellow.png",
+      "sha256": "e0b2ce1a86b598b27614f77fa9979113d01bf71d298107cd86f86f7f2ee94e09",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/spray_bottles/empty.png",
+      "sha256": "1099668c9e83d0474104d7b3d376a749ce0f013fefcbb0aae6f6f774b1ffc321",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/spray_bottles/light_blue.png",
+      "sha256": "1099668c9e83d0474104d7b3d376a749ce0f013fefcbb0aae6f6f774b1ffc321",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/bloom.png",
+      "sha256": "1276470ff282dc464abea105e8e701e12044ef7fe37a4d25d338b5bfb0c04f8a",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/burning.png",
+      "sha256": "8a85213d40c82ad57887e87c91dde0b7682114de0440bebcd89ca73cf6aa4763",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/castle.png",
+      "sha256": "a81de32506aab6403da2027c6aae11ef5075ac9b2de1aa93f4eb0d4bfa20bf42",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/creeper.png",
+      "sha256": "25989ff52567305d8e73ea7078410a56d3ca9b5de6fe52f15d09452ba63164c1",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/diamonds.png",
+      "sha256": "067fc2665c32a52486c0c9b38b66613b070637586de8c1abc504bb14db5b91f6",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/enderman.png",
+      "sha256": "cce9a2814c53e75bdcb1b01670729bbf34ec83c7eab12bc320d303d64f4cc8b1",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/hearts.png",
+      "sha256": "6181dd8a91fa9dac6a01823261d1e2ee300d5a97bad8589e41a37179c5f26a27",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/icy.png",
+      "sha256": "0ae54f63e6a9cae8f155a989b56dfbcd81d1cf92694752af0836fceafc9acb1e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/rainbow.png",
+      "sha256": "2b64daa8c6272477efed667e69ee21c70b9d7f31e985b040d8ba651ffb0d00cb",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/skeleton.png",
+      "sha256": "d1102828a8b5d4ba5e46275fc15b77c2bb812745ed3653ee01da84271ca01ac2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/soulful.png",
+      "sha256": "a9b66701911fc675f8459820644cd3bd5c2a0417f42bc0013d67756a8ec1c603",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/stripes.png",
+      "sha256": "b3602970475d8a6806f39855b0179f4f07e39eb9881c61634b3d46afa12aafcc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/stickers/template.png",
+      "sha256": "dd3ffe96df168cd0a237522399f86b6bdad64d11cd9a32880fad680f91373e27",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/tesla_helmet.png",
+      "sha256": "fd1ff0769a2c960e83a0eb97fc711c29fc0333e34bf1f02e0b3180e049b219ed",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/tesla_helmet_upgrade.png",
+      "sha256": "21c41aaf8c04fb556795942d3d45e762731d538a5520f9b6b6871ad20fc9e689",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/hot_air_balloon.png",
+      "sha256": "284faf542130c81c32dcfff16443ca591460f87e0c863be2f0f3e5200ff2a103",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/logcar/oak.png",
+      "sha256": "93a0dd0d9bfe6d5f99ded374987e33e9ba7db0835187a4c389f1a04541e69cd0",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/mech.png",
+      "sha256": "7c0cc15d19d0efa8c690c5e7b170c06c544a7cca7457625bf3427b6519e050b1",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/minecar.png",
+      "sha256": "41bd2db767cb12d5f863d3d37218eea233b636d6e476d8b201f7e6f7b6dadb3e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/mobtruck.png",
+      "sha256": "0c85f5f20e20c27ea6bae9f9bc58ce0209a53f1033b39bb09904590a34639477",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/plane/oak.png",
+      "sha256": "b84a47f554d3055cc0f524921e056a4ae8826507846dddee85c22f73819e5a80",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/prismer.png",
+      "sha256": "2b89c4658f5c593da57962f628eb034199231d89d41b959913accb1a71503e78",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/vehicle_spawns/steamboat.png",
+      "sha256": "74f06921b35e9e959fc00d62f202ead2059c9639b48a36ab7d35cf1c8ade19a0",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/items/wind_vane.png",
+      "sha256": "73ba6cfebf45e213ab8ba7745e6d62e2952c9f3459d9cd1d6ca5e716c6f48633",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/hot_air_balloon.ignite.png",
+      "sha256": "9a647b2d190ee18fcaad5b81aefc6d677a7d90224e1b3d6b49a91619bd081b95",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/hot_air_balloon.ignite_mer.png",
+      "sha256": "5a6728824bde2d6f149a1bdab793aad4616a5de814507585dfe63a168ecec4b2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/metal_destroy.png",
+      "sha256": "117bcf25c10340a06947bc4018c17441479007519fe2d0e86bfa7b3ff552dd01",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_electricity.png",
+      "sha256": "5059f8b81dec097db3519677ec2f98c75a545e31851c70c7b084216af126464e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_electricity_explosion.png",
+      "sha256": "aa44a36e1b73634957d70ef16f3f2b2cd6e832e1a32ed2f63abc4eec95ddaed5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_electricity_explosion2.png",
+      "sha256": "3f7b761dd3702f5ae5c373f1d28ed50c2b5e92ba5ac877daa86dbd04126978ae",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_electricity_explosion2_mer.png",
+      "sha256": "086f7265f475e9002bc3d751f42684cc5b0e3560f6d421c18538a12f5566892e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_electricity_explosion_mer.png",
+      "sha256": "95d3ec4e7909a965245652b2bda9a91da60bbb32eea45a5980f34397ea3af5e9",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_electricity_mer.png",
+      "sha256": "0054cea6c9fdfdf2cd899d97000141f15f28a6b677bde8a42d4dc8a1f103596b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_smoke.png",
+      "sha256": "0e5c574e0aaeed5a8fa8adab36341ff6475bd3691829a3f0caa14db682d0d4ff",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_smoke_mer.png",
+      "sha256": "6aa1d968ea2708c4e6e043fcdb297ea9dfdafa9b1fb6047c16b979fb60b417d3",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_sparks.png",
+      "sha256": "9955155ecd3c558e67f33b7672c293affa23edeb9241c1c472a35d1e22a617a2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/redstone_sparks_mer.png",
+      "sha256": "7aa7c9587bba2e0015656d882bb8bc9af0c6a725e7e25e651d14b908cb1606ce",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/smoke.png",
+      "sha256": "6ef89770e3551980f8f02c47a9b72f22f886f916f206b75612cc9f7c83daba01",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/smoke_big.png",
+      "sha256": "042cc9eaa20d78918456c17a2b774226e0ab89add54eb4a146dc1eb00a0265b7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/smoke_bomb.png",
+      "sha256": "18d08ebfe8ba619f9ff53ef252a1bf752bfc7589ac5b456651d11d20e99260ec",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/water_foam.png",
+      "sha256": "251119bbabaf3617fc285d4c924aa6b12008eaf5b1cb30e1182c989efb202ccc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/water_spread.png",
+      "sha256": "bd91f45fdbdf5ac4e24bb3bc91c999a2760796ca7d09e1e6a8c2a654ca0b1bfc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/wind.png",
+      "sha256": "6aa429bcf01bf49d62c36987620e72ea9e062b2ad3f470ccccccedadd3e966cb",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/wind_singular.png",
+      "sha256": "3a28e1cde8ebb1d02ec71e21f7fe174e9cf7abf75d24845f56b6a26052ac3a66",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/particle/wood_destroy.png",
+      "sha256": "1fb34d1b66be518605f0cacd0ce2ca082f7ed1d831d2620d29bd5f8c129dd5dc",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/back_icon.png",
+      "sha256": "ea282bf6ab65dbc9f0d4441cc058972506e7e19ee436e39d195ffc2c5c90c7d4",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/settings_icon.png",
+      "sha256": "a4cde55904defc5a455b9b7a06050bef3718d1d3fdc17d1616c814687bb7dce4",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/speed.png",
+      "sha256": "8d169b0b3cd6de164252806081478e78ea9ec0cc035125dd66a45699931c4241",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/stats/players.png",
+      "sha256": "256f7a07a21fc6df9550e70985ef495f984d9357d39402bbfdce304d1a50a7ae",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/stats/speed.png",
+      "sha256": "8d169b0b3cd6de164252806081478e78ea9ec0cc035125dd66a45699931c4241",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/stats/sprayable.png",
+      "sha256": "f77fd0e78cca8f29d58ff88c3a490d14b0628c60564838aca36551fcf65dbc1d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/stats/stickers.png",
+      "sha256": "02dbb51fa2b17c4bffc391c648a405c4cbd53653a6d5a262384404a4ccd6f1d9",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/stickers.png",
+      "sha256": "02dbb51fa2b17c4bffc391c648a405c4cbd53653a6d5a262384404a4ccd6f1d9",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/support_icon.png",
+      "sha256": "a1c9c21bcf699788ab6df8fe7ff318769be58efc840d35bcbfc695fd67ac0d7d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/wind.png",
+      "sha256": "26c890d10b4a83e30ac69e1cb1f97bad82e111782f0caa3f6b0109e2d24672ca",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/guide_book/wind_icon.png",
+      "sha256": "b58e564622fc502bb9ab83ad88c9c5d88c813e881238dd47402f14c792af1df6",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/ui/outline.png",
+      "sha256": "5cf6bf55a80f3b1b6f834d44b8937e210999c49f6ca13081f3cd79dd559feb8a",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/animated/1.png",
+      "sha256": "a15d12771aca0bca95da74bd81991c8552ee6af52ae0421a1038b3692977d21b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/animated/1_mer.png",
+      "sha256": "eb9ddc13903778af66896989c573d9bc372fd3f3d7143e97e5fe42e1b5056301",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/animated/2.png",
+      "sha256": "64c97391bded566f87b1923b0ec57c7e9c872ceeb1e8f0f92ed0510fbd5a7f86",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/animated/2_mer.png",
+      "sha256": "534beaa153e8a4dadbfcc8119a37d691eae86829d025bc9d22cf6c690d26a760",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/animated/3.png",
+      "sha256": "94b16bdba8c7966d862a9b7a6ed11f820b907f0ddb7427cdf6d8a5f989b45db2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/animated/3_mer.png",
+      "sha256": "33213f0ea4d4c1ad1e547eeefafa4e6ee8cd7db61c2939baba5839a9865061da",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/base.png",
+      "sha256": "ebfcf5067fc0d22ae0322f5bf74eef5c917ca2d21485bac779651e38528eaa87",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/base_mer.png",
+      "sha256": "2c24922ded749814710913372e67f66134bd1c7318f4efb301bb8f2c8c1f8878",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/0.png",
+      "sha256": "ed1728b3b083bd1c3bb8bdad615ace00ebe688512fab274de0ef40de5c986f4e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/1.png",
+      "sha256": "5f9b57fe7e8192be443c462ecd9db9e94f6d5acb9cb114f328c50915ba2b7ae7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/2.png",
+      "sha256": "436c5d1fc4399bc92c444dbfee3e8c21fcad2e36142f3faced42ebaaffa7e53b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/3.png",
+      "sha256": "a91aeb0dec5ffe825d421d58018d57b714246f603872dcf56c92d54a35e8f04d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/4.png",
+      "sha256": "18ed124404b52f81dfc777f1bf2fb9d00fd3730b7db12a85ae31e7c9b70dcc3d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/5.png",
+      "sha256": "a957b85a0b6e3636722395b8db3d3eb688fffc83233f939eded61c3f27c1ec26",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/6.png",
+      "sha256": "f61c3c9dd3785b3c7949532c629d0a3eb3998b3eeff48b892eacac64dc0e2cd2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/7.png",
+      "sha256": "dd52bb2bd4225bd0ff2b98cd7e388813d32e8ae33de14abbc9af81b10c78b876",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/redstone_compressor/stages/8.png",
+      "sha256": "e266f9a450a157e82b9252257012144778295836ec2d06bf35a65412ef300f47",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/smoke_bomb/blink.png",
+      "sha256": "b5c0719a3709689f7aa0d61beec32e4601f4d6a407bdb81c54c21d22b9c14039",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/smoke_bomb/empty.png",
+      "sha256": "a22609776c93832c09a11eb177302491b3f7f474dcfa923f2f8b72b48613366d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/utilities/smoke_bomb/empty_mer.png",
+      "sha256": "25998fd63af36ea754754bec70e15bfe0e2af6f42c843444c396ccead8a6c038",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/blank.png",
+      "sha256": "d07d8301e580e9b1a88f15843e08652597678bd3a9af7ae2de2ded2a74ac4528",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/blank_mer.png",
+      "sha256": "f09974cce7300447532b34208bc69717a4daa9d961cb3fc8ae2c1829b6081e26",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/creeper.png",
+      "sha256": "cc4150a0949790e756663e1be0b86770322f4b8d576864958f1dfd2d402cab5a",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/creeper_mer.png",
+      "sha256": "3f1ec320907c780ec8e4415edd2a2b03bdd24b3dc141d3fe8590dcc2af263a11",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/empty.png",
+      "sha256": "88e7beeb207c8126f6612de63268d82cd0b98152d7a31c90cede7f77b218fc5c",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/empty_mer.png",
+      "sha256": "2e74b3005f75db77ab2b16d372fffbdf82e93292eb99a41853a7141bc4cfa177",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/striped.png",
+      "sha256": "f95a78f8e89bdb68c17ad026dbcc43b25e995014a414993f50be201ec077b988",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/hot_air_balloon/striped_mer.png",
+      "sha256": "4a3b4f68e03af5575f76d37dc6b2b9c9bc6d20e3c38e57dcee7211ab1767ea84",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/logcar/fueled_animated_sheet.png",
+      "sha256": "675f341d9525a8ac4d6d89f348431a84987003d3fc8d32ef93b0108c95f1847e",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/logcar/fueled_animated_sheet_mer.png",
+      "sha256": "b5334cfd7972a026222bc60bdbab7d03aab00f2d6154979f6558dd5211e0a657",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/logcar/oak.png",
+      "sha256": "284acff8786bf9c27104899dc5a9aeb85ba6b1c254376b02281830b178809d9f",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/logcar/oak_mer.png",
+      "sha256": "09cb1d5a538b05f04423de7b46605dc4d5898936cf78470262ad2ed3eb443786",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mech/animated.png",
+      "sha256": "1a21cf6c6e69ee2c087ed900820a77b79a81e7deed326a5f32bba01f8da95f20",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mech/animated_mer.png",
+      "sha256": "cc47a06b4945f2a67c7f259ee030989345b9274f5e0b59cace51b0066177b5ff",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mech/mech.png",
+      "sha256": "32224759a69ee2bce155f486d9c2f51cd6a353e49918fad10d5406e85ac02600",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mech/mech_mer.png",
+      "sha256": "475614de105df6c507835896ebfd8d1a2a08cce9c4c440fda3ec57af9cff01b2",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/bloom_pattern.png",
+      "sha256": "c196cbd9a83c4fc115a59b86aeac8dc077b6f8d13eaaee2c282f32a9a177540a",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/castle_pattern.png",
+      "sha256": "40ec938df05ef2c8ec7d56cea48dae9559e4c35e07680d6bb40a2402bbf138fb",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/creeper_pattern.png",
+      "sha256": "fa67cbe4a3de976ac39f09da87e969c9b2af08fcfcc2ec327df58b7a768a7f6b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/diamonds_pattern.png",
+      "sha256": "c1625f81c1fcfbd740a07d6a9391146edf0f788113a47f20c1592766ea43e239",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/empty.png",
+      "sha256": "ff30c0a7268849427c5b6085bc05b348e70289a37c3f23be10cec8b29a26ee6d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/enderman_pattern.png",
+      "sha256": "94091c68f1a4c3959999d4bc6e37dd6fdffb854a2bdb344b2e98995f9a6d0800",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/fueled_animated_sheet.png",
+      "sha256": "435fc3e9c973726396e1f2e65f2d19c71d18dfb11d80d9febcc88b5b3c17e2b6",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/fueled_animated_sheet_mer.png",
+      "sha256": "49e81c49728177febf4354cabe4be19bc3d6800984f085ad1ad93e7b0cda7f45",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/hearts_pattern.png",
+      "sha256": "c7df5fe74ac1cd299d25529b62c51fb1e09044c5ceb8369399d95b126d63d7b4",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/icy_pattern.png",
+      "sha256": "3cfa44898a0fe10c0967b0aa8067fde0e3bf0d8447f30da262cab0395e397c19",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/minecar.png",
+      "sha256": "ea9b85df4e91e233bf0f53a9fe61b6bd8c9bfb318aa11067e99f6939d5915049",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/minecar_mer.png",
+      "sha256": "3299e8ae2be8be0b3a4b956954b3c0ad3ded24fcb12f365ccd1cf227e14acf58",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/overlay.png",
+      "sha256": "e3b687af5748c62ec55fc9505c452ee57a435d72d76320de1e4217f6a96c7a09",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/rainbow_colors.png",
+      "sha256": "bdbc0ec42d8bbb90480846145b7017d972508733ff5ea28c830c68a495666eb8",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/rainbow_pattern.png",
+      "sha256": "53f644e69a095f6851f1559c9d87463bc10bab5066e0f2fa5067cacb5839c5be",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/skeleton_pattern.png",
+      "sha256": "491ae27c4208178efd7a5efaf2e6a679694cf0ba3fec825bce1fb25f3fe65e60",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/minecar/stripes_pattern.png",
+      "sha256": "f10e9a2f94955b660fc28c98252f03714817fc2d41887fead77ee589c212df03",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/bloom_pattern.png",
+      "sha256": "13d969cd3fe07b2eca586cbf96507a225c2cd489bde30bd21a344796a7d4a9ab",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/burning_pattern.png",
+      "sha256": "37a28ed2c83179d0476fc8107768fe8c165f8926a41c27516a6fbd5c8422d273",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/castle_pattern.png",
+      "sha256": "565ae0513a5850d32bd05ba59c31f8806fe9abdc105a1d3dd85b733cc2c8caa3",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/creeper_pattern.png",
+      "sha256": "55b1d303b542a2be467952483e2b5dd23562dad65ebd7a0527d99e7dce7d3de8",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/diamonds_pattern.png",
+      "sha256": "4a261aa2c9c6efe8bd5cff5b6464f969a929a95cd99d9d326e08652cadab8bee",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/empty.png",
+      "sha256": "3aa1516ccc38ea17833a00546918d6804e43521296471d50910c19ef95daf838",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/enderman_pattern.png",
+      "sha256": "561147772c3c85689f4a21e48e48bcbfb0bcaa0507ade11b7787510b2687d176",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/fueled_animated_sheet.png",
+      "sha256": "78aaac095845be72d0b2e731b890250ffc1dee2f9e052df87ad84cc0c7517d6b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/fueled_animated_sheet_mer.png",
+      "sha256": "c8d7a37214eb820168cc94227ce2f91a9e740c152e72e765ba275fb93d32fd91",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/hearts_pattern.png",
+      "sha256": "9820f615a3fc0261de9e1df81f9e6794c509f445e29ba803adb5e9bffd02a157",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/icy_pattern.png",
+      "sha256": "47b5bf1bee5fecb55b11aec79bd71b4b9629b146e411a9ab95b32e8980be6d19",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/mobtruck.png",
+      "sha256": "06f58d03cc930f4bac8fbb4eba98816b0e4ac38c8205ec214dfa573c071ecab5",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/mobtruck_mer.png",
+      "sha256": "cf4d1c4e4a0f848420ab2124d9d2454460cfeae7e693d69cb88764d8a060f62c",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/overlay.png",
+      "sha256": "cea241a1c021e2b9f199ae9768b0041b75d48a8a7c7d139097b9375289e67d18",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/rainbow_pattern.png",
+      "sha256": "3edddd47e03b81cb8e1d028fca4dcb6261f0d9c1815eafb331f936d601afb1be",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/rainbow_pattern_colors (DO NOT DELETE).png",
+      "sha256": "58c806e7cfac77b7887727bb3a6ec63643ab18151fb7e3b8d7633a6cbc23d03d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/skeleton_pattern.png",
+      "sha256": "ee3fb3ec960365b9a33813b692779db0ce18b62d411469174a036d58aabe54a8",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/soulful_pattern.png",
+      "sha256": "3aa1516ccc38ea17833a00546918d6804e43521296471d50910c19ef95daf838",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/mobtruck/stripes_pattern.png",
+      "sha256": "103c0d9405855e6f9aa7a21ab4e05b72ba2aed8f55e274b6fdb67f7d27f3ee4d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/plane/fueled_animated.png",
+      "sha256": "1cfde69d6c39168d3b5d04ae3bbe9b25e92361e290ee6b63f0b80aa71c92b91f",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/plane/fueled_animated_mer.png",
+      "sha256": "26c1b6dd51999b76dd340eb81c6f6cbe660707b4cbb551e93b01f10296f30c87",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/plane/oak.png",
+      "sha256": "3311c4b70c500b17afb308ed35602cfeb88acfcf163d853f5d7b0e724294adaa",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/plane/oak_mer.png",
+      "sha256": "0b02b319537ecdfd18563695cc4c1166ca26ba68d2c665b5baec6665c9d1c349",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/plane/wings_animated.png",
+      "sha256": "ccdf627638629ad0aa7bd012e847bc7951dce08fda65f5bddea68e6900f4019b",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/plane/wings_animated_mer.png",
+      "sha256": "f47c2e16d55074dfdb99b7297d62f3bda4e8b16d691a150cd7c0c034e781677f",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/prismer/active.png",
+      "sha256": "09c73e6e3c297101c9f1c224e142efd0031222d860d44d0cef7d4a48db09d1e0",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/prismer/active_mer.png",
+      "sha256": "ce9d0ca4fbb3a5a56b9b0dc470089716c255dddc1481367984c08b11536b9fa7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/prismer/aura_animated.png",
+      "sha256": "cb80165d0668ab8ddb90e69fad2ea8c3c0bc3d1589cf3c1979213695d2fe7d55",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/prismer/aura_animated_mer.png",
+      "sha256": "de35bf4a911e8cd1f50dfd1df0cbf3f2f4a76c63b4941f393ac7b5f74a7a8dd9",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/prismer/inactive.png",
+      "sha256": "e56af762eea9d5c2269d5082d21b6e127600ec8c0790c277c54a0c5ba339eeaf",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/prismer/tentacles_animated.png",
+      "sha256": "10a17c9de1d18e7fba50196744dc8cd1a6a5e1d6798d6c44d518b5b58ac4abd7",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/steamboat/base.png",
+      "sha256": "68dd4d3b15f6598ed03885b470181ec05821a4adac8172c862116091b1e95b7d",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/steamboat/base_mer.png",
+      "sha256": "8af520d5a237a301ced2a1432d9eda84f9619c46fb5f052f2434d081031df460",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/steamboat/fueled_animated_sheet.png",
+      "sha256": "1c3f7e2c4c0db420465b1d95a0cfeeb90ea2a54be742926a9bb0e1943b49ce16",
+      "identical": true
+    },
+    {
+      "file": "textures/bw/vv/vehicles/steamboat/fueled_animated_sheet_mer.png",
+      "sha256": "f18a1c0025300a1d4c43e2d22d5ed00999adf7ee8e0a0d8aa486b08e791ed686",
+      "identical": true
+    }
+  ],
+  "geometry": [
+    {
+      "file": "models/entity/bw/vv/vehicles/hot_air_balloon.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/logcar.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/mech.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/minecar.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/mobtruck.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/plane.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/prismer.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/vehicles/steamboat.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/utilities/redstone_compactor.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/smoke_bomb.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/blocks/bw/vv/wind_vane.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/mobs/mechanic.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/blocks/bw/vv/flag.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/blocks/bw/vv/flag.pole.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/helpers/mech_projectile.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/attachable/tesla_helmet.geo.json",
+      "cubes_bones_uv_identical": true
+    },
+    {
+      "file": "models/entity/bw/vv/helpers/prismer_aura.geo.json",
+      "cubes_bones_uv_identical": true
+    }
+  ],
+  "derivedFrames": [
+    {
+      "file": "logcar/fueled_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "logcar/fueled_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "logcar/fueled_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "logcar/fueled_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "logcar/fueled_animated/4",
+      "pixels_identical": true
+    },
+    {
+      "file": "mech/fueled/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "mech/fueled/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "mech/fueled/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "mech/fueled/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "mech/fueled/4",
+      "pixels_identical": true
+    },
+    {
+      "file": "minecar/fueled_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "minecar/fueled_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "minecar/fueled_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "minecar/fueled_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "minecar/fueled_animated/4",
+      "pixels_identical": true
+    },
+    {
+      "file": "mobtruck/fueled_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "mobtruck/fueled_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "mobtruck/fueled_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "mobtruck/fueled_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/4",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/5",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/wings_animated/6",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/fueled_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/fueled_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/fueled_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "plane/fueled_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/4",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/5",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/6",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/7",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/8",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/9",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/10",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/11",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/12",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/13",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/14",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/15",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/16",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/aura_animated/17",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/4",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/5",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/6",
+      "pixels_identical": true
+    },
+    {
+      "file": "prismer/tentacles_animated/7",
+      "pixels_identical": true
+    },
+    {
+      "file": "steamboat/fueled/0",
+      "pixels_identical": true
+    },
+    {
+      "file": "steamboat/fueled/1",
+      "pixels_identical": true
+    },
+    {
+      "file": "steamboat/fueled/2",
+      "pixels_identical": true
+    },
+    {
+      "file": "steamboat/fueled/3",
+      "pixels_identical": true
+    },
+    {
+      "file": "steamboat/fueled/4",
+      "pixels_identical": true
+    }
+  ],
+  "sounds": [
+    {
+      "original": "sounds/bw/vv/boost/boost1.wav",
+      "original_sha256": "de84125d7e714858b65810402c8e5193d4cd8f6b945261d5b39d20bf3bab1739",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost2.wav",
+      "original_sha256": "3b2b136ed3357f11e38a313d86ef82f9580abcbe9cf4d910f91f863f50208cf2",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost3.wav",
+      "original_sha256": "74786bac0c50499b9c1e739b60a5f665d7ae4cf840814b8d3baff4843e36231f",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost4.wav",
+      "original_sha256": "2cd98d07ea0e3782aea86fd4734f2107ae4553d1867fa7f31dea41d9307d9100",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost5.wav",
+      "original_sha256": "9bd89ed7d0a6610491408b39bd9d941a96bb9f98ed71cb388c076f7a14400f60",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost6.wav",
+      "original_sha256": "d1df9c1b7a4f547587dc6ab0b94c18cc3ceb474687a411e6d0ebb67ab21e1ed9",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost7.wav",
+      "original_sha256": "285b55c053359d641ecb41e0dcba4f785e6868170be3277a95b4373045a1da36",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/boost8.wav",
+      "original_sha256": "ddca8dd8aa2fa94861c04ce520aaca8d59fc21f7a6b2bcd9be11b0e4be0cb2f5",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/start.wav",
+      "original_sha256": "782770195048245757dab21ef01b081772c00acaf9cb5fa57380abeee361347a",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/boost/start2.wav",
+      "original_sha256": "a5fc954f419e678e812bf5753072620053bf6fdd2c14b97a5993b8a6d05ab19d",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/coal/no_pitch1.wav",
+      "original_sha256": "89905fe6b48263ddf460f06ccaa10076ad69c345f0d614ca89054fd4e90616ff",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/coal/no_pitch2.wav",
+      "original_sha256": "9b73247020e4b04f6253b834d698553a1076e8d2a1e6a9ea31e7ddcc701a0665",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/coal/no_pitch3.wav",
+      "original_sha256": "288da25e6119b48e8110aae3ada9cd271e257e32b6504a1e2cb25874dcd5a7f9",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/coal/no_pitch4.wav",
+      "original_sha256": "7efac6d3a252e05396d07cd041cddeb09a98215b831dae75ff329070ed01a59e",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/coal/pitch.wav",
+      "original_sha256": "96a4956fa0d85d5e7cfde422e7192e15f4be1c31143f4744b938e3b5f556f1fb",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/redstone/full.wav",
+      "original_sha256": "9d9e01c3112eb5bf59eaeba07dc2a1ce757d9675c4c1f661fd34103efbcc9662",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/redstone/no_pitch1.wav",
+      "original_sha256": "c6d467d2d5aeeab941f7dd49d7fe484a13695a607ac260c41ab3663760dabcbb",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/redstone/no_pitch2.wav",
+      "original_sha256": "45ec92244afacf6fb6b711c6b14b267e88f708e1d432338637a7417477666459",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/redstone/no_pitch3.wav",
+      "original_sha256": "3b7344d4e74620c23c4476e6a23bdbdffebdfcbe7e91f0ccb7d5c218ad68b281",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/fuel/redstone/pitch.wav",
+      "original_sha256": "57236caf1558671a5e0810930f0b7d99cfd03bbf5f09884a7669c82d5e664f3b",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/electrical/final.wav",
+      "original_sha256": "0bba1c7037812696896bceb1f6ece5f0845f1f0a120cae27a9671150c9ebee5f",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/electrical/hit1.wav",
+      "original_sha256": "6bf2c46e1986cdb3d650669bebdb54ee4d1501211af85fc5f478f6f56bf0b921",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/electrical/hit2.wav",
+      "original_sha256": "0030c0bd2b7d109b093aa961773432f9dd85ec8d864a879df73e537ae11d376b",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/electrical/hit3.wav",
+      "original_sha256": "f4898b5d7f5e3c5d616cdd1a43dd743e99a9d3d4e7772a5d5d2eda64d0d8ba01",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/electrical/hit4.wav",
+      "original_sha256": "cb2a5928853b12f7460fb6d203764fde09697206a77b2d1623ef27ca2b71ed80",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal/final.wav",
+      "original_sha256": "1bce3a0820142403f512bdf2aa06bd8c7699382e2c0144ee4dff0a105eef478b",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal/hit1.wav",
+      "original_sha256": "1bed01ee10fe7a257e71a2a73b28ad6a170e65674cda87f189f1452f0f21d1c6",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal/hit2.wav",
+      "original_sha256": "41972136969a90efdba78c1c58365986fea7dee00e93d6edb1b035ba8395c4fd",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal/hit3.wav",
+      "original_sha256": "6549f40cfcd6b58bfa823295ad152ab4bd2a43c8bfd87563e800f7d11a0729df",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal_small/final.wav",
+      "original_sha256": "b3c5f220ff97842e00d1e34b447bd951a4d8a44346478cbc8389c6eb9332ae6d",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal_small/hit1.wav",
+      "original_sha256": "9f745c2badff4d2ea57563bdda1d40d764ed00e2b05defe2ad1c39600149ca40",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal_small/hit2.wav",
+      "original_sha256": "d088ba719ea8cbb9873802075b148473f41e60c0ad8b855754e397538e3809a8",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/metal_small/hit3.wav",
+      "original_sha256": "4cff2d0fcb9a88253aa70a30627134f54ad0611c0a19f7b2c4801a9943db786d",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/wood/final.wav",
+      "original_sha256": "3eaf4779adc6dbb55cb5b46e06b759facf873362d044f208683cf213871ade64",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/wood/hit1.wav",
+      "original_sha256": "f87477563aef79af2fd399dc17800582a55a8aaa6be3ee24fce660029dd91d6b",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/wood/hit2.wav",
+      "original_sha256": "5ef297f514b8659652b432ab0574f09826df55009beb2d60675b70b005b763c9",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/wood/hit3.wav",
+      "original_sha256": "031ab19684a4718b230652b96a574a7e8db4aad8de0eb645d4fc35a0cba14b6e",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/impacts/wood/hit4.wav",
+      "original_sha256": "b600586460d79f8e73f0844e5c9ef972e8891e3c6e95d17f06d81670a35e4b03",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/compressor.wav",
+      "original_sha256": "ca0e1184f8582c89b59729c5d555afc0a4b48d8b64a23ab131f75de62009efc7",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine1.wav",
+      "original_sha256": "e1f3a764c6e3d40f206f25a75c27178ef6990d28a9eda5690770cb2191d989b9",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine2.wav",
+      "original_sha256": "b0826e04d856de1dad8d9e0433d85a3272de82ba20f7a0eb4adbd137a60e24d9",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine3.wav",
+      "original_sha256": "1c667b56d77bd8c4f96355a4f68017e93581f885a4bc9b94257c3bcf840ac66a",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine4.wav",
+      "original_sha256": "ad878b206c8e234e9f7c876100258fe99bb89e4c9069c19dd1e0db35d629e172",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine5.wav",
+      "original_sha256": "b2be1c995836a9ffdf080e0f86e8f4abe83d14c0ee177f5ad2ebb83745cd580a",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine6.wav",
+      "original_sha256": "d846839a804d67ad3a4e8227292fdbb66fad2dec1bbd9f2878e5432c902f6683",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine7.wav",
+      "original_sha256": "a128a8733b3dd32334b70799247c9867946d596f1939f69e4465957839565c74",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/logcar/engine8.wav",
+      "original_sha256": "09bc756ab6f38c88ef3749f28fbd691c4d344007abf24657d132f39993e4ce3f",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mech/landed.wav",
+      "original_sha256": "1eb8e29add66635d03c3730bfe8a65c61496a035a708c2cb064308305bbd27ed",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mech/spawn.wav",
+      "original_sha256": "d605eae05a44b1eb5cdf3d8d69609dfa6cc13fbefec32cf45a1e78bc9e4e4004",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mech/step1.wav",
+      "original_sha256": "ba5e46aaddfcb6a8ae249fa4dbd2a7682a648c169a5ab5386252ca127fba6d26",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mech/step2.wav",
+      "original_sha256": "9ba815345be10a41392bc25fd5ce696b4027b35cec7ac91985e5c045ead725ea",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mech/step3.wav",
+      "original_sha256": "18b5b8b08f376196906f45b617be78194b604fb4b8346b5385995cb238e778f8",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mech/weapon.wav",
+      "original_sha256": "0320c46e133589c4daed72529f76af73c4b9f21c451474b18890781f12bad50f",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/minecar/engine1.wav",
+      "original_sha256": "281a492d36671f7ef4ca6fec5802f8a7671c49d8ffed5315d9dc1f5af2ba930d",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/minecar/engine2.wav",
+      "original_sha256": "72bdae60d016624645cc5380f69c05b6830e58c813fe66a672df26788d99f4cf",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/minecar/engine3.wav",
+      "original_sha256": "034d9a4083f1fe839e63df9363ddf78f9b9903f374200532a6137562802533e5",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/minecar/engine4.wav",
+      "original_sha256": "ac8ca1ed02f42ef7c201f2125a87e54e3c3290df58bab8875fa2035e70e330b5",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/minecar/engine5.wav",
+      "original_sha256": "2b0c230ba0b79dd160f7a6ee866ffad132dbb1b454dd4f6cfcc19018c28dd095",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/minecar/engine6.wav",
+      "original_sha256": "42a7da428ec5d2c3970ef547b6c6b75d97ac1961d9aa4ff7762e52ed22950715",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mobtruck/engine1.wav",
+      "original_sha256": "c806ec4b6b14b766bbc63626722f71f5c5e3221ed83ce43c1c1bc6c6c4a59ccb",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mobtruck/engine2.wav",
+      "original_sha256": "6e35e88dc69dd6b711dfba907a84da783a41fd49bd1bd4422e045126cb64a319",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mobtruck/engine3.wav",
+      "original_sha256": "ed748d48c09f493fe635d7d8838e736efb230e616a0b07e8ac1c5e23ceba5128",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mobtruck/engine4.wav",
+      "original_sha256": "7e049bdc3bcaf7d15368b36c4f9676d0b4a4132b1edc8b407d72c0b01876564a",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/mobtruck/engine5.wav",
+      "original_sha256": "0b8e572b7fbd6da21611c397302f4b97a976d7a08f50925507bdfbf7afa36de5",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/plane/engine1.wav",
+      "original_sha256": "99a78836247d9c5ffa99ddc4fc146088d62197e5544ca7f6369beeb07afe0b96",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/plane/engine2.wav",
+      "original_sha256": "07aa184ad6ff8a795d29372af6e54ced4aee00297712513492b03052f900824c",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/plane/engine3.wav",
+      "original_sha256": "366854f4629647e81eff252fe75cbc184b753e29bbe15f481918595a9ed3b992",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/plane/engine4.wav",
+      "original_sha256": "83671ad6ec6ad944edd8adb060a91be3869067ccf83c5362054153fc792e7b64",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/plane/engine5.wav",
+      "original_sha256": "5c1807fe02a7d9697eb7c54ba64ac99da5925b8d1fed42c4723f4729b7bf4c17",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/plane/engine6.wav",
+      "original_sha256": "e9c0bdfa434fbb162870e12c172c2949428c8eceb44153a3f2d503791020bb56",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/smoke_bomb/deploy.wav",
+      "original_sha256": "41116bea56886c2ed8a72586824a54c42a983778d186c83ee84287578de12ab6",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/smoke_bomb/spray1.wav",
+      "original_sha256": "3095d34b59795a4647146ff78f3ae9d19653d874259d3a085ed06538ca1ee25c",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/smoke_bomb/spray2.wav",
+      "original_sha256": "041577063494bd180335df34c17dfed504a6fb57ef874661af281e3a0942ff1e",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/smoke_bomb/spray3.wav",
+      "original_sha256": "1bc98d49930abcd1573b7387c93f0d027e4b399f61f2ba5019e9f4f161ce9812",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/smoke_bomb/spray4.wav",
+      "original_sha256": "f7542016444d8ee7a769e231c453ada684e809dce717af38beecc4e34af5cecd",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/smoke_bomb/spray5.wav",
+      "original_sha256": "3d2d8370ff713beb66204795f796953a41a40f19a59450d642194f9059069059",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/bell1.wav",
+      "original_sha256": "9ca795cec5d1857c83024f7702d565288d4086b8e5ded9f3180f36d1597d50e9",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/bell2.wav",
+      "original_sha256": "6fdc07ba23cfaf802d808f529c5dc31d8b953e7729421c897592ab70e2a16b3c",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/bell3.wav",
+      "original_sha256": "ce74cbe25357f903eda2718a3444f5d4eda834dcd1867a2ec5212304eb9b1025",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/engine1.wav",
+      "original_sha256": "1d1bebbdb5450c590c4e5bc5dcd61ac209dd65cb517020c6512d87f0314c40df",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/engine2.wav",
+      "original_sha256": "9a3caa405492ba475f4b95a1880b768ef73b5f892fc2eb9544792a159fa1297d",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/engine3.wav",
+      "original_sha256": "da0d6cbb600cb77529f5fdf976fbf2f881bd6ac9e8dee2eb0941292373b5a246",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/engine4.wav",
+      "original_sha256": "6bda3e6c6e1aa179e062d53e2171c83ec5fbc5c045b6688d28c79d49bb0b2f33",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/steam1.wav",
+      "original_sha256": "5f3387e2df0f1b2b598326a37590c6733068e4e7ce13e732e9020eb4f083cef3",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/steam2.wav",
+      "original_sha256": "5badb049e9b47461704653e17e48ef0af92661bd3335ee24e18c33712b5ab65a",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/steam3.wav",
+      "original_sha256": "4aa8a53482c838252186bddecabb66446b23255620711eb37eb01c6d4dbfa91f",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/steamboat/steam4.wav",
+      "original_sha256": "7152098cc3e9653ae412032047d1ccefcf99aad20230aba81d20b1f204bb0c40",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/guide_book_button.wav",
+      "original_sha256": "52f00f910fa29e13d8657337eaa297e79a072bb42c5351b7fa1eb68db6ea8bf5",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/guide_book_button_back.wav",
+      "original_sha256": "206f0f201ffaffef4a7464e8332955e29f5a122c39848ec6e5b48f2ac5c7a87f",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/guide_book_button_back2.wav",
+      "original_sha256": "f89ad06d83bfba4d98ccc7d14866aa4430d91a5f10262f5716d3c70539d24371",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/guide_book_button_back3.wav",
+      "original_sha256": "9817c9aabc6b505dac4395404dc350eec0bad1884c367f95442f71f67483c015",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/guide_book_close.wav",
+      "original_sha256": "7aae846b5b6d0bb95e12d2864e852613f33ae2744ded3425ce62e37a5cc0b203",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/guide_book_open.wav",
+      "original_sha256": "fe4c7b26e7c0ab27832d23e27b6cd34d272f102588a57e960687560e1e06684c",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/modal_hide.wav",
+      "original_sha256": "deac4274bae74d6cec0cb9180ae001c053d4241a1cf7d439ef29ccaf859f96f1",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/player_join.wav",
+      "original_sha256": "21189aabc4a2bcf9b40181fdc179034b7266a68cf8719764fa3a6c03f2125ee1",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/ui/short_warning.wav",
+      "original_sha256": "baeafe2d29bf0210a1ed8277e8fc24badb9222cedd5189288ec3721b2af23132",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/wind/wind1.wav",
+      "original_sha256": "b9a39ada3ebbb7122c165a9f1e4ed540e8209d6b3311f940b950245c828b5ad1",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/wind/wind2.wav",
+      "original_sha256": "2b6150bec839515a8bd706ff9f522da1a778f2eabe13c85bc8f69aad50cd0b48",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    },
+    {
+      "original": "sounds/bw/vv/wind/wind3.wav",
+      "original_sha256": "f991d2021b236c7bca332e0d1c53873f95ed0f9ed9cd807363fc816f4d0d18da",
+      "java_ogg_exists": true,
+      "conversion": "Vorbis quality 6; lossy, not byte-identical"
+    }
+  ],
+  "summary": {
+    "original_png_count": 218,
+    "original_vehicle_models": 8,
+    "additional_models": 9,
+    "lossless_frames": 61,
+    "original_wav_sounds": 99,
+    "all_checks_pass": true
+  },
+  "limits": [
+    "Asset equality does not prove identical rendering in Java and Bedrock.",
+    "Dye, emissive/PBR materials, particles and animation/controller behaviour require separate runtime comparison.",
+    "Not every original animation or Bedrock material is used by the Java port yet."
+  ]
+}

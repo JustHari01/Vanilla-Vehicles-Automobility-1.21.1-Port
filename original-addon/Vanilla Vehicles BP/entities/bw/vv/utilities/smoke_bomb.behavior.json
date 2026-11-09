@@ -1,0 +1,604 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "bw_vv:smoke_bomb",
+			"is_spawnable": false,
+			"is_summonable": false,
+			"is_experimental": false,
+			"animations": {
+				"hit_controller": "controller.animation.bw_vv.generic_hit_timer",
+				"hit_timer": "animation.bw_vv.generic_hit_timer",
+				"variables": "animation.bw_vv.steam_bomb_variables" //a list of  variables, like resistance to hitting
+			},
+			"scripts": {
+				"animate": [
+					"variables",
+					"hit_controller"
+				]
+			},
+			"properties": {
+				"bw_vv:smoke_effect_size": {
+					"type": "float",
+					"range": [
+						0.0,
+						10.0
+					],
+					"default": 0.8,
+					"client_sync": true
+				},
+				"bw_vv:hit_timer": {
+					"type": "int",
+					"range": [
+						0,
+						5
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"bw_vv:hit_sound": {
+					"type": "enum",
+					"values": [
+						"normal",
+						"final"
+					],
+					"default": "normal",
+					"client_sync": true
+				},
+				"bw_vv:hit_resistance": {
+					"type": "int",
+					"range": [
+						0,
+						100
+					],
+					"default": 2,
+					"client_sync": true
+				},
+				"bw_vv:hit_resistance_tools": {
+					"type": "int",
+					"range": [
+						0,
+						20
+					],
+					"default": 1,
+					"client_sync": true
+				},
+				"bw_vv:damage_progress": {
+					"type": "int",
+					"range": [
+						0,
+						100
+					],
+					"default": 0,
+					"client_sync": true
+				},
+				"bw_vv:damage_weak": {
+					"type": "bool",
+					"default": false,
+					"client_sync": true
+				},
+				"bw_vv:damage_anim": {
+					"type": "enum",
+					"values": [
+						"L",
+						"R"
+					],
+					"default": "R",
+					"client_sync": true
+				},
+				"bw_vv:removed": {
+					"type": "bool",
+					"default": false,
+					"client_sync": true
+				},
+				//ENTITY SPECIFIC
+				"bw_vv:smoke_color": {
+					"type": "enum",
+					"values": [
+						"white",
+						"orange",
+						"magenta",
+						"light_blue",
+						"yellow",
+						"lime",
+						"pink",
+						"gray",
+						"light_gray",
+						"cyan",
+						"purple",
+						"blue",
+						"brown",
+						"green",
+						"red",
+						"black"
+					],
+					"default": "green",
+					"client_sync": true
+				}
+			}
+		},
+		"components": {
+			"minecraft:damage_sensor": {
+				"triggers": [
+					{
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"operator": "==",
+										"value": "player"
+									},
+									{
+										"test": "is_riding",
+										"subject": "other",
+										"operator": "==",
+										"value": true
+									}
+								]
+							}
+						},
+						"deals_damage": "no"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"operator": "==",
+										"value": "player"
+									},
+									{
+										"test": "has_ability",
+										"subject": "other",
+										"operator": "!=",
+										"value": "instabuild"
+									},
+									{
+										"test": "is_riding",
+										"subject": "other",
+										"operator": "==",
+										"value": false
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"operator": "!=",
+										"value": "stone_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"operator": "!=",
+										"value": "wooden_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"operator": "!=",
+										"value": "iron_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"operator": "!=",
+										"value": "golden_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"operator": "!=",
+										"value": "diamond_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"operator": "!=",
+										"value": "netherite_pickaxe"
+									}
+								]
+							},
+							"event": "event:damager_weak",
+							"target": "self"
+						},
+						"deals_damage": "no_but_side_effects_apply"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"operator": "==",
+										"value": "player"
+									},
+									{
+										"test": "has_ability",
+										"subject": "other",
+										"operator": "!=",
+										"value": "instabuild"
+									},
+									{
+										"test": "is_riding",
+										"subject": "other",
+										"operator": "==",
+										"value": false
+									},
+									{
+										"test": "int_property",
+										"subject": "self",
+										"domain": "bw_vv:damage_progress",
+										"operator": "<",
+										"value": 4
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:damage_weak",
+										"operator": "==",
+										"value": false
+									}
+								],
+								"any_of": [
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "wooden_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "stone_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "iron_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "golden_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "diamond_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "netherite_pickaxe"
+									}
+								]
+							},
+							"event": "event:damager",
+							"target": "self"
+						},
+						"deals_damage": "no_but_side_effects_apply"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"operator": "==",
+										"value": "player"
+									},
+									{
+										"test": "has_ability",
+										"subject": "other",
+										"operator": "!=",
+										"value": "instabuild"
+									},
+									{
+										"test": "is_riding",
+										"subject": "other",
+										"operator": "==",
+										"value": false
+									},
+									{
+										"test": "int_property",
+										"subject": "self",
+										"domain": "bw_vv:damage_progress",
+										"operator": "==",
+										"value": 4
+									},
+									{
+										"test": "bool_property",
+										"subject": "self",
+										"domain": "bw_vv:damage_weak",
+										"operator": "==",
+										"value": false
+									}
+								],
+								"any_of": [
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "wooden_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "stone_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "iron_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "golden_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "diamond_pickaxe"
+									},
+									{
+										"test": "has_equipment",
+										"subject": "other",
+										"domain": "hand",
+										"value": "netherite_pickaxe"
+									}
+								]
+							},
+							"event": "event:damager",
+							"target": "self"
+						},
+						"deals_damage": "no_but_side_effects_apply"
+					},
+					{
+						"on_damage": {
+							"filters": {
+								"all_of": [
+									{
+										"test": "is_family",
+										"subject": "other",
+										"operator": "==",
+										"value": "player"
+									},
+									{
+										"test": "has_ability",
+										"subject": "other",
+										"operator": "==",
+										"value": "instabuild"
+									}
+								]
+							},
+							"event": "event:remove_creative"
+						},
+						"deals_damage": "no"
+					},
+					{
+						"on_damage": {
+							"filters": {}
+						},
+						"deals_damage": "no_but_side_effects_apply"
+					}
+				]
+			},
+					"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/utilities/smoke_bombs/empty.json",
+					"slot_drop_chance": [
+						{
+							"slot": "slot.weapon.mainhand",
+							"drop_chance": 1
+						}
+					]
+				},
+			"minecraft:physics": {
+				"has_gravity": true,
+				"has_collision": true
+			},
+			"minecraft:pushable": {
+				"is_pushable": false
+			},
+			"minecraft:is_stackable": {},
+			"minecraft:is_collidable": {},
+			"minecraft:movement": {
+				"value": 0.2
+			},
+			"minecraft:collision_box": {
+				"height": 0.5,
+				"width": 0.5
+			},
+			"minecraft:body_rotation_blocked": {},
+			"minecraft:timer": {
+				"time": 10.0,
+				"time_down_event": {
+					"event": "event:remove"
+				}
+			}
+		},
+		"component_groups": {
+			"component_group:removed": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.2,
+					"drop_equipment": true,
+					"drop_inventory": true
+				}
+			},
+			"component_group:removed_creative": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.2,
+					"drop_equipment": false,
+					"drop_inventory": true
+				}
+			}
+		},
+		"events": {
+			//HIT EVENTS
+			"event:damager": {
+				"set_property": {
+					"bw_vv:hit_sound": "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "q.property('bw_vv:damage_weak') == true ? 1 : query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": false//s
+				}
+			},
+			"event:damager_weak": {
+				//HIT EVENTS
+				"set_property": {
+					"bw_vv:hit_sound": "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": true
+				}
+			},
+			"event:hit_timer_countdown": {
+				"set_property": {
+					"bw_vv:hit_timer": "math.clamp(query.property('bw_vv:hit_timer') - 1, 0, 10)"
+				}
+			},
+			"event:remove": {
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_creative": {
+				"add": {
+					"component_groups": [
+						"component_group:removed_creative"
+					]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_drop_items": {
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_hits": {
+				"set_property": {
+					"bw_vv:damage_progress": 0,
+					"bw_vv:damage_anim": "R",
+					"bw_vv:damage_weak": false
+				}
+			},
+			//SMOKE BOMB COLORS
+			"event:white": {
+				"set_property": {
+					"bw_vv:smoke_color": "white"
+				}
+			},
+			"event:orange": {
+				"set_property": {
+					"bw_vv:smoke_color": "orange"
+				}
+			},
+			"event:magenta": {
+				"set_property": {
+					"bw_vv:smoke_color": "magenta"
+				}
+			},
+			"event:light_blue": {
+				"set_property": {
+					"bw_vv:smoke_color": "light_blue"
+				}
+			},
+			"event:yellow": {
+				"set_property": {
+					"bw_vv:smoke_color": "yellow"
+				}
+			},
+			"event:lime": {
+				"set_property": {
+					"bw_vv:smoke_color": "lime"
+				}
+			},
+			"event:pink": {
+				"set_property": {
+					"bw_vv:smoke_color": "pink"
+				}
+			},
+			"event:gray": {
+				"set_property": {
+					"bw_vv:smoke_color": "gray"
+				}
+			},
+			"event:light_gray": {
+				"set_property": {
+					"bw_vv:smoke_color": "light_gray"
+				}
+			},
+			"event:cyan": {
+				"set_property": {
+					"bw_vv:smoke_color": "cyan"
+				}
+			},
+			"event:purple": {
+				"set_property": {
+					"bw_vv:smoke_color": "purple"
+				}
+			},
+			"event:blue": {
+				"set_property": {
+					"bw_vv:smoke_color": "blue"
+				}
+			},
+			"event:brown": {
+				"set_property": {
+					"bw_vv:smoke_color": "brown"
+				}
+			},
+			"event:green": {
+				"set_property": {
+					"bw_vv:smoke_color": "green"
+				}
+			},
+			"event:red": {
+				"set_property": {
+					"bw_vv:smoke_color": "red"
+				}
+			},
+			"event:black": {
+				"set_property": {
+					"bw_vv:smoke_color": "black"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,97 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.prismer_water": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"horizontal": "query.is_in_water && v.is_active && q.vertical_speed > 0"
+						},
+						{
+							"falling": "query.is_in_water && v.is_active && q.vertical_speed < 0"
+						}
+					],
+					"blend_transition":0.2
+				},
+				"horizontal": {
+					"animations": [
+						"swimming"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_in_water || !v.is_active"
+						},
+						{
+							"falling": "query.is_in_water && v.is_active && q.vertical_speed < 0"
+						}
+					],
+					"blend_transition":0.2
+				},
+				"falling": {
+					"animations": [
+						"water_falling"
+					],
+					"transitions": [
+						{
+							"default": "!query.is_in_water || !v.is_active"
+						},
+						{
+							"horizontal": "query.is_in_water && v.is_active && q.vertical_speed > 0"
+						}
+					],
+					"blend_transition":0.2
+				}
+			}
+		},
+		"controller.animation.bw_vv.prismer_active": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"active": "v.is_active && q.is_in_water"
+						}
+					],
+					"blend_transition":0.4
+				},
+				"active": {
+					"animations": [
+						"move",
+						"steer_swimming"
+					],
+					
+					"transitions": [
+						{
+							"default": "!v.is_active || !q.is_in_water"
+						}
+					],
+					"blend_transition":0.4
+				}
+			}
+		},
+		"controller.animation.bw_vv.prismer_ground": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"ground": "!q.is_in_water"
+						}
+					],
+					"blend_transition":0.0
+				},
+				"ground": {
+					"animations": [
+						"standby"
+					],
+					
+					"transitions": [
+						{
+							"default": "q.is_in_water"
+						}
+					],
+					"blend_transition":0.0
+				}
+			}
+		}
+}
+}

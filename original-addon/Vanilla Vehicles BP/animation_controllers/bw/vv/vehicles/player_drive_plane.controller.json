@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.bw_vv.player_drive_plane": {
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "animation": "query.has_player_rider"
+            }
+          ]
+        },
+        "animation": {
+          "transitions": [
+            {
+              "default": "!query.has_player_rider || math.sin(q.life_time*200)==1"
+            }
+          ],
+          "on_entry": [
+            "/playanimation @a[r=2] animation.bw_vv.player.drive_plane default 0.0 \"!query.is_riding\""
+          ]
+        }
+      }
+    }
+  }
+}

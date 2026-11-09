@@ -1,0 +1,22 @@
+{
+  "display": {
+    "driver_seat": [0.0, 7.0, 0.0],
+    "engine_position": [0.0, 2.0, -13.0],
+    "front_attachment_offset": 18.0,
+    "length_pixels": 36.0,
+    "model": "automobility:frame/motorbike",
+    "rear_attachment_offset": 17.0,
+    "texture": "automobility:textures/entity/automobile/frame/motorbike.png",
+    "wheels": [
+      {"end":"front","forward":18.0,"right":0.0,"scale":1.0,"side":"center","yaw":0.0},
+      {"end":"back","forward":-18.0,"right":0.0,"scale":1.0,"side":"center","yaw":0.0}
+    ]
+  },
+  "hitboxes": [
+    {"height":0.75,"origin":[0.0,0.45,0.0],"width":0.8},
+    {"height":0.65,"origin":[0.0,0.7,-0.35],"width":0.65}
+  ],
+  "weight": 0.42,
+  "width": 0.8
+}
+

@@ -1,0 +1,139 @@
+{
+	"entity_sounds": {
+		"entities": {
+			"bw_vv:minecar": {
+				"volume": 1.1,
+				"pitch": [0.9, 1.1],
+				"events": {
+					"ambient": "vehicle.minecar.idle",
+					"hurt": "bw_vv.hit.vehicle.metal_small",
+					"death": "bw_vv.hit.vehicle.metal_small.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:logcar": {
+				"volume": 0.88,
+				"pitch": [0.9, 1.1],
+				"events": {
+					"ambient": "vehicle.minecar.idle",
+					"hurt": "bw_vv.hit.vehicle.wood",
+					"death": "bw_vv.hit.vehicle.wood.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:plane": {
+				"volume": 1,
+				"pitch": [0.75, 0.85],
+				"events": {
+					"ambient": "vehicle.minecar.idle",
+					"hurt": "bw_vv.hit.vehicle.wood",
+					"death": "bw_vv.hit.vehicle.wood.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:steamboat": {
+				"volume": 1.2,
+				"pitch": [0.75, 0.85],
+				"events": {
+					"ambient": "vehicle.minecar.idle",
+					"hurt": "bw_vv.hit.vehicle.wood",
+					"death": "bw_vv.hit.vehicle.wood.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:hot_air_balloon": {
+				"volume": 1.2,
+				"pitch": [0.75, 0.85],
+				"events": {
+					"ambient": "vehicle.minecar.idle",
+					"hurt": "bw_vv.hit.vehicle.wood",
+					"death": "bw_vv.hit.vehicle.wood.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:mobtruck": {
+				"volume": 0.8,
+				"pitch": 1,
+				"events": {
+					"ambient": "vehicle.vehicle.idle",
+					"hurt": "bw_vv.hit.vehicle.metal",
+					"death": "bw_vv.hit.vehicle.metal.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:mech": {
+				"volume": 0.8,
+				"pitch": 1,
+				"events": {
+					"ambient": "vehicle.vehicle.idle",
+					"hurt": "bw_vv.hit.vehicle.metal",
+					"death": "bw_vv.hit.vehicle.metal.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:mobtruck_backseat": {
+				"volume": 1,
+				"pitch": 1,
+				"events": {
+					"ambient": "vehicle.vehicle.idle",
+					"hurt": "bw_vv.hit.vehicle.metal",
+					"death": "bw_vv.hit.vehicle.metal.final",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:prismer": {
+				"volume": 0.8,
+				"pitch": 1,
+				"events": {
+					"hurt": "mob.guardian.hit",
+					"death": "mob.guardian.death",
+					"step": {
+						"volume": 0,
+						"pitch": 1
+					}
+				}
+			},
+			"bw_vv:mechanic": {
+				"volume": 0.9,
+				"pitch": 1,
+				"events": {
+					"ambient": "mob.villager.idle",
+					"hurt": "mob.villager.hit",
+					"death": "mob.villager.death"
+				}
+			},
+			"bw_vv:redstone_compressor": {
+				"volume": 2,
+				"pitch": [0.8,1.05],
+				"events": {
+					"hurt": "bw_vv.hit.electrical",
+					"death": "bw_vv.hit.electrical.final"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,29 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.prismer_climb": {
+			"states": {
+				"default": {
+					"on_entry": [
+						"@s event:player_anim_climb_neutral"
+					],
+					"transitions": [
+						{
+							"swimming": "q.property('bw_vv:conduit_active') && q.is_in_water"
+						}
+					]
+				},
+				"swimming": {
+					"on_entry": [
+						"@s event:player_anim_climb_swimming"
+					],
+					"transitions": [
+						{
+							"default": "!q.property('bw_vv:conduit_active') || !q.is_in_water"
+						}
+					]
+				}
+			}
+		}
+	}
+}

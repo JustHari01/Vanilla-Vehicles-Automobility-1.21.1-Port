@@ -1,0 +1,130 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    // animation_length is the rate at which the sound loops
+    // MINECAR
+    "animation.bw_vv.vehicle.engine_sound.minecar": {
+      "blend_weight": "q.camera_distance_range_lerp(2, 3)-q.camera_distance_range_lerp(17, 18)",
+      "animation_length": 0.39,
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.minecar.close": {
+      "blend_weight": "1-q.camera_distance_range_lerp(2, 3)",
+      "animation_length": 0.39,
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.close"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.standby.minecar": {
+      "animation_length": 0.5,
+      "blend_weight": "1-q.camera_distance_range_lerp(10, 11)",
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.standby"
+        }
+      }
+    },
+  // MOBTRUCK
+    "animation.bw_vv.vehicle.engine_sound.mobtruck": {
+      "blend_weight": "q.camera_distance_range_lerp(2, 3)-q.camera_distance_range_lerp(17, 18)",
+      "animation_length": 0.39,
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.mobtruck.close": {
+      "blend_weight": "1-q.camera_distance_range_lerp(2, 3)",
+      "animation_length": 0.39,
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.close"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.standby.mobtruck": {
+      "animation_length": 0.55,
+      "blend_weight": "1-q.camera_distance_range_lerp(10, 11)",
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.standby"
+        }
+      }
+    },
+    // PLANE
+    "animation.bw_vv.vehicle.engine_sound.plane": {
+      "blend_weight": "q.camera_distance_range_lerp(2, 3)-q.camera_distance_range_lerp(17, 18)",
+      "animation_length": 0.39,
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.plane.close": {
+      "blend_weight": "1-q.camera_distance_range_lerp(2, 3)",
+      "animation_length": 0.39,
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.close"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.standby.plane": {
+      "animation_length": 0.53,
+      "blend_weight": "1-q.camera_distance_range_lerp(10, 11)",
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.standby"
+        }
+      }
+    },
+    //LOGCAR
+    "animation.bw_vv.vehicle.engine_sound.logcar": {
+      "animation_length": 0.26,
+      "blend_weight": "q.camera_distance_range_lerp(2, 3)-q.camera_distance_range_lerp(17, 18)",
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.logcar.close": {
+      "animation_length": 0.26,
+      "blend_weight": "1-q.camera_distance_range_lerp(2, 3)",
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.close"
+        }
+      }
+    },
+    "animation.bw_vv.vehicle.engine_sound.standby.logcar": {
+      "animation_length": 0.41,
+      "blend_weight": "1-q.camera_distance_range_lerp(10, 11)",
+      "loop": true,
+      "sound_effects": {
+        "0.0": {
+          "effect": "engine.standby"
+        }
+      }
+    }
+  }
+}

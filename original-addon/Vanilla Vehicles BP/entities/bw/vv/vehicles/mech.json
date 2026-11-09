@@ -1,0 +1,867 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "bw_vv:mech",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false,
+      "animations": {
+		//VEHICLE SPAWN (prevents spawn animation from repeating when world reloads or entity becomes invisible)
+		"spawn_controller": "controller.animation.bw_vv.generic_vehicle_spawn",
+		"spawn_timer": "animation.bw_vv.generic_vehicle_spawn_timer",
+		//BOOST
+		"boost_controller": "controller.animation.bw_vv.mech_boost",
+		"boost_timer":"animation.bw_vv.generic_vehicle_boost_timer",
+		"boost_cooldown_timer":"animation.bw_vv.generic_vehicle_boost_cooldown_timer",
+		"boost_sound": "animation.bw_vv.sound_boost",//running engine sound
+		//WEAPONS
+		"weapons_controller": "controller.animation.bw_vv.mech_weapons",
+		"weapons_cooldown_timer": "animation.bw_vv.mech_weapons_cooldown_timer",
+		"weapons_timer": "animation.bw_vv.generic_vehicle_weapons_timer",
+		//HIT
+		"hit_controller": "controller.animation.bw_vv.generic_hit_timer",
+		"hit_timer": "animation.bw_vv.generic_hit_timer",
+		//PLAYER ANIMATION
+		"player_anim_updater": "controller.animation.bw_vv.mech_player_anim",
+		"player_anim_wasd_updater": "controller.animation.bw_vv.mech_player_anim_wasd",
+		"player_anim_timer": "animation.bw_vv.mech_walk_anim_timer", // Equivalent to walk_anim_timer from the resource pack side.
+		"player_anim_delay": "animation.bw_vv.player_mech_anim_delay",
+		//VARIABLES
+		"variables": "animation.bw_vv.mech_variables"
+      },
+      "scripts": {
+        "animate": [
+		  "variables",
+		  "player_anim_updater",
+	      "spawn_controller",
+		  "weapons_controller",
+		  "hit_controller",
+		  "boost_controller"
+		 ]
+       },
+	   "properties": {
+		"bw_vv:spawned": { 
+			"type": "bool", 
+    		"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:chested": {
+			"type": "bool",
+			"default": false,
+			"client_sync": true
+		},
+		"bw_vv:power_land":{
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:player_anim_blend_time":{
+			"type": "float",
+			"range": [
+				0.0,
+				10.0
+			],
+			"default": 0.4,
+			"client_sync": true
+		},
+		"bw_vv:weapons": { 
+			"type": "enum", 
+			"values": ["ready", "cooldown", "active"], 
+			"default": "ready", 
+			"client_sync": true 
+		},
+		"bw_vv:weapons_cooldown":{
+			"type": "float", 
+			"range": [0.0, 10.0], 
+			"default": 0.0,
+			"client_sync": true 
+		},
+		"bw_vv:smoke_effect_size":{
+			"type": "float", 
+			"range": [0.0, 10.0], 
+			"default": 1.6,
+			"client_sync": true 
+		},
+		"bw_vv:fuel_progress": { 
+		  "type": "float", 
+		  "range": [0.0, 10.0], 
+          "default": 1.0,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_sound": { 
+			"type": "enum", 
+			"values": ["normal", "final"], 
+			"default": "normal", 
+			"client_sync": true 
+		},
+		"bw_vv:hit_timer": { 
+		  "type": "int", 
+		  "range": [0, 5], 
+		  "default": 0,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_resistance": { 
+		  "type": "int", 
+		  "range": [0, 100], 
+		  "default": 100,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_resistance_tools": { 
+		  "type": "int", 
+		  "range": [0, 20], 
+		  "default": 12,
+		  "client_sync": true 
+		},
+		"bw_vv:damage_progress": { 
+		  "type": "int", 
+		  "range": [0, 100], 
+          "default": 0,
+		  "client_sync": true 
+		},
+		"bw_vv:damage_weak": { 
+			"type": "bool", 
+    		"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:damage_anim": { 
+			"type": "enum", 
+			"values": ["L", "R"], 
+			"default": "R", 
+			"client_sync": true 
+		},
+		"bw_vv:boost": { //whether the vehicle is boosted or not.
+		"type": "enum", 
+		"values": ["ready", "active", "cooldown"], 
+		"default": "ready",
+		"client_sync": true 
+		},
+		"bw_vv:boost_cooldown":{
+			"type": "float", 
+			"range": [0.0, 10.0], 
+			"default": 0.0,
+			"client_sync": true 
+		},
+		"bw_vv:player_anim": { 
+			"type": "enum", 
+			"values": ["mech_neutral","mech_forward", "mech_backward", "mech_right", "mech_left", "mech_jump", "mech_land", "mech_shoot"], 
+			"default": "mech_neutral", 
+			"client_sync": true 
+		},
+
+		"bw_vv:lights": { 
+			"type": "bool", 
+    		"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:wasd": { 
+			"type": "enum", 
+			"values": ["w", "a", "s", "d" ], 
+			"default": "w", 
+			"client_sync": true 
+		},
+		"bw_vv:climb_animation": { 
+			"type": "float", 
+			"range": [0.0, 50.0], 
+			"default": 45.0,
+			"client_sync": true 
+		},
+		"bw_vv:vertical_velocity": { 
+			"type": "float", 
+			"range": [-50.0, 50.0], 
+			"default": 0.0,
+			"client_sync": true 
+		},
+		"bw_vv:removed":{
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		//VEHICLE SPECIFIC PROPERTIES
+		"bw_vv:backdoor": { 
+			"type": "enum", 
+			"values": ["open", "closed"], 
+			"default": "closed", 
+			"client_sync": true 
+		}
+	  }
+	},
+		"components": {
+			
+			"minecraft:input_ground_controlled": {},
+					"minecraft:variable_max_auto_step":{
+						"base_value": 1.0625,
+						"controlled_value": 1.0625,
+						"jump_prevented_value": 0.5625
+			},
+			"minecraft:collision_box": {
+				"width": 3,
+				"height": 3.7
+			},
+			"minecraft:is_collidable": {
+			},
+			"minecraft:health": {
+				"value": 0.6
+			},
+			"minecraft:is_stackable":{
+			},
+			  "minecraft:scale": {
+				"value": 1.0
+			},
+			"minecraft:rideable": {
+				"seat_count": 1,
+				"family_types": [
+					"player"
+				],
+				"crouching_skip_interact": true,
+		        "pull_in_entities": true,
+				"rider_can_interact": true,
+				"interact_text": "bw_vv.action.interact.generic.vehicle.enter",
+				"controlling_seat": 0,
+				"seats": [
+					{
+						"position": [
+							//controlling seat
+							0,
+							1.6,
+							-0.1
+						],
+						"min_rider_count": 1,
+						"max_rider_count": 2,
+						"camera_relax_distance_smoothing": 1,
+						"third_person_camera_radius": 6
+					}
+					]
+			},
+			"minecraft:physics": {
+				"has_gravity": true
+			},
+			"minecraft:fire_immune": {},
+			"minecraft:knockback_resistance": {
+				"value": 0.9
+			},
+			"minecraft:jump.static": {
+				"jump_power": 0.42
+			},
+		"minecraft:can_power_jump": {
+        },
+		"minecraft:horse.jump_strength": {
+			"value": 1
+		  },
+			"minecraft:is_dyeable": {
+				"interact_text": "bw_vv.action.interact.generic.spray"
+			},
+			"minecraft:color": {
+				"value": 8
+			},
+			"minecraft:underwater_movement": {
+				"value": 0.03,
+				"max": 0.03
+			},
+			"minecraft:push_through": {
+				"value": 0.9
+			},
+			"minecraft:pushable": { //Used to set that the vehicle is unpushable by other mobs.
+				"is_pushable": false
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mech",
+					"vehicle",
+					"metal",
+					"bw_vanilla_vehicles"
+				]
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:weapons", "operator": "==", "value": "ready" },
+								{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true }
+								]
+							},
+						"event": "event:trigger_weapon"
+						},
+						"deals_damage": "no"
+				},
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:weapons", "operator": "!=", "value": "ready" },
+								{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true }
+								]
+							}
+						},
+						"deals_damage": "no"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "copper_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_pickaxe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "copper_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_pickaxe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" }
+							  ],
+						  "any_of": [
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_pickaxe" }
+						  ]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" }
+							  ],
+								"any_of": [
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_pickaxe" }
+								]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "==", "value": "instabuild" }
+						  ]
+						},
+						"event": "event:remove_creative"
+					},
+					"deals_damage": "no",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						
+							{}
+						
+					},
+					"deals_damage": "no_but_side_effects_apply"
+				}
+			]
+			},
+			"minecraft:interact": {
+				"interactions":	[
+					//CHESTABLE INTERACTIONS
+					{
+				"on_interact": {
+					"filters": {
+						"all_of":[
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "minecraft:chest"},
+							{ "test": "bool_property", "subject": "self", "domain": "bw_vv:chested", "value": false }
+						]
+					},
+					"event": "event:add_chest",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_generic",
+				"interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+			}
+			]
+			}
+		},
+		"component_groups": {
+			"component_group:chested": {
+				"minecraft:inventory": {
+				"additional_slots_per_strength": 0,
+				"can_be_siphoned_from": false,
+				"container_type": "minecart_chest",
+				"private": false,
+				"restrict_to_owner": false
+				}
+			},
+			"component_group:sticker.creeper":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/creeper.json"
+				}
+			},
+			"component_group:sticker.castle":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/castle.json"
+				}
+			},
+			"component_group:sticker.diamonds":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/diamonds.json"
+				}
+			},
+			"component_group:sticker.stripes":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/stripes.json"
+				}
+			},
+			"component_group:sticker.enderman":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/enderman.json"
+				}
+			},
+			"component_group:sticker.skeleton":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/skeleton.json"
+				}
+			},
+			"component_group:sticker.hearts":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/hearts.json"
+				}
+			},
+			"component_group:sticker.soulful":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/soulful.json"
+				}
+			},
+			"component_group:sticker.bloom":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/bloom.json"
+				}
+			},
+			"component_group:sticker.icy":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/icy.json"
+				}
+			},
+			"component_group:sticker.burning":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/burning.json"
+				}
+			},
+			"component_group:sticker.rainbow":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/rainbow.json"
+				}
+			},
+			"component_group:removed": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.1,
+					"drop_equipment": true,
+					"drop_inventory": true
+				}
+			},
+			"component_group:removed_creative": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.1,
+					"drop_equipment": false,
+					"drop_inventory": true
+				}
+			},
+			"component_group:movement":{
+				"minecraft:movement": {
+					"value": 0.09
+				}
+			},
+			"component_group:no_movement":{
+				"minecraft:movement": {
+					"value": 0.01
+				}
+			}
+		},
+		"events": {
+			//EVENTS START
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				}
+			},
+			"event:spawn": {
+				"set_property": {
+				    "bw_vv:spawned" : true
+				}
+			},
+			//CHESTABLE EVENTS
+			"event:add_chest": {
+				"set_property": {
+					"bw_vv:chested": true
+				},
+				"add": {
+                    "component_groups": ["component_group:chested"]
+                }
+			},
+			//STICKER EVENTS
+			"event:add_sticker.creeper":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.creeper"
+					]
+				}
+			},
+			"event:add_sticker.castle":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.castle"
+					]
+				}
+			},
+			"event:add_sticker.diamonds":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.diamonds"
+					]
+				}
+			},
+			"event:add_sticker.stripes":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.stripes"
+					]
+				}
+			},
+			"event:add_sticker.hearts":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.hearts"
+					]
+				}
+			},
+			"event:add_sticker.enderman":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.enderman"
+					]
+				}
+			},
+			"event:add_sticker.skeleton":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.skeleton"
+					]
+				}
+			},
+			"event:add_sticker.bloom":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.bloom"
+					]
+				}
+			},
+			"event:add_sticker.icy":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.icy"
+					]
+				}
+			},
+			"event:add_sticker.burning":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.burning"
+					]
+				}
+			},
+			"event:add_sticker.soulful":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.soulful"
+					]
+				}
+			},
+			"event:add_sticker.rainbow":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.rainbow"
+					]
+				}
+			},
+			//MOVEMENT EVENTS
+			"event:go":{
+				"add": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			"event:stop":{
+				"remove": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			//HIT EVENTS
+			"event:damager":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "q.property('bw_vv:damage_weak') == true ? 1 : query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": false
+				}
+			},
+			"event:damager_weak":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": true
+				}
+			},
+			"event:hit_timer_countdown":{
+				"set_property": {
+					"bw_vv:hit_timer": "math.clamp(query.property('bw_vv:hit_timer') - 1, 0, 10)"
+				}
+			},
+            "event:remove": {
+				"sequence": [
+					{
+						"filters": { "test": "bool_property", "subject": "self", "domain": "bw_vv:chested", "value": true },
+						"queue_command": { 
+							"command": "loot spawn ~ ~ ~ loot \"bw/vv/chest\""
+						}
+					},
+					{				
+						"add": {
+							"component_groups": [
+								"component_group:removed"
+							]
+						},
+						"queue_command": {
+							"command": ["loot spawn ~ ~ ~ loot \"bw/vv/vehicles/mech\"","scriptevent bw_vv:spawn_dye"]
+					},
+						"set_property": {
+							"bw_vv:removed": true
+						}
+					}
+				]
+				
+			},
+			"event:remove_creative": {
+						"add": {
+							"component_groups": [
+								"component_group:removed_creative"
+							]
+						},
+						"set_property": {
+							"bw_vv:removed": true
+						}
+			},
+			"event:remove_drop_items":{
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"queue_command":{
+					"command":"loot spawn ~ ~ ~ loot \"bw/vv/vehicles/mech_items\""
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_hits": {
+				"set_property": {
+					"bw_vv:damage_progress": 0,
+					"bw_vv:damage_anim": "R",
+					"bw_vv:damage_weak": false
+				}
+			},
+			//LIGHTS EVENT
+			"event:lights_on":{
+				"set_property": {
+					"bw_vv:lights": true
+				}
+			},
+			"event:lights_off":{
+				"set_property": {
+					"bw_vv:lights": false
+				}
+			},
+
+			//BOOST EVENTS
+			"event:boost_cooldown_counter":{
+				"set_property": {
+					"bw_vv:boost_cooldown": "q.property('bw_vv:boost_cooldown')-1"
+				},
+				"queue_command": {
+					"command": "playsound note.hat @p[r=3] ~ ~ ~ 0.2 1.2"
+				}
+			},
+			"event:boost_active": {
+				"queue_command": {
+					"command": "playsound bw_vv.vehicle.boost_start @a[r=20] ~ ~ ~ 0.9 1"
+				},
+				"set_property": {
+					"bw_vv:boost_cooldown": "v.boost_cooldown"
+				}
+			},
+			"event:boost_cooldown": {
+				"set_property": {
+					"bw_vv:boost": "cooldown"
+				}
+			},
+			"event:boost_ready": {
+				"set_property": {
+					"bw_vv:boost": "ready"
+				},
+				"queue_command": {
+					"command": "playsound note.pling @p[r=3] ~ ~ ~ 0.1 1.3"
+				}
+			},
+			//WEAPON EVENTS
+			"event:trigger_weapon": {
+				"set_property": {
+				    "bw_vv:weapons" : "active"
+				}
+			},
+			"event:untrigger_weapon": {
+				"set_property": {
+				    "bw_vv:weapons" : "ready"
+				},
+				"queue_command": {
+					"command": "playsound note.harp @p[r=3] ~ ~ ~ 0.1 1.3"
+				}
+			},
+			"event:weapons_cooldown": {
+				"set_property": {
+					"bw_vv:weapons_cooldown": "v.weapons_cooldown"
+				}
+			},
+			"event:weapons_cooldown_counter":{
+				"set_property": {
+					"bw_vv:weapons_cooldown": "q.property('bw_vv:weapons_cooldown')-1",
+					"bw_vv:weapons" : "cooldown"
+				},
+				"queue_command": {
+					"command": "playsound note.hat @p[r=3] ~ ~ ~ 0.1 1.2"
+				}
+			},
+			//PLAYER ANIMATION EVENTS
+			"event:player_anim_neutral": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_neutral"
+				}
+			},
+			"event:player_anim_forward": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_forward"
+				}
+			},
+			"event:player_anim_backward": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_backward"
+				}
+			},
+			"event:player_anim_right": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_right"
+				}
+			},
+			"event:player_anim_left": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_left"
+				}
+			},
+			"event:player_anim_jump": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_jump"
+				}
+			},
+			"event:player_anim_land": {
+				"set_property": {
+					"bw_vv:player_anim": "mech_land"
+				}
+			}
+		}
+	}
+}

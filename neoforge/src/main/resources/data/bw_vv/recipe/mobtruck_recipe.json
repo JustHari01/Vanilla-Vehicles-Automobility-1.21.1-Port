@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:mobtruck",
+    "count": 1
+  },
+  "pattern": [
+    "F#G",
+    "MMT",
+    "iji"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "F": {
+      "tag": "minecraft:fence_gates"
+    },
+    "M": {
+      "item": "minecraft:minecart"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "j": {
+      "item": "bw_vv:redstone_pulser"
+    }
+  }
+}

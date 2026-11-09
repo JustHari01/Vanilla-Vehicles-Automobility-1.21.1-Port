@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:smoke_bomb",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "bw_vv:redstone_pulser"
+    }
+  ]
+}

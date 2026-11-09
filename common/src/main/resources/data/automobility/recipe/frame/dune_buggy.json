@@ -1,0 +1,7 @@
+{
+  "type": "automobility:auto_mechanic_table",
+  "category": "automobility:frames",
+  "sortnum": 608,
+  "ingredients": [{"item":"minecraft:orange_dye"},{"item":"minecraft:iron_nugget"},{"item":"minecraft:leather"},{"item":"minecraft:green_dye"},{"item":"minecraft:bucket"}],
+  "result": {"item":"automobility:automobile_frame","component":"automobility:dune_buggy"}
+}

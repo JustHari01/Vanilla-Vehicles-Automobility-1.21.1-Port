@@ -1,0 +1,55 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:logcar.oak.recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "F z",
+            "Mii",
+            "G G"
+        ],
+        "key": {
+            "M": {
+                "item": "minecraft:furnace"
+            },
+            "F": {
+                "item": "minecraft:iron_ingot"
+            },
+            "G": {
+                "item": "minecraft:planks"
+            },
+            "i": {
+                "item": "minecraft:log"
+            },
+            "z": {
+                "item": "minecraft:torch"
+            }
+        },
+        "unlock": [
+            {
+              "item": "minecraft:furnace"
+            },
+            {
+                "item": "minecraft:iron_ingot"
+            },
+            {
+                "item": "minecraft:planks"
+            },
+            {
+                "item": "minecraft:log"
+            },
+            {
+                "item": "minecraft:torch"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:logcar.oak",
+            "count": 1
+        }
+    }
+}
+

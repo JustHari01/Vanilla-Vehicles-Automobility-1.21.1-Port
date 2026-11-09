@@ -1,0 +1,83 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.vehicle.steer.forward": {
+			"loop": true,
+			"bones": {
+				"wheel1": {
+					"rotation": ["v.wheel_rot_speed", "v.wheel_steer", 0]
+				},
+				"wheel2": {
+					"rotation": ["v.wheel_rot_speed", "v.wheel_steer", 0]
+				},
+				"wheelsback": {
+					"rotation": ["v.wheel_rot_speed", 0, 0]
+				},
+				"drivingwheel": {
+					"rotation": [0, 0, "v.steeringwheel_steer"]
+				}
+			}
+		},
+		"animation.bw_vv.vehicle.steer.backwards": {
+			"loop": true,
+			"bones": {
+				"wheel1": {
+					"rotation": ["-v.wheel_rot_speed", "-v.wheel_steer", 0]
+				},
+				"wheel2": {
+					"rotation": ["-v.wheel_rot_speed", "-v.wheel_steer", 0]
+				},
+				"wheelsback": {
+					"rotation": ["-v.wheel_rot_speed", 0, 0]
+				},
+				"drivingwheel": {
+					"rotation": [0, 0, "-v.steeringwheel_steer"]
+				}
+			}
+		},
+		"animation.bw_vv.vehicle.steer.tilt_right": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.4167,
+			"anim_time_update": "query.anim_time + query.delta_time *0.9",
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "math.cos(q.anim_time*425.9)*-v.steer_rot+v.steer_rot"]
+				}
+			}
+		},
+		"animation.bw_vv.vehicle.steer.tilt_left": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.4167,
+			"anim_time_update": "query.anim_time + query.delta_time *0.9",
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "math.cos(q.anim_time*425.9)*v.steer_rot-v.steer_rot"]
+				}
+			}
+		},
+		"animation.bw_vv.vehicle.steer.tilt_neutral.from_right": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.4167,
+			"anim_time_update": "query.anim_time + query.delta_time *0.9",
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "math.cos(q.anim_time*425.9)*v.steer_rot+v.steer_rot"]
+				}
+			}
+		},
+		"animation.bw_vv.vehicle.steer.tilt_neutral.from_left": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.4167,
+			"anim_time_update": "query.anim_time + query.delta_time *0.9",
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "math.cos(q.anim_time*425.9)*-v.steer_rot-v.steer_rot"]
+				}
+			}
+		},
+		"animation.bw_vv.vehicle.steer.tilt_timer": {
+			"loop": false,
+			"animation_length": 0.18
+		}
+	}
+}

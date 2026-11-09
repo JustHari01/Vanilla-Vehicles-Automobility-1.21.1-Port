@@ -1,0 +1,56 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+      "controller.animation.bw_vv.generic_vehicle_boost": {
+        "states": {
+          "default": {
+            "transitions": [
+              {
+                "active": "query.property('bw_vv:boost') == 'active'"
+              },
+              {
+                "ready": "q.has_player_rider && q.property('bw_vv:fuel_progress') > 0"
+              }
+            ]
+          },
+          "ready": {
+            "transitions": [
+              {
+                "active": "query.property('bw_vv:boost') == 'active'"
+              }
+            ],
+            "on_entry": [
+              "@s event:boost_ready"
+            ]
+          },
+          "active": {
+            "animations":[
+              "boost_timer",
+              "boost_sound"
+            ],
+            "transitions": [
+              {
+                "cooldown": "q.all_animations_finished || q.property('bw_vv:fuel_progress') == 0"
+              }
+            ],
+            "on_entry": [
+              "@s event:boost_active"
+            ]
+          },
+          "cooldown": {
+            "animations":[
+              "boost_cooldown_timer"
+            ],
+            "transitions": [
+              {
+                "ready": "q.property('bw_vv:boost_cooldown') == 0"
+              }
+            ],
+            "on_entry": [
+              "@s event:boost_cooldown"
+            ]
+          }
+        }
+      }
+    }
+  }

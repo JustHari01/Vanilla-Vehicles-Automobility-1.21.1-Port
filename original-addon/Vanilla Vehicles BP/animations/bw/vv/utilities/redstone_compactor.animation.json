@@ -1,0 +1,75 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.bw_vv.redstone_compressor_timer": {
+			"loop": false,
+			"animation_length": 10
+	},
+  "animation.bw_vv.redstone_compressor_detect0": {
+    "loop": true,
+    "animation_length": 0.3,
+    "timeline": {
+      "0.0": "/clear @s redstone 0 2",
+      "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s start_working",
+      
+      "0.2": "/execute as @s ~ ~ ~ say hey"
+    }
+},
+"animation.bw_vv.redstone_compressor_detect1": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v2"
+  }
+},
+"animation.bw_vv.redstone_compressor_detect2": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v3"
+  }
+},
+"animation.bw_vv.redstone_compressor_detect3": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v4"
+  }
+},
+"animation.bw_vv.redstone_compressor_detect4": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v5"
+  }
+},
+"animation.bw_vv.redstone_compressor_detect5": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v6"
+  }
+},
+"animation.bw_vv.redstone_compressor_detect6": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v7"
+  }
+},
+"animation.bw_vv.redstone_compressor_detect7": {
+  "loop": true,
+  "animation_length": 0.3,
+  "timeline": {
+    "0.0": "/clear @s redstone 0 2",
+    "0.02": "/execute as @s[hasitem={item=redstone}] ~ ~ ~ event entity @s v8"
+  }
+}
+  }
+}

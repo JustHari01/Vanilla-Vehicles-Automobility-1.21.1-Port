@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:wind_vane",
+    "count": 1
+  },
+  "pattern": [
+    "nnn",
+    " Fg",
+    "iii"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:iron_nugget"
+    },
+    "F": {
+      "tag": "minecraft:wooden_fences"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "g": {
+      "item": "minecraft:redstone_torch"
+    }
+  }
+}

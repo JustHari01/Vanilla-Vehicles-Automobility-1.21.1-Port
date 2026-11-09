@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "fueled_animated_sheet",
+		"metalness_emissive_roughness": "fueled_animated_sheet_mer"
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "item",
+          "name": "bw_vv:hot_air_balloon.envelope.blank",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

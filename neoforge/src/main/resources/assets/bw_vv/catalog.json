@@ -1,0 +1,1139 @@
+{
+  "items": [
+    {
+      "id": "blueprints",
+      "texture": "textures/bw/vv/items/blueprints",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/blueprints.json"
+    },
+    {
+      "id": "compressed_redstone",
+      "texture": "textures/bw/vv/items/compressed_redstone",
+      "vehicle": null,
+      "stack": {
+        "value": 16
+      },
+      "source": "items/bw/vv/compressed_redstone.json"
+    },
+    {
+      "id": "flag.pole",
+      "texture": "textures/bw/vv/items/prop_spawns/flag.pole",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flag_pole.json"
+    },
+    {
+      "id": "guide_book",
+      "texture": "textures/bw/vv/items/guide_book",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/guide_book.json"
+    },
+    {
+      "id": "mechanical_heart",
+      "texture": "textures/bw/vv/items/mechanical_heart",
+      "vehicle": null,
+      "stack": 1,
+      "source": "items/bw/vv/mechanical_heart.json"
+    },
+    {
+      "id": "propeller",
+      "texture": "textures/bw/vv/items/propeller",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/propeller.json"
+    },
+    {
+      "id": "redstone_compressor",
+      "texture": "textures/bw/vv/items/redstone_compressor",
+      "vehicle": "redstone_compressor",
+      "stack": {},
+      "source": "items/bw/vv/redstone_compressor.json"
+    },
+    {
+      "id": "redstone_pulser",
+      "texture": "textures/bw/vv/items/redstone_pulser",
+      "vehicle": null,
+      "stack": {
+        "value": 16
+      },
+      "source": "items/bw/vv/redstone_pulser.json"
+    },
+    {
+      "id": "tesla_helmet",
+      "texture": "textures/bw/vv/items/tesla_helmet",
+      "vehicle": null,
+      "stack": 1,
+      "source": "items/bw/vv/tesla_helmet.json"
+    },
+    {
+      "id": "tesla_helmet_upgrade_smithing_template",
+      "texture": "textures/bw/vv/items/tesla_helmet_upgrade",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/tesla_helmet_template.json"
+    },
+    {
+      "id": "wind_vane",
+      "texture": "textures/bw/vv/items/wind_vane",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/wind_vane.json"
+    },
+    {
+      "id": "hot_air_balloon.envelope.blank",
+      "texture": "textures/bw/vv/items/balloon_envelope/blank",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/envelopes/hot_air_balloon.envelope.blank.json"
+    },
+    {
+      "id": "hot_air_balloon.envelope.creeper",
+      "texture": "textures/bw/vv/items/balloon_envelope/creeper",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/envelopes/hot_air_balloon.envelope.creeper.json"
+    },
+    {
+      "id": "hot_air_balloon.envelope.striped",
+      "texture": "textures/bw/vv/items/balloon_envelope/striped",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/envelopes/hot_air_balloon.envelope.striped.json"
+    },
+    {
+      "id": "flag.black",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/black",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/black.json"
+    },
+    {
+      "id": "flag.blue",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/blue",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/blue.json"
+    },
+    {
+      "id": "flag.brown",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/brown",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/brown.json"
+    },
+    {
+      "id": "flag.cyan",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/cyan",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/cyan.json"
+    },
+    {
+      "id": "flag.gray",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/gray",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/gray.json"
+    },
+    {
+      "id": "flag.green",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/green",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/green.json"
+    },
+    {
+      "id": "flag.light_blue",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/light_blue",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/light_blue.json"
+    },
+    {
+      "id": "flag.light_gray",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/light_gray",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/light_gray.json"
+    },
+    {
+      "id": "flag.lime",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/lime",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/lime.json"
+    },
+    {
+      "id": "flag.magenta",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/magenta",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/magenta.json"
+    },
+    {
+      "id": "flag.orange",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/orange",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/orange.json"
+    },
+    {
+      "id": "flag.pink",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/pink",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/pink.json"
+    },
+    {
+      "id": "flag.purple",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/purple",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/purple.json"
+    },
+    {
+      "id": "flag.red",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/red",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/red.json"
+    },
+    {
+      "id": "flag.white",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/white",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/white.json"
+    },
+    {
+      "id": "flag.yellow",
+      "texture": "textures/bw/vv/items/prop_spawns/flags/yellow",
+      "vehicle": null,
+      "stack": {},
+      "source": "items/bw/vv/flags/yellow.json"
+    },
+    {
+      "id": "smoke_bomb.black",
+      "texture": "textures/bw/vv/items/smoke_bombs/black",
+      "vehicle": "black>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.black.json"
+    },
+    {
+      "id": "smoke_bomb.blue",
+      "texture": "textures/bw/vv/items/smoke_bombs/blue",
+      "vehicle": "blue>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.blue.item.json"
+    },
+    {
+      "id": "smoke_bomb.brown",
+      "texture": "textures/bw/vv/items/smoke_bombs/brown",
+      "vehicle": "brown>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.brown.json"
+    },
+    {
+      "id": "smoke_bomb.cyan",
+      "texture": "textures/bw/vv/items/smoke_bombs/cyan",
+      "vehicle": "cyan>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.cyan.json"
+    },
+    {
+      "id": "smoke_bomb",
+      "texture": "textures/bw/vv/items/smoke_bombs/empty",
+      "vehicle": null,
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.empty.item.json"
+    },
+    {
+      "id": "smoke_bomb.gray",
+      "texture": "textures/bw/vv/items/smoke_bombs/gray",
+      "vehicle": "gray>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.gray.item.json"
+    },
+    {
+      "id": "smoke_bomb.green",
+      "texture": "textures/bw/vv/items/smoke_bombs/green",
+      "vehicle": "green>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.green.json"
+    },
+    {
+      "id": "smoke_bomb.light_blue",
+      "texture": "textures/bw/vv/items/smoke_bombs/light_blue",
+      "vehicle": "light_blue>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.light_blue.json"
+    },
+    {
+      "id": "smoke_bomb.light_gray",
+      "texture": "textures/bw/vv/items/smoke_bombs/light_gray",
+      "vehicle": "light_gray>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.light_gray.json"
+    },
+    {
+      "id": "smoke_bomb.lime",
+      "texture": "textures/bw/vv/items/smoke_bombs/lime",
+      "vehicle": "lime>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.lime.item.json"
+    },
+    {
+      "id": "smoke_bomb.magenta",
+      "texture": "textures/bw/vv/items/smoke_bombs/magenta",
+      "vehicle": "magenta>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.magenta.json"
+    },
+    {
+      "id": "smoke_bomb.orange",
+      "texture": "textures/bw/vv/items/smoke_bombs/orange",
+      "vehicle": "orange>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.orange.json"
+    },
+    {
+      "id": "smoke_bomb.pink",
+      "texture": "textures/bw/vv/items/smoke_bombs/pink",
+      "vehicle": "pink>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.pink.json"
+    },
+    {
+      "id": "smoke_bomb.purple",
+      "texture": "textures/bw/vv/items/smoke_bombs/purple",
+      "vehicle": "purple>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.purple.json"
+    },
+    {
+      "id": "smoke_bomb.red",
+      "texture": "textures/bw/vv/items/smoke_bombs/red",
+      "vehicle": "red>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.red.item.json"
+    },
+    {
+      "id": "smoke_bomb.white",
+      "texture": "textures/bw/vv/items/smoke_bombs/white",
+      "vehicle": "white>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.white.json"
+    },
+    {
+      "id": "smoke_bomb.yellow",
+      "texture": "textures/bw/vv/items/smoke_bombs/yellow",
+      "vehicle": "yellow>",
+      "stack": 64,
+      "source": "items/bw/vv/smoke_bombs/smoke_bomb.yellow.json"
+    },
+    {
+      "id": "sticker.bloom",
+      "texture": "textures/bw/vv/items/stickers/bloom",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_bloom.json"
+    },
+    {
+      "id": "sticker.castle",
+      "texture": "textures/bw/vv/items/stickers/castle",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_castle.json"
+    },
+    {
+      "id": "sticker.creeper",
+      "texture": "textures/bw/vv/items/stickers/creeper",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_creeper.json"
+    },
+    {
+      "id": "sticker.diamonds",
+      "texture": "textures/bw/vv/items/stickers/diamonds",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_diamonds.json"
+    },
+    {
+      "id": "sticker.enderman",
+      "texture": "textures/bw/vv/items/stickers/enderman",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_enderman.json"
+    },
+    {
+      "id": "sticker.hearts",
+      "texture": "textures/bw/vv/items/stickers/hearts",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_hearts.json"
+    },
+    {
+      "id": "sticker.icy",
+      "texture": "textures/bw/vv/items/stickers/icy",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_icy.json"
+    },
+    {
+      "id": "sticker.rainbow",
+      "texture": "textures/bw/vv/items/stickers/rainbow",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_rainbow.json"
+    },
+    {
+      "id": "sticker.skeleton",
+      "texture": "textures/bw/vv/items/stickers/skeleton",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_skeleton.json"
+    },
+    {
+      "id": "sticker.stripes",
+      "texture": "textures/bw/vv/items/stickers/stripes",
+      "vehicle": null,
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/stickers/sticker_stripes.json"
+    },
+    {
+      "id": "hot_air_balloon.basket",
+      "texture": "textures/bw/vv/items/vehicle_spawns/hot_air_balloon",
+      "vehicle": "hot_air_balloon",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/hot_air_balloon.basket.json"
+    },
+    {
+      "id": "mech",
+      "texture": "textures/bw/vv/items/vehicle_spawns/mech",
+      "vehicle": "mech",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/mech.json"
+    },
+    {
+      "id": "minecar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/minecar",
+      "vehicle": "minecar",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/minecar.json"
+    },
+    {
+      "id": "mobtruck",
+      "texture": "textures/bw/vv/items/vehicle_spawns/mobtruck",
+      "vehicle": "mobtruck",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/mobtruck.json"
+    },
+    {
+      "id": "prismer",
+      "texture": "textures/bw/vv/items/vehicle_spawns/prismer",
+      "vehicle": "prismer",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/prismer.json"
+    },
+    {
+      "id": "steamboat",
+      "texture": "textures/bw/vv/items/vehicle_spawns/steamboat",
+      "vehicle": "steamboat",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/steamboat.json"
+    },
+    {
+      "id": "logcar.oak",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "vehicle": "oak>",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/logcar/oak.json"
+    },
+    {
+      "id": "plane.oak",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "vehicle": "oak>",
+      "stack": {
+        "value": 1
+      },
+      "source": "items/bw/vv/vehicles/plane/oak.json"
+    },
+    {
+      "id": "logcar.spruce",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.birch",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.jungle",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.acacia",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.dark_oak",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.mangrove",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.cherry",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.bamboo",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.crimson",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.warped",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "logcar.pale_oak",
+      "vehicle": "logcar",
+      "texture": "textures/bw/vv/items/vehicle_spawns/logcar/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.spruce",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.birch",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.jungle",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.acacia",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.dark_oak",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.mangrove",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.cherry",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.bamboo",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.crimson",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.warped",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    },
+    {
+      "id": "plane.pale_oak",
+      "vehicle": "plane",
+      "texture": "textures/bw/vv/items/vehicle_spawns/plane/oak",
+      "stack": {
+        "value": 1
+      },
+      "source": "entity variant"
+    }
+  ],
+  "vehicles": {
+    "hot_air_balloon": {
+      "textures": {
+        "empty": "textures/bw/vv/vehicles/hot_air_balloon/empty",
+        "envelope.blank": "textures/bw/vv/vehicles/hot_air_balloon/blank",
+        "envelope.striped": "textures/bw/vv/vehicles/hot_air_balloon/striped",
+        "envelope.creeper": "textures/bw/vv/vehicles/hot_air_balloon/creeper"
+      },
+      "bones": [
+        "aller",
+        "envelope",
+        "envelope_smaller",
+        "balloon2",
+        "balloon_insideN",
+        "rope13",
+        "balloon1",
+        "balloon_insideS",
+        "fire_pit",
+        "literally_the_pit",
+        "rope5",
+        "rope6",
+        "rope7",
+        "rope8",
+        "rope12",
+        "rope9",
+        "rope11",
+        "rope10",
+        "rope4",
+        "rope3",
+        "rope2",
+        "rope",
+        "all",
+        "body",
+        "bundles",
+        "bundle1",
+        "bundle2",
+        "bundle3",
+        "bundle4",
+        "bundle6",
+        "bundle7",
+        "bundle8",
+        "bundle5",
+        "roof",
+        "roof2"
+      ],
+      "hitResistance": 40,
+      "toolResistance": 7,
+      "sheets": {}
+    },
+    "logcar": {
+      "textures": {
+        "oak": "textures/bw/vv/vehicles/logcar/oak",
+        "empty": "textures/bw/vv/empty",
+        "fueled_animated": "textures/bw/vv/vehicles/logcar/fueled_animated_sheet"
+      },
+      "bones": [
+        "all",
+        "body",
+        "glass",
+        "deco1",
+        "deco2",
+        "deco6",
+        "deco3",
+        "deco4",
+        "deco7",
+        "deco5",
+        "drivingwheel",
+        "part1",
+        "part2",
+        "nocolorchange",
+        "furnace",
+        "fuel_glow",
+        "fuel_indicator",
+        "rot1",
+        "chest",
+        "lights",
+        "lights2",
+        "lever",
+        "pedal",
+        "wheel1",
+        "wheelsback",
+        "wheel3",
+        "wheel4",
+        "wheel2",
+        "ax"
+      ],
+      "hitResistance": 30,
+      "toolResistance": 4,
+      "sheets": {
+        "fueled_animated": 5
+      }
+    },
+    "mech": {
+      "textures": {
+        "default": "textures/bw/vv/vehicles/mech/mech",
+        "fueled": "textures/bw/vv/vehicles/mech/animated",
+        "empty": "textures/bw/vv/empty"
+      },
+      "bones": [
+        "upper_part",
+        "body",
+        "upperer_part",
+        "chest_handler",
+        "arm_L_all",
+        "arm_L",
+        "arm_bone_L",
+        "arm_L_bent",
+        "weapon_rotate_L",
+        "weapons_L",
+        "weaponR5",
+        "weaponR6",
+        "weaponR7",
+        "weaponR8",
+        "arm_R_all",
+        "arm_R",
+        "arm_bone_R",
+        "arm_R_bent",
+        "weapon_rotate_R",
+        "weapons_R",
+        "weaponR1",
+        "weaponR2",
+        "weaponR3",
+        "weaponR4",
+        "chest",
+        "charge_indicator",
+        "sprayable",
+        "nocolorchange",
+        "boost_indicator",
+        "shoulders",
+        "lights",
+        "sprayable2",
+        "bone2",
+        "chair",
+        "foot_R",
+        "metalpartR",
+        "foot_R_piston",
+        "undyableR",
+        "foot_L",
+        "metalpartL",
+        "foot_L_piston",
+        "undyableR2"
+      ],
+      "hitResistance": 100,
+      "toolResistance": 12,
+      "sheets": {
+        "fueled": 5
+      }
+    },
+    "minecar": {
+      "textures": {
+        "default": "textures/bw/vv/vehicles/minecar/minecar",
+        "overlay": "textures/bw/vv/vehicles/minecar/overlay",
+        "empty": "textures/bw/vv/empty",
+        "overlay_creeper": "textures/bw/vv/vehicles/minecar/creeper_pattern",
+        "overlay_bloom": "textures/bw/vv/vehicles/minecar/bloom_pattern",
+        "overlay_icy": "textures/bw/vv/vehicles/minecar/icy_pattern",
+        "overlay_burning": "textures/bw/vv/vehicles/minecar/empty",
+        "overlay_rainbow": "textures/bw/vv/vehicles/minecar/rainbow_pattern",
+        "overlay_soulful": "textures/bw/vv/vehicles/minecar/empty",
+        "overlay_stripes": "textures/bw/vv/vehicles/minecar/stripes_pattern",
+        "overlay_enderman": "textures/bw/vv/vehicles/minecar/enderman_pattern",
+        "overlay_skeleton": "textures/bw/vv/vehicles/minecar/skeleton_pattern",
+        "overlay_hearts": "textures/bw/vv/vehicles/minecar/hearts_pattern",
+        "overlay_castle": "textures/bw/vv/vehicles/minecar/castle_pattern",
+        "overlay_diamonds": "textures/bw/vv/vehicles/minecar/diamonds_pattern",
+        "fueled_animated": "textures/bw/vv/vehicles/minecar/fueled_animated_sheet"
+      },
+      "bones": [
+        "all",
+        "body",
+        "furnace",
+        "frontholders",
+        "glass",
+        "drivingwheel",
+        "part1",
+        "part2",
+        "nocolorchange",
+        "lever",
+        "pedal",
+        "lights",
+        "lights2",
+        "fuel_indicator",
+        "fuel_glow",
+        "wheel1",
+        "wheelsback",
+        "wheel2",
+        "ax"
+      ],
+      "hitResistance": 50,
+      "toolResistance": 4,
+      "sheets": {
+        "fueled_animated": 5
+      }
+    },
+    "mobtruck": {
+      "textures": {
+        "default": "textures/bw/vv/vehicles/mobtruck/mobtruck",
+        "overlay": "textures/bw/vv/vehicles/mobtruck/overlay",
+        "empty": "textures/bw/vv/empty",
+        "overlay_creeper": "textures/bw/vv/vehicles/mobtruck/creeper_pattern",
+        "overlay_bloom": "textures/bw/vv/vehicles/mobtruck/bloom_pattern",
+        "overlay_icy": "textures/bw/vv/vehicles/mobtruck/icy_pattern",
+        "overlay_burning": "textures/bw/vv/vehicles/mobtruck/empty",
+        "overlay_rainbow": "textures/bw/vv/vehicles/mobtruck/rainbow_pattern",
+        "overlay_soulful": "textures/bw/vv/vehicles/mobtruck/empty",
+        "overlay_stripes": "textures/bw/vv/vehicles/mobtruck/stripes_pattern",
+        "overlay_enderman": "textures/bw/vv/vehicles/mobtruck/enderman_pattern",
+        "overlay_skeleton": "textures/bw/vv/vehicles/mobtruck/skeleton_pattern",
+        "overlay_hearts": "textures/bw/vv/vehicles/mobtruck/hearts_pattern",
+        "overlay_castle": "textures/bw/vv/vehicles/mobtruck/castle_pattern",
+        "overlay_diamonds": "textures/bw/vv/vehicles/mobtruck/diamonds_pattern",
+        "fueled_animated": "textures/bw/vv/vehicles/mobtruck/fueled_animated_sheet"
+      },
+      "bones": [
+        "all",
+        "body",
+        "defender5",
+        "defender5a",
+        "defender4",
+        "defender4a",
+        "defender1",
+        "defender1a",
+        "defender2",
+        "defefnder2a",
+        "defender3",
+        "defender3a",
+        "frontholders",
+        "glass",
+        "colorchange",
+        "drivingwheel",
+        "part1",
+        "part2",
+        "fuel_indicator",
+        "fuel_glow",
+        "nocolorchange",
+        "backdoor_open",
+        "backdoor_closed",
+        "chest",
+        "lever",
+        "pedal",
+        "lights",
+        "lights2",
+        "wheel2",
+        "wheel1",
+        "wheelsback",
+        "wheel3",
+        "wheel4",
+        "ax"
+      ],
+      "hitResistance": 50,
+      "toolResistance": 5,
+      "sheets": {
+        "fueled_animated": 4
+      }
+    },
+    "plane": {
+      "textures": {
+        "oak": "textures/bw/vv/vehicles/plane/oak",
+        "empty": "textures/bw/vv/empty",
+        "wings_animated": "textures/bw/vv/vehicles/plane/wings_animated",
+        "fueled_animated": "textures/bw/vv/vehicles/plane/fueled_animated"
+      },
+      "bones": [
+        "all_vertical_steer",
+        "all_horizontal_steer",
+        "wheelR",
+        "wheelL",
+        "wheelB",
+        "body",
+        "fuel_glow",
+        "fuel_indicator",
+        "drivingwheel",
+        "chair",
+        "flag",
+        "flag_dyeable",
+        "propeller",
+        "wingL",
+        "wingLdyeable",
+        "wingR",
+        "wingRdyeable"
+      ],
+      "hitResistance": 40,
+      "toolResistance": 6,
+      "sheets": {
+        "wings_animated": 7,
+        "fueled_animated": 4
+      }
+    },
+    "prismer": {
+      "textures": {
+        "active": "textures/bw/vv/vehicles/prismer/active",
+        "aura_animated": "textures/bw/vv/vehicles/prismer/aura_animated",
+        "tentacles_animated": "textures/bw/vv/vehicles/prismer/tentacles_animated",
+        "inactive": "textures/bw/vv/vehicles/prismer/inactive"
+      },
+      "bones": [
+        "all_vertical_steer",
+        "all_horizontal_steer",
+        "body",
+        "drivingwheel",
+        "drivingwheel_rot",
+        "mouth",
+        "bone",
+        "lights",
+        "conduit",
+        "back",
+        "steeringwheel_inverse2",
+        "propeller",
+        "spike1",
+        "spike1_rot",
+        "spike4",
+        "spike4_rot",
+        "spike5",
+        "spike5_rot",
+        "spike3",
+        "spike3_rot",
+        "spike6",
+        "spike6_rot",
+        "spike7",
+        "bone9",
+        "spike8",
+        "spike8_rot",
+        "spike2",
+        "spike2_rot",
+        "steeringwheel_inverse",
+        "wing",
+        "wing2",
+        "bone6"
+      ],
+      "hitResistance": 70,
+      "toolResistance": 10,
+      "sheets": {
+        "aura_animated": 18,
+        "tentacles_animated": 8
+      }
+    },
+    "steamboat": {
+      "textures": {
+        "default": "textures/bw/vv/vehicles/steamboat/base",
+        "fueled": "textures/bw/vv/vehicles/steamboat/fueled_animated_sheet"
+      },
+      "bones": [
+        "body",
+        "bundles2",
+        "wool_cover",
+        "bell_support",
+        "bell",
+        "steer_paddle",
+        "furnace",
+        "bundles1",
+        "drivingwheel",
+        "lantern",
+        "lights",
+        "bone4",
+        "bone",
+        "bone2",
+        "bone3",
+        "bone5",
+        "bone6",
+        "bone7",
+        "bone8",
+        "paddles",
+        "paddle_wheel",
+        "paddle1",
+        "paddle2",
+        "paddle3",
+        "paddle4",
+        "paddle5",
+        "paddle6",
+        "paddle7",
+        "paddle8",
+        "overlay"
+      ],
+      "hitResistance": 70,
+      "toolResistance": 10,
+      "sheets": {
+        "fueled": 5
+      }
+    }
+  },
+  "recipeWarnings": [],
+  "recipes": [
+    "guide_book_recipe",
+    "hot_air_balloon_recipe",
+    "hot_air_balloon_envelope.blank.recipe",
+    "hot_air_balloon_envelope.creeper.recipe",
+    "hot_air_balloon_envelope.striped.recipe",
+    "logcar.oak.recipe",
+    "mech_recipe",
+    "mechanical_heart_recipe",
+    "minecar_recipe",
+    "mobtruck_recipe",
+    "plane.oak.recipe",
+    "propeller_recipe",
+    "redstone_compressor_recipe",
+    "redstone_pulser_recipe",
+    "steamboat_recipe",
+    "tesla_helmet_upgrade",
+    "wind_vane_recipe",
+    "flag.black",
+    "flag.blue",
+    "flag.brown",
+    "flag.cyan",
+    "flag.gray",
+    "flag.green",
+    "flag.light_blue",
+    "flag.light_gray",
+    "flag.lime",
+    "flag.magenta",
+    "flag.orange",
+    "flag.pink",
+    "smoke_bomb.flag.pole.recipe",
+    "flag.purple",
+    "flag.red",
+    "flag.white",
+    "flag.yellow",
+    "smoke_bomb.black.recipe",
+    "smoke_bomb.blue.recipe",
+    "smoke_bomb.brown.recipe",
+    "smoke_bomb.cyan.recipe",
+    "smoke_bomb.empty.recipe",
+    "smoke_bomb.gray.recipe",
+    "smoke_bomb.green.recipe",
+    "smoke_bomb.light_blue.recipe",
+    "smoke_bomb.light_gray.recipe",
+    "smoke_bomb.lime.recipe",
+    "smoke_bomb.magenta.recipe",
+    "smoke_bomb.orange.recipe",
+    "smoke_bomb.pink.recipe",
+    "smoke_bomb.purple.recipe",
+    "smoke_bomb.red.recipe",
+    "smoke_bomb.white.recipe",
+    "smoke_bomb.yellow.recipe"
+  ]
+}

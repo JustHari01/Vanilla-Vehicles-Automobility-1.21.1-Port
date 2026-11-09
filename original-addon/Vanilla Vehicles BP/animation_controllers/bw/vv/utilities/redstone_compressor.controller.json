@@ -1,0 +1,269 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers":
+    {
+        "controller.animation.bw_vv.redstone_compressor_fueler":
+        {
+            "states":
+            {
+                "default":
+                {
+                    "transitions":
+                    [
+                        {
+                            "1": "query.is_sheared"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "detect0"
+                    ]
+                },
+                "0_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "default": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone2\"",
+                        "@s stop_working"
+                    ]
+                },
+                "1":
+                {
+                    "transitions":
+                    [
+                        {
+                            "0_add": "query.all_animations_finished"
+                        },
+                        {
+                            "2": "query.variant == 2"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect1"
+                    ]
+                },
+                "1_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "1": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone1\"",
+                        "@s v1"
+                    ]
+                },
+                "2":
+                {
+                    "transitions":
+                    [
+                        {
+                            "1_add": "query.all_animations_finished"
+                        },
+                        {
+                            "3": "query.variant == 3"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect2"
+                    ]
+                },
+                "2_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "2": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone1\"",
+                        "@s v2"
+                    ]
+                },
+                "3":
+                {
+                    "transitions":
+                    [
+                        {
+                            "2_add": "query.all_animations_finished"
+                        },
+                        {
+                            "4": "query.variant == 4"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect3"
+                    ]
+                },
+                "3_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "3": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone1\"",
+                        "@s v3"
+                    ]
+                },
+                "4":
+                {
+                    "transitions":
+                    [
+                        {
+                            "3_add": "query.all_animations_finished"
+                        },
+                        {
+                            "5": "query.variant == 5"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect4"
+                    ]
+                },
+                "4_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "4": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone1\"",
+                        "@s v4"
+                    ]
+                },
+                "5":
+                {
+                    "transitions":
+                    [
+                        {
+                            "4_add": "query.all_animations_finished"
+                        },
+                        {
+                            "6": "query.variant == 6"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect5"
+                    ]
+                },
+                "5_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "5": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone1\"",
+                        "@s v5"
+                    ]
+                },
+                "6":
+                {
+                    "transitions":
+                    [
+                        {
+                            "5_add": "query.all_animations_finished"
+                        },
+                        {
+                            "7": "query.variant == 7"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect6"
+                    ]
+                },
+                "6_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "6": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone1\"",
+                        "@s v6"
+                    ]
+                },
+                "7":
+                {
+                    "transitions":
+                    [
+                        {
+                            "6_add": "query.all_animations_finished"
+                        },
+                        {
+                            "8": "query.variant == 8"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer",
+                        "detect7"
+                    ]
+                },
+                "7_add":
+                {
+                    "transitions":
+                    [
+                        {
+                            "7": "1"
+                        }
+                    ],
+                    "on_entry":
+                    [
+                        "/loot spawn ~ ~ ~ loot \"bw/vv/redstone_compressor/compressed_redstone2\"",
+                        "@s v7"
+                    ]
+                },
+                "8":
+                {
+                    "transitions":
+                    [
+                        {
+                            "7_add": "query.all_animations_finished"
+                        }
+                    ],
+                    "animations":
+                    [
+                        "crush_timer"
+                    ]
+                }
+            }
+        }
+    }
+}

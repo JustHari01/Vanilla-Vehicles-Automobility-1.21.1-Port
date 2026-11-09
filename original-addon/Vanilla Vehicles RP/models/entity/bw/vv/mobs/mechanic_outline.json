@@ -1,0 +1,95 @@
+{
+	"format_version": "1.21.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bw_vv.mechanic_outline",
+				"texture_width": 16,
+				"texture_height": 16,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "body_outline",
+					"pivot": [0, 19, 0]
+				},
+				{
+					"name": "body",
+					"parent": "body_outline",
+					"pivot": [0, 1, 0],
+					"locators": {
+						"lead_hold": [0, 41, -5]
+					}
+				},
+				{
+					"name": "sub_body",
+					"parent": "body",
+					"pivot": [0, 17.5, 0],
+					"cubes": [
+						{"origin": [-4, 13, -3], "size": [8, 12, 6], "uv": [16, 20]},
+						{"origin": [-4.25, 7.5, -3.25], "size": [8.5, 17.5, 6.5], "inflate": 0.5, "uv": [1, 39]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 25, 0],
+					"cubes": [
+						{"origin": [-4.5, 25.5, -4.5], "size": [9, 9, 9], "uv": [-1, -1]},
+						{"origin": [-4, 42.75, -29.5], "size": [8, 4, 0.5], "inflate": 0.1, "pivot": [0, 26.75, -24], "rotation": [-92.5, 0, 0], "uv": [35, 48]}
+					]
+				},
+				{
+					"name": "helmet",
+					"parent": "head",
+					"pivot": [0, 25, 0],
+					"cubes": [
+						{"origin": [-4.5, 33.5, -4.5], "size": [9, 2, 9], "inflate": 0.5, "uv": [31, -1]},
+						{"origin": [-4.5, 28, -4.5], "size": [9, 2, 9], "inflate": 0.5, "uv": [31, -1]}
+					]
+				},
+				{
+					"name": "nose",
+					"parent": "head",
+					"pivot": [0, 27, 0],
+					"cubes": [
+						{"origin": [-1.5, 23.5, -6.5], "size": [3, 5, 3], "uv": [23, -1]}
+					]
+				},
+				{
+					"name": "arms",
+					"parent": "body",
+					"pivot": [0, 23, 0],
+					"cubes": [
+						{"origin": [-4, 16.5, -2.5], "size": [8, 5, 5], "uv": [39, 37]},
+						{"origin": [-8.5, 16.5, -2.5], "size": [4.5, 9, 5], "uv": [43, 21]},
+						{"origin": [4, 16.5, -2.5], "size": [4.5, 9, 5], "uv": [44, 22], "mirror": true}
+					]
+				},
+				{
+					"name": "held_item",
+					"parent": "arms",
+					"pivot": [0, 1, 0]
+				},
+				{
+					"name": "leg0",
+					"parent": "body",
+					"pivot": [-2, 13, 0],
+					"cubes": [
+						{"origin": [-4.75, 0.5, -2.5], "size": [5.5, 12.5, 5], "uv": [-1, 22]}
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "body",
+					"pivot": [2, 13, 0],
+					"cubes": [
+						{"origin": [-0.75, 0.5, -2.5], "size": [5.5, 12.5, 5], "uv": [-1, 22], "mirror": true}
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,7 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:texture_set": {
+		"color": "hot_air_balloon.ignite",
+		"metalness_emissive_roughness": "hot_air_balloon.ignite_mer"
+	}
+}

@@ -1,0 +1,48 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:plane.oak.recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            " #M",
+            "LCL",
+            " # "
+        ],
+        "key": {
+            "#": {
+                "item": "minecraft:wool"
+            },
+            "L": {
+                "item": "minecraft:log"
+            },
+            "M": {
+                "item": "bw_vv:propeller"
+            },
+            "C": {
+                "item": "bw_vv:redstone_pulser"
+            }
+        },        
+        "unlock": [
+            {
+              "item": "minecraft:wool"
+            },
+            {
+                "item": "minecraft:log"
+            },
+            {
+                "item": "bw_vv:propeller"
+            },
+            {
+                "item": "bw_vv:redstone_pulser"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:plane.oak",
+            "count": 1
+        }
+    }
+}

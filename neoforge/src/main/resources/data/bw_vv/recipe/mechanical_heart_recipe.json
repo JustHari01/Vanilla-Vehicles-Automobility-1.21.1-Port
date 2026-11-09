@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:mechanical_heart",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_powder"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    },
+    {
+      "item": "bw_vv:redstone_pulser"
+    },
+    {
+      "item": "bw_vv:blueprints"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:item": {
+		"description": {
+			"identifier": "bw_vv:flag.cyan",
+			"menu_category": {
+        		"category": "items"
+      		}		
+		},
+		"components": {
+            "minecraft:icon": {
+                "textures": {"default":  "bw_vv:flag.cyan"}
+            },
+			"minecraft:block_placer": {
+				"block": "bw_vv:flag.cyan",
+				"replace_block_item": true
+			}
+		}
+	}
+}

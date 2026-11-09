@@ -1,0 +1,7 @@
+{
+  "type": "automobility:auto_mechanic_table",
+  "category": "automobility:frames",
+  "sortnum": 606,
+  "ingredients": [{"item":"minecraft:yellow_dye"},{"item":"minecraft:iron_block"},{"item":"minecraft:iron_ingot"},{"item":"minecraft:chest"},{"item":"minecraft:bucket"}],
+  "result": {"item":"automobility:automobile_frame","component":"automobility:mining_dump_truck"}
+}

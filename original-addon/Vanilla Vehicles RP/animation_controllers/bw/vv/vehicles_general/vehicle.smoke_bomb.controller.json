@@ -1,0 +1,42 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers": {
+        "controller.animation.bw_vv.vehicle.smoke_bomb": {
+            "initial_state": "no_smoke",
+            "states": {
+                "no_smoke": {
+                    "transitions": [
+                        {
+                            "smoke": "query.property('bw_vv:smoke_bomb_cooldown') == true"
+                        }
+                    ]
+                },
+                "cooldown": {
+                    "transitions": [
+                        {
+                            "no_smoke": "query.property('bw_vv:smoke_bomb_cooldown') == false"
+                        }
+                    ]
+                },
+                "smoke": {
+                    "transitions": [
+                        {
+                            "cooldown": "q.all_animations_finished"
+                        }
+                    ],
+                    "animations": [
+                        "smoke_bomb.spray_sound_finish_timer",
+                        "smoke_bomb.spray_sound"
+                    ],
+                    "particle_effects": [
+                        {
+                            "effect": "smoke_bomb_smoke",
+                            "pre_effect_script": "variable.particle_color_r = query.property('bw_vv:smoke_color') == 'white' ? 0.976 : (query.property('bw_vv:smoke_color') == 'light_gray' ? 0.616 : (query.property('bw_vv:smoke_color') == 'gray' ? 0.278 : (query.property('bw_vv:smoke_color') == 'black' ? 0.114 : (query.property('bw_vv:smoke_color') == 'brown' ? 0.514 : (query.property('bw_vv:smoke_color') == 'red' ? 0.690 : (query.property('bw_vv:smoke_color') == 'orange' ? 0.976 : (query.property('bw_vv:smoke_color') == 'yellow' ? 0.996 : (query.property('bw_vv:smoke_color') == 'lime' ? 0.502 : (query.property('bw_vv:smoke_color') == 'green' ? 0.369 : (query.property('bw_vv:smoke_color') == 'cyan' ? 0.086 : (query.property('bw_vv:smoke_color') == 'light_blue' ? 0.227 : (query.property('bw_vv:smoke_color') == 'blue' ? 0.235 : (query.property('bw_vv:smoke_color') == 'purple' ? 0.537 : (query.property('bw_vv:smoke_color') == 'magenta' ? 0.780 : (query.property('bw_vv:smoke_color') == 'pink' ? 0.953 : 0.0))))))))))))))); variable.particle_color_g = query.property('bw_vv:smoke_color') == 'white' ? 1.000 : (query.property('bw_vv:smoke_color') == 'light_gray' ? 0.616 : (query.property('bw_vv:smoke_color') == 'gray' ? 0.310 : (query.property('bw_vv:smoke_color') == 'black' ? 0.114 : (query.property('bw_vv:smoke_color') == 'brown' ? 0.329 : (query.property('bw_vv:smoke_color') == 'red' ? 0.180 : (query.property('bw_vv:smoke_color') == 'orange' ? 0.502 : (query.property('bw_vv:smoke_color') == 'yellow' ? 0.847 : (query.property('bw_vv:smoke_color') == 'lime' ? 0.780 : (query.property('bw_vv:smoke_color') == 'green' ? 0.486 : (query.property('bw_vv:smoke_color') == 'cyan' ? 0.612 : (query.property('bw_vv:smoke_color') == 'light_blue' ? 0.702 : (query.property('bw_vv:smoke_color') == 'blue' ? 0.267 : (query.property('bw_vv:smoke_color') == 'purple' ? 0.196 : (query.property('bw_vv:smoke_color') == 'magenta' ? 0.306 : (query.property('bw_vv:smoke_color') == 'pink' ? 0.545 : 0.0))))))))))))))); variable.particle_color_b = query.property('bw_vv:smoke_color') == 'white' ? 0.996 : (query.property('bw_vv:smoke_color') == 'light_gray' ? 0.592 : (query.property('bw_vv:smoke_color') == 'gray' ? 0.322 : (query.property('bw_vv:smoke_color') == 'black' ? 0.129 : (query.property('bw_vv:smoke_color') == 'brown' ? 0.196 : (query.property('bw_vv:smoke_color') == 'red' ? 0.149 : (query.property('bw_vv:smoke_color') == 'orange' ? 0.114 : (query.property('bw_vv:smoke_color') == 'yellow' ? 0.239 : (query.property('bw_vv:smoke_color') == 'lime' ? 0.122 : (query.property('bw_vv:smoke_color') == 'green' ? 0.086 : (query.property('bw_vv:smoke_color') == 'cyan' ? 0.612 : (query.property('bw_vv:smoke_color') == 'light_blue' ? 0.855 : (query.property('bw_vv:smoke_color') == 'blue' ? 0.667 : (query.property('bw_vv:smoke_color') == 'purple' ? 0.722 : (query.property('bw_vv:smoke_color') == 'magenta' ? 0.741 : (query.property('bw_vv:smoke_color') == 'pink' ? 0.667 : 0.0)))))))))))))));",
+                            "locator": "smoke_emitter"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

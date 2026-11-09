@@ -1,0 +1,106 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+
+		"controller.animation.bw_vv.generic.shake": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"shake_on": "query.has_player_rider"
+						}
+					]
+				},
+				"shake_on": {
+					"variables": {
+						"moving_speed": {
+							"input": "query.modified_move_speed",
+							"remap_curve": {
+                "0.0": 0.0,
+                "1.0": 1.0
+							}
+						}
+					},
+					"animations": [
+						{
+							"shake": "variable.moving_speed"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!query.has_player_rider"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.bw_vv.minecar_boost": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"boost_on": "query.ground_speed > 20 && query.has_rider && query.is_on_ground"
+						}
+					]
+				},
+				"boost_on": {
+					"animations": [
+							"boost"
+					],
+					"transitions": [
+						{
+							"default": "query.ground_speed < 20"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.bw_vv.vehicle_tral": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"fueled": "q.property('bw_vv:fuel_progress')>0"
+						}
+					]
+				},
+				"fueled": {
+					"particle_effects": [
+						{
+						"effect":"trail_effect",
+						"locator":"smoke_pipe"
+						}
+					],
+					"transitions": [
+						{
+							"default": "q.property('bw_vv:fuel_progress')==0"
+						},
+						{
+							"boosted": "q.property('bw_vv:boost')=='active'"
+						}
+					]
+				},
+				"boosted": {
+					"particle_effects": [
+						{
+						"effect":"boost",
+						"locator":"smoke_pipe"
+						},
+						{
+							"effect": "redstone_sparks",
+							"locator": "smoke_pipe"
+						}
+					],
+					"transitions": [
+						{
+							"default": "q.property('bw_vv:boost')!='active' && q.property('bw_vv:fuel_progress')==0"
+						},
+						{
+							"fueled": "q.property('bw_vv:boost')!='active' && q.property('bw_vv:fuel_progress')>0"
+						}
+					]
+				}
+			}
+		}
+	}
+}

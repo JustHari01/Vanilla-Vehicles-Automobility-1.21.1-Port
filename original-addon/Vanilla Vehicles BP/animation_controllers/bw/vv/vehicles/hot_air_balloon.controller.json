@@ -1,0 +1,102 @@
+{
+    "format_version": "1.10.0",
+    "animation_controllers":
+    {
+        "controller.animation.bw_vv.hot_air_balloon_placer":
+        {
+            "states":
+            {
+                "default":
+                {
+                    "transitions":
+                    [
+                        {
+                            "n": "query.cardinal_facing_2d == 2"
+                        },
+                        {
+                            "s": "query.cardinal_facing_2d == 3"
+                        },
+                        {
+                            "w": "query.cardinal_facing_2d == 4"
+                        },
+                        {
+                            "e": "query.cardinal_facing_2d == 5"
+                        }
+                    ]
+                },
+                "n":
+                {
+                    "on_entry":
+                    [
+                        "/tp @s ~ ~ ~ 180 0"
+                    ]
+                },
+                "s":
+                {
+                    "on_entry":
+                    [
+                        "/tp @s ~ ~ ~ 0 0"
+                    ]
+                },
+                "w":
+                {
+                    "on_entry":
+                    [
+                        "/tp @s ~ ~ ~ 90 0"
+                    ]
+                },
+                "e":
+                {
+                    "on_entry":
+                    [
+                        "/tp @s ~ ~ ~ -90 0"
+                    ]
+                }
+            }
+        },
+        "controller.animation.bw_vv.hot_air_balloon_heat":
+        {
+            "states":
+            {
+                "default":
+                {
+                    "transitions":
+                    [
+                        {
+                            "fueled": "q.property('bw_vv:fuel_progress') > 0"
+                        }
+                    ]
+                },
+                "fueled":
+                {
+                    "transitions":
+                    [
+                        {
+                            "heated": "q.all_animations_finished"
+                        }
+                    ],
+                    "animations": [
+                        "heat_timer"
+                    ]
+                },
+                "heated":
+                {
+                    "on_entry":
+                    [
+                        "@s event:heat"
+                    ],
+                    "on_exit":
+                    [
+                        "@s event:unheat"
+                    ],
+                    "transitions":
+                    [
+                        {
+                            "default": "q.property('bw_vv:fuel_progress') == 0"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,64 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.minecar_wheels": {
+			"loop": true,
+			"bones": {
+				"wheelsback": {
+					"rotation": ["query.modified_distance_moved * 50", 0, 0]
+				},
+				"wheel1": {
+					"rotation": ["query.modified_distance_moved * 50", 0, 0]
+				},
+				"wheel2": {
+					"rotation": ["query.modified_distance_moved * 50", 0, 0]
+				}
+			}
+		},
+		"animation.bw_vv.mobtruck_wheels": {
+			"loop": true,
+			"bones": {
+				"wheelsback": {
+					"rotation": ["query.modified_distance_moved * 30 + t.wheels_backwards", 0, 0]
+				},
+				"wheel1": {
+					"rotation": ["query.modified_distance_moved * 30 + t.wheels_backwards", 0, 0]
+				},
+				"wheel2": {
+					"rotation": ["query.modified_distance_moved * 30 + t.wheels_backwards", 0, 0]
+				}
+			}
+		},
+		"animation.bw_vv.minecar_wheel_turn": {
+			"loop": true,
+			"bones": {
+				"wheel1": {
+					"rotation": [0, "math.clamp(t.body_rot*1/2*query.has_player_rider,-40,40)", 0]
+				},
+				"wheel2": {
+					"rotation": [0, "math.clamp(t.body_rot*1/2*query.has_player_rider,-40,40)", 0]
+				},
+				"drivingwheel": {
+					"rotation": [0, 0, "math.clamp(t.body_rot*-1.2*query.has_player_rider,-30,30)"]
+				}
+			}
+		},
+		"animation.bw_vv.minecar_shake": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": ["(t.shake1 + t.shake2 + t.shake7 + t.shake3 + t.shake4)*1/6", "(t.shake3 + t.shake5 + t.shake6 + t.shake8)*1/15", 0],
+					"position": [0, "(t.shake10/1.4+t.shake2 + t.shake4 + t.shake1 + t.shake8)*1/33", 0]
+				}
+			}
+		},
+		"animation.bw_vv.prismer_inactive": {
+			"loop": true,
+			"bones": {
+				"bone2": {
+					"rotation": [7.5, 0, 0]
+				}
+			}
+		}
+	}
+}

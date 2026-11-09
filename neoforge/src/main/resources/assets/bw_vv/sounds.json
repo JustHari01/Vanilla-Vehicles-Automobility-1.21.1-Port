@@ -1,0 +1,928 @@
+{
+  "bw_vv.ui.modal_hide": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/modal_hide",
+        "volume": 0.8,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.player_join": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/player_join",
+        "volume": 1.0,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.warning": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/short_warning",
+        "volume": 0.7,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.guide_book.open": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/guide_book_open",
+        "volume": 0.4,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.guide_book.close": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/guide_book_close",
+        "volume": 0.34,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.guide_book.button_back": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/guide_book_button_back3",
+        "volume": 0.67,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.guide_book.button": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/ui/guide_book_button",
+        "volume": 0.4,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.redstone.pitch": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/fuel/redstone/pitch",
+        "volume": 1,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.redstone.no_pitch": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/fuel/redstone/no_pitch1",
+        "volume": 1.1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/fuel/redstone/no_pitch2",
+        "volume": 1.1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/fuel/redstone/no_pitch3",
+        "volume": 1.1,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.coal.pitch": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/fuel/coal/pitch",
+        "volume": 1,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.coal.no_pitch": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/fuel/coal/no_pitch1",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/fuel/coal/no_pitch2",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/fuel/coal/no_pitch3",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/fuel/coal/no_pitch4",
+        "volume": 0.8,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.fuel.redstone.full": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/fuel/redstone/full",
+        "volume": 1,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.boost": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/boost/boost1",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost2",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost3",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost4",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost5",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost6",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost7",
+        "volume": 1,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/boost/boost8",
+        "volume": 1,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.boost_start": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/boost/start2",
+        "volume": 1,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.minecar.engine": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/minecar/engine1",
+        "volume": 0.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine2",
+        "volume": 0.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine3",
+        "volume": 0.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine4",
+        "volume": 0.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine5",
+        "volume": 0.4,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.minecar.engine.close": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/minecar/engine1",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine2",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine3",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine4",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine5",
+        "volume": 0.3,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.minecar.engine.standby": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/minecar/engine1",
+        "volume": 0.2,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine2",
+        "volume": 0.2,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine3",
+        "volume": 0.2,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine4",
+        "volume": 0.2,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/minecar/engine5",
+        "volume": 0.2,
+        "pitch": 0.8,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mobtruck.engine": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine1",
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine2",
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine3",
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine4",
+        "volume": 0.5,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine5",
+        "volume": 0.5,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mobtruck.engine.close": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine1",
+        "volume": 0.32,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine2",
+        "volume": 0.32,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine3",
+        "volume": 0.32,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine4",
+        "volume": 0.32,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine5",
+        "volume": 0.32,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mobtruck.engine.standby": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine1",
+        "volume": 0.25,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine2",
+        "volume": 0.25,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine3",
+        "volume": 0.25,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine4",
+        "volume": 0.25,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mobtruck/engine5",
+        "volume": 0.25,
+        "pitch": 0.7,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.logcar.engine.standby": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/logcar/engine1",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine2",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine3",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine4",
+        "volume": 0.1,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine5",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine6",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine7",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine8",
+        "volume": 0.1,
+        "pitch": 0.8,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.logcar.engine": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/logcar/engine1",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine2",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine3",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine4",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine5",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine6",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine7",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine8",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.logcar.engine.close": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/logcar/engine1",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine2",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine3",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine4",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine5",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine6",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine7",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/logcar/engine8",
+        "volume": 0.33,
+        "pitch": 1.4,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.plane.engine": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/plane/engine1",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine2",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine3",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine4",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine5",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine6",
+        "volume": 0.3,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.plane.engine.close": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/plane/engine1",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine2",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine3",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine4",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine5",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine6",
+        "volume": 0.3,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.plane.engine.standby": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/plane/engine1",
+        "volume": 0.2,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine2",
+        "volume": 0.2,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine3",
+        "volume": 0.2,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine4",
+        "volume": 0.2,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine5",
+        "volume": 0.2,
+        "pitch": 0.7,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/plane/engine6",
+        "volume": 0.2,
+        "pitch": 0.7,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/metal/hit1",
+        "volume": 0.37,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/metal/hit2",
+        "volume": 0.37,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/metal/hit3",
+        "volume": 0.37,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.electrical": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/electrical/hit1",
+        "volume": 1.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/electrical/hit2",
+        "volume": 1.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/electrical/hit3",
+        "volume": 1.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/electrical/hit4",
+        "volume": 1.3,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.electrical.final": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/electrical/final",
+        "volume": 1.3,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal_small": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/metal_small/hit1",
+        "volume": 0.56,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/metal_small/hit2",
+        "volume": 0.56,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/metal_small/hit3",
+        "volume": 0.56,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.wood": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/wood/hit1",
+        "volume": 0.54,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/wood/hit2",
+        "volume": 0.54,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/wood/hit3",
+        "volume": 0.54,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/impacts/wood/hit4",
+        "volume": 0.54,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal.final": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/metal/final",
+        "volume": 0.55,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.metal_small.final": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/metal_small/final",
+        "volume": 0.72,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.hit.vehicle.wood.final": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/impacts/wood/final",
+        "volume": 1.0,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.steamboat.steam": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/steamboat/steam1",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/steam2",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/steam3",
+        "volume": 0.3,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/steam4",
+        "volume": 0.3,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mech.spawn": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mech/spawn",
+        "volume": 1.05,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mech.step": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mech/step1",
+        "volume": 0.45,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mech/step2",
+        "volume": 0.45,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/mech/step3",
+        "volume": 0.45,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mech.weapon": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mech/weapon",
+        "volume": 0.6,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.mech.land": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/mech/landed",
+        "volume": 0.7,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.steamboat.engine": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/steamboat/engine1",
+        "volume": 0.6,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/engine2",
+        "volume": 0.6,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/engine3",
+        "volume": 0.6,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/engine4",
+        "volume": 0.6,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.vehicle.steamboat.bell": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/steamboat/bell1",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/bell2",
+        "volume": 0.8,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/steamboat/bell3",
+        "volume": 0.8,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.smoke_bomb.deploy": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/smoke_bomb/deploy",
+        "volume": 0.7,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.smoke_bomb.spray": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/smoke_bomb/spray1",
+        "volume": 0.16,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/smoke_bomb/spray2",
+        "volume": 0.16,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/smoke_bomb/spray3",
+        "volume": 0.16,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/smoke_bomb/spray4",
+        "volume": 0.16,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/smoke_bomb/spray5",
+        "volume": 0.16,
+        "stream": false
+      }
+    ]
+  },
+  "bw_vv.ui.ambient.wind": {
+    "sounds": [
+      {
+        "name": "bw_vv:bw/vv/wind/wind1",
+        "volume": 0.6,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/wind/wind2",
+        "volume": 0.6,
+        "stream": false
+      },
+      {
+        "name": "bw_vv:bw/vv/wind/wind3",
+        "volume": 0.6,
+        "stream": false
+      }
+    ]
+  }
+}

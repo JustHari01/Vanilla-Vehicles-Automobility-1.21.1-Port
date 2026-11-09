@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:redstone_compressor",
+    "count": 1
+  },
+  "pattern": [
+    "i",
+    "F"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:comparator"
+    },
+    "F": {
+      "item": "minecraft:piston"
+    }
+  }
+}

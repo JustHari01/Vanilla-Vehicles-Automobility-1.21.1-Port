@@ -1,0 +1,60 @@
+{
+    "format_version": "1.21.120",
+    "minecraft:recipe_shaped": {
+        "description": {
+            "identifier": "bw_vv:mech_recipe"
+        },
+        "tags": [
+            "crafting_table"
+        ],
+        "pattern": [
+            "jfj",
+            "T#T",
+            "GmG"
+        ],
+        "key": {
+            "#": {
+                "item": "bw_vv:mechanical_heart"
+            },
+            "G": {
+                "item": "minecraft:piston"
+            },
+            "f": {
+                "item": "minecraft:chest"
+            },
+            "T": {
+                "item": "minecraft:log"
+            },
+            "m": {
+                "item": "minecraft:iron_block"
+            },
+            "j": {
+                "item": "minecraft:planks"
+            }
+        },        
+        "unlock": [
+            {
+                "item": "bw_vv:mechanical_heart"
+            },
+            {
+                "item": "minecraft:piston"
+            },
+            {
+                "item": "minecraft:chest"
+            },
+            {
+                "item": "minecraft:log"
+            },
+            {
+                "item": "minecraft:iron_block"
+            },
+            {
+                "item": "minecraft:planks"
+            }
+        ],
+        "result": {
+            "item": "bw_vv:mech",
+            "count": 1
+        }
+    }
+}

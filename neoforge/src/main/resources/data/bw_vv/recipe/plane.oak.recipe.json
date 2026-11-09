@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:plane.oak",
+    "count": 1
+  },
+  "pattern": [
+    " #M",
+    "LCL",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:wool"
+    },
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "M": {
+      "item": "bw_vv:propeller"
+    },
+    "C": {
+      "item": "bw_vv:redstone_pulser"
+    }
+  }
+}

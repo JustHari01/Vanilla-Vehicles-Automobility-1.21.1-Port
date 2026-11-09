@@ -1,0 +1,1908 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "bw_vv:mobtruck",
+			"is_spawnable": false,
+			"is_summonable": true,
+			"is_experimental": false,
+      "animations": {
+		//VEHICLE SPAWN (prevents spawn animation from repeating when world reloads or entity becomes invisible)
+		"spawn_controller": "controller.animation.bw_vv.generic_vehicle_spawn",
+		"spawn_timer": "animation.bw_vv.generic_vehicle_spawn_timer",
+		//VEHICLE SPAWN (prevents spawn animation from repeating when world reloads or entity becomes invisible)
+		"spawn_controller": "controller.animation.bw_vv.generic_vehicle_spawn",
+		"spawn_timer": "animation.bw_vv.generic_vehicle_spawn_timer",
+		//BOOST
+		"boost_controller": "controller.animation.bw_vv.generic_vehicle_boost",
+		"boost_timer":"animation.bw_vv.generic_vehicle_boost_timer",
+		"boost_cooldown_timer":"animation.bw_vv.generic_vehicle_boost_cooldown_timer",
+		"boost_sound": "animation.bw_vv.sound_boost",//running engine sound
+		//ENGINE SOUND
+        "engine_controller": "controller.animation.bw_vv.generic_vehicle_engine",
+        "engine_standby": "animation.bw_vv.sound_engine_standby_minecar",
+		"engine": "animation.bw_vv.sound_engine2",
+		//MOVEMENT
+		"forward_limiter": "controller.animation.bw_vv.generic_vehicle_forward_limiter", //limits sideways movement
+		//FUEL
+		"fuel_controller": "controller.animation.bw_vv.generic_vehicle_fuel",
+		"fuel_activator_controller": "controller.animation.bw_vv.generic_vehicle_fuel_activator",
+		"fuel_decreaser": "animation.bw_vv.generic_vehicle_fuel_decreaser",
+		//CLIMB + PLAYER ANINMATION
+		"climb_controller": "controller.animation.bw_vv.vehicle_climb",
+		"climb_timer": "animation.bw_vv.generic_vehicle_climb_timer",
+		//HIT
+		"hit_controller": "controller.animation.bw_vv.generic_hit_timer",
+		"hit_timer": "animation.bw_vv.generic_hit_timer",
+		//VARIABLES
+		"variables": "animation.bw_vv.mobtruck_variables"
+      },
+      "scripts": {
+        "animate": [
+		  "variables",
+		  "spawn_controller",
+          "engine_controller",
+		  "climb_controller",
+		  "fuel_controller",
+		  "fuel_activator_controller",
+		  "hit_controller",
+		  "boost_controller",
+		  {"forward_limiter": "q.property('bw_vv:boost') != 'active'"}
+			]
+	  	},
+	   "properties": {
+		//SMOKE BOMB
+			"bw_vv:smoke_color": {
+				"type": "enum",
+				"values": [
+					"white",
+					"orange",
+					"magenta",
+					"light_blue",
+					"yellow",
+					"lime",
+					"pink",
+					"gray",
+					"light_gray",
+					"cyan",
+					"purple",
+					"blue",
+					"brown",
+					"green",
+					"red",
+					"black"
+				],
+				"default": "green",
+				"client_sync": true
+			},
+			"bw_vv:smoke_bomb_cooldown":{
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:sticker": { //determines the texture variant of the sticker
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:spawned": { 
+			"type": "bool", 
+    		"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:smoke_effect_size":{
+			"type": "float", 
+			"range": [0.0, 10.0], 
+			"default": 1.1,
+			"client_sync": true 
+		},
+		"bw_vv:fuel_progress": {
+		  "type": "float", 
+		  "range": [0.0, 10.0], 
+          "default": 0.0,
+		  "client_sync": true 
+		},
+		// Hit properties
+		"bw_vv:hit_sound": { 
+			"type": "enum", 
+			"values": ["normal", "final"], 
+			"default": "normal", 
+			"client_sync": true 
+		},
+		"bw_vv:hit_timer": { 
+		  "type": "int", 
+		  "range": [0, 5], 
+		  "default": 0,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_resistance": { 
+		  "type": "int", 
+		  "range": [0, 100], 
+		  "default": 50,
+		  "client_sync": true 
+		},
+		"bw_vv:hit_resistance_tools": { 
+		  "type": "int", 
+		  "range": [0, 20], 
+		  "default": 5,
+		  "client_sync": true 
+		},
+		"bw_vv:damage_progress": { 
+		  "type": "int", 
+		  "range": [0, 100], 
+          "default": 0,
+		  "client_sync": true 
+		},
+		"bw_vv:damage_weak": { 
+			"type": "bool", 
+    		"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:damage_anim": { 
+			"type": "enum", 
+			"values": ["L", "R"], 
+			"default": "R", 
+			"client_sync": true 
+		},
+		"bw_vv:removed":{
+			"type": "bool", 
+			"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:boost": { //whether the vehicle is boosted or not.
+			"type": "enum", 
+			"values": ["ready", "active", "cooldown"], 
+			"default": "ready",
+			"client_sync": true 
+		},
+		"bw_vv:boost_cooldown":{
+			"type": "float", 
+			"range": [0.0, 10.0], 
+			"default": 0.0,
+			"client_sync": true 
+		},
+		"bw_vv:player_anim": { 
+			"type": "enum", 
+			"values": ["climb_down", "climb_up", "climb_neutral", "falling", "landed", "in_water", "climb_neutral_f_d", "climb_neutral_f_u"], 
+			"default": "climb_neutral", 
+			"client_sync": true 
+		},
+		"bw_vv:player_anim_blend_time":{
+			"type": "float",
+			"range": [
+				0.0,
+				10.0
+			],
+			"default": 0.1,
+			"client_sync": true
+		},
+		"bw_vv:lights": { 
+			"type": "bool", 
+    		"default": false,
+			"client_sync": true 
+		},
+		"bw_vv:wasd": { 
+			"type": "enum", 
+			"values": ["w", "a", "s", "d"], 
+			"default": "w", 
+			"client_sync": true 
+		},
+		"bw_vv:climb_animation": { 
+			"type": "float", 
+			"range": [0.0, 50.0], 
+			"default": 20.0,
+			"client_sync": true 
+		},
+		"bw_vv:vertical_velocity": { 
+			"type": "float", 
+			"range": [-50.0, 50.0], 
+			"default": 0.0,
+			"client_sync": true 
+		},
+		//VEHICLE SPECIFIC PROPERTIES
+		"bw_vv:backdoor": { 
+			"type": "enum", 
+			"values": ["open", "closed"], 
+			"default": "closed", 
+			"client_sync": true 
+		}
+	  }
+	},
+		"components": {
+			"minecraft:collision_box": {
+				"width": 1.8,
+				"height": 1.2
+			},
+			"minecraft:is_collidable": {},
+			"minecraft:health": {
+				"value": 0.6
+			},
+			"minecraft:addrider": {
+				"entity_type": "bw_vv:mobtruck_backseat"
+			  },
+			"minecraft:is_stackable":{
+			},
+			  "minecraft:scale": {
+				"value": 1.05
+			},
+			"minecraft:rideable": {
+				"seat_count": 2,
+				"family_types": [
+					"player",
+					"backdoor"
+				],
+				"crouching_skip_interact": true,
+		        "pull_in_entities": true,
+				"rider_can_interact": true,
+				"interact_text": "bw_vv.action.interact.generic.vehicle.drive",
+				"controlling_seat": 0,
+				"seats": [
+				{
+					"position": [
+						//controlling seat
+						0,
+						0.25,
+						//forward
+						0.05
+					],
+            "min_rider_count": 2,
+            "max_rider_count": 2
+				},			
+				{
+					"position": [
+						0,
+						0.0,
+						-1.0
+					],
+			"min_rider_count": 1,
+			"max_rider_count": 2
+				}
+				]
+			},
+			"minecraft:physics": {
+				"has_gravity": true
+			},
+			"minecraft:fire_immune": {},
+			"minecraft:knockback_resistance": {
+				"value": 1
+			},
+			"minecraft:jump.static": {
+			},
+			"minecraft:horse.jump_strength":{
+				"value":0.0
+			},
+			"minecraft:can_power_jump":{
+			},
+			"minecraft:is_dyeable": {
+				"interact_text": "bw_vv.action.interact.generic.spray"
+			},
+			"minecraft:color": {
+				"value": 8
+			},
+			"minecraft:underwater_movement": {
+				"value": 0.04,
+				"max": 0.04
+			},
+			"minecraft:push_through": {
+				"value": 1
+			},
+			"minecraft:pushable": { //Used to set that the vehicle is unpushable by other mobs.
+				"is_pushable": true
+			},
+			"minecraft:type_family": {
+				"family": [
+					"mobtruck",
+					"vehicle",
+					"metal",
+					"redstone_based",
+					"bw_vanilla_vehicles"
+				]
+			},
+			"minecraft:damage_sensor": {
+				"triggers": [
+				{
+						"on_damage": {
+							"filters":
+							{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "is_riding_self", "subject": "other", "operator": "==", "value": true }
+								]
+							}
+						},
+						"deals_damage": "no"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "copper_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_pickaxe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+							{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+							{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "copper_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "!=",  "value": "netherite_pickaxe" }
+							]
+						},
+						"event": "event:damager_weak",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "normal" }
+							  ],
+						  "any_of": [
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_pickaxe" },
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_pickaxe" }
+						  ]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "hurt"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+							"all_of": [
+								{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+								{ "test": "has_ability", "subject": "other", "operator": "!=", "value": "instabuild" },
+								{ "test": "is_riding", "subject": "other", "operator": "==", "value": false },
+								{ "test": "enum_property", "subject": "self", "domain": "bw_vv:hit_sound", "operator": "==", "value": "final" }
+							  ],
+								"any_of": [
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "wooden_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "stone_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "iron_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "copper_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "golden_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "diamond_pickaxe" },
+									{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "netherite_pickaxe" }
+								]
+						},
+						"event": "event:damager",
+						"target": "self"
+					},
+					"deals_damage": "no_but_side_effects_apply",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						{
+						"all_of": [
+							{ "test": "is_family", "subject": "other", "operator": "==", "value": "player" },
+							{ "test": "has_ability", "subject": "other", "operator": "==", "value": "instabuild" }
+						  ]
+						},
+						"event": "event:remove_creative"
+					},
+					"deals_damage": "no",
+					"on_damage_sound_event": "death"
+				},
+				{
+					"on_damage": {
+						"filters":
+						
+							{}
+						
+					},
+					"deals_damage": "no_but_side_effects_apply"
+				}
+			]
+			},
+			"minecraft:interact": {
+				"interactions":	[
+			// SMOKE BOMB
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.white" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.white",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.white"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.orange" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.orange",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.orange"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.magenta" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.magenta",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.magenta"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_blue" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.light_blue",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.light_blue"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.yellow" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.yellow",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.yellow"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.lime" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.lime",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.lime"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.pink" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.pink",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.pink"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.gray" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.gray",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.gray"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_gray" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.light_gray",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.light_gray"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.cyan" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.cyan",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.cyan"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.purple" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.purple",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.purple"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.blue" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.blue",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.blue"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.brown" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.brown",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.brown"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.green" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.green",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.green"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.red" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.red",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.red"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+					{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.black" },
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": false }
+				]
+				},
+				"event": "event:smoke_bomb.black",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": true,
+			"transform_to_item": "bw_vv:smoke_bomb",
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.black"
+			},
+			{
+			"on_interact": {
+				"filters": {
+				"all_of": [
+			{
+			"any_of": [
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.white" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.orange" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.magenta" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_blue" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.yellow" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.lime" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.pink" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.gray" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.light_gray" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.cyan" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.purple" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.blue" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.brown" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.green" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.red" },
+				{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:smoke_bomb.black" }
+			]
+			},
+
+
+					{ "test": "bool_property", "subject": "self", "domain": "bw_vv:smoke_bomb_cooldown", "operator": "equals", "value": true }
+				]
+				},
+				"event": "event:smoke_bomb.warning",
+				"target": "self"
+			},
+			"swing": true,
+			"use_item": false,
+			"play_sounds": "charge.sculk",
+			"interact_text": "bw_vv.action.interact.generic.smoke_bomb.in_use"
+			},
+					//FUEL INTERACTIONS
+					{
+						
+						"on_interact": {
+							"filters": {
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:compressed_redstone"},
+								{ "test": "float_property", "subject": "self", "domain": "bw_vv:fuel_progress", "operator": "<", "value": 10.0}
+							]
+						},
+						"event": "event:increment_fuel",
+						"target": "self"
+					},
+					"swing": true,
+					"use_item": true,
+					"interact_text": "bw_vv.action.interact.generic.fuel.add"
+				},
+				//STICKER INTERACTIONS
+				{
+						
+					"on_interact": {
+						"filters": {
+						"any_of":[
+						{
+						"all_of":[
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.creeper"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+							{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+						]
+						},
+						{
+						"all_of":[
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.creeper"},
+							{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+						]
+						}
+					]
+					},
+					"event": "event:add_sticker.creeper",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.creeper"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.castle",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.castle"
+				},
+				
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.bloom",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.bloom"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.diamonds",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.diamonds"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+						"any_of":[
+						{
+						"all_of":[
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.hearts"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+							{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+						]
+						},
+						{
+						"all_of":[
+							{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.hearts"},
+							{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+						]
+						}
+					]
+					},
+					"event": "event:add_sticker.hearts",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.hearts"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.skeleton",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.skeleton"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.stripes",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.stripes"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.enderman",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.enderman"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.icy",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.icy"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.burning",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.burning"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.soulful",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.soulful"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"any_of":[
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.rainbow"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.creeper"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.castle"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.diamonds"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.hearts"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.stripes"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.skeleton"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.enderman"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.icy"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.bloom"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.burning"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.rainbow"},
+							{ "test": "has_equipment", "subject": "self", "domain": "hand", "operator": "!=", "value": "bw_vv:sticker.soulful"},
+								{ "test": "has_ability", "subject": "other",  "operator": "!=", "value": "instabuild"}
+							]
+							},
+							{
+							"all_of":[
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "value": "bw_vv:sticker.rainbow"},
+								{ "test": "has_ability", "subject": "other",  "operator": "==", "value": "instabuild"}
+							]
+							}
+						]
+						},
+					"event": "event:add_sticker.rainbow",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": true,
+				"play_sounds": "armor.equip_leather",
+				"interact_text": "bw_vv.action.interact.generic.sticker.rainbow"
+				},
+				{
+						
+					"on_interact": {
+						"filters": {
+							"all_of":[
+								{
+									"any_of":[
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.icy"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.creeper"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.castle"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.diamonds"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.hearts"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.stripes"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.skeleton"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.enderman"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.icy"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.bloom"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.burning"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.rainbow"},
+										{ "test": "has_equipment", "subject": "self", "domain": "hand", "value": "bw_vv:sticker.soulful"}
+									]
+								},
+								{ "test": "has_equipment", "subject": "other", "domain": "hand", "operator": "==", "value": "minecraft:shears" }
+								
+						]
+						},
+					"event": "event:remove_sticker",
+					"target": "self"
+				},
+				"swing": true,
+				"use_item": false,
+				"hurt_item": 1,
+				"play_sounds": "shear",
+				"vibration": "shear",
+				"interact_text": "bw_vv.action.interact.vehicle.remove_sticker"
+					}
+				]
+			}
+		},
+		"component_groups": {
+			// SM0KE BOMB
+			"component_group:smoke_bomb_cooldown":{
+				"minecraft:timer": {
+					"time": 10,
+					"looping": false,
+					"time_down_event": {
+						"event": "event:smoke_bomb_cooldown.end",
+						"target": "self"
+					}
+				}
+			},
+			//STICKERS
+			"component_group:sticker.creeper":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/creeper.json"
+				}
+			},
+			"component_group:sticker.castle":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/castle.json"
+				}
+			},
+			"component_group:sticker.diamonds":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/diamonds.json"
+				}
+			},
+			"component_group:sticker.stripes":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/stripes.json"
+				}
+			},
+			"component_group:sticker.enderman":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/enderman.json"
+				}
+			},
+			"component_group:sticker.skeleton":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/skeleton.json"
+				}
+			},
+			"component_group:sticker.hearts":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/hearts.json"
+				}
+			},
+			"component_group:sticker.soulful":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/soulful.json"
+				}
+			},
+			"component_group:sticker.bloom":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/bloom.json"
+				}
+			},
+			"component_group:sticker.icy":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/icy.json"
+				}
+			},
+			"component_group:sticker.burning":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/burning.json"
+				}
+			},
+			"component_group:sticker.rainbow":{
+				"minecraft:equipment": {
+					"table": "loot_tables/bw/vv/vehicles/stickers/rainbow.json"
+				}
+			},
+			"component_group:removed": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.2,
+					"drop_equipment": true,
+					"drop_inventory": true
+				}
+			},
+			"component_group:removed_creative": {
+				"minecraft:transformation": {
+					"into": "bw_vv:break",
+					"delay": 0.2,
+					"drop_equipment": false,
+					"drop_inventory": true
+				}
+			},
+			"component_group:fueled": {
+				"minecraft:input_ground_controlled": {},
+					"minecraft:variable_max_auto_step":{
+						"base_value": 1.0625,
+						"controlled_value": 1.0625,
+						"jump_prevented_value": 0.5625
+				}
+			},
+			"component_group:movement":{
+				"minecraft:movement": {
+					"value": 0.194
+				}
+			},
+			"component_group:no_movement":{
+				"minecraft:movement": {
+					"value": 0.0
+				}
+			}
+		},
+		"events": {
+			//EVENTS START
+			"minecraft:entity_spawned": {
+				"add": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				}
+			},
+			"event:spawn": {
+				"set_property": {
+				    "bw_vv:spawned" : true
+				}
+			},
+			//FUEL EVENTS
+			"event:increment_fuel": {
+				"set_property": {
+					"bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') + v.fuel_increaser"
+				},
+				"queue_command": {
+					"command": ["scriptevent bw_vv:fuel_up_vehicle", "particle bw_vv:redstone_fuel ~ ~ ~" ] //sound for fueling up
+				}
+			},
+			"event:decrement_fuel": {
+				"set_property": {
+					"bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') - v.fuel_efficiency"
+				}
+			},
+			"event:fuel": {
+				"add": {
+					"component_groups": [
+						"component_group:fueled"
+					]
+				}
+			},
+			"event:unfuel": {
+				"remove": {
+					"component_groups": [
+						"component_group:fueled"
+					]
+				},
+				"queue_command": {
+					"command": "playsound vehicle.fuel_discharge.redstone @p"//sound for when the fuel runs out
+				}
+			},
+			//STICKER EVENTS
+			"event:add_sticker.creeper":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.creeper"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.castle":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.castle"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.diamonds":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.diamonds"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.stripes":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.stripes"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.hearts":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.hearts"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.enderman":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.enderman"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.skeleton":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.skeleton"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.bloom":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.bloom"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.icy":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.icy"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.burning":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.burning"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.soulful":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.soulful"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:add_sticker.rainbow":{
+				"add": {
+					"component_groups": [
+						"component_group:sticker.rainbow"
+					]
+				},
+				"set_property": {
+					"bw_vv:sticker": true
+				}
+			},
+			"event:remove_sticker":{
+				"remove": {
+					"component_groups": [
+						"component_group:sticker.rainbow",
+						"component_group:sticker.soulful",
+						"component_group:sticker.burning",
+						"component_group:sticker.icy",
+						"component_group:sticker.bloom",
+						"component_group:sticker.skeleton",
+						"component_group:sticker.enderman",
+						"component_group:sticker.hearts",
+						"component_group:sticker.stripes",
+						"component_group:sticker.diamonds",
+						"component_group:sticker.castle",
+						"component_group:sticker.creeper"
+					]
+				},
+				"drop_item": {
+					"slot": "slot.weapon.mainhand"
+				},
+				"set_property": {
+					"bw_vv:sticker": false
+				}
+			},
+			//MOVEMENT EVENTS
+			"event:go":{
+				"add": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				},
+				"remove": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			"event:stop":{
+				"remove": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				},
+				"add": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			//HIT EVENTS
+			"event:damager":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "q.property('bw_vv:damage_weak') == true ? 1 : query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": false
+				}
+			},
+			"event:damager_weak":{
+				"set_property": {
+				    "bw_vv:hit_sound" : "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+					"bw_vv:hit_timer": 5,
+					"bw_vv:damage_progress": "query.property('bw_vv:damage_progress') + 1",
+					"bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+					"bw_vv:damage_weak": true
+				}
+			},
+			"event:hit_timer_countdown":{
+				"set_property": {
+					"bw_vv:hit_timer": "math.clamp(query.property('bw_vv:hit_timer') - 1, 0, 10)"
+				}
+			},
+			"event:remove": {
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"queue_command":{
+					"command": ["loot spawn ~ ~ ~ loot \"bw/vv/vehicles/mobtruck\"", "scriptevent bw_vv:spawn_dye"]
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_creative": {
+						"add": {
+							"component_groups": [
+								"component_group:removed_creative"
+							]
+						},
+						"set_property": {
+							"bw_vv:removed": true
+						}
+			},
+			"event:remove_drop_items":{
+				"add": {
+					"component_groups": [
+						"component_group:removed"
+					]
+				},
+				"queue_command":{
+					"command":"loot spawn ~ ~ ~ loot \"bw/vv/vehicles/mobtruck_items\""
+				},
+				"set_property": {
+					"bw_vv:removed": true
+				}
+			},
+			"event:remove_hits": {
+				"set_property": {
+					"bw_vv:damage_progress": 0,
+					"bw_vv:damage_anim": "R",
+					"bw_vv:damage_weak": false
+				}
+			},
+			//LIGHTS EVENT
+			"event:lights_on":{
+				"set_property": {
+					"bw_vv:lights": true
+				}
+			},
+			"event:lights_off":{
+				"set_property": {
+					"bw_vv:lights": false
+				}
+			},
+			//BOOST EVENTS
+			"event:boost_cooldown_counter":{
+				"set_property": {
+					"bw_vv:boost_cooldown": "q.property('bw_vv:boost_cooldown')-1"
+				},
+				"queue_command": {
+					"command": "playsound note.hat @p ~ ~ ~ 0.1 1.2"
+				}
+			},
+			"event:boost_active": {
+				"queue_command": {
+					"command": "playsound bw_vv.vehicle.boost_start @p ~ ~ ~ 0.9 1"
+				},
+				"add": {
+					"component_groups": [
+						"component_group:no_movement"
+					]
+				}
+			},
+			"event:boost_cooldown": {
+				"set_property": {
+					"bw_vv:boost": "cooldown",
+					"bw_vv:boost_cooldown": "v.boost_cooldown"
+				},
+				"add": {
+					"component_groups": [
+						"component_group:movement"
+					]
+				}
+			},
+			"event:boost_ready": {
+				"set_property": {
+					"bw_vv:boost": "ready"
+				},
+				"queue_command": {
+					"command": "playsound note.harp @p ~ ~ ~ 0.1 1.3"
+				}
+			},
+			//WASD EVENTS
+			".w": {
+				"set_property": {
+					"bw_vv:wasd": "w"
+				}
+			},
+			".a": {
+				"set_property": {
+					"bw_vv:wasd": "a"
+				}
+			},
+			".s": {
+				"set_property": {
+					"bw_vv:wasd": "s"
+				}
+			},
+			".d": {
+				"set_property": {
+					"bw_vv:wasd": "d"
+				}
+			},
+			//PLAYER ANIMATION EVENTS
+			"event:player_anim_climb_up": {
+				"set_property": {
+					"bw_vv:player_anim": "climb_up"
+				}
+			},
+			"event:player_anim_climb_down": {
+				"set_property": {
+					"bw_vv:player_anim": "climb_down"
+				}
+			},
+			"event:player_anim_climb_neutral": {
+				"set_property": {
+					"bw_vv:player_anim": "climb_neutral"
+				}
+			},
+			"event:player_anim_climb_neutral_from_up":{
+				"set_property": {
+					"bw_vv:player_anim": "climb_neutral_f_u"
+				}
+			},
+			"event:player_anim_climb_neutral_from_down":{
+				"set_property": {
+					"bw_vv:player_anim": "climb_neutral_f_d"
+				}
+			},
+			"event:player_anim_falling": {
+				"set_property": {
+					"bw_vv:player_anim": "falling"
+				}
+			},
+			"event:player_anim_landed": {
+				"set_property": {
+					"bw_vv:player_anim": "landed"
+				}
+			},
+			"event:player_anim_in_water": {
+				"set_property": {
+					"bw_vv:player_anim": "in_water"
+				}
+			},
+						// SMOKE BOMB EVENTS
+			"event:smoke_bomb_cooldown.start":{
+				"set_property": {
+					"bw_vv:smoke_bomb_cooldown": true
+				},
+				"add": {
+					"component_groups": [
+						"component_group:smoke_bomb_cooldown"
+					]
+				}
+			},
+			"event:smoke_bomb_cooldown.end":{
+				"set_property": {
+					"bw_vv:smoke_bomb_cooldown": false
+				}
+			},
+			// SMOKE BOMB COLORS
+			"event:smoke_bomb.warning": {
+				"queue_command":{"command":"execute as @p at @s run scriptevent bw_vv:smoke_bomb_warning"}
+			},
+			"event:smoke_bomb.white": {
+			"set_property": {
+				"bw_vv:smoke_color": "white"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.orange": {
+			"set_property": {
+				"bw_vv:smoke_color": "orange"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.magenta": {
+			"set_property": {
+				"bw_vv:smoke_color": "magenta"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.light_blue": {
+			"set_property": {
+				"bw_vv:smoke_color": "light_blue"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.yellow": {
+			"set_property": {
+				"bw_vv:smoke_color": "yellow"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.lime": {
+			"set_property": {
+				"bw_vv:smoke_color": "lime"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.pink": {
+			"set_property": {
+				"bw_vv:smoke_color": "pink"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.gray": {
+			"set_property": {
+				"bw_vv:smoke_color": "gray"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.light_gray": {
+			"set_property": {
+				"bw_vv:smoke_color": "light_gray"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.cyan": {
+			"set_property": {
+				"bw_vv:smoke_color": "cyan"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.purple": {
+			"set_property": {
+				"bw_vv:smoke_color": "purple"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.blue": {
+			"set_property": {
+				"bw_vv:smoke_color": "blue"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.brown": {
+			"set_property": {
+				"bw_vv:smoke_color": "brown"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.green": {
+			"set_property": {
+				"bw_vv:smoke_color": "green"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.red": {
+			"set_property": {
+				"bw_vv:smoke_color": "red"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+			"event:smoke_bomb.black": {
+			"set_property": {
+				"bw_vv:smoke_color": "black"
+			},
+			"trigger": "event:smoke_bomb_cooldown.start"
+			},
+
+			//MOBTRUCK SPECIFIC EVENTS
+			"event:backdoor_open": {
+				"set_property": {
+					"bw_vv:backdoor": "open"
+				}
+			},
+			"event:backdoor_close": {
+				"set_property": {
+					"bw_vv:backdoor": "closed"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,68 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "bw_vv:smoke_bomb",
+			"materials": {
+				"default": "entity_alphatest",
+				"glow_masked_animated": "glow_vanillavehicles_masked_animated"
+			},
+			"textures": {
+				"default": "textures/bw/vv/utilities/smoke_bomb/empty",
+				"blink": "textures/bw/vv/utilities/smoke_bomb/blink"
+			},
+			"geometry": {
+				"default": "geometry.bw_vv.smoke_bomb"
+			},
+			"render_controllers": ["controller.render.bw_vv_smoke_bomb","controller.render.bw_vv_smoke_bomb_blink"],
+			"animations": {
+				"deploy": "animation.bw_vv.smoke_bomb_deploy",
+				"placer": "controller.animation.bw_vv.general_placer",
+				"spray_sound": "animation.bw_vv.smoke_bomb_spray",
+				"spray_sound_controller": "controller.animation.bw_vv.smoke_bomb_spray_sound",
+				"spray_sound_timer": "animation.bw_vv.smoke_bomb_spray_sound_timer",
+				"spray_sound_finish_timer": "animation.bw_vv.smoke_bomb_spray_sound_finish_timer",
+				"n": "animation.bw_vv.bw_general_n",
+				"s": "animation.bw_vv.bw_general_s",
+				"e": "animation.bw_vv.bw_bw_general_e",
+				"w": "animation.bw_vv.bw_general_w",
+				//HIT
+				"hit_L": "animation.bw_vv.vehicle.hit.L",
+				"hit_R": "animation.bw_vv.vehicle.hit.R",
+				"hit_weak_L":"animation.bw_vv.vehicle.hit.weak.L",
+				"hit_weak_R":"animation.bw_vv.vehicle.hit.weak.R",
+				"hit_final": "animation.bw_vv.vehicle.hit.final",
+				"hit_controller": "controller.animation.bw_vv.vehicle.hit"
+			},
+			"scripts": {
+				"animate": ["deploy","placer","hit_controller","spray_sound_controller"],
+				"scale": "q.property('bw_vv:removed') ? 0 : 1",
+				"initialize": [
+					"v.hit_intensity = 1;",
+					"v.hit_ratio_weak = 0;",
+					"v.hit_ratio_tools = 0;"
+				],
+				"should_update_bones_and_effects_offscreen":true,
+				"pre_animation": [
+					"v.hit_intensity = 0.1+1/(query.property('bw_vv:damage_weak') ? v.hit_ratio_weak*2 : v.hit_ratio_tools*2);",
+					"v.hit_ratio_weak = (query.property('bw_vv:hit_resistance'))/query.property('bw_vv:damage_progress');",
+					"v.hit_ratio_tools = (query.property('bw_vv:hit_resistance_tools')-2)/query.property('bw_vv:damage_progress');"
+				]
+			},
+			"particle_effects": {
+				"smoke_bomb_deploy": "bw_vv:smoke_bomb_deploy",
+				"smoke_bomb_smoke": "bw_vv:smoke_bomb_smoke",
+				"landed_effect": "bw_vv:smoke_big"
+
+			},
+			"sound_effects": {
+				"deploy":"bw_vv.smoke_bomb.deploy",
+				"spray":"bw_vv.smoke_bomb.spray"
+			},
+			"spawn_egg": {
+				"base_color": "#7d4423",
+				"overlay_color": "#2916a6"
+			}
+		}
+	}
+}

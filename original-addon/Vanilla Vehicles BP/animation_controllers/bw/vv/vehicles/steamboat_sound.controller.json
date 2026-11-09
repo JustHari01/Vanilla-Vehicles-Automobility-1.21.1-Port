@@ -1,0 +1,33 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.bw_vv.steamboat_engine": {
+      "states": {
+        "default": {
+          "transitions": [
+            {"no_sound":"query.is_saddled"}
+          ]
+      },
+        "no_sound": {
+          "animations": [
+            "engine_standby"
+          ],
+          "transitions": [
+            {"default":"!query.is_saddled"},
+            {"sound":"query.has_rider && query.ground_speed >= 2 && query.any_animation_finished == 1"}
+          ]
+      },
+        "sound": {
+          "animations": [
+            "engine"
+          ],
+          "transitions": [
+            {"default":"!query.is_saddled"},
+            {"no_sound":"query.ground_speed <= 2 && query.any_animation_finished == 1"}
+          ]
+      }
+    }
+  }
+  }
+}
+

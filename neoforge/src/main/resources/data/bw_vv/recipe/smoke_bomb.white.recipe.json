@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:smoke_bomb.white",
+    "count": 1
+  },
+  "ingredients": [
+    {
+      "item": "bw_vv:smoke_bomb"
+    },
+    {
+      "item": "minecraft:white_dye"
+    }
+  ]
+}

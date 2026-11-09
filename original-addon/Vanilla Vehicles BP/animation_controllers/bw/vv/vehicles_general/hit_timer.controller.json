@@ -1,0 +1,51 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+      "controller.animation.bw_vv.generic_hit_timer": {
+      "states": {
+        "default": {
+          "on_entry": [
+            "@s event:remove_hits"
+          ],
+          "transitions": [
+            {
+              "hit": "query.property('bw_vv:damage_progress') > 0 && query.property('bw_vv:damage_weak') == false && query.property('bw_vv:damage_progress') < query.property('bw_vv:hit_resistance_tools') || query.property('bw_vv:damage_progress') > 0 && query.property('bw_vv:damage_weak') == true && query.property('bw_vv:damage_progress') < query.property('bw_vv:hit_resistance')"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:damage_progress') >= query.property('bw_vv:hit_resistance_tools') && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_remove": "query.property('bw_vv:damage_progress') >= query.property('bw_vv:hit_resistance') && query.property('bw_vv:damage_weak') == true"
+            }
+          ]
+        },
+        "hit": {
+          "animations": [
+            "hit_timer"
+          ],
+          "transitions": [
+            {
+              "default": "query.property('bw_vv:hit_timer') == 0"
+            },
+            {
+              "hit_remove": "query.property('bw_vv:damage_progress') >= query.property('bw_vv:hit_resistance_tools') && query.property('bw_vv:damage_weak') == false"
+            },
+            {
+              "hit_weak_remove": "query.property('bw_vv:damage_progress') >= query.property('bw_vv:hit_resistance') && query.property('bw_vv:damage_weak') == true"
+            }
+          ]
+        },
+        "hit_weak_remove": {
+          "on_entry": [
+            "@s event:remove_drop_items"
+          ]
+        },
+        "hit_remove": {
+          "on_entry": [
+            "@s event:remove"
+          ]
+        }
+      }
+    }
+  }
+}

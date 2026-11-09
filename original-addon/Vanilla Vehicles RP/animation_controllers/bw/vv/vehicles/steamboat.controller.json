@@ -1,0 +1,83 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.steamboat_water": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"water": "query.is_in_water"
+						}
+					]
+				},
+				"water": {
+					"animations": [
+						"idle"
+					],
+					"particle_effects": [
+						{
+							"effect": "water_spread",
+							"locator": "water_spread"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!query.is_in_water"
+						}
+					]
+				}
+			}
+		},
+		"controller.animation.bw_vv.steamboat_fueled": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"smoke": "v.is_fueled"
+						}
+					],
+					"blend_transition":0.2
+				},
+				"smoke": {
+					"animations": [
+						"smoke",
+						"paddle_wheel"
+					],
+					"transitions": [
+						{
+							"default": "!v.is_fueled"
+						},
+						{
+							"foam": "query.ground_speed>2"
+						}
+					],
+					"blend_transition":0.2
+				},
+				"foam": {
+					"animations": [
+						"smoke",
+						"paddle_wheel"
+					],
+					"particle_effects": [
+						{
+							"effect": "water_foam.back",
+							"locator": "foam_back"
+						},
+						{
+							"effect": "water_foam.rotor",
+							"locator": "foam_rotor"
+						}
+					],
+					"transitions": [
+						{
+							"default": "!v.is_fueled"
+						},
+						{
+							"smoke": "query.ground_speed<2"
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,79 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "bw_vv:hot_air_balloon",
+      "animations": {
+        "inflate": "animation.bw_vv.hot_air_balloon_inflate",
+        "idle": "animation.bw_vv.hot_air_balloon_idle",
+        "deflated": "animation.bw_vv.hot_air_balloon_deflated",
+        "fire_controller": "controller.animation.bw_vv.hot_air_balloon_fire",
+        "inflate_controller": "controller.animation.bw_vv.hot_air_balloon_inflate",
+        "n": "animation.bw_vv.bw_general_n",
+        //HIT
+        "hit_L": "animation.bw_vv.vehicle.hit.L",
+        "hit_R": "animation.bw_vv.vehicle.hit.R",
+        "hit_weak_L": "animation.bw_vv.vehicle.hit.weak.L",
+        "hit_weak_R": "animation.bw_vv.vehicle.hit.weak.R",
+        "hit_final": "animation.bw_vv.vehicle.hit.final",
+        "hit_controller": "controller.animation.bw_vv.vehicle.hit"
+      },
+      "scripts": {
+        "should_update_bones_and_effects_offscreen": true,
+        "animate": [
+          "inflate_controller",
+          "n",
+          "fire_controller",
+          "hit_controller"
+        ],
+        "scale": "q.property('bw_vv:removed') ? 0 : 1",
+        "initialize": [
+          "v.sticker = 0;",
+          "v.sticker = 0;",
+          "v.moving_speed = 0;",
+          "v.wheel_rot_speed = 0;",
+          "v.smoke_effect_size = 0.7;",
+          "v.hit_intensity = 1;",
+          "v.hit_ratio_weak = 0;",
+          "v.hit_ratio_tools = 0;",
+          "v.envelope_type = 0;"
+        ],
+        "pre_animation": [
+          "v.fuel =10-query.property('bw_vv:fuel_progress');",
+          "v.is_fueled = q.property('bw_vv:fuel_progress') > 0 ? true : false;",
+          "(query.property('bw_vv:envelope_type') == 'blank') ? (v.envelope_type = 1) : ((query.property('bw_vv:envelope_type') == 'striped') ? (v.envelope_type = 2) : ((query.property('bw_vv:envelope_type') == 'creeper') ? (v.envelope_type = 3) : (v.envelope_type = 0)));",
+          "v.hit_intensity = 0.1+1/(query.property('bw_vv:damage_weak') ? v.hit_ratio_weak*2 : v.hit_ratio_tools*2);",
+          "v.hit_ratio_weak = (query.property('bw_vv:hit_resistance'))/query.property('bw_vv:damage_progress');",
+          "v.hit_ratio_tools = (query.property('bw_vv:hit_resistance_tools')-2)/query.property('bw_vv:damage_progress');"
+        ]
+      },
+      "materials": {
+        "default": "entity_alphatest",
+        "changecolor": "changecolor_vanillavehicles",
+        "glow": "glow_vanillavehicles"
+      },
+      "render_controllers": ["controller.render.bw_vv_hot_air_balloon"],
+      "textures": {
+        "empty": "textures/bw/vv/vehicles/hot_air_balloon/empty",
+        "envelope.blank": "textures/bw/vv/vehicles/hot_air_balloon/blank",
+        "envelope.striped": "textures/bw/vv/vehicles/hot_air_balloon/striped",
+        "envelope.creeper": "textures/bw/vv/vehicles/hot_air_balloon/creeper"
+      },
+      "particle_effects": {
+        "fire.ignite": "bw_vv:hot_air_balloon.flame_ignite",
+        "fire.ignite.sparks": "bw_vv:hot_air_balloon.flame_ignite.sparks",
+        "fire.constant": "bw_vv:hot_air_balloon_flame",
+        "landed_effect": "bw_vv:smoke_big",
+        "smoke_bomb_smoke": "bw_vv:smoke_bomb_smoke",
+        "destroy_effect": "bw_vv:wood_destroy"
+      },
+      "geometry": {
+        "default": "geometry.bw_vv.hot_air_balloon"
+      },
+      "spawn_egg": {
+        "texture": "bw_vv:vehicle_spawn",
+        "texture_index": 0
+      }
+    }
+  }
+}

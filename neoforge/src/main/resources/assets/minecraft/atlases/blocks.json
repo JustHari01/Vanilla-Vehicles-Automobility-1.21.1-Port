@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:directory",
+      "source": "bw/vv/items",
+      "prefix": "bw/vv/items/"
+    },
+    {
+      "type": "minecraft:directory",
+      "source": "bw/vv/blocks",
+      "prefix": "bw/vv/blocks/"
+    }
+  ]
+}

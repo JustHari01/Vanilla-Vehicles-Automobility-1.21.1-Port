@@ -1,0 +1,151 @@
+{
+  "bw_vv.guide_book.vehicle_page.minecar.": [
+    "bw_vv.guide_book.vehicle_page.minecar.description",
+    "bw_vv.guide_book.vehicle_page.minecar.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.mobtruck.": [
+    "bw_vv.guide_book.vehicle_page.mobtruck.description",
+    "bw_vv.guide_book.vehicle_page.mobtruck.features",
+    "bw_vv.guide_book.vehicle_page.mobtruck.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.logcar.": [
+    "bw_vv.guide_book.vehicle_page.logcar.description",
+    "bw_vv.guide_book.vehicle_page.logcar.features",
+    "bw_vv.guide_book.vehicle_page.logcar.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.plane.": [
+    "bw_vv.guide_book.vehicle_page.plane.description",
+    "bw_vv.guide_book.vehicle_page.plane.features",
+    "bw_vv.guide_book.vehicle_page.plane.features2",
+    "bw_vv.guide_book.vehicle_page.plane.features3",
+    "bw_vv.guide_book.vehicle_page.plane.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.hot_air_balloon.": [
+    "bw_vv.guide_book.vehicle_page.hot_air_balloon.description",
+    "bw_vv.guide_book.vehicle_page.hot_air_balloon.features",
+    "bw_vv.guide_book.vehicle_page.hot_air_balloon.features2",
+    "bw_vv.guide_book.vehicle_page.hot_air_balloon.features3",
+    "bw_vv.guide_book.vehicle_page.hot_air_balloon.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.steamboat.": [
+    "bw_vv.guide_book.vehicle_page.steamboat.description",
+    "bw_vv.guide_book.vehicle_page.steamboat.features",
+    "bw_vv.guide_book.vehicle_page.steamboat.features2",
+    "bw_vv.guide_book.vehicle_page.steamboat.features3",
+    "bw_vv.guide_book.vehicle_page.steamboat.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.prismer.": [
+    "bw_vv.guide_book.vehicle_page.prismer.description",
+    "bw_vv.guide_book.vehicle_page.prismer.features",
+    "bw_vv.guide_book.vehicle_page.prismer.crafting"
+  ],
+  "bw_vv.guide_book.vehicle_page.mech.": [
+    "bw_vv.guide_book.vehicle_page.mech.description",
+    "bw_vv.guide_book.vehicle_page.mech.features",
+    "bw_vv.guide_book.vehicle_page.mech.features2",
+    "bw_vv.guide_book.vehicle_page.mech.features3",
+    "bw_vv.guide_book.vehicle_page.mech.crafting"
+  ],
+  "bw_vv.guide_book.utility_page.redstone_compressor.": [
+    "bw_vv.guide_book.utility_page.redstone_compressor.description",
+    "bw_vv.guide_book.utility_page.redstone_compressor.crafting",
+    "bw_vv.guide_book.utility_page.redstone_compressor.features"
+  ],
+  "bw_vv.guide_book.utility_page.wind_vane.": [
+    "bw_vv.guide_book.utility_page.wind_vane.description",
+    "bw_vv.guide_book.utility_page.wind_vane.features",
+    "bw_vv.guide_book.utility_page.wind_vane.features2",
+    "bw_vv.guide_book.utility_page.wind_vane.crafting"
+  ],
+  "bw_vv.guide_book.utility_page.smoke_bombs.": [
+    "bw_vv.guide_book.utility_page.smoke_bombs.description",
+    "bw_vv.guide_book.utility_page.smoke_bombs.features",
+    "bw_vv.guide_book.utility_page.smoke_bombs.features2",
+    "bw_vv.guide_book.utility_page.smoke_bombs.crafting"
+  ],
+  "bw_vv.guide_book.utility_page.tesla_helmet.": [
+    "bw_vv.guide_book.utility_page.tesla_helmet.description",
+    "bw_vv.guide_book.utility_page.tesla_helmet.features",
+    "bw_vv.guide_book.utility_page.tesla_helmet.crafting"
+  ],
+  "bw_vv.guide_book.system_page.boosting.": [
+    "bw_vv.guide_book.system_page.boosting.description",
+    "bw_vv.guide_book.system_page.boosting.features",
+    "bw_vv.guide_book.system_page.boosting.features2"
+  ],
+  "bw_vv.guide_book.system_page.customisation.": [
+    "bw_vv.guide_book.system_page.customisation.description",
+    "bw_vv.guide_book.system_page.customisation.features.1",
+    "bw_vv.guide_book.system_page.customisation.features.2",
+    "bw_vv.guide_book.system_page.customisation.features.3",
+    "bw_vv.guide_book.system_page.customisation.features.4"
+  ],
+  "bw_vv.guide_book.system_page.wind.": [
+    "bw_vv.guide_book.system_page.wind.description",
+    "bw_vv.guide_book.system_page.wind.features",
+    "bw_vv.guide_book.system_page.wind.features2"
+  ],
+  "bw_vv.guide_book.item_page.propeller.": [
+    "bw_vv.guide_book.item_page.propeller.description",
+    "bw_vv.guide_book.item_page.propeller.crafting"
+  ],
+  "bw_vv.guide_book.item_page.redstone_pulser.": [
+    "bw_vv.guide_book.item_page.redstone_pulser.description",
+    "bw_vv.guide_book.item_page.redstone_pulser.crafting"
+  ],
+  "bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.": [
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.crafting"
+  ],
+  "bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.": [
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.crafting"
+  ],
+  "bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.": [
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.crafting"
+  ],
+  "bw_vv.guide_book.item_page.mechanical_heart.": [
+    "bw_vv.guide_book.item_page.mechanical_heart.description",
+    "bw_vv.guide_book.item_page.mechanical_heart.crafting"
+  ],
+  "bw_vv.guide_book.item_page.blueprints.": [
+    "bw_vv.guide_book.item_page.blueprints.description",
+    "bw_vv.guide_book.item_page.blueprints.crafting"
+  ],
+  "bw_vv.guide_book.item_page.smoke_bomb.": [
+    "bw_vv.guide_book.item_page.smoke_bomb.description",
+    "bw_vv.guide_book.item_page.smoke_bomb.crafting",
+    "bw_vv.guide_book.item_page.smoke_bomb.crafting2"
+  ],
+  "bw_vv.guide_book.item_page.stickers.": [
+    "bw_vv.guide_book.item_page.stickers.description",
+    "bw_vv.guide_book.item_page.stickers.crafting",
+    "bw_vv.guide_book.item_page.stickers.crafting2"
+  ],
+  "bw_vv.guide_book.item_page.flags.": [
+    "bw_vv.guide_book.item_page.flags.description",
+    "bw_vv.guide_book.item_page.flags.crafting"
+  ],
+  "bw_vv.guide_book.item_page.compressed_redstone.": [
+    "bw_vv.guide_book.item_page.compressed_redstone.description",
+    "bw_vv.guide_book.item_page.compressed_redstone.crafting"
+  ],
+  "bw_vv.guide_book.item_page.hot_air_balloon.envelope.": [
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.description",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.blank.crafting",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.creeper.crafting",
+    "bw_vv.guide_book.item_page.hot_air_balloon.envelope.striped.crafting"
+  ],
+  "bw_vv.guide_book.item_page.tesla_helmet_upgrade.": [
+    "bw_vv.guide_book.item_page.tesla_helmet_upgrade.description",
+    "bw_vv.guide_book.item_page.tesla_helmet_upgrade.crafting"
+  ],
+  "bw_vv.guide_book.mob_page.mechanic.": [
+    "bw_vv.guide_book.mob_page.mechanic.description",
+    "bw_vv.guide_book.mob_page.mechanic.trading"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.hot_air_balloon_inflate": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"floating" : "v.is_fueled"
+						},
+						{
+							"deflated" : "!v.is_fueled"
+						}
+					],
+					"animations": [
+						"deflated"
+					]
+				},
+				"deflated": {
+					"transitions": [
+						{
+							"inflated" : "v.is_fueled"
+						}
+					],
+					"animations": [
+						"deflated"
+					]
+				},
+				"inflated": {
+					"transitions": [
+						{
+							"deflated" : "query.is_on_ground && q.all_animations_finished && !v.is_fueled"
+						},
+						{
+							"floating" : "q.all_animations_finished && v.is_fueled"
+						}
+					],
+					"animations": [
+						"inflate"
+					],
+					"blend_transition": 2
+				},
+				"floating": {
+					"transitions": [
+						{
+							"deflated" : "query.is_on_ground && !v.is_fueled"
+						}
+					],
+					"animations": [
+						"idle"
+					],
+					"blend_transition": 2
+				}
+			}
+		},
+		"controller.animation.bw_vv.hot_air_balloon_fire": {
+			"states": {
+				"default": {
+					"transitions": [
+						{
+							"fired": "v.is_fueled"
+						}
+					]
+				},
+				"unfired": {
+					"sound_effects": [
+						{
+							"effect": "bw_vv:hot_air_balloon.burnout"
+						}
+					],
+					"transitions": [
+						{
+							"fired": "v.is_fueled"
+						}
+					]
+				},
+				"fired": {
+					"particle_effects": [
+						{
+						"effect":"fire.ignite",
+						"locator":"fire"
+						},
+						{
+						"effect":"fire.ignite.sparks",
+						"locator":"fire"
+						},
+						{
+						"effect":"fire.constant",
+						"locator":"fire"
+						}
+					],
+					"sound_effects": [
+						{
+							"effect": "bw_vv:hot_air_balloon.ignite"
+						}
+					],
+					"transitions": [
+						{
+							"unfired": "!v.is_fueled"
+						}
+					]
+				}
+			}
+		}
+	}
+}

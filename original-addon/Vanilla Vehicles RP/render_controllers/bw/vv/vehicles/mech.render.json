@@ -1,0 +1,36 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_mech": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ 
+        { "chest*": "q.property('bw_vv:chested')" },
+        { "chest_handler*": "q.property('bw_vv:chested')" }
+      ],
+      "materials": [
+           { "*": "Material.alpha_vanillavehiclesaddon" },
+           { "sprayable": "Material.default" },
+           { "sprayable2": "Material.default" },
+           { "foot_L_piston": "Material.default" },
+           { "foot_R_piston": "Material.default" },
+           { "metalpartR": "Material.default" },
+           { "metalpartL": "Material.default" },
+           { "lights": "Material.glow_vanillavehiclesaddon" },
+           { "charge_indicator": "Material.glow_vanillavehiclesaddon" },
+           { "boost_indicator": "Material.glow_vanillavehiclesaddon" }
+                   ],
+      "textures": [ "Texture.default" ]
+    },
+    "controller.render.bw_vv_mech_animated": {
+      "geometry": "Geometry.default",
+      "materials": [
+           { "upper_part": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.fueled" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 8), 5) / 5"],
+          "scale": [1, "1 / 5"]
+      }
+    }
+  }
+}

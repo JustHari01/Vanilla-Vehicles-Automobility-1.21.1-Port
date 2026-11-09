@@ -1,0 +1,1346 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "bw_vv:hot_air_balloon",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false,
+      "animations": {
+        "hit_controller": "controller.animation.bw_vv.generic_hit_timer",
+        "hit_timer": "animation.bw_vv.generic_hit_timer",
+        "variables": "animation.bw_vv.hot_air_balloon_variables", //a list of  variables, like resistance to hitting
+        //FUEL
+        "fuel_controller": "controller.animation.bw_vv.generic_vehicle_fuel", //activates the "fuel_decreaser" animation based on the movement speed of the vehicle.
+        "fuel_activator_controller": "controller.animation.bw_vv.generic_vehicle_fuel_activator", //runs "event:fuel" or "event:unfuel" if the fuel_progress property is 0 or higher than 0.
+        "fuel_decreaser": "animation.bw_vv.generic_vehicle_fuel_decreaser", //animation that slowly decreases the fuel over time based on a variable defined in the "variables" animation.bw_vv. This animation activates when the vehicle is fueled an moving.
+        //HEAT
+        "heat_controller": "controller.animation.bw_vv.hot_air_balloon_heat",
+        "heat_timer": "animation.bw_vv.hot_air_balloon_heat_timer"
+      },
+      "scripts": {
+        "animate": [
+          "variables",
+          "heat_controller",
+          "hit_controller",
+          "fuel_controller",
+          "fuel_activator_controller"
+        ]
+      },
+      "properties": {
+        "bw_vv:heated": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "bw_vv:chested": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "bw_vv:balloon_state": {
+          "type": "enum",
+          "values": ["airborne", "grounded"],
+          "default": "grounded",
+          "client_sync": true
+        },
+        "bw_vv:smoke_effect_size": {
+          "type": "float",
+          "range": [0.0, 10.0],
+          "default": 3.0,
+          "client_sync": true
+        },
+        "bw_vv:player_anim_blend_time": {
+          "type": "float",
+          "range": [0.0, 10.0],
+          "default": 0.1,
+          "client_sync": true
+        },
+        //FUEL PROPERTIES
+        "bw_vv:fuel_progress": {
+          // The fuel of the vehicle.
+          "type": "float",
+          "range": [0.0, 10.0],
+          "default": 0.0,
+          "client_sync": true
+        },
+        "bw_vv:hit_timer": {
+          "type": "int",
+          "range": [0, 5],
+          "default": 0,
+          "client_sync": true
+        },
+        "bw_vv:hit_sound": {
+          "type": "enum",
+          "values": ["normal", "final"],
+          "default": "normal",
+          "client_sync": true
+        },
+        "bw_vv:hit_resistance": {
+          "type": "int",
+          "range": [0, 100],
+          "default": 40,
+          "client_sync": true
+        },
+        "bw_vv:hit_resistance_tools": {
+          "type": "int",
+          "range": [0, 20],
+          "default": 7,
+          "client_sync": true
+        },
+        "bw_vv:damage_progress": {
+          "type": "int",
+          "range": [0, 100],
+          "default": 0,
+          "client_sync": true
+        },
+        "bw_vv:damage_weak": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        "bw_vv:wasd": {
+          "type": "enum",
+          "values": ["w", "a", "s", "d"],
+          "default": "w",
+          "client_sync": true
+        },
+        "bw_vv:damage_anim": {
+          "type": "enum",
+          "values": ["L", "R"],
+          "default": "R",
+          "client_sync": true
+        },
+        "bw_vv:removed": {
+          "type": "bool",
+          "default": false,
+          "client_sync": true
+        },
+        //ENTITY SPECIFIC
+        "bw_vv:envelope_type": {
+          "type": "enum",
+          "values": ["empty", "blank", "creeper", "striped"],
+          "default": "empty",
+          "client_sync": true
+        },
+        "bw_vv:smoke_color": {
+          "type": "enum",
+          "values": [
+            "white",
+            "orange",
+            "magenta",
+            "light_blue",
+            "yellow",
+            "lime",
+            "pink",
+            "gray",
+            "light_gray",
+            "cyan",
+            "purple",
+            "blue",
+            "brown",
+            "green",
+            "red",
+            "black"
+          ],
+          "default": "green",
+          "client_sync": true
+        }
+      }
+    },
+    "components": {
+      "minecraft:horse.jump_strength": {
+        "value": 0.0
+      },
+      "minecraft:health": {
+        "value": 0.6
+      },
+      "minecraft:can_power_jump": {},
+      "minecraft:buoyant": {
+        "base_buoyancy": 0.4,
+        "apply_gravity": false,
+        "big_wave_probability": 0.2,
+        "big_wave_speed": 10,
+        "drag_down_on_buoyancy_removed": 0,
+        "liquid_blocks": ["water"],
+        "simulate_waves": true
+      },
+      "minecraft:behavior.rise_to_liquid_level": {
+        "liquid_y_offset": 0.4,
+        "rise_delta": 0.2,
+        "sink_delta": 0.2
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "player"
+                  },
+                  {
+                    "test": "is_riding_self",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": true
+                  }
+                ]
+              }
+            },
+            "deals_damage": "no"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  },
+                  {
+                    "test": "is_riding",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "enum_property",
+                    "subject": "self",
+                    "domain": "bw_vv:hit_sound",
+                    "operator": "==",
+                    "value": "final"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "stone_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "wooden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "copper_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "iron_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "golden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "diamond_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "netherite_axe"
+                  }
+                ]
+              },
+              "event": "event:damager_weak",
+              "target": "self"
+            },
+            "deals_damage": "no_but_side_effects_apply",
+            "on_damage_sound_event": "death"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  },
+                  {
+                    "test": "is_riding",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "enum_property",
+                    "subject": "self",
+                    "domain": "bw_vv:hit_sound",
+                    "operator": "==",
+                    "value": "normal"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "stone_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "wooden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "copper_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "iron_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "golden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "diamond_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "operator": "!=",
+                    "value": "netherite_axe"
+                  }
+                ]
+              },
+              "event": "event:damager_weak",
+              "target": "self"
+            },
+            "deals_damage": "no_but_side_effects_apply",
+            "on_damage_sound_event": "hurt"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  },
+                  {
+                    "test": "is_riding",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "enum_property",
+                    "subject": "self",
+                    "domain": "bw_vv:hit_sound",
+                    "operator": "==",
+                    "value": "normal"
+                  }
+                ],
+                "any_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "wooden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "stone_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "copper_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "iron_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "golden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "diamond_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "netherite_axe"
+                  }
+                ]
+              },
+              "event": "event:damager",
+              "target": "self"
+            },
+            "deals_damage": "no_but_side_effects_apply",
+            "on_damage_sound_event": "hurt"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "!=",
+                    "value": "instabuild"
+                  },
+                  {
+                    "test": "is_riding",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": false
+                  },
+                  {
+                    "test": "enum_property",
+                    "subject": "self",
+                    "domain": "bw_vv:hit_sound",
+                    "operator": "==",
+                    "value": "final"
+                  }
+                ],
+                "any_of": [
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "wooden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "stone_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "copper_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "iron_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "golden_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "diamond_axe"
+                  },
+                  {
+                    "test": "has_equipment",
+                    "subject": "other",
+                    "domain": "hand",
+                    "value": "netherite_axe"
+                  }
+                ]
+              },
+              "event": "event:damager",
+              "target": "self"
+            },
+            "deals_damage": "no_but_side_effects_apply",
+            "on_damage_sound_event": "death"
+          },
+          {
+            "on_damage": {
+              "filters": {
+                "all_of": [
+                  {
+                    "test": "is_family",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "player"
+                  },
+                  {
+                    "test": "has_ability",
+                    "subject": "other",
+                    "operator": "==",
+                    "value": "instabuild"
+                  }
+                ]
+              },
+              "event": "event:remove_creative"
+            },
+            "deals_damage": "no",
+            "on_damage_sound_event": "death"
+          },
+          {
+            "on_damage": {
+              "filters": {}
+            },
+            "deals_damage": "no_but_side_effects_apply"
+          }
+        ]
+      },
+      "minecraft:pushable": {
+        "is_pushable": false
+      },
+      "minecraft:color": {
+        "value": 0
+      },
+      "minecraft:is_stackable": {},
+      "minecraft:is_collidable": {},
+      "minecraft:movement": {
+        "value": 0.0
+      },
+      "minecraft:type_family": {
+        "family": [
+          "vehicle",
+          "hot_air_balloon",
+          "wooden",
+          "coal_based",
+          "bw_vanilla_vehicles"
+        ]
+      },
+
+      "minecraft:body_rotation_blocked": {},
+      "minecraft:rideable": {
+        "seat_count": 1,
+        "family_types": ["player"],
+        "crouching_skip_interact": true,
+        "pull_in_entities": true,
+        "rider_can_interact": true,
+        "interact_text": "bw_vv.action.interact.hot_air_balloon.fly",
+        "controlling_seat": 0,
+        "seats": [
+          {
+            "position": [
+              //controlling seat
+              0, 0.3, -0.2
+            ]
+          }
+        ]
+      }
+    },
+    "component_groups": {
+      "component_group:chested": {
+        "minecraft:inventory": {
+          "additional_slots_per_strength": 0,
+          "can_be_siphoned_from": false,
+          "container_type": "hopper",
+          "inventory_size": 4,
+          "private": false,
+          "restrict_to_owner": false
+        }
+      },
+      "component_group:flight_mode": {
+        "minecraft:physics": {
+          "has_gravity": false
+        }
+      },
+      "component_group:ground_mode": {
+        "minecraft:physics": {
+          "has_gravity": true
+        }
+      },
+      "component_group:no_envelope": {
+        "minecraft:custom_hit_test": {
+          "hitboxes": [
+            {
+              "width": 2,
+              "height": 0.95,
+              "pivot": [0, 0.5, 0]
+            }
+          ]
+        },
+        "minecraft:collision_box": {
+          "height": 1,
+          "width": 2.1
+        },
+        //ENVELOPE TYPES
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "bw_vv:hot_air_balloon.envelope.blank"
+                    },
+                    {
+                      "test": "enum_property",
+                      "subject": "self",
+                      "domain": "bw_vv:envelope_type",
+                      "operator": "==",
+                      "value": "empty"
+                    }
+                  ]
+                },
+                "event": "event:add_envelope.blank",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": true,
+              "play_sounds": "armor.equip_generic",
+              "interact_text": "bw_vv.action.interact.hot_air_balloon.add_envelope"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "minecraft:bundle"
+                    },
+                    {
+                      "test": "bool_property",
+                      "subject": "self",
+                      "domain": "bw_vv:chested",
+                      "value": false
+                    }
+                  ]
+                },
+                "event": "event:add_chest",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": true,
+              "play_sounds": "armor.equip_generic",
+              "interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "bool_property",
+                      "subject": "self",
+                      "domain": "bw_vv:chested",
+                      "value": false
+                    },
+                    {
+                      "any_of": [
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:black_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:blue_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:brown_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:cyan_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:gray_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:green_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:light_blue_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:light_gray_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:lime_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:magenta_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:orange_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:pink_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:purple_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:red_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:white_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:yellow_bundle"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "event": "event:bundle_warning",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": false,
+              "interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "bw_vv:hot_air_balloon.envelope.striped"
+                    },
+                    {
+                      "test": "enum_property",
+                      "subject": "self",
+                      "domain": "bw_vv:envelope_type",
+                      "operator": "==",
+                      "value": "empty"
+                    }
+                  ]
+                },
+                "event": "event:add_envelope.striped",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": true,
+              "play_sounds": "armor.equip_generic",
+              "interact_text": "bw_vv.action.interact.hot_air_balloon.add_envelope"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "bw_vv:hot_air_balloon.envelope.creeper"
+                    },
+                    {
+                      "test": "enum_property",
+                      "subject": "self",
+                      "domain": "bw_vv:envelope_type",
+                      "operator": "==",
+                      "value": "empty"
+                    }
+                  ]
+                },
+                "event": "event:add_envelope.creeper",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": true,
+              "play_sounds": "armor.equip_generic",
+              "interact_text": "bw_vv.action.interact.hot_air_balloon.add_envelope"
+            }
+          ]
+        },
+        "minecraft:spell_effects": {
+          "remove_effects": "levitation"
+        }
+      },
+      "component_group:envelope.blank": {
+        "minecraft:equipment": {
+          "table": "loot_tables/bw/vv/vehicles/hot_air_balloon/envelope/blank.json",
+          "slot_drop_chance": [
+            {
+              "slot": "slot.weapon.mainhand",
+              "drop_chance": 1
+            }
+          ]
+        }
+      },
+      "component_group:envelope.striped": {
+        "minecraft:equipment": {
+          "table": "loot_tables/bw/vv/vehicles/hot_air_balloon/envelope/striped.json",
+          "slot_drop_chance": [
+            {
+              "slot": "slot.weapon.mainhand",
+              "drop_chance": 1
+            }
+          ]
+        }
+      },
+      "component_group:envelope.creeper": {
+        "minecraft:equipment": {
+          "table": "loot_tables/bw/vv/vehicles/hot_air_balloon/envelope/creeper.json",
+          "slot_drop_chance": [
+            {
+              "slot": "slot.weapon.mainhand",
+              "drop_chance": 1
+            }
+          ]
+        }
+      },
+      "component_group:has_envelope": {
+        "minecraft:collision_box": {
+          "height": 7.6,
+          "width": 2.1
+        },
+        "minecraft:is_dyeable": {
+          "interact_text": "bw_vv.action.interact.generic.spray"
+        },
+        "minecraft:interact": {
+          "interactions": [
+            {
+              "on_interact": {
+                "filters": {
+                  "any_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "minecraft:shears"
+                    }
+                  ]
+                },
+                "event": "event:remove_envelope",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": false,
+              "hurt_item": 1,
+              "play_sounds": "shear",
+              "vibration": "shear",
+              "interact_text": "bw_vv.action.interact.hot_air_balloon.remove_envelope"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "minecraft:flint_and_steel"
+                    },
+                    {
+                      "test": "float_property",
+                      "subject": "self",
+                      "domain": "bw_vv:fuel_progress",
+                      "operator": "==",
+                      "value": 0.0
+                    }
+                  ]
+                },
+                "event": "event:increment_fuel",
+                "target": "self"
+              },
+              "swing": true,
+              "hurt_item": 3,
+              "use_item": false,
+              "play_sounds": "ignite",
+              "vibration": "shear",
+              "interact_text": "bw_vv.action.interact.hot_air_balloon.ignite"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "has_equipment",
+                      "subject": "other",
+                      "domain": "hand",
+                      "value": "minecraft:bundle"
+                    },
+                    {
+                      "test": "bool_property",
+                      "subject": "self",
+                      "domain": "bw_vv:chested",
+                      "value": false
+                    }
+                  ]
+                },
+                "event": "event:add_chest",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": true,
+              "play_sounds": "armor.equip_generic",
+              "interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+            },
+            {
+              "on_interact": {
+                "filters": {
+                  "all_of": [
+                    {
+                      "test": "bool_property",
+                      "subject": "self",
+                      "domain": "bw_vv:chested",
+                      "value": false
+                    },
+                    {
+                      "any_of": [
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:black_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:blue_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:brown_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:cyan_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:gray_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:green_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:light_blue_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:light_gray_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:lime_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:magenta_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:orange_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:pink_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:purple_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:red_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:white_bundle"
+                        },
+                        {
+                          "test": "has_equipment",
+                          "subject": "other",
+                          "domain": "hand",
+                          "value": "minecraft:yellow_bundle"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "event": "event:bundle_warning",
+                "target": "self"
+              },
+              "swing": true,
+              "use_item": false,
+              "interact_text": "bw_vv.action.interact.vehicle.add_bundle"
+            }
+          ]
+        }
+      },
+      "component_group:removed": {
+        "minecraft:transformation": {
+          "into": "bw_vv:break",
+          "delay": 0.2,
+          "drop_equipment": true,
+          "drop_inventory": true
+        }
+      },
+      "component_group:removed_creative": {
+        "minecraft:transformation": {
+          "into": "bw_vv:break",
+          "delay": 0.2,
+          "drop_equipment": false,
+          "drop_inventory": true
+        }
+      }
+    },
+    "events": {
+      "minecraft:entity_spawned": {
+        "add": {
+          "component_groups": [
+            "component_group:no_envelope",
+            "component_group:ground_mode"
+          ]
+        }
+      },
+      "event:add_chest": {
+        "set_property": {
+          "bw_vv:chested": true
+        },
+        "add": {
+          "component_groups": ["component_group:chested"]
+        }
+      },
+      "event:bundle_warning": {
+        "queue_command": {
+          "command": "execute as @p at @s run scriptevent bw_vv:bundle_warning"
+        }
+      },
+      "event:heat": {
+        "set_property": {
+          "bw_vv:heated": true
+        }
+      },
+      "event:enter_flight_mode": {
+        "add": {
+          "component_groups": ["component_group:flight_mode"]
+        },
+        "remove": {
+          "component_groups": ["component_group:ground_mode"]
+        }
+      },
+      "event:enter_ground_mode": {
+        "add": {
+          "component_groups": ["component_group:ground_mode"]
+        },
+        "remove": {
+          "component_groups": ["component_group:flight_mode"]
+        }
+      },
+      "event:add_envelope.blank": {
+        "add": {
+          "component_groups": [
+            "component_group:envelope.blank",
+            "component_group:has_envelope"
+          ]
+        },
+        "remove": {
+          "component_groups": ["component_group:no_envelope"]
+        },
+        "set_property": {
+          "bw_vv:envelope_type": "blank"
+        }
+      },
+      "event:add_envelope.striped": {
+        "add": {
+          "component_groups": [
+            "component_group:envelope.striped",
+            "component_group:has_envelope"
+          ]
+        },
+        "remove": {
+          "component_groups": ["component_group:no_envelope"]
+        },
+        "set_property": {
+          "bw_vv:envelope_type": "striped"
+        }
+      },
+      "event:add_envelope.creeper": {
+        "add": {
+          "component_groups": [
+            "component_group:envelope.creeper",
+            "component_group:has_envelope"
+          ]
+        },
+        "remove": {
+          "component_groups": ["component_group:no_envelope"]
+        },
+        "set_property": {
+          "bw_vv:envelope_type": "creeper"
+        }
+      },
+
+      "event:remove_envelope": {
+        "add": {
+          "component_groups": ["component_group:no_envelope"]
+        },
+        "remove": {
+          "component_groups": [
+            "component_group:envelope.blank",
+            "component_group:envelope.creeper",
+            "component_group:envelope.striped"
+          ]
+        },
+        "trigger": "event:empty_fuel",
+        "set_property": {
+          "bw_vv:envelope_type": "empty"
+        },
+        "drop_item": { "slot": "slot.weapon.mainhand" }
+      },
+      //HIT EVENTS
+      "event:damager": {
+        "set_property": {
+          "bw_vv:hit_sound": "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+          "bw_vv:hit_timer": 5,
+          "bw_vv:damage_progress": "q.property('bw_vv:damage_weak') == true ? 1 : query.property('bw_vv:damage_progress') + 1",
+          "bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+          "bw_vv:damage_weak": false //s
+        }
+      },
+      "event:damager_weak": {
+        "set_property": {
+          "bw_vv:hit_sound": "q.property('bw_vv:damage_weak') == true ? ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance')- 2)) ? 'final' : 'normal') : ((q.property('bw_vv:damage_progress') == (q.property('bw_vv:hit_resistance_tools') - 2)) ? 'final' : 'normal')",
+          "bw_vv:hit_timer": 5,
+          "bw_vv:damage_progress": "query.property('bw_vv:damage_progress') + 1",
+          "bw_vv:damage_anim": "query.property('bw_vv:damage_anim') == 'R' ? 'L' : 'R'",
+          "bw_vv:damage_weak": true
+        }
+      },
+      "event:hit_timer_countdown": {
+        "set_property": {
+          "bw_vv:hit_timer": "math.clamp(query.property('bw_vv:hit_timer') - 1, 0, 10)"
+        }
+      },
+      "event:remove": {
+        "sequence": [
+          {
+            "filters": {
+              "test": "bool_property",
+              "subject": "self",
+              "domain": "bw_vv:chested",
+              "value": true
+            },
+            "queue_command": {
+              "command": "loot spawn ~ ~ ~ loot \"bw/vv/bundle\""
+            }
+          },
+          {
+            "add": {
+              "component_groups": ["component_group:removed"]
+            },
+            "queue_command": {
+              "command": [
+                "loot spawn ~ ~ ~ loot \"bw/vv/vehicles/hot_air_balloon/basket\"",
+                "scriptevent bw_vv:spawn_dye"
+              ]
+            },
+            "set_property": {
+              "bw_vv:removed": true
+            }
+          }
+        ]
+      },
+      "event:remove_creative": {
+        "add": {
+          "component_groups": ["component_group:removed_creative"]
+        },
+        "set_property": {
+          "bw_vv:removed": true
+        }
+      },
+      "event:remove_drop_items": {
+        "add": {
+          "component_groups": ["component_group:removed"]
+        },
+        "set_property": {
+          "bw_vv:removed": true
+        },
+        "queue_command": {
+          "command": "loot spawn ~ ~ ~ loot \"bw/vv/vehicles/hot_air_balloon/basket\""
+        }
+      },
+      "event:remove_hits": {
+        "set_property": {
+          "bw_vv:damage_progress": 0,
+          "bw_vv:damage_anim": "R",
+          "bw_vv:damage_weak": false
+        }
+      },
+      //FUEL EVENTS
+      "event:increment_fuel": {
+        "set_property": {
+          "bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') + v.fuel_increaser"
+        },
+        "queue_command": {
+          "command": "playsound vehicle.fuel_up.redstone @p" //sound for fuelling up the tank
+        }
+      },
+      "event:decrement_fuel": {
+        "set_property": {
+          "bw_vv:fuel_progress": "query.property('bw_vv:fuel_progress') - v.fuel_efficiency"
+        }
+      },
+      "event:empty_fuel": {
+        "set_property": {
+          "bw_vv:fuel_progress": 0
+        }
+      },
+      "event:fuel": {
+        "add": {
+          "component_groups": ["component_group:fueled"]
+        }
+      },
+      "event:unfuel": {
+        "remove": {
+          "component_groups": ["component_group:fueled"]
+        },
+        "queue_command": {
+          "command": "playsound vehicle.fuel_discharge.redstone @p" //sound for when the fuel runs out
+        }
+      }
+    }
+  }
+}

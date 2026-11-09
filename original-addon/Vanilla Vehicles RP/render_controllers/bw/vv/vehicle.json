@@ -1,0 +1,25 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_vehicle": {
+      "geometry": "Geometry.default",
+      "materials": [
+           { "*": "Material.default" },
+           { "glass": "Material.alpha_vanillavehiclesaddon" },
+           { "drivingwheel": "Material.alpha_vanillavehiclesaddon" },
+					 { "rightWing1": "Material.alpha_vanillavehiclesaddon" },
+					 { "leftWing1": "Material.alpha_vanillavehiclesaddon" },
+					 { "wheel1": "Material.alpha_vanillavehiclesaddon" },
+					 { "wheelsback": "Material.alpha_vanillavehiclesaddon" },
+					 { "wheel2": "Material.alpha_vanillavehiclesaddon" },
+					 { "wheel3": "Material.alpha_vanillavehiclesaddon" },
+					 { "wheel4": "Material.alpha_vanillavehiclesaddon" },
+					 { "wheel0": "Material.alpha_vanillavehiclesaddon" },
+					 { "nocolorchange": "Material.alpha_vanillavehiclesaddon" },
+					 { "chairs": "Material.alpha_vanillavehiclesaddon" },
+					 { "lights": "Material.glow_vanillavehiclesaddon" }
+                   ],
+      "textures": [ "Texture.default" ]
+    }
+  }
+}

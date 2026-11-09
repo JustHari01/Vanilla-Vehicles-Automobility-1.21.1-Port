@@ -1,0 +1,30 @@
+{
+  "format_version":"1.10.0",
+  "render_controllers": {
+    "controller.render.bw_vv_logcar": {
+      "geometry": "Geometry.default",
+      "part_visibility": [ { "chest*": "q.property('bw_vv:chested')" }],
+      "materials": [
+           { "*": "Material.alpha_vanillavehiclesaddon" },
+					 { "lights": "Material.glow" },
+					 { "lights2": "Material.glow" }
+                   ],
+      "textures": [ 
+         "Texture.oak"
+       ]
+    },
+        "controller.render.bw_vv_logcar_fueled_animated": {
+      "geometry": "Geometry.default",
+      	  "part_visibility": [ { "furnace*": "v.is_fueled" }, { "fuel_glow*": "v.is_fueled" }],
+      "materials": [
+      { "furnace": "Material.glow_masked_animated" },
+      { "fuel_glow": "Material.glow_masked_animated" }
+                   ],
+      "textures": [ "Texture.fueled_animated" ],
+      "uv_anim": {
+          "offset": [0, "math.mod(math.floor(q.life_time * 10), 5) / 5"],
+          "scale": [1, "1 / 5"]
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+[
+	{
+        "atlas_tile": "bw_vv:wind_vane",
+        "flipbook_texture": "textures/bw/vv/blocks/wind_vane.png",
+        "ticks_per_frame": 2,
+		"blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_white",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/white.png",
+        "ticks_per_frame": 2,
+		"blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_orange",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/orange.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_magenta",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/magenta.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_light_blue",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/light_blue.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_yellow",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/yellow.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_lime",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/lime.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_pink",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/pink.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_gray",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/gray.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_light_gray",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/light_gray.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_cyan",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/cyan.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_purple",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/purple.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_blue",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/blue.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_brown",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/brown.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_green",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/green.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_red",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/red.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    },
+    {
+        "atlas_tile": "bw_vv:flag_black",
+        "flipbook_texture": "textures/bw/vv/blocks/flags/black.png",
+        "ticks_per_frame": 2,
+        "blend_frames": false
+    }
+]

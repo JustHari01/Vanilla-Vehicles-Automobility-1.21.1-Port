@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "result": {
+    "id": "bw_vv:minecar",
+    "count": 1
+  },
+  "pattern": [
+    "# G",
+    "FMT",
+    "i i"
+  ],
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "F": {
+      "item": "minecraft:furnace"
+    },
+    "M": {
+      "item": "minecraft:minecart"
+    },
+    "T": {
+      "item": "minecraft:torch"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    }
+  }
+}

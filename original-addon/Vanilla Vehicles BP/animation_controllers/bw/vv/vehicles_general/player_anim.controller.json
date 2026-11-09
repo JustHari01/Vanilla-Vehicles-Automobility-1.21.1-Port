@@ -1,0 +1,134 @@
+
+
+
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+	"controller.animation.bw_vv.vehicle_climb":{
+	  "states":{
+	   "default":{
+		"on_entry":[
+		  "@s event:player_anim_climb_neutral"
+		],
+		"animations":[
+		  "climb_timer"
+	   ],
+		"transitions":[
+		   {
+			"up":"q.has_player_rider&&q.property('bw_vv:vertical_velocity') >= 1.3&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s'||q.has_player_rider&&q.property('bw_vv:vertical_velocity') <= -1.5&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s'|| !q.has_player_rider && q.vertical_speed > 1.3"
+		   },
+		   {
+			"down":"q.has_player_rider&&q.property('bw_vv:vertical_velocity') <= -1.5&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s' || q.has_player_rider&&q.property('bw_vv:vertical_velocity') >= 1.3&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s' || !q.has_player_rider && q.vertical_speed < -1.5"
+		   }
+		]     
+	  },
+	   "neutral_from_up":{
+		"animations":[
+		   "climb_timer"
+		],
+		"on_entry":[
+		  "@s event:player_anim_climb_neutral_from_up"
+		],
+		"transitions":[
+		   {
+			"up":"q.property('bw_vv:vertical_velocity') >= 1.3&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s'||q.property('bw_vv:vertical_velocity') <= -1.5&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s'"
+		   },
+		   {
+			"down":"q.property('bw_vv:vertical_velocity') <= -1.5&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s'||q.property('bw_vv:vertical_velocity') >= 1.3&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s'"
+		   },
+		   {
+			  "default":"!q.has_player_rider"
+		   }
+		]
+	   },
+	   "neutral_from_down":{
+		"animations":[
+		   "climb_timer"
+		],
+		"on_entry":[
+		  "@s event:player_anim_climb_neutral_from_down"
+		],
+		"transitions":[
+		   {
+			"up":"q.property('bw_vv:vertical_velocity') >= 1.3&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s'&&q.has_player_rider||q.property('bw_vv:vertical_velocity') <= -1.5&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s'&&q.has_player_rider"
+		   },
+		   {
+			"down":"q.property('bw_vv:vertical_velocity') <= -1.5&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s'&&q.has_player_rider||q.property('bw_vv:vertical_velocity') >= 1.3&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s'&&q.is_on_ground&&q.has_player_rider||!q.has_player_rider && q.vertical_speed <= -1.5"
+		   },
+		   {
+			  "default":"!q.has_player_rider"
+		   }
+		]
+	   },
+	   "up":{
+		"animations":[
+		   "climb_timer"
+		],
+		"on_entry":[
+		  "@s event:player_anim_climb_up"
+		],
+		"transitions":[
+		   {
+			"neutral_from_up":"q.has_player_rider && q.property('bw_vv:vertical_velocity') < 1.29&&q.all_animations_finished || !q.has_player_rider&&q.all_animations_finished"
+		   },
+		   {
+			  "default":"!q.has_player_rider"
+		   }
+		]
+	   },
+	   "down":{
+		"animations":[
+		   "climb_timer"
+		],
+		"on_entry":[
+		  "@s event:player_anim_climb_down"
+		],
+		"transitions":[
+		   {
+			"neutral_from_down":"q.has_player_rider&&q.property('bw_vv:vertical_velocity') < 0.1 && q.property('bw_vv:vertical_velocity') > -1.69&&q.all_animations_finished&&q.property('bw_vv:wasd')!='s'||q.has_player_rider&&q.property('bw_vv:vertical_velocity') < 1 && q.property('bw_vv:vertical_velocity') > -1.69&&q.all_animations_finished&&q.property('bw_vv:wasd')=='s'||!q.has_player_rider && q.vertical_speed == 0"
+		   },
+		   {
+			"falling":"q.has_player_rider&&q.property('bw_vv:vertical_velocity') < -9&&q.all_animations_finished&&!q.is_on_ground || !q.has_player_rider&&q.vertical_speed < -4 &&q.all_animations_finished&&!q.is_on_ground"
+		   }
+		]
+	   },
+	   "falling":{
+		"on_entry":[
+		  "@s event:player_anim_falling"
+		],
+		"transitions":[
+		   {
+			"landed":"q.is_on_ground"
+		   },
+		   {
+			"landed_water":"q.is_in_water"
+		   }
+		]
+	   },
+	   "landed":{      
+		"on_entry":[
+		"@s event:player_anim_landed"
+	  ],
+	  "animations":[
+		"climb_timer"
+	 ],
+		"transitions":[
+		   {
+			"default":"q.all_animations_finished"
+		   }
+		]
+	   },
+	   "landed_water":{
+		"on_entry":[
+		  "@s event:player_anim_in_water"
+		],
+		"transitions":[
+		   {
+			"default":"!q.is_in_water"
+		   }
+		]
+	   }
+	  }
+	 }
+	}
+  }

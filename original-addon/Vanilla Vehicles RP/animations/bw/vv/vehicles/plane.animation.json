@@ -1,0 +1,53 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.bw_vv.plane_propeller": {
+			"loop": true,
+			"bones": {
+				"propeller": {
+					"rotation": [0, 0, "200*q.modified_distance_moved"]
+				}
+			}
+		},
+		"animation.bw_vv.plane_steer": {
+			"loop": true,
+			"bones": {
+				"all_horizontal_steer": {
+					"rotation": [0, 0, "v.horizontal_steer"]
+				},
+				"all_vertical_steer": {
+					"rotation": ["v.vertical_steer", 0, 0]
+				}
+			}
+		},
+		"animation.bw_vv.plane_crashing": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 2.4,
+			"bones": {
+				"all_vertical_steer": {
+					"rotation": [89, 0, 0]
+				}
+			}
+		},
+		"animation.bw_vv.plane_trick_right": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"anim_time_update": "query.anim_time + query.delta_time *0.5",
+			"bones": {
+				"all_horizontal_steer": {
+					"rotation": [0, 0, "math.cos(q.anim_time*360)*180+180"]
+				}
+			}
+		},
+		"animation.bw_vv.plane_trick_left": {
+			"loop": "hold_on_last_frame",
+			"animation_length": 0.5,
+			"anim_time_update": "query.anim_time + query.delta_time *0.5",
+			"bones": {
+				"all_horizontal_steer": {
+					"rotation": [0, 0, "math.cos(q.anim_time*360)*-180+180"]
+				}
+			}
+		}
+	}
+}

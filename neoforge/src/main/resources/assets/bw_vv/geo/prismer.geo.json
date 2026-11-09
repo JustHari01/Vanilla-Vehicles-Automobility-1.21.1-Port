@@ -1,0 +1,813 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.bw_vv.prismer",
+        "texture_width": 250,
+        "texture_height": 128,
+        "visible_bounds_width": 6,
+        "visible_bounds_height": 5,
+        "visible_bounds_offset": [
+          0,
+          1.5,
+          0
+        ]
+      },
+      "bones": [
+        {
+          "name": "all_vertical_steer",
+          "pivot": [
+            0,
+            14,
+            6
+          ]
+        },
+        {
+          "name": "all_horizontal_steer",
+          "parent": "all_vertical_steer",
+          "pivot": [
+            0,
+            9,
+            1
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "all_horizontal_steer",
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                0,
+                -22
+              ],
+              "size": [
+                16,
+                10,
+                12
+              ],
+              "uv": [
+                192,
+                0
+              ]
+            },
+            {
+              "origin": [
+                -14,
+                6,
+                -22
+              ],
+              "size": [
+                29,
+                0,
+                39
+              ],
+              "uv": [
+                0,
+                66
+              ]
+            },
+            {
+              "origin": [
+                -8,
+                0,
+                -10
+              ],
+              "size": [
+                16,
+                6,
+                23
+              ],
+              "uv": [
+                111,
+                2
+              ]
+            },
+            {
+              "origin": [
+                -5,
+                -6,
+                -6
+              ],
+              "size": [
+                0,
+                6,
+                17
+              ],
+              "uv": [
+                215,
+                101
+              ]
+            },
+            {
+              "origin": [
+                5,
+                -6,
+                -8
+              ],
+              "size": [
+                0,
+                6,
+                17
+              ],
+              "uv": [
+                215,
+                101
+              ]
+            },
+            {
+              "origin": [
+                0,
+                -6,
+                0
+              ],
+              "size": [
+                0,
+                6,
+                17
+              ],
+              "uv": [
+                215,
+                101
+              ]
+            },
+            {
+              "origin": [
+                -8,
+                2,
+                -1
+              ],
+              "size": [
+                16,
+                0,
+                14
+              ],
+              "uv": [
+                186,
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "name": "drivingwheel",
+          "parent": "body",
+          "pivot": [
+            0,
+            8.5,
+            -7
+          ],
+          "rotation": [
+            27.5,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "drivingwheel_rot",
+          "parent": "drivingwheel",
+          "pivot": [
+            0,
+            9,
+            -7
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -5,
+                7,
+                -7
+              ],
+              "size": [
+                10,
+                4,
+                0
+              ],
+              "uv": [
+                221,
+                87
+              ]
+            }
+          ]
+        },
+        {
+          "name": "mouth",
+          "parent": "body",
+          "pivot": [
+            0,
+            0,
+            -9
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                -2,
+                -22
+              ],
+              "size": [
+                16,
+                10,
+                16
+              ],
+              "inflate": -0.05,
+              "uv": [
+                185,
+                23
+              ]
+            }
+          ]
+        },
+        {
+          "name": "bone",
+          "parent": "body",
+          "pivot": [
+            0,
+            10,
+            -10
+          ],
+          "rotation": [
+            -22.5,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -11,
+                1,
+                -10
+              ],
+              "size": [
+                22,
+                15,
+                0
+              ],
+              "uv": [
+                82,
+                35
+              ]
+            }
+          ]
+        },
+        {
+          "name": "lights",
+          "parent": "body",
+          "pivot": [
+            0,
+            5,
+            -21
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -3,
+                2,
+                -25
+              ],
+              "size": [
+                6,
+                4,
+                4
+              ],
+              "uv": [
+                21,
+                42
+              ]
+            }
+          ]
+        },
+        {
+          "name": "conduit",
+          "parent": "body",
+          "pivot": [
+            9,
+            5,
+            1
+          ]
+        },
+        {
+          "name": "back",
+          "parent": "body",
+          "pivot": [
+            0,
+            6,
+            13
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                -2,
+                13
+              ],
+              "size": [
+                16,
+                16,
+                10
+              ],
+              "uv": [
+                40,
+                40
+              ]
+            }
+          ]
+        },
+        {
+          "name": "steeringwheel_inverse2",
+          "parent": "back",
+          "pivot": [
+            0,
+            4,
+            23
+          ],
+          "cubes": [
+            {
+              "origin": [
+                0,
+                -4,
+                23
+              ],
+              "size": [
+                0,
+                11,
+                14
+              ],
+              "uv": [
+                133,
+                101
+              ]
+            }
+          ]
+        },
+        {
+          "name": "propeller",
+          "parent": "back",
+          "pivot": [
+            0,
+            6,
+            18
+          ]
+        },
+        {
+          "name": "spike1",
+          "parent": "propeller",
+          "pivot": [
+            -6,
+            12,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            -45
+          ]
+        },
+        {
+          "name": "spike1_rot",
+          "parent": "spike1",
+          "pivot": [
+            -6,
+            12,
+            18
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -7,
+                12,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike4",
+          "parent": "propeller",
+          "pivot": [
+            -6,
+            -1,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            -135
+          ]
+        },
+        {
+          "name": "spike4_rot",
+          "parent": "spike4",
+          "pivot": [
+            0,
+            1,
+            18
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -6,
+                -2,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike5",
+          "parent": "propeller",
+          "pivot": [
+            6,
+            0,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            135
+          ]
+        },
+        {
+          "name": "spike5_rot",
+          "parent": "spike5",
+          "pivot": [
+            0,
+            -2,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                5,
+                0,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike3",
+          "parent": "propeller",
+          "pivot": [
+            0,
+            14,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "spike3_rot",
+          "parent": "spike3",
+          "pivot": [
+            0,
+            14,
+            18
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                14,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike6",
+          "parent": "propeller",
+          "pivot": [
+            -8,
+            6,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            -90
+          ]
+        },
+        {
+          "name": "spike6_rot",
+          "parent": "spike6",
+          "pivot": [
+            0,
+            -2,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -9,
+                6,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike7",
+          "parent": "propeller",
+          "pivot": [
+            0,
+            -2,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            -180
+          ]
+        },
+        {
+          "name": "bone9",
+          "parent": "spike7",
+          "pivot": [
+            0,
+            -2,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -1,
+                -2,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike8",
+          "parent": "propeller",
+          "pivot": [
+            8,
+            6,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            90
+          ]
+        },
+        {
+          "name": "spike8_rot",
+          "parent": "spike8",
+          "pivot": [
+            0,
+            -2,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                7,
+                6,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "spike2",
+          "parent": "propeller",
+          "pivot": [
+            7,
+            13,
+            18
+          ],
+          "rotation": [
+            -20,
+            0,
+            45
+          ]
+        },
+        {
+          "name": "spike2_rot",
+          "parent": "spike2",
+          "pivot": [
+            0,
+            -2,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                6,
+                11,
+                17
+              ],
+              "size": [
+                2,
+                12,
+                2
+              ],
+              "uv": [
+                0,
+                8
+              ]
+            }
+          ]
+        },
+        {
+          "name": "steeringwheel_inverse",
+          "parent": "back",
+          "pivot": [
+            0,
+            14,
+            20
+          ],
+          "cubes": [
+            {
+              "origin": [
+                0,
+                7,
+                13
+              ],
+              "size": [
+                0,
+                29,
+                24
+              ],
+              "uv": [
+                80,
+                74
+              ]
+            }
+          ]
+        },
+        {
+          "name": "wing",
+          "parent": "body",
+          "pivot": [
+            8,
+            5,
+            1.5
+          ],
+          "rotation": [
+            0,
+            0,
+            15
+          ],
+          "cubes": [
+            {
+              "origin": [
+                8,
+                5,
+                -10
+              ],
+              "size": [
+                19,
+                0,
+                22
+              ],
+              "uv": [
+                34,
+                106
+              ],
+              "mirror": true
+            }
+          ]
+        },
+        {
+          "name": "wing2",
+          "parent": "body",
+          "pivot": [
+            -8,
+            5,
+            1.5
+          ],
+          "rotation": [
+            0,
+            0,
+            -15
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -27,
+                5,
+                -10
+              ],
+              "size": [
+                19,
+                0,
+                22
+              ],
+              "uv": [
+                34,
+                106
+              ]
+            }
+          ]
+        },
+        {
+          "name": "bone6",
+          "parent": "body",
+          "pivot": [
+            7,
+            -4.9,
+            -21.8
+          ],
+          "rotation": [
+            17.5,
+            0,
+            0
+          ],
+          "cubes": [
+            {
+              "origin": [
+                -8,
+                -4.4,
+                -11.8
+              ],
+              "size": [
+                16,
+                0,
+                12
+              ],
+              "uv": [
+                52,
+                5
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

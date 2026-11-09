@@ -1,0 +1,7 @@
+{
+  "type": "automobility:auto_mechanic_table",
+  "category": "automobility:frames",
+  "sortnum": 604,
+  "ingredients": [{"item":"minecraft:red_dye"},{"item":"minecraft:copper_block"},{"item":"minecraft:iron_ingot"},{"item":"minecraft:yellow_dye"},{"item":"minecraft:bucket"}],
+  "result": {"item":"automobility:automobile_frame","component":"automobility:fire_engine"}
+}

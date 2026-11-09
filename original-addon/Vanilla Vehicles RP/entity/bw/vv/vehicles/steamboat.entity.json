@@ -1,0 +1,115 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "bw_vv:steamboat",
+      "animations": {
+        "idle": "animation.bw_vv.steamboat_idle",
+        "paddle_wheel": "animation.bw_vv.steamboat_paddle_wheel",
+        "steer_forward": "animation.bw_vv.steamboat_steer_forward",
+        "steer_backward": "animation.bw_vv.vehicle.steer.backwards",
+        "backwards_detector": "controller.animation.bw_vv.generic.backwards_detector",
+        "smoke": "animation.bw_vv.steamboat_smoke",
+        "fuel_controller": "controller.animation.bw_vv.steamboat_fueled",
+        "water_controller": "controller.animation.bw_vv.steamboat_water",
+        //HIT
+        "hit_L": "animation.bw_vv.vehicle.hit.L",
+        "hit_R": "animation.bw_vv.vehicle.hit.R",
+        "hit_weak_L": "animation.bw_vv.vehicle.hit.weak.L",
+        "hit_weak_R": "animation.bw_vv.vehicle.hit.weak.R",
+        "hit_final": "animation.bw_vv.vehicle.hit.final",
+        "hit_controller": "controller.animation.bw_vv.vehicle.hit",
+        //STEERING TILTING
+        "tilt_right": "animation.bw_vv.vehicle.steer.tilt_right",
+        "tilt_neutral_from_right": "animation.bw_vv.vehicle.steer.tilt_neutral.from_right",
+        "tilt_left": "animation.bw_vv.vehicle.steer.tilt_left",
+        "tilt_neutral_from_left": "animation.bw_vv.vehicle.steer.tilt_neutral.from_left",
+        "tilt_timer": "animation.bw_vv.vehicle.steer.tilt_timer",
+        "tilt_controller": "controller.animation.bw_vv.steamboat.steer.tilt",
+        //FUEL
+        "fuel_indicator": "animation.bw_vv.general.fuel_indicator.horizontal",
+        //SMOKE BOMB FUNCTIONALITY
+        "smoke_bomb_controller": "controller.animation.bw_vv.vehicle.smoke_bomb",
+        "smoke_bomb.spray_sound_finish_timer": "animation.bw_vv.smoke_bomb_spray_sound_finish_timer",
+        "smoke_bomb.spray_sound": "animation.bw_vv.smoke_bomb_spray"
+      },
+      "scripts": {
+        "scale": "q.property('bw_vv:removed') ? 0 : 1",
+        "animate": [
+          "fuel_indicator",
+          "smoke_bomb_controller",
+          "hit_controller",
+          "fuel_controller",
+          "water_controller",
+          "backwards_detector",
+          "tilt_controller"
+        ],
+        "initialize": [
+          "v.hit_intensity = 1;",
+          "v.hit_ratio_weak = 0;",
+          "v.hit_ratio_tools = 0;",
+          "v.steer_threshold = 10;"
+        ],
+        "pre_animation": [
+          "v.hit_intensity = 0.05+1/(query.property('bw_vv:damage_weak') ? v.hit_ratio_weak*2 : v.hit_ratio_tools*2);",
+          "v.hit_ratio_weak = (query.property('bw_vv:hit_resistance'))/query.property('bw_vv:damage_progress');",
+          "v.hit_ratio_tools = (query.property('bw_vv:hit_resistance_tools')-1)/query.property('bw_vv:damage_progress');",
+          "v.fuel =10-query.property('bw_vv:fuel_progress');",
+          "variable.pre_body_rot = query.has_player_rider ? ( query.rider_head_y_rotation(0) - query.body_y_rotation ) : 0;", //difference between player rotation and vehicle rotation
+          "variable.body_rot = math.mod(variable.pre_body_rot,360);",
+          "(variable.body_rot > 180) ? (variable.body_rot = variable.body_rot - 360);",
+          "(variable.body_rot < -180) ? (variable.body_rot = variable.body_rot + 360);",
+
+          "v.climb_anim = q.has_player_rider ? ( 10 + query.camera_distance_range_lerp(2.5, 4) * ( q.property('bw_vv:climb_animation')-10 ) ) : q.property('bw_vv:climb_animation');", //how far the vehicle increases forward or backward
+          "v.steer_rot = 1.5*query.modified_move_speed;", //how much the body of the vehicle tilts in the other side while steering.
+          "v.steer_direction = (q.yaw_speed > v.steer_threshold) ? 'right' : ( (q.yaw_speed < -v.steer_threshold) ? 'left' : 'neutral' );",
+          "v.steer_paddle_rot = math.clamp(v.body_rot*query.has_player_rider,-12.5,12.5);",
+
+          "v.wasd = q.property('bw_vv:wasd');",
+          "v.is_fueled = q.property('bw_vv:fuel_progress') > 0 ? true : false;",
+
+          "v.wheel_rot_pre = math.mod(query.modified_distance_moved*10+q.life_time*50,90);",
+          "v.wheel_rot_speed = v.wheel_rot_pre;", //the speed of the big steamboat wheel
+          "v.wheel_steer = math.clamp(v.body_rot/2*query.has_player_rider,-40,40);", //how drastically the front wheels steer
+          "v.steeringwheel_steer = math.clamp(v.body_rot*-1*query.has_player_rider,-40,40);" //how drastically the steering wheel rotates.
+        ]
+      },
+      "materials": {
+        "default": "alpha_vanillavehicles",
+        "color": "changecolor_vanillavehicles",
+        "masked": "villager_v2",
+        "glow_masked": "glow_vanillavehicles_masked",
+        "glow": "entity_emissive_alpha",
+        "glow_masked_animated": "glow_vanillavehicles_masked_animated"
+      },
+      "render_controllers": [
+        "controller.render.bw_vv_steamboat",
+        "controller.render.bw_vv_steamboat_fueled"
+      ],
+      "textures": {
+        "default": "textures/bw/vv/vehicles/steamboat/base",
+        "fueled": "textures/bw/vv/vehicles/steamboat/fueled_animated_sheet"
+      },
+      "particle_effects": {
+        "trail_effect": "bw_vv:trail_steamboat",
+        "landed_effect": "bw_vv:smoke_big",
+        "smoke_bomb_smoke": "bw_vv:smoke_bomb_smoke.vehicle2",
+        "destroy_effect": "bw_vv:wood_destroy",
+        "water_foam.back": "bw_vv:water_foam.back",
+        "water_foam.rotor": "bw_vv:water_foam.rotor",
+        "water_spread": "bw_vv:water_spread"
+      },
+      "sound_effects": {
+        "steamboat_smoke": "bw_vv.vehicle.steamboat.steam",
+        "spray": "bw_vv.smoke_bomb.spray"
+      },
+      "geometry": {
+        "default": "geometry.bw_vv.steamboat_11"
+      },
+      "spawn_egg": {
+        "texture": "bw_vv:vehicle_spawn",
+        "texture_index": 3
+      }
+    }
+  }
+}

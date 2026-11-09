@@ -1,0 +1,78 @@
+{
+	"format_version": "1.21.120",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bw_vv.redstone_compressor",
+				"texture_width": 64,
+				"texture_height": 100,
+				"visible_bounds_width": 3,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "head",
+					"pivot": [0, 0, 0],
+					"locators": {
+						"hitter": [0, 5, 0]
+					}
+				},
+				{
+					"name": "bone",
+					"parent": "head",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-8, 0, -8], "size": [16, 3, 16], "uv": [0, 26]}
+					]
+				},
+				{
+					"name": "bone4",
+					"parent": "bone",
+					"pivot": [7, 6.5, 7],
+					"cubes": [
+						{"origin": [6, 3, -8], "size": [2, 7, 2], "inflate": 0.4, "uv": [14, 75], "mirror": true},
+						{"origin": [-8, 3, -8], "size": [2, 7, 2], "inflate": 0.4, "uv": [14, 75]},
+						{"origin": [-8, 3, 6], "size": [2, 7, 2], "inflate": 0.4, "pivot": [-7, 6.5, 7], "rotation": [0, 180, 0], "uv": [14, 75], "mirror": true},
+						{"origin": [6, 3, 6], "size": [2, 7, 2], "inflate": 0.4, "pivot": [7, 6.5, 7], "rotation": [0, -90, 0], "uv": [14, 75], "mirror": true}
+					]
+				},
+				{
+					"name": "bone2",
+					"parent": "head",
+					"pivot": [0, 6, 0],
+					"cubes": [
+						{"origin": [-8, 6, -8], "size": [16, 10, 16], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "glowing",
+					"parent": "bone2",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-8, 9, -8], "size": [16, 5, 16], "inflate": -0.03, "uv": [0, 79]}
+					]
+				},
+				{
+					"name": "lid",
+					"parent": "bone2",
+					"pivot": [-5, 16, 0],
+					"cubes": [
+						{"origin": [-5, 15.1, -5], "size": [10, 1, 10], "uv": [0, 62]}
+					]
+				},
+				{
+					"name": "bone3",
+					"parent": "head",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-6, 3, -6], "size": [12, 3, 12], "uv": [0, 45]}
+					],
+					"locators": {
+						"particle": [0, 9, 0]
+					}
+				}
+			]
+		}
+	]
+}

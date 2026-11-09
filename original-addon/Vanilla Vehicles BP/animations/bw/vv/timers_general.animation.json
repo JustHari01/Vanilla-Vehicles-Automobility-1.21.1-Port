@@ -1,0 +1,53 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.bw_vv.generic_hit_timer": {
+			"loop": true,
+			"animation_length": 0.4,
+			"timeline": {
+				"0.0": "@s event:hit_timer_countdown"
+			}
+	  },
+	"animation.bw_vv.mech_walk_anim_timer": {
+			"animation_length": 0.4
+		},
+		"animation.bw_vv.player_mech_anim_delay": {
+			"loop": false,
+			"animation_length": 0.55
+		},
+    "animation.bw_vv.generic_vehicle_climb_timer": {
+			"loop": false,
+			"animation_length": 0.1
+		},
+	"animation.bw_vv.generic_vehicle_boost_timer": {
+		"loop": false,
+		"animation_length": 5
+  	},
+  	"animation.bw_vv.generic_vehicle_boost_cooldown_timer": {
+		"loop": true,
+		"animation_length": 1,
+		"timeline": {
+			"0.9": "@s event:boost_cooldown_counter"
+		}
+	},
+	  	"animation.bw_vv.mech_weapons_cooldown_timer": {
+		"loop": true,
+		"animation_length": 1,
+		"timeline": {
+			"0.9": "@s event:weapons_cooldown_counter"
+		}
+	},
+	"animation.bw_vv.generic_vehicle_weapons_timer": { // how much the mech weapon animation lasts
+		"loop": false,
+		"animation_length": 1
+  	},
+	"animation.bw_vv.generic_vehicle_spawn_timer": {
+		"loop": false,
+		"animation_length": 1
+  },
+  	"animation.bw_vv.hot_air_balloon_heat_timer": {
+		"loop": false,
+		"animation_length": 4
+  }
+  }
+}

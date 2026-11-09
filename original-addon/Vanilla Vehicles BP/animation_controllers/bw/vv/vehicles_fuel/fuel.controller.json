@@ -1,0 +1,77 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.bw_vv.generic_vehicle_fuel_activator": {
+			"states": {
+				"default": {
+					"transitions": [
+						{"empty" : "q.property('bw_vv:fuel_progress')==0"},
+						{"fueled" : "q.property('bw_vv:fuel_progress')>0"}
+					]
+				},
+				"fueled": {
+					"transitions": [
+						{"empty" : "q.property('bw_vv:fuel_progress')==0"}
+					],
+					"on_entry":[
+						"@s event:fuel"
+					]
+				},
+				"empty": {
+					"transitions": [
+						{"fueled" : "q.property('bw_vv:fuel_progress')>0"}
+					],
+					"on_entry":[
+						"@s event:unfuel"
+					]
+				}
+		}
+	},
+	"controller.animation.bw_vv.generic_vehicle_fuel": {
+		"states": {
+			"default": {
+				"transitions": [
+					{"static" : "q.has_player_rider && q.ground_speed<2"},
+					{"moving" : "q.has_player_rider && q.ground_speed>2"}
+				]
+			},
+			"moving": {
+				"animations":[
+					"fuel_decreaser"
+				],
+				"transitions": [
+						{"static" : "q.has_player_rider && q.ground_speed < 2"}
+				]
+			},
+			"static": {
+				"transitions": [
+						{"moving" : "q.has_player_rider && q.ground_speed>2"}
+				]
+			}
+	}
+},
+"controller.animation.bw_vv.generic_vehicle_fuel_warning": {
+	"states": {
+		"default": {
+			"transitions": [
+				{"fuel_warning" : "q.property('bw_vv:fuel_warning') == true"}
+			]
+		},
+		"fuel_warning": {
+			"animations":[
+				"fuel_warning_timer"
+			],
+			"transitions": [
+					{"default" : "q.scoreboard('fuel_warn_t') <= 0"}
+			],
+			"on_exit":[
+				"@s event:fuel_unwarning"
+			],
+			"on_entry":[
+				"/execute as @p at @s run scriptevent bw_vv:fuel_warning"
+			]
+		}
+	}
+}
+}
+}

@@ -1,0 +1,128 @@
+{
+	"format_version": "1.21.100",
+	"animation_controllers":{
+	   "controller.animation.bw_vv.vehicle_climb":{
+		  "states":{
+			 "default":{
+				"animations":[
+				   "climb_neutral"
+				],
+				"transitions":[
+				   {
+					  "up":"q.property('bw_vv:player_anim') == 'climb_up'"
+				   },
+				   {
+					  "down":"q.property('bw_vv:player_anim') == 'climb_down'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "neutral_from_up":{
+				"animations":[
+				   "climb_neutral_from_up"
+				],
+				"transitions":[
+				   {
+					  "up":"q.property('bw_vv:player_anim') == 'climb_up'"
+				   },
+				   {
+					   "default":"q.property('bw_vv:player_anim') == 'climb_neutral'"
+				   },
+				   {
+					  "down":"q.property('bw_vv:player_anim') == 'climb_down'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "neutral_from_down":{
+				"animations":[
+				   "climb_neutral_from_down"
+				],
+				"transitions":[
+				   {
+					  "up":"q.property('bw_vv:player_anim') == 'climb_up'"
+				   },
+				   {
+					"default":"q.property('bw_vv:player_anim') == 'climb_neutral'"
+				   },
+				   {
+					  "down":"q.property('bw_vv:player_anim') == 'climb_down'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "up":{
+				"animations":[
+				   "climb_up"
+				],
+				"transitions":[
+				   {
+					  "down":"q.property('bw_vv:player_anim') == 'climb_down'"
+				   },
+				   {
+					"default":"q.property('bw_vv:player_anim') == 'climb_neutral'"
+				   },
+				   {
+					  "neutral_from_up":"q.property('bw_vv:player_anim') == 'climb_neutral_f_u'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "down":{
+				"animations":[
+				   "climb_down"
+				],
+				"transitions":[
+				   {
+					  "neutral_from_down":"q.property('bw_vv:player_anim') == 'climb_neutral_f_d'"
+				   },
+				   {
+					  "up":"q.property('bw_vv:player_anim') == 'climb_up'"
+				   },
+				   {
+					  "falling":"q.property('bw_vv:player_anim') == 'falling'"
+				   },
+				   {
+					"default":"q.property('bw_vv:player_anim') == 'climb_neutral'"
+				   }
+				],
+				"blend_transition":0.1
+			 },
+			 "falling":{
+				"animations":[
+				   "falling"
+				],
+				"transitions":[
+				   {
+					  "landed":"q.is_on_ground"
+				   },
+				   {
+					  "landed_water":"q.is_in_water"
+				   }
+				],
+				"blend_transition":0.2
+			 },
+			 "landed":{
+				"animations":[
+				   "landed",
+				   "landed_particle"
+				],
+				"transitions":[
+				   {
+					  "default":"q.any_animation_finished"
+				   }
+				],
+				"blend_transition":0.2
+			 },
+			 "landed_water":{
+				"transitions":[
+				   {
+					  "default":"!q.is_in_water"
+				   }
+				],
+				"blend_transition":0.2
+			 }
+		  }
+	   }
+	}
+ }

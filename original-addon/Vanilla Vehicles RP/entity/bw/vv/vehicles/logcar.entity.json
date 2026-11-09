@@ -1,0 +1,147 @@
+{
+  "format_version": "1.21.120",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "bw_vv:logcar",
+      "animations": {
+        "spawn": "animation.bw_vv.vehicle_spawn",
+        "shake": "animation.bw_vv.minecar_shake",
+        "boost": "animation.bw_vv.vehicle_general_boost",
+        "trail": "animation.bw_vv.vehicle_tral", //smoke
+        //VERTICAL MOVEMENT
+        "climb_controller": "controller.animation.bw_vv.vehicle_climb",
+        "climb_down": "animation.bw_vv.vehicle_climb_down",
+        "climb_neutral": "animation.bw_vv.vehicle_climb_neutral",
+        "climb_up": "animation.bw_vv.vehicle_climb_up",
+        "climb_neutral_from_up": "animation.bw_vv.vehicle_climb_neutral_from_up",
+        "climb_neutral_from_down": "animation.bw_vv.vehicle_climb_neutral_from_down",
+        "falling": "animation.bw_vv.vehicle_minecar_falling",
+        "in_water": "animation.bw_vv.vehicle_minecar_falling",
+        "landed": "animation.bw_vv.vehicle_minecar_landed",
+        "landed_particle": "animation.bw_vv.vehicle_landed_particle",
+        //STEERING TILTING
+        "tilt_right": "animation.bw_vv.vehicle.steer.tilt_right",
+        "tilt_neutral_from_right": "animation.bw_vv.vehicle.steer.tilt_neutral.from_right",
+        "tilt_left": "animation.bw_vv.vehicle.steer.tilt_left",
+        "tilt_neutral_from_left": "animation.bw_vv.vehicle.steer.tilt_neutral.from_left",
+        "tilt_controller": "controller.animation.bw_vv.vehicle.steer.tilt",
+        //VISUAL TOUCH-UPS
+        "shake_controller": "controller.animation.bw_vv.generic.shake",
+        "trail_controller": "controller.animation.bw_vv.vehicle_tral",
+        //HIT
+        "hit_L": "animation.bw_vv.vehicle.hit.L",
+        "hit_R": "animation.bw_vv.vehicle.hit.R",
+        "hit_weak_L": "animation.bw_vv.vehicle.hit.weak.L",
+        "hit_weak_R": "animation.bw_vv.vehicle.hit.weak.R",
+        "hit_final": "animation.bw_vv.vehicle.hit.final",
+        "hit_controller": "controller.animation.bw_vv.vehicle.hit",
+        //FUEL
+        "fuel_indicator": "animation.bw_vv.general.fuel_indicator.vertical",
+        //STEER
+        "steer_forward": "animation.bw_vv.vehicle.steer.forward",
+        "steer_backward": "animation.bw_vv.vehicle.steer.backwards",
+        "backwards_detector": "controller.animation.bw_vv.generic.backwards_detector",
+        //SMOKE BOMB FUNCTIONALITY
+        "smoke_bomb_controller": "controller.animation.bw_vv.vehicle.smoke_bomb",
+        "smoke_bomb.spray_sound_finish_timer": "animation.bw_vv.smoke_bomb_spray_sound_finish_timer",
+        "smoke_bomb.spray_sound": "animation.bw_vv.smoke_bomb_spray",
+        //ENGINGES
+        "engine_controller": "controller.animation.bw_vv.vehicle.engine",
+        "engine_sound": "animation.bw_vv.vehicle.engine_sound.logcar",
+        "engine_sound.close": "animation.bw_vv.vehicle.engine_sound.logcar.close",
+        "engine_sound.standby": "animation.bw_vv.vehicle.engine_sound.standby.logcar"
+      },
+      "materials": {
+        "default": "entity_multitexture_alpha_test_color_mask",
+        "alpha_vanillavehiclesaddon": "alpha_vanillavehicles",
+        "glow": "glow_vanillavehicles",
+        "alpha_transparent_vanillavehiclesaddon": "alpha_transparency_vanillavehicles",
+        "glow_masked_animated": "glow_vanillavehicles_masked_animated"
+      },
+      "scripts": {
+        "scale": "q.property('bw_vv:removed') ? 0 : 1",
+        "initialize": [
+          "v.sticker = 0;",
+          "v.moving_speed = 0;",
+          "v.wheel_rot_speed = 0;",
+          "v.hit_intensity = 1;",
+          "v.hit_ratio_weak = 0;",
+          "v.hit_ratio_tools = 0;",
+          "v.steer_threshold = 7;"
+        ],
+        "pre_animation": [
+          "v.is_fueled = q.property('bw_vv:fuel_progress') > 0 ? true : false;",
+          "v.wood_type = q.property('bw_vv:wood_type');",
+          "v.hit_intensity = 0.1+1/(query.property('bw_vv:damage_weak') ? v.hit_ratio_weak*2 : v.hit_ratio_tools*2);",
+          "v.hit_ratio_weak = (query.property('bw_vv:hit_resistance'))/query.property('bw_vv:damage_progress');",
+          "v.hit_ratio_tools = (query.property('bw_vv:hit_resistance_tools')-2)/query.property('bw_vv:damage_progress');",
+          "v.fuel =10-query.property('bw_vv:fuel_progress');",
+          "(query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.creeper')) ? (v.sticker = 1) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.castle')) ? (v.sticker = 2) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.stripes')) ? (v.sticker = 3) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.enderman')) ? (v.sticker = 4) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.skeleton')) ? (v.sticker = 5) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.hearts')) ? (v.sticker = 6) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.diamonds')) ? (v.sticker = 7) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.bloom')) ? (v.sticker = 8) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.icy')) ? (v.sticker = 9) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.soulful')) ? (v.sticker = 10) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.burning')) ? (v.sticker = 11) : ((query.is_item_name_any('slot.weapon.mainhand', 0, 'bw_vv:sticker.rainbow')) ? (v.sticker = 12) : (v.sticker = 0))))))))))));",
+          "variable.pre_body_rot = query.has_player_rider ? ( query.rider_body_y_rotation(0) - query.body_y_rotation ) : 0;", //difference between player rotation and vehicle rotation
+          "variable.body_rot = math.mod(variable.pre_body_rot,360);",
+          "(variable.body_rot > 180) ? (variable.body_rot = variable.body_rot - 360);",
+          "(variable.body_rot < -180) ? (variable.body_rot = variable.body_rot + 360);",
+          "v.climb_anim = q.has_player_rider ? ( 10 + query.camera_distance_range_lerp(2.5, 4) * ( q.property('bw_vv:climb_animation')-10 ) ) : 0;", //how far the vehicle increases forward or backward
+          "v.steer_rot = 4*query.modified_move_speed;", //how much the body of the vehicle tilts in the other side while steering.
+          "v.steer_direction = (variable.body_rot > v.steer_threshold) ? 'right' : ( (variable.body_rot < -v.steer_threshold) ? 'left' : 'neutral' );",
+          "v.wasd = q.property('bw_vv:wasd');",
+          "v.wheel_rot_pre = math.mod(query.modified_distance_moved*50,90);",
+          "v.wheel_rot_speed = v.wheel_rot_pre;", //the speed of the wheels
+          "v.wheel_steer = math.clamp(v.body_rot/2*query.has_player_rider,-40,40);", //how drastically the front wheels steer
+          "v.steeringwheel_steer = math.clamp(v.body_rot*-1.4*query.has_player_rider,-60,60);",
+
+          "t.shake1 = math.sin(q.anim_time*405);",
+          "t.shake2 = math.sin(q.anim_time*460);",
+          "t.shake3 = math.sin(q.anim_time*512);",
+          "t.shake4 = math.sin(q.anim_time*567);",
+          "t.shake5 = math.sin(q.anim_time*632);",
+          "t.shake6 = math.sin(q.anim_time*865);",
+          "t.shake7 = math.sin(q.anim_time*903);",
+          "t.shake8 = math.sin(q.anim_time*912+100);",
+          "t.shake9 = math.sin(q.anim_time*2000);",
+          "t.shake10 = math.sin(q.anim_time*2700);"
+        ],
+        "animate": [
+          "spawn",
+          "engine_controller",
+          "climb_controller",
+          "smoke_bomb_controller",
+          "shake_controller",
+          "trail_controller",
+          "hit_controller",
+          "fuel_indicator",
+          "backwards_detector",
+          "tilt_controller"
+        ]
+      },
+      "render_controllers": [
+        "controller.render.bw_vv_logcar",
+        "controller.render.bw_vv_logcar_fueled_animated"
+      ],
+      "textures": {
+        "oak": "textures/bw/vv/vehicles/logcar/oak",
+        "empty": "textures/bw/vv/empty",
+        "fueled_animated": "textures/bw/vv/vehicles/logcar/fueled_animated_sheet"
+      },
+      "particle_effects": {
+        "trail_effect": "bw_vv:trail",
+        "landed_effect": "bw_vv:smoke_big",
+        "smoke_bomb_smoke": "bw_vv:smoke_bomb_smoke.vehicle2",
+        "destroy_effect": "bw_vv:wood_destroy"
+      },
+      "sound_effects": {
+        "spray": "bw_vv.smoke_bomb.spray",
+        "engine": "bw_vv.vehicle.logcar.engine",
+        "engine.standby": "bw_vv.vehicle.logcar.engine.standby",
+        "engine.close": "bw_vv.vehicle.logcar.engine.close"
+      },
+      "geometry": {
+        "default": "geometry.bw_vv.logcar"
+      },
+      "spawn_egg": {
+        "texture": "bw_vv:vehicle_spawn",
+        "texture_index": 0
+      }
+    }
+  }
+}
