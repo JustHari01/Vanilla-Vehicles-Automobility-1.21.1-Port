@@ -1,6 +1,6 @@
 # Local port status
 
-Target: Automobility (UNOFFICIAL), NeoForge 1.21.1. This repository is a separate working copy; the user's existing Automobility checkout and main game profile were not modified. No Modrinth or CurseForge upload has been made.
+Target: Automobility (UNOFFICIAL), NeoForge 1.21.1. This repository is a separate working copy; the user's existing Automobility checkout and main game profile were not modified. The production JAR `Automobility-Vanilla-Vehicles-UNOFFICIAL-NeoForge-1.21.1-alpha.jar` is publicly listed on CurseForge as Alpha under project 1702208, file 9640288: https://www.curseforge.com/minecraft/mc-mods/automobility-unofficial/files/9640288. The local-test ZIP is a separate artifact. The matching Modrinth project remains rejected and has not been resubmitted while its moderation issue is unresolved.
 
 ## Source assets and visual fidelity
 
