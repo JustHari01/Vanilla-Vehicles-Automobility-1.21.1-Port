@@ -12,6 +12,9 @@ records that user-provided statement; it is not an independent verification or
 a new grant of permission to third parties. No separate permission document or
 broader redistribution terms are included in this checkout.
 
-The Java port is by JustHari01 with AI assistance. The local test artifact has
-not been uploaded to Modrinth or CurseForge. Platform release metadata and the
-remaining visual-parity work are still pending.
+The Java port is by JustHari01 with AI assistance. The local development and
+local-test artifacts remain separate from the CurseForge production release.
+Production file 9640288 is publicly listed as Alpha on project 1702208. No
+Modrinth file was submitted; the matching Modrinth project remains rejected,
+so it has not been resubmitted while the moderation issue is unresolved.
+Remaining visual-parity limits are documented in `PORT-STATUS.md`.
